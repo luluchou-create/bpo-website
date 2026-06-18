@@ -1018,9 +1018,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // 偵測是否在 iframe 裡（Google Sites 嵌入）
   if(window !== window.top){
-    // 關掉 body 自己的捲軸，讓外層 Google Sites 負責滾動
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
     // nav 改成非 sticky，避免在 iframe 裡疊到內容
     var nav = document.querySelector('nav');
     if(nav) nav.style.position = 'relative';
