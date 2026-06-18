@@ -1018,9 +1018,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // 偵測是否在 iframe 裡（Google Sites 嵌入）
   if(window !== window.top){
-    // nav 改成非 sticky，避免在 iframe 裡疊到內容
-    var nav = document.querySelector('nav');
-    if(nav) nav.style.position = 'relative';
+    // 所有 sticky 元素改成 relative，避免在 iframe 裡疊到內容
+    document.querySelectorAll('nav, .cases-filters').forEach(function(el){
+      el.style.position = 'relative';
+      el.style.top = 'auto';
+    });
   }
 });
 
