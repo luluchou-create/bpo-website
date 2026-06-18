@@ -404,6 +404,21 @@ nav{
 .ci-group a:hover{color:var(--accent)}
 
 /* ─── FOOTER ──────────────────────────────────────────── */
+.cta-footer{
+  max-width:1100px;margin:16px auto 0;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cta-footer-brand{font-size:11.5px;color:rgba(255,255,255,.35);font-weight:500}
+.cta-footer-icons{display:flex;gap:8px}
+.cta-icon-btn{
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;transition:.2s;
+}
+.cta-icon-btn:hover{background:rgba(255,255,255,.14);color:#fff}
 footer{
   background:var(--brand2);padding:32px;
   display:flex;align-items:center;justify-content:space-between;
@@ -453,7 +468,22 @@ footer{
   .hero{padding:48px 16px 40px}
   .hero-stats{gap:20px}
   .hero h1{font-size:26px}
-  footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
+  .cta-footer{
+  max-width:1100px;margin:16px auto 0;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cta-footer-brand{font-size:11.5px;color:rgba(255,255,255,.35);font-weight:500}
+.cta-footer-icons{display:flex;gap:8px}
+.cta-icon-btn{
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;transition:.2s;
+}
+.cta-icon-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .inner{padding-left:16px;padding-right:16px}
   .speak-grid{grid-template-columns:1fr}
 }
@@ -678,6 +708,17 @@ footer{
       <div class="cta-btns">
         <a href="https://calendar.app.google/mtQjFiunHQdNRJae9" target="_blank" class="btn btn-primary">預約咖啡諮詢</a>
         <a href="https://line.me/R/ti/p/@562malii" target="_blank" class="btn btn-outline">加 LINE 詢問</a>
+      </div>
+    </div>
+    <div class="cta-footer">
+      <span class="cta-footer-brand">BPO 承啟事務所・Build & Pave Office</span>
+      <div class="cta-footer-icons">
+        <a href="https://www.instagram.com/bpo.com.tw/" target="_blank" aria-label="Instagram" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://vocus.cc/user/@BPOSharing" target="_blank" aria-label="方格子" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -971,24 +1012,7 @@ footer{
 
 
 
-<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
-<footer>
-  <div>
-    <div class="footer-brand">BPO 承啟事務所</div>
-    <div class="footer-sub">Build & Pave Office・階段性經理人</div>
 
-  </div>
-  <div class="social-links">
-    <a class="footer-link-btn" href="https://www.instagram.com/bpo.com.tw/" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      Instagram
-    </a>
-    <a class="footer-link-btn" href="https://vocus.cc/user/@BPOSharing" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-      方格子
-    </a>
-  </div>
-</footer>
 
 <script>
 /* ─── PAGE NAVIGATION ─── */
