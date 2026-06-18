@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>BPO 承啟事務所｜階段性經理人</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root{
+  --brand:#263045;--brand2:#1a2235;
+  --accent:#E8833A;--accent2:#d4722c;
+  --blue:#4A7FC0;--teal:#2E9E8F;--purple:#7b4fbf;
+  --muted:#5a6478;--border:#e0e4ec;--bg:#f5f6f8;--bg2:#eef0f4;
+  --white:#fff;
+  --r8:8px;--r12:12px;--r16:16px;--r24:24px;
+  --shadow:0 2px 12px rgba(38,48,69,.09);
+  --shadow-md:0 4px 24px rgba(38,48,69,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:15px/1.7 "Noto Sans TC","PingFang TC",system-ui,sans-serif;color:#222;background:var(--white)}
+
+/* ─── NAV ─────────────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--brand);
+  height:60px;display:flex;align-items:center;
+  padding:0 32px;gap:0;
+  box-shadow:0 2px 16px rgba(0,0,0,.18);
+}
+.nav-logo{
+  color:#fff;font-size:15px;font-weight:700;letter-spacing:.5px;
+  white-space:nowrap;margin-right:auto;cursor:pointer;
+  display:flex;align-items:center;gap:8px;text-decoration:none;
+}
+.nav-logo .bpo-badge{
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;font-size:14px;letter-spacing:1px;
+  color:#263045;background:#fff;
+  padding:3px 9px;border-radius:5px;
+  line-height:1.4;
+}
+.nav-links{display:flex;gap:0;align-items:center}
+.nav-links a{
+  color:rgba(255,255,255,.72);font-size:13.5px;font-weight:500;
+  padding:0 16px;height:60px;display:flex;align-items:center;
+  text-decoration:none;border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;cursor:pointer;
+  white-space:nowrap;
+}
+.nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--accent)}
+.nav-cta{
+  margin-left:16px;background:var(--accent);color:#fff!important;
+  border-radius:var(--r8);height:36px!important;padding:0 18px!important;
+  font-weight:600!important;font-size:13px!important;
+  border-bottom:none!important;transition:background .2s!important;
+}
+.nav-cta:hover{background:var(--accent2)!important}
+
+/* ─── PAGE SYSTEM ─────────────────────────────────────── */
+.page{display:none}#page-home{display:block}
+.page.active{display:block}
+
+/* ─── HERO ────────────────────────────────────────────── */
+.hero{
+  background:linear-gradient(135deg,var(--brand2) 0%,var(--brand) 60%,#2d4060 100%);
+  padding:72px 32px 64px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;right:-80px;top:-80px;
+  width:480px;height:480px;border-radius:50%;
+  background:rgba(232,131,58,.06);
+}
+.hero::after{
+  content:'';position:absolute;right:80px;bottom:-120px;
+  width:280px;height:280px;border-radius:50%;
+  background:rgba(74,127,192,.08);
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:720px}
+.eyebrow{
+  display:inline-block;background:rgba(232,131,58,.18);
+  color:var(--accent);font-size:11.5px;font-weight:700;
+  padding:4px 14px;border-radius:999px;letter-spacing:.8px;
+  margin-bottom:18px;border:1px solid rgba(232,131,58,.3);
+}
+.hero h1{
+  color:#fff;font-size:clamp(28px,3.6vw,44px);font-weight:800;
+  line-height:1.25;margin-bottom:16px;letter-spacing:-.3px;
+}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero-sub{color:rgba(255,255,255,.65);font-size:15.5px;line-height:1.8;margin-bottom:32px}
+.hero-stats{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
+.stat{text-align:left}
+.stat-num{display:block;font-size:28px;font-weight:800;color:var(--accent)}
+.stat-label{font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.3px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:11px 22px;border-radius:var(--r8);
+  font-size:14px;font-weight:600;text-decoration:none;
+  cursor:pointer;border:none;transition:.2s;
+}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2)}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.6)}
+/* Hero right card */
+.hero-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r16);padding:28px 24px;backdrop-filter:blur(8px);
+}
+.hero-card-title{color:rgba(255,255,255,.6);font-size:11px;letter-spacing:1px;font-weight:600;margin-bottom:14px}
+.value-steps{display:flex;flex-direction:column;gap:1px}
+.vs{
+  display:flex;align-items:center;gap:14px;padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.vs:last-child{border-bottom:none}
+.vs-num{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.vs-free .vs-num{background:rgba(255,255,255,.15)}
+.vs-body{flex:1}
+.vs-name{color:#fff;font-size:13.5px;font-weight:600;margin-bottom:2px}
+.vs-desc{color:rgba(255,255,255,.5);font-size:12px;line-height:1.5}
+.vs-tag{
+  font-size:11px;padding:2px 8px;border-radius:999px;
+  font-weight:600;white-space:nowrap;
+}
+.free-tag{background:rgba(255,255,255,.12);color:rgba(255,255,255,.6)}
+.paid-tag{background:rgba(232,131,58,.2);color:var(--accent)}
+
+/* ─── SECTION BASE ────────────────────────────────────── */
+.sec{padding:56px 32px}
+.inner{max-width:1100px;margin:0 auto}
+.sec-label{font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:1.2px;margin-bottom:6px}
+.sec-title{font-size:clamp(20px,2.6vw,28px);font-weight:800;color:var(--brand);margin-bottom:6px;line-height:1.3}
+.sec-sub{font-size:14.5px;color:var(--muted);margin-bottom:28px}
+
+/* ─── PAIN POINTS ─────────────────────────────────────── */
+.pain{background:var(--bg)}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pain-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r12);padding:20px 18px;
+  transition:box-shadow .2s;
+}
+.pain-card:hover{box-shadow:var(--shadow)}
+.pain-icon{font-size:22px;margin-bottom:10px}
+.pain-card h3{font-size:14px;font-weight:700;color:var(--brand);margin-bottom:5px}
+.pain-card p{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ─── HOW IT WORKS ────────────────────────────────────── */
+.how{background:var(--white)}
+.steps-wrap{display:flex;gap:0;position:relative}
+.steps-wrap::before{
+  content:'';position:absolute;top:22px;left:22px;right:22px;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--blue));
+  z-index:0;
+}
+.step-item{flex:1;text-align:center;position:relative;z-index:1;padding:0 8px}
+.step-circle{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  font-size:15px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+  border:3px solid var(--white);
+  box-shadow:var(--shadow);
+}
+.step-item h3{font-size:13.5px;font-weight:700;color:var(--brand);margin-bottom:5px}
+.step-item p{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* ─── SERVICES ────────────────────────────────────────── */
+.services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.svc-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:24px 20px;
+  position:relative;overflow:hidden;
+  transition:box-shadow .2s,transform .2s;
+}
+.svc-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.svc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+}
+.svc-hr .svc-card::before{background:var(--blue)}
+.svc-fin .svc-card::before{background:var(--accent)}
+.svc-ops .svc-card::before{background:var(--teal)}
+.svc-train .svc-card::before{background:#7B5EA7}
+.svc-acc .svc-card::before{background:#2E9E8F}
+.svc-ai .svc-card::before{background:var(--purple)}
+.svc-icon{font-size:26px;margin-bottom:12px}
+.svc-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:8px}
+.svc-card p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px}
+.svc-tag{font-size:11.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:#555;background:var(--bg)}
+
+/* ─── CTA BANNER ──────────────────────────────────────── */
+.cta-banner{
+  background:var(--brand);padding:48px 32px;
+}
+.cta-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-banner h2{font-size:22px;font-weight:800;color:#fff}
+.cta-banner p{color:rgba(255,255,255,.6);font-size:14px;margin-top:4px}
+.cta-btns{display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap}
+
+/* ─── CASES PAGE ──────────────────────────────────────── */
+.cases-hero{background:var(--brand);padding:40px 32px 32px}
+.cases-hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:6px}
+.cases-hero p{color:rgba(255,255,255,.6);font-size:14px}
+.cases-filters{
+  background:var(--white);border-bottom:1px solid var(--border);
+  padding:16px 32px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  position:sticky;top:60px;z-index:50;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.filter-label{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.5px;white-space:nowrap}
+.hero-tagline{
+  display:inline-block;
+  font-size:12px;font-weight:600;letter-spacing:.04em;
+  color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:999px;
+  padding:4px 14px;
+  margin-bottom:16px;
+}
+.line-qr-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.line-qr-img{
+  width:90px;height:90px;border-radius:8px;
+  background:#fff;padding:4px;
+}
+.line-qr-label{
+  font-size:11px;color:rgba(255,255,255,.6);font-weight:600;
+}
+.filter-btn{
+  font-size:13px;padding:7px 18px;border-radius:999px;
+  border:1.5px solid var(--border);
+  background:var(--white);
+  color:#444;cursor:pointer;font-weight:600;
+  transition:all .15s;white-space:nowrap;
+  font-family:inherit;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+}
+.filter-btn.active{
+  background:var(--brand);color:#fff;border-color:var(--brand);
+  box-shadow:0 2px 8px rgba(38,48,69,.25);
+}
+.filter-btn:hover:not(.active){
+  border-color:var(--brand);color:var(--brand);
+  background:#f0f3f8;
+  box-shadow:0 2px 8px rgba(38,48,69,.12);
+  transform:translateY(-1px);
+}
+.filter-sep{width:1px;height:20px;background:var(--border);margin:0 4px;flex-shrink:0}
+.cases-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;padding:28px 32px;max-width:1164px;margin:0 auto;
+}
+.case-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:20px;
+  transition:box-shadow .2s,transform .2s;cursor:default;
+  position:relative;overflow:hidden;
+}
+.case-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.case-card::before{content:'';position:absolute;top:0;left:0;width:4px;bottom:0;border-radius:var(--r16) 0 0 var(--r16)}
+.role-hr .case-card::before{background:var(--blue)}
+.role-fin .case-card::before{background:var(--accent)}
+.role-ops .case-card::before{background:var(--teal)}
+.role-train .case-card::before{background:#8b5cf6}
+.role-proj .case-card::before{background:#64748b}
+.case-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ctag{
+  font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;
+  letter-spacing:.3px;
+}
+.tg-ind{background:rgba(38,48,69,.1);color:var(--brand)}
+.tg-stage-g{background:rgba(46,158,143,.12);color:var(--teal)}
+.tg-stage-s{background:rgba(74,127,192,.12);color:var(--blue)}
+.tg-stage-m{background:rgba(90,100,120,.1);color:#555}
+.tg-ai{background:rgba(123,79,191,.12);color:var(--purple);border:1px solid rgba(123,79,191,.2)}
+.tg-role-hr{background:rgba(74,127,192,.12);color:var(--blue)}
+.tg-role-fin{background:rgba(232,131,58,.12);color:var(--accent)}
+.tg-role-ops{background:rgba(46,158,143,.12);color:var(--teal)}
+.tg-role-train{background:rgba(139,92,246,.12);color:#7c3aed}
+.tg-role-proj{background:rgba(100,116,139,.12);color:#475569}
+.case-company{font-size:18px;font-weight:800;color:var(--brand);margin-bottom:3px}
+.case-title{font-size:13px;color:var(--muted);margin-bottom:14px}
+.case-divider{height:1px;background:var(--border);margin:12px 0}
+.case-sl{font-size:11.5px;font-weight:700;color:var(--brand);letter-spacing:.5px;margin-bottom:6px;margin-top:10px}
+.case-sl:first-of-type{margin-top:0}
+.case-items{list-style:none;display:flex;flex-direction:column;gap:4px}
+.case-items li{font-size:12.5px;color:#333;line-height:1.55;padding-left:12px;position:relative}
+.case-items li::before{content:'·';position:absolute;left:2px;color:var(--accent);font-weight:700}
+.case-size{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:12px;color:var(--muted);margin-top:12px;
+}
+.case-size::before{content:'👥';font-size:11px}
+
+/* ─── ABOUT PAGE ──────────────────────────────────────── */
+.about-hero{
+  background:linear-gradient(135deg,var(--brand2),var(--brand));
+  padding:52px 32px 40px;
+}
+.about-hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:8px}
+.about-hero p{color:rgba(255,255,255,.6);font-size:14px;line-height:1.8;max-width:600px}
+.team-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;padding:36px 32px;max-width:1164px;margin:0 auto;
+}
+.team-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:28px 24px;
+  text-align:center;
+}
+.team-avatar{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  font-size:24px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+}
+.team-name{font-size:17px;font-weight:800;color:var(--brand);margin-bottom:2px}
+.team-en{font-size:12px;color:var(--muted);margin-bottom:10px;letter-spacing:.3px}
+.team-role{
+  display:inline-block;font-size:12px;font-weight:600;
+  padding:4px 14px;border-radius:999px;
+  background:rgba(38,48,69,.08);color:var(--brand);
+  margin-bottom:14px;
+}
+.team-desc{font-size:13px;color:var(--muted);line-height:1.75;text-align:left}
+.team-expertise{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;justify-content:center}
+.exp-tag{font-size:11.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:#555;background:var(--bg)}
+
+/* ─── SPEAKING ────────────────────────────────────────── */
+.speaking{background:var(--bg);padding:40px 32px}
+.speak-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.speak-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r12);padding:16px 18px;
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+}
+.speak-date{
+  background:var(--brand);color:#fff;
+  border-radius:var(--r8);padding:8px 10px;
+  text-align:center;min-width:52px;
+}
+.speak-month{font-size:10px;letter-spacing:.5px;opacity:.7}
+.speak-year{font-size:12px;font-weight:700}
+.speak-type{
+  display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;
+  border-radius:999px;margin-bottom:5px;
+}
+.speak-type.course{background:rgba(232,131,58,.12);color:var(--accent)}
+.speak-type.share{background:rgba(74,127,192,.12);color:var(--blue)}
+.speak-title{font-size:13px;font-weight:600;color:var(--brand);line-height:1.5;margin-bottom:3px}
+.speak-org{font-size:12px;color:var(--muted)}
+
+/* ─── CONTACT PAGE ────────────────────────────────────── */
+.contact-hero{
+  background:linear-gradient(135deg,var(--brand2),var(--brand));
+  padding:52px 32px 40px;
+}
+.contact-hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:8px}
+.contact-hero p{color:rgba(255,255,255,.6);font-size:14px}
+.contact-wrap{padding:40px 32px;max-width:1164px;margin:0 auto}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:40px}
+.contact-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:28px 24px;text-align:center;
+  transition:box-shadow .2s;
+}
+.contact-card:hover{box-shadow:var(--shadow-md)}
+.contact-icon{font-size:32px;margin-bottom:14px}
+.contact-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:6px}
+.contact-card p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.contact-card a.btn{margin:0 auto;width:fit-content}
+.ctype-label{
+  font-size:10.5px;font-weight:700;letter-spacing:.8px;
+  display:inline-block;margin-bottom:10px;padding:3px 10px;
+  border-radius:999px;
+}
+.ctype-cold{background:rgba(74,127,192,.1);color:var(--blue)}
+.ctype-warm{background:rgba(46,158,143,.1);color:var(--teal)}
+.ctype-hot{background:rgba(232,131,58,.1);color:var(--accent)}
+.contact-info{
+  background:var(--bg);border-radius:var(--r16);padding:28px;
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.ci-group h4{font-size:13px;font-weight:700;color:var(--brand);margin-bottom:8px}
+.ci-group p,.ci-group a{font-size:13.5px;color:var(--muted);text-decoration:none;display:block;line-height:1.8}
+.ci-group a:hover{color:var(--accent)}
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+footer{
+  background:var(--brand2);padding:32px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-brand{color:#fff;font-size:14px;font-weight:700}
+.footer-sub{color:rgba(255,255,255,.4);font-size:11.5px;margin-top:3px}
+.social-links{display:flex;gap:10px;align-items:center}
+.footer-link-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.7);background:rgba(255,255,255,.06);
+  text-decoration:none;font-size:13px;font-weight:500;
+  transition:.2s;white-space:nowrap;
+}
+.footer-link-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+
+/* ─── HIDDEN / UTILITY ────────────────────────────────── */
+.hidden{display:none!important}
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-card{display:none}
+  .pain-grid,.svc-grid{grid-template-columns:repeat(2,1fr)}
+  .cases-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-info{grid-template-columns:1fr}
+  .steps-wrap::before{display:none}
+  .steps-wrap{flex-direction:column;gap:16px}
+}
+@media(max-width:600px){
+  html,body{overflow-x:hidden;max-width:100vw}
+  nav{padding:0 12px;flex-wrap:nowrap;gap:6px}
+  .nav-logo{font-size:13px;gap:6px}
+  .bpo-badge{font-size:11px;padding:3px 6px}
+  .nav-links{gap:0}
+  .nav-links a{padding:0 7px;font-size:11.5px}
+  .nav-cta{display:none}
+  .sec,.hero,.cases-hero,.about-hero,.contact-hero,.speaking,.contact-wrap{padding-left:16px;padding-right:16px}
+  .cases-filters{padding:12px 16px}
+  .cases-grid{padding:20px 16px;grid-template-columns:1fr}
+  .team-grid,.contact-wrap{padding:20px 16px}
+  .pain-grid,.svc-grid{grid-template-columns:1fr}
+  .hero{padding:48px 16px 40px}
+  .hero-stats{gap:20px}
+  .hero h1{font-size:26px}
+  footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
+  .inner{padding-left:16px;padding-right:16px}
+  .speak-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">
+    <span class="bpo-badge">BPO</span> 承啟事務所
+  </a>
+  <div class="nav-links">
+    <a onclick="showPage('home')" data-page="home" class="active">首頁</a>
+    <a onclick="showPage('cases')" data-page="cases">合作案例</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════ HOME PAGE ══════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tagline">適合 50 人左右中小企業・成長期到穩健期的關鍵轉折點</div>
+          <h1>每家企業面臨的挑戰不同<br><em>解方也不該一樣</em></h1>
+          <p class="hero-sub">
+            將混亂變清晰，建構穩健的成長節奏<br>
+            橫跨組織、財務與品牌，以進駐方式深度投入<br>
+            在企業需要的階段進來，把問題變成行動
+          </p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-num">12+</span>
+              <span class="stat-label">服務企業</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">10+</span>
+              <span class="stat-label">橫跨產業</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">98%</span>
+              <span class="stat-label">客戶續約率</span>
+            </div>
+          </div>
+          <div class="hero-btns">
+            <a href="https://calendar.app.google/mtQjFiunHQdNRJae9" target="_blank" class="btn btn-primary">預約咖啡諮詢</a>
+            <button class="btn btn-outline" onclick="showPage('cases')">查看合作案例</button>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="sec pain">
+    <div class="inner">
+      <p class="sec-label">COMMON STRUGGLES</p>
+      <h2 class="sec-title">成長過程中，挑戰往往不只一個面向</h2>
+      <p class="sec-sub">以下情境，是否正在發生？</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">🏗️</div>
+          <h3>組織混亂、制度還沒建起來</h3>
+          <p>人員快速增加，分工不清、流程缺乏 SOP，組織運作難以系統性推進。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">💰</div>
+          <h3>想募資或調整股權，不知從哪開始</h3>
+          <p>有成長計畫，財務架構與投資人溝通的準備尚未到位，影響談判主導權。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">👥</div>
+          <h3>團隊留不住人、主管不知怎麼帶</h3>
+          <p>管理方式或升遷機制尚不明確，人才難以留住，核心人員流失的風險持續存在。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">📊</div>
+          <h3>業務成長，但組織跟不上速度</h3>
+          <p>業務量增加，人力配置與流程尚未跟上，服務品質與執行效率面臨壓力。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🔀</div>
+          <h3>面臨轉型，不知道怎麼重新佈局</h3>
+          <p>外部環境持續變化，內部需要相應調整，優先順序與切入點仍不明確。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🎯</div>
+          <h3>準備上市櫃，內控制度還沒到位</h3>
+          <p>IPO 時程明確，財務與人資制度的建置進度需要同步推進。</p>
+        </div>
+        <div class=pain-card>
+          <div class="pain-icon">📒</div>
+          <h3>帳務不清楚，財務狀況難以掌握</h3>
+          <p>收入、成本、庫存分散各處，財務數據難以整合，不清楚實際盈虧與潛在合規風險。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="sec how">
+    <div class="inner">
+      <p class="sec-label">OUR APPROACH</p>
+      <h2 class="sec-title">五步驟，從診斷走到落地</h2>
+      <p class="sec-sub">每一步都從企業現況出發，不套用通用框架</p>
+      <div class="steps-wrap">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <h3>問題釐清</h3>
+          <p>深入了解現況，找出真正需要優先解決的核心問題。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <h3>現況診斷</h3>
+          <p>盤點組織、財務、人力的實際狀況。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <h3>系統建構</h3>
+          <p>依企業所在階段，提出具體方案與合作模式。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <h3>執行陪跑</h3>
+          <p>實際進場，跟團隊一起把事情做到位。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">5</div>
+          <h3>成果交付</h3>
+          <p>留下方法與制度，讓團隊可以持續自主運作。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="sec services">
+    <div class="inner">
+      <p class="sec-label">EXPERTISE</p>
+      <h2 class="sec-title">精準補位，專業進駐</h2>
+      
+      <p class="sec-sub">組織人資・營運流程・管理培訓・財務募資・會計合規，以進駐方式深度投入</p>
+      <div class="svc-grid">
+        <div class="svc-hr">
+          <div class="svc-card">
+            <div class="svc-icon">🧩</div>
+            <h3>組織 × 人資</h3>
+            <p>從零到有建立人資制度、培育主管、設計薪酬結構，讓組織跟得上成長速度。</p>
+            <div class="svc-tags">
+              <span class="svc-tag">制度建立</span>
+              <span class="svc-tag">主管養成</span>
+              <span class="svc-tag">招募規劃</span>
+              <span class="svc-tag">組織設計</span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-ops">
+          <div class="svc-card">
+            <div class="svc-icon">⚙️</div>
+            <h3>營運 × 流程</h3>
+            <p>標準化作業流程、跨部門協作規範，讓服務品質穩定，協作流程化，組織運作不依賴個人。</p>
+            <div class="svc-tags">
+              <span class="svc-tag">SOP建置</span>
+              <span class="svc-tag">流程優化</span>
+              <span class="svc-tag">跨部門協作</span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-train">
+          <div class="svc-card">
+            <div class="svc-icon">🎓</div>
+            <h3>培訓 × 教練</h3>
+            <p>管理思維課程、主管一對一教練、共識工作坊，從方法論到行為改變都一起做。</p>
+            <div class="svc-tags">
+              <span class="svc-tag">主管共識營</span>
+              <span class="svc-tag">管理培訓</span>
+              <span class="svc-tag">職場教練</span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-fin">
+          <div class="svc-card">
+            <div class="svc-icon">📈</div>
+            <h3>財務 × 募資</h3>
+            <p>財務健診、股權結構優化、募資文件建立，讓財務語言清晰可信，精準對接投資人期待。</p>
+            <div class="svc-tags">
+              <span class="svc-tag">財務架構</span>
+              <span class="svc-tag">股權設計</span>
+              <span class="svc-tag">募資策略</span>
+              <span class="svc-tag">IPO準備</span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-acc">
+          <div class="svc-card">
+            <div class="svc-icon">📋</div>
+            <h3>會計 × 合規</h3>
+            <p>協助補帳、建立記帳制度、稅務申報，讓帳稅一致，財務清晰可掌握。</p>
+            <div class="svc-tags">
+              <span class="svc-tag">補帳建帳</span>
+              <span class="svc-tag">記帳制度建立</span>
+              <span class="svc-tag">記帳報稅</span>
+              <span class="svc-tag">查帳審計</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-inner">
+      <div>
+        <h2>不確定我們能幫什麼？歡迎先交流</h2>
+        <p>加 LINE 真人即時互動，或約咖啡深聊兩小時，找到最適合的合作起點</p>
+      </div>
+      <div class="cta-btns">
+        <a href="https://calendar.app.google/mtQjFiunHQdNRJae9" target="_blank" class="btn btn-primary">預約咖啡諮詢</a>
+        <a href="https://line.me/R/ti/p/@562malii" target="_blank" class="btn btn-outline">加 LINE 詢問</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-home -->
+
+
+<!-- ══════════════════════════ CASES PAGE ══════════════════════════ -->
+<div id="page-cases" class="page">
+  <div class="cases-hero">
+    <div style="max-width:1100px;margin:0 auto">
+      <h1>不同產業、不同階段，解方不複製</h1>
+      <p>12+ 企業，橫跨 10+ 個產業，98% 客戶持續合作</p>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="cases-filters">
+    <span class="filter-label">角色</span>
+    <button class="filter-btn active" data-filter="all" onclick="filterCases(this,'all')">全部</button>
+    <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
+    <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
+    <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
+    <button class="filter-btn" data-filter="role-train" onclick="filterCases(this,'role-train')">培訓</button>
+    <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
+    <div class="filter-sep"></div>
+    <span class="filter-label">企業階段</span>
+    <button class="filter-btn" data-filter="stage-g" onclick="filterCases(this,'stage-g')">成長期</button>
+    <button class="filter-btn" data-filter="stage-s" onclick="filterCases(this,'stage-s')">穩健期</button>
+    <button class="filter-btn" data-filter="stage-m" onclick="filterCases(this,'stage-m')">成熟期</button>
+    <div class="filter-sep"></div>
+  </div>
+
+  <!-- CASES GRID -->
+  <div class="cases-grid" id="casesGrid">
+
+    <div class="case-card role-hr" data-cats="role-hr stage-s">
+      <div class="case-tags">
+        <span class="ctag tg-stage-s">穩健期</span>
+        <span class="ctag tg-role-hr">階段性人資長</span>
+      </div>
+      <div class="case-company">整合行銷業</div>
+      <div class="case-title">第二成長曲線規劃 × 人才養成</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">挑戰</div>
+      <ul class="case-items">
+        <li>進入穩健期，面臨成長天花板，需開創新業務方向</li>
+        <li>人才培育機制缺乏系統性，核心人員流失風險高</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>舉辦兩天一夜主管共識營，找尋關鍵人才</li>
+        <li>建立內部 HR 夥伴、接軌校園招募管道</li>
+        <li>成立公司社團，提升新舊團隊凝聚力</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-hr" data-cats="role-hr stage-m">
+      <div class="case-tags">
+        <span class="ctag tg-stage-m">成熟期</span>
+        <span class="ctag tg-role-hr">階段性人資長</span>
+      </div>
+      <div class="case-company">顧問服務業</div>
+      <div class="case-title">組織重整 × 團隊再定位</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">挑戰</div>
+      <ul class="case-items">
+        <li>團隊分工不清，角色模糊導致執行效率低落</li>
+        <li>組織結構跟不上業務擴張速度</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>重新招募及培訓人才</li>
+        <li>建立部門作業 SOP，各職位職責重新定義</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-train" data-cats="role-train stage-g">
+      <div class="case-tags">
+        <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-train">職場教練</span>
+      </div>
+      <div class="case-company">非營利組織</div>
+      <div class="case-title">管理思維轉型 × 主管養成</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">挑戰</div>
+      <ul class="case-items">
+        <li>組織從草創期轉型，管理方式需系統性升級</li>
+        <li>主管缺乏管理框架，帶人靠直覺而非方法</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>建立低度管理、自主運行的組織模型</li>
+        <li>建立公司知識庫與新人報到學習軌跡</li>
+        <li>培育內部夥伴工作思考與破框思維</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-hr has-ai" data-cats="role-hr stage-g has-ai">
+      <div class="case-tags">
+        <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-hr">階段性人資長</span>
+        <span class="ctag tg-ai">⚡ AI客製</span>
+      </div>
+      <div class="case-company">虛擬 IP 業</div>
+      <div class="case-title">人資制度從零建立 × 出勤系統數位化</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">挑戰</div>
+      <ul class="case-items">
+        <li>新興產業快速成長，制度從零建立</li>
+        <li>出勤與請假仰賴人工傳訊，管理負擔重</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>主管試鏡會：主管必修管理（內部培訓課程）</li>
+        <li>高效工作力：專案管理實戰密碼（內部培訓課程）</li>
+      </ul>
+      <div class="case-sl">AI 客製成果</div>
+      <ul class="case-items">
+        <li>出勤管理系統：打卡・請假・特休計算一站處理</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-hr role-fin" data-cats="role-hr role-fin stage-m">
+      <div class="case-tags">
+        <span class="ctag tg-stage-m">成熟期</span>
+        <span class="ctag tg-role-fin">財務顧問</span>
+        <span class="ctag tg-role-hr">人資顧問</span>
+      </div>
+      <div class="case-company">電子零件製造業</div>
+      <div class="case-title">預計 IPO × 組織打造 × 人才配置</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">挑戰</div>
+      <ul class="case-items">
+        <li>業務快速成長，組織架構與招募能力卻完全缺乏</li>
+        <li>IPO 時程壓力大，財務與人資制度缺口未建立</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>內控文件教育訓練與建置、IPO 前置自行診斷</li>
+        <li>新人養成培育架構、教育訓練架構建置</li>
+        <li>組織架構設計與招募流程建立</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-ops role-hr" data-cats="role-ops role-hr stage-g">
+      <div class="case-tags">
+        <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-ops">營運顧問</span>
+        <span class="ctag tg-role-hr">人資顧問</span>
+      </div>
+      <div class="case-company">永續創新業</div>
+      <div class="case-title">團隊穩健化 × 募資策略協作</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">挑戰</div>
+      <ul class="case-items">
+        <li>同步面對團隊擴編與募資兩大壓力</li>
+        <li>組織運作機制尚未成熟，影響投資人信心</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>核心團隊穩健化，建立留才・分工・激勵機制</li>
+        <li>募資規劃協作與股東會籌備執行</li>
+        <li>人才培訓體系建立與養成計畫</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-ops" data-cats="role-ops stage-m">
+      <div class="case-tags">
+        <span class="ctag tg-stage-m">成熟期</span>
+        <span class="ctag tg-role-ops">階段性營運長</span>
+      </div>
+      <div class="case-company">飯店餐飲業</div>
+      <div class="case-title">組織重整 × 營運流程標準化</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">挑戰</div>
+      <ul class="case-items">
+        <li>服務品質不穩定，與人員配置混亂密切相關</li>
+        <li>部門間協作缺乏標準，依賴個人經驗而非流程</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>全面組織盤點與部門職能重組</li>
+        <li>人員配置優化，明確各崗位產出責任</li>
+        <li>標準作業流程建立與跨部門協作規範</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-fin" data-cats="role-fin stage-s">
+      <div class="case-tags">
+        <span class="ctag tg-stage-s">穩健期</span>
+        <span class="ctag tg-role-fin">財務顧問</span>
+      </div>
+      <div class="case-company">設計品牌業</div>
+      <div class="case-title">募資規劃 × 股權結構設計</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">挑戰</div>
+      <ul class="case-items">
+        <li>計畫對外募資，但股權結構模糊，投資人難以評估</li>
+        <li>缺乏完整財務文件，影響談判籌碼</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>股權分配架構重新設計與合理化</li>
+        <li>建立財務模型・使用規劃・ESOP 設計</li>
+        <li>投資人溝通策略與簡報準備</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-proj" data-cats="role-proj stage-m">
+      <div class="case-tags">
+        <span class="ctag tg-stage-m">成熟期</span>
+        <span class="ctag tg-role-proj">專案顧問</span>
+      </div>
+      <div class="case-company">數位媒體業</div>
+      <div class="case-title">募資專案快速進場 × 關鍵缺口補位</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">挑戰</div>
+      <ul class="case-items">
+        <li>募資專案啟動，內部資源不足以同步承接</li>
+        <li>需要具備財務與業務整合能力的人快速到位</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>快速進場承接募資關鍵執行任務</li>
+        <li>跨部門協調，降低核心團隊額外負擔</li>
+        <li>專案如期完成交付節點</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-hr has-ai" data-cats="role-hr role-fin stage-g has-ai">
+      <div class="case-tags">
+        <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-hr">人資顧問</span>
+        <span class="ctag tg-role-fin">財務長</span>
+        <span class="ctag tg-ai">⚡ AI客製</span>
+      </div>
+      <div class="case-company">個人護理品業</div>
+      <div class="case-title">草創走向組織化 × 人資體系建立 × 招募 AI 全流程</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">背景</div>
+      <ul class="case-items">
+        <li>團隊規模達一定人數，積極擴大事業與營收，需從草創走向組織化</li>
+        <li>跨高雄、台北兩地運作，招募流程全程人工傳遞，資訊難以同步</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>策略目標梳理與達成里程碑設定</li>
+        <li>人力招募規劃與執行</li>
+        <li>財務流程梳理與基礎建置</li>
+      </ul>
+      <div class="case-sl">AI 客製成果</div>
+      <ul class="case-items">
+        <li>招募管理系統：解決南北兩地 HR 資訊不同步、簽核與排程全程人工的問題，送審至報到全程數位化，主管 Email 一鍵核決</li>
+        <li>錄用作業生成包：解決錄用文件逐份手動套模板易錯耗時，輸入資訊即自動產出 Offer Letter 等文件</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-fin has-ai" data-cats="role-fin stage-g has-ai">
+      <div class="case-tags">
+        <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-fin">財務顧問</span>
+        <span class="ctag tg-ai">⚡ AI客製</span>
+      </div>
+      <div class="case-company">文創零售業</div>
+      <div class="case-title">財務健診 × 進銷存數位化 × 財務可視化</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">背景</div>
+      <ul class="case-items">
+        <li>營收逐步擴增並計畫面向海外，庫存仰賴人工記帳</li>
+        <li>財務數據散落多份試算表，月度損益需手動彙整</li>
+      </ul>
+      <div class="case-sl">協助成果</div>
+      <ul class="case-items">
+        <li>以財務健診為起點，梳理財務流程與制度</li>
+        <li>建立進銷存管理，明確公司庫存與資金狀況</li>
+      </ul>
+      <div class="case-sl">AI 客製成果</div>
+      <ul class="case-items">
+        <li>進銷存系統：解決庫存人工記帳、門市調撥靠口頭通知，入庫・出貨・盤點一站管理，自動提醒補貨</li>
+        <li>財務管理儀表板：各通路月度損益即時展開可視，告別試算表手動彙整</li>
+      </ul>
+    </div>
+
+  </div><!-- /cases-grid -->
+
+</div><!-- /page-cases -->
+
+
+
+
+
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<footer>
+  <div>
+    <div class="footer-brand">BPO 承啟事務所</div>
+    <div class="footer-sub">Build & Pave Office・階段性經理人</div>
+
+  </div>
+  <div class="social-links">
+    <a class="footer-link-btn" href="https://www.instagram.com/bpo.com.tw/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Instagram
+    </a>
+    <a class="footer-link-btn" href="https://vocus.cc/user/@BPOSharing" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+      方格子
+    </a>
+  </div>
+</footer>
+
+<script>
+/* ─── PAGE NAVIGATION ─── */
+function showPage(name){
+  // 強制用 inline style 控制顯示，避免 CSS specificity 問題（#page-home 會覆蓋 .page）
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
+    p.style.display='none';
+  });
+  var target=document.getElementById('page-'+name);
+  if(target){
+    target.classList.add('active');
+    target.style.display='block';
+  }
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a=>{
+    a.classList.toggle('active', a.dataset.page===name);
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+  // 切頁後回報高度
+  setTimeout(reportHeight, 200);
+  setTimeout(reportHeight, 600);
+}
+
+// 頁面載入時顯示首頁
+document.addEventListener('DOMContentLoaded', function(){
+  showPage('home');
+});
+
+// 通知 Google Sites iframe 高度（嘗試所有已知格式）
+function reportHeight(){
+  // 等待瀏覽器 repaint 完才量
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      var h = Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.scrollHeight,
+          document.documentElement.offsetHeight
+        )
+      );
+      var targets = ['*', 'https://sites.google.com'];
+      var msgs = [
+        {type:'setHeight', height:h},
+        {type:'SET_IFRAME_HEIGHT', height:h},
+        {type:'resize', height:h},
+        JSON.stringify({height:h}),
+        h
+      ];
+      targets.forEach(function(t){
+        msgs.forEach(function(m){
+          try{ window.parent.postMessage(m, t); }catch(e){}
+        });
+      });
+    });
+  });
+}
+
+// 載入後立即回報，並在前 3 秒持續嘗試
+window.addEventListener('load', function(){
+  reportHeight();
+  var count = 0;
+  var retry = setInterval(function(){
+    reportHeight();
+    if(++count >= 6) clearInterval(retry);
+  }, 500);
+});
+
+if(window.ResizeObserver){
+  new ResizeObserver(reportHeight).observe(document.body);
+}
+
+/* ─── CASE FILTER ─── */
+function filterCases(btn, cat){
+  // update button states
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  // filter cards
+  document.querySelectorAll('#casesGrid .case-card').forEach(card=>{
+    if(cat==='all'){
+      card.classList.remove('hidden');
+    } else {
+      const cats = card.dataset.cats || '';
+      card.classList.toggle('hidden', !cats.split(' ').includes(cat));
+    }
+  });
+}
+</script>
+</body>
+</htm                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
