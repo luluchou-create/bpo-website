@@ -513,18 +513,14 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       <div class="hero-grid">
         <div>
           <h1>每家企業面臨的挑戰不同<br><em>解方也不該一樣</em></h1>
-          <p class="hero-sub">
-            將混亂變清晰，建構穩健的成長節奏<br>
-            橫跨組織、財務與品牌，以進駐方式深度投入<br>
-            在企業需要的階段進來，把問題變成行動
-          </p>
+          <p class="hero-sub">將混亂變清晰，建構穩健的成長節奏<br>橫跨組織、財務與品牌，以進駐方式深度投入<br>在企業需要的階段進來，把問題變成行動</p>
           <div class="hero-stats">
             <div class="stat">
-              <span class="stat-num">11+</span>
+              <span class="stat-num">10+</span>
               <span class="stat-label">橫跨產業</span>
             </div>
             <div class="stat">
-              <span class="stat-num">98%</span>
+              <span class="stat-num">0.98</span>
               <span class="stat-label">客戶續約率</span>
             </div>
           </div>
@@ -633,10 +629,12 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
             <h3>組織 × 人資</h3>
             <p>從零到有建立人資制度、培育主管、設計薪酬結構，讓組織跟得上成長速度。</p>
             <div class="svc-tags">
+              
               <span class="svc-tag">制度建立</span>
               <span class="svc-tag">主管養成</span>
               <span class="svc-tag">招募規劃</span>
               <span class="svc-tag">組織設計</span>
+            
             </div>
           </div>
         </div>
@@ -646,9 +644,11 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
             <h3>營運 × 流程</h3>
             <p>標準化作業流程、跨部門協作規範，讓服務品質穩定，協作流程化，組織運作不依賴個人。</p>
             <div class="svc-tags">
+              
               <span class="svc-tag">SOP建置</span>
               <span class="svc-tag">流程優化</span>
               <span class="svc-tag">跨部門協作</span>
+            
             </div>
           </div>
         </div>
@@ -658,9 +658,11 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
             <h3>培訓 × 教練</h3>
             <p>管理思維課程、主管一對一教練、共識工作坊，從方法論到行為改變都一起做。</p>
             <div class="svc-tags">
+              
               <span class="svc-tag">主管共識營</span>
               <span class="svc-tag">管理培訓</span>
               <span class="svc-tag">職場教練</span>
+            
             </div>
           </div>
         </div>
@@ -670,10 +672,12 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
             <h3>財務 × 募資</h3>
             <p>財務健診、股權結構優化、募資文件建立，讓財務語言清晰可信，精準對接投資人期待。</p>
             <div class="svc-tags">
+              
               <span class="svc-tag">財務架構</span>
               <span class="svc-tag">股權設計</span>
               <span class="svc-tag">募資策略</span>
               <span class="svc-tag">IPO準備</span>
+            
             </div>
           </div>
         </div>
@@ -683,9 +687,11 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
             <h3>會計 × 合規</h3>
             <p>協助補帳、建立記帳制度、稅務申報，讓帳稅一致，財務清晰可掌握。</p>
             <div class="svc-tags">
+              
               <span class="svc-tag">補帳・建帳・記帳</span>
               <span class="svc-tag">稅務申報</span>
               <span class="svc-tag">查帳審計</span>
+            
             </div>
           </div>
         </div>
@@ -1001,7 +1007,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       </ul>
     </div>
 
-  <!-- /cases-grid -->
+  </div><!-- /cases-grid -->
 
   <!-- CTA BANNER -->
   <div class="cta-banner">
@@ -1103,35 +1109,4 @@ function reportHeight(){
   });
 }
 
-// 載入後立即回報，並在前 3 秒持續嘗試
-window.addEventListener('load', function(){
-  reportHeight();
-  var count = 0;
-  var retry = setInterval(function(){
-    reportHeight();
-    if(++count >= 6) clearInterval(retry);
-  }, 500);
-});
-
-if(window.ResizeObserver){
-  new ResizeObserver(reportHeight).observe(document.body);
-}
-
-/* ─── CASE FILTER ─── */
-function filterCases(btn, cat){
-  // update button states
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  // filter cards
-  document.querySelectorAll('#casesGrid .case-card').forEach(card=>{
-    if(cat==='all'){
-      card.classList.remove('hidden');
-    } else {
-      const cats = card.dataset.cats || '';
-      card.classList.toggle('hidden', !cats.split(' ').includes(cat));
-    }
-  });
-}
-</script>
-</body>
-</htm                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+// 
