@@ -838,5 +838,33 @@ function reportHeight(){
     });
   });
 }
+// 載入後立即回報，並在前 3 秒持續嘗試
+window.addEventListener('load', function(){
+  reportHeight();
+  var count = 0;
+  var retry = setInterval(function(){
+    reportHeight();
+    if(++count >= 6) clearInterval(retry);
+  }, 500);
+});
 
-// 
+if(window.ResizeObserver){
+  new ResizeObserver(reportHeight).observe(document.body);
+}
+
+/* ─── CASE FILTER ─── */
+function filterCases(btn, cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#casesGrid .case-card').forEach(card=>{
+    if(cat==='all'){
+      card.classList.remove('hidden');
+    } else {
+      const cats = card.dataset.cats || '';
+      card.classList.toggle('hidden', !cats.split(' ').includes(cat));
+    }
+  });
+}
+</script>
+</body>
+</html>
