@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>{{PAGE_TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root{
+  --brand:#263045;--brand2:#1a2235;
+  --accent:#E8833A;--accent2:#d4722c;
+  --blue:#4A7FC0;--teal:#2E9E8F;--purple:#7b4fbf;
+  --muted:#5a6478;--border:#e0e4ec;--bg:#f5f6f8;--bg2:#eef0f4;
+  --white:#fff;
+  --r8:8px;--r12:12px;--r16:16px;--r24:24px;
+  --shadow:0 2px 12px rgba(38,48,69,.09);
+  --shadow-md:0 4px 24px rgba(38,48,69,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:15px/1.7 "Noto Sans TC","PingFang TC",system-ui,sans-serif;color:#222;background:var(--white)}
+
+/* ─── NAV ─────────────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--brand);
+  height:60px;display:flex;align-items:center;
+  padding:0 32px;gap:0;
+  box-shadow:0 2px 16px rgba(0,0,0,.18);
+}
+.nav-logo{
+  color:#fff;font-size:15px;font-weight:700;letter-spacing:.5px;
+  white-space:nowrap;margin-right:auto;cursor:pointer;
+  display:flex;align-items:center;gap:8px;text-decoration:none;
+}
+.nav-logo .bpo-badge{
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;font-size:14px;letter-spacing:1px;
+  color:#263045;background:#fff;
+  padding:3px 9px;border-radius:5px;
+  line-height:1.4;
+}
+.nav-links{display:flex;gap:0;align-items:center}
+.nav-links a{
+  color:rgba(255,255,255,.72);font-size:13.5px;font-weight:500;
+  padding:0 16px;height:60px;display:flex;align-items:center;
+  text-decoration:none;border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;cursor:pointer;
+  white-space:nowrap;
+}
+.nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--accent)}
+.nav-cta{
+  margin-left:16px;background:var(--accent);color:#fff!important;
+  border-radius:var(--r8);height:36px!important;padding:0 18px!important;
+  font-weight:600!important;font-size:13px!important;
+  border-bottom:none!important;transition:background .2s!important;
+}
+.nav-cta:hover{background:var(--accent2)!important}
+
+/* ─── PAGE SYSTEM ─────────────────────────────────────── */
+.page{display:none}#page-home{display:block}
+.page.active{display:block}
+
+/* ─── HERO ────────────────────────────────────────────── */
+.hero{
+  background:linear-gradient(135deg,var(--brand2) 0%,var(--brand) 60%,#2d4060 100%);
+  padding:72px 32px 64px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;right:-80px;top:-80px;
+  width:480px;height:480px;border-radius:50%;
+  background:rgba(232,131,58,.06);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;right:80px;bottom:-120px;
+  width:280px;height:280px;border-radius:50%;
+  background:rgba(74,127,192,.08);
+  pointer-events:none;
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:720px}
+.eyebrow{
+  display:inline-block;background:rgba(232,131,58,.18);
+  color:var(--accent);font-size:11.5px;font-weight:700;
+  padding:4px 14px;border-radius:999px;letter-spacing:.8px;
+  margin-bottom:18px;border:1px solid rgba(232,131,58,.3);
+}
+.hero h1{
+  color:#fff;font-size:clamp(28px,3.6vw,44px);font-weight:800;
+  line-height:1.25;margin-bottom:16px;letter-spacing:-.3px;
+}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero-sub{color:rgba(255,255,255,.65);font-size:15.5px;line-height:1.8;margin-bottom:32px}
+.hero-stats{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
+.stat{text-align:left}
+.stat-num{display:block;font-size:28px;font-weight:800;color:var(--accent)}
+.stat-label{font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.3px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:11px 22px;border-radius:var(--r8);
+  font-size:14px;font-weight:600;text-decoration:none;
+  cursor:pointer;border:none;transition:.2s;
+}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2)}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.6)}
+/* Hero right card */
+.hero-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r16);padding:28px 24px;backdrop-filter:blur(8px);
+}
+.hero-card-title{color:rgba(255,255,255,.6);font-size:11px;letter-spacing:1px;font-weight:600;margin-bottom:14px}
+.value-steps{display:flex;flex-direction:column;gap:1px}
+.vs{
+  display:flex;align-items:center;gap:14px;padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.vs:last-child{border-bottom:none}
+.vs-num{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.vs-free .vs-num{background:rgba(255,255,255,.15)}
+.vs-body{flex:1}
+.vs-name{color:#fff;font-size:13.5px;font-weight:600;margin-bottom:2px}
+.vs-desc{color:rgba(255,255,255,.5);font-size:12px;line-height:1.5}
+.vs-tag{
+  font-size:11px;padding:2px 8px;border-radius:999px;
+  font-weight:600;white-space:nowrap;
+}
+.free-tag{background:rgba(255,255,255,.12);color:rgba(255,255,255,.6)}
+.paid-tag{background:rgba(232,131,58,.2);color:var(--accent)}
+
+/* ─── SECTION BASE ────────────────────────────────────── */
+.sec{padding:56px 32px}
+.inner{max-width:1100px;margin:0 auto}
+.sec-label{font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:1.2px;margin-bottom:6px}
+.sec-title{font-size:clamp(20px,2.6vw,28px);font-weight:800;color:var(--brand);margin-bottom:6px;line-height:1.3}
+.sec-sub{font-size:14.5px;color:var(--muted);margin-bottom:28px}
+
+/* ─── PAIN POINTS ─────────────────────────────────────── */
+.pain{background:var(--bg)}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pain-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r12);padding:20px 18px;
+  transition:box-shadow .2s;
+}
+.pain-card:hover{box-shadow:var(--shadow)}
+.pain-icon{font-size:22px;margin-bottom:10px}
+.pain-card h3{font-size:14px;font-weight:700;color:var(--brand);margin-bottom:5px}
+.pain-card p{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ─── HOW IT WORKS ────────────────────────────────────── */
+.how{background:var(--white)}
+.steps-wrap{display:flex;gap:0;position:relative}
+.steps-wrap::before{
+  content:'';position:absolute;top:22px;left:22px;right:22px;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--blue));
+  z-index:0;
+}
+.step-item{flex:1;text-align:center;position:relative;z-index:1;padding:0 8px}
+.step-circle{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  font-size:15px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+  border:3px solid var(--white);
+  box-shadow:var(--shadow);
+}
+.step-item h3{font-size:13.5px;font-weight:700;color:var(--brand);margin-bottom:5px}
+.step-item p{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* ─── SERVICES ────────────────────────────────────────── */
+.services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.svc-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:24px 20px;
+  position:relative;overflow:hidden;
+  transition:box-shadow .2s,transform .2s;
+}
+.svc-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.svc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+}
+.svc-hr .svc-card::before{background:var(--blue)}
+.svc-fin .svc-card::before{background:var(--accent)}
+.svc-ops .svc-card::before{background:var(--teal)}
+.svc-train .svc-card::before{background:#7B5EA7}
+.svc-acc .svc-card::before{background:#2E9E8F}
+.svc-ai .svc-card::before{background:var(--purple)}
+.svc-icon{font-size:26px;margin-bottom:12px}
+.svc-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:8px}
+.svc-card p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px}
+.svc-tag{font-size:11.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:#555;background:var(--bg)}
+
+/* ─── CTA BANNER ──────────────────────────────────────── */
+.cta-banner{
+  background:var(--brand);padding:48px 32px;
+}
+.cta-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-banner h2{font-size:22px;font-weight:800;color:#fff}
+.cta-banner p{color:rgba(255,255,255,.6);font-size:14px;margin-top:4px}
+.cta-btns{display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap}
+
+/* ─── CASES PAGE ──────────────────────────────────────── */
+.cases-hero{background:var(--brand);padding:40px 32px 32px}
+.cases-hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:6px}
+.cases-hero p{color:rgba(255,255,255,.6);font-size:14px}
+.cases-filters{
+  background:var(--white);border-bottom:1px solid var(--border);
+  padding:16px 32px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  position:relative;top:auto;z-index:50;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.filter-label{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.5px;white-space:nowrap}
+.hero-tagline{
+  display:inline-block;
+  font-size:12px;font-weight:600;letter-spacing:.04em;
+  color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:999px;
+  padding:4px 14px;
+  margin-bottom:16px;
+}
+.line-qr-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.line-qr-img{
+  width:90px;height:90px;border-radius:8px;
+  background:#fff;padding:4px;
+}
+.line-qr-label{
+  font-size:11px;color:rgba(255,255,255,.6);font-weight:600;
+}
+.filter-btn{
+  font-size:13px;padding:7px 18px;border-radius:999px;
+  border:1.5px solid var(--border);
+  background:var(--white);
+  color:#444;cursor:pointer;font-weight:600;
+  transition:all .15s;white-space:nowrap;
+  font-family:inherit;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+}
+.filter-btn.active{
+  background:var(--brand);color:#fff;border-color:var(--brand);
+  box-shadow:0 2px 8px rgba(38,48,69,.25);
+}
+.filter-btn:hover:not(.active){
+  border-color:var(--brand);color:var(--brand);
+  background:#f0f3f8;
+  box-shadow:0 2px 8px rgba(38,48,69,.12);
+  transform:translateY(-1px);
+}
+.filter-sep{width:1px;height:20px;background:var(--border);margin:0 4px;flex-shrink:0}
+.cases-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;padding:28px 32px;max-width:1164px;margin:0 auto;
+}
+.case-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:20px;
+  transition:box-shadow .2s,transform .2s;cursor:default;
+  position:relative;overflow:hidden;
+}
+.case-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.case-card::before{content:'';position:absolute;top:0;left:0;width:4px;bottom:0;border-radius:var(--r16) 0 0 var(--r16)}
+.role-hr .case-card::before{background:var(--blue)}
+.role-fin .case-card::before{background:var(--accent)}
+.role-ops .case-card::before{background:var(--teal)}
+.role-train .case-card::before{background:#8b5cf6}
+.role-proj .case-card::before{background:#64748b}
+.case-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ctag{
+  font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;
+  letter-spacing:.3px;
+}
+.tg-ind{background:rgba(38,48,69,.1);color:var(--brand)}
+.tg-stage-g{background:rgba(46,158,143,.12);color:var(--teal)}
+.tg-stage-s{background:rgba(74,127,192,.12);color:var(--blue)}
+.tg-stage-m{background:rgba(90,100,120,.1);color:#555}
+.tg-ai{background:rgba(123,79,191,.12);color:var(--purple);border:1px solid rgba(123,79,191,.2)}
+.tg-role-hr{background:rgba(74,127,192,.12);color:var(--blue)}
+.tg-role-fin{background:rgba(232,131,58,.12);color:var(--accent)}
+.tg-role-ops{background:rgba(46,158,143,.12);color:var(--teal)}
+.tg-role-train{background:rgba(139,92,246,.12);color:#7c3aed}
+.tg-role-proj{background:rgba(100,116,139,.12);color:#475569}
+.case-company{font-size:18px;font-weight:800;color:var(--brand);margin-bottom:3px}
+.case-title{font-size:13px;color:var(--muted);margin-bottom:14px}
+.case-divider{height:1px;background:var(--border);margin:12px 0}
+.case-sl{font-size:11.5px;font-weight:700;color:var(--brand);letter-spacing:.5px;margin-bottom:6px;margin-top:10px}
+.case-sl:first-of-type{margin-top:0}
+.case-items{list-style:none;display:flex;flex-direction:column;gap:4px}
+.case-items li{font-size:12.5px;color:#333;line-height:1.55;padding-left:12px;position:relative}
+.case-items li::before{content:'·';position:absolute;left:2px;color:var(--accent);font-weight:700}
+.case-size{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:12px;color:var(--muted);margin-top:12px;
+}
+.case-size::before{content:'👥';font-size:11px}
+
+/* ─── ABOUT PAGE ──────────────────────────────────────── */
+.about-hero{
+  background:linear-gradient(135deg,var(--brand2),var(--brand));
+  padding:52px 32px 40px;
+}
+.about-hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:8px}
+.about-hero p{color:rgba(255,255,255,.6);font-size:14px;line-height:1.8;max-width:600px}
+.team-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;padding:36px 32px;max-width:1164px;margin:0 auto;
+}
+.team-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:28px 24px;
+  text-align:center;
+}
+.team-avatar{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  font-size:24px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+}
+.team-name{font-size:17px;font-weight:800;color:var(--brand);margin-bottom:2px}
+.team-en{font-size:12px;color:var(--muted);margin-bottom:10px;letter-spacing:.3px}
+.team-role{
+  display:inline-block;font-size:12px;font-weight:600;
+  padding:4px 14px;border-radius:999px;
+  background:rgba(38,48,69,.08);color:var(--brand);
+  margin-bottom:14px;
+}
+.team-desc{font-size:13px;color:var(--muted);line-height:1.75;text-align:left}
+.team-expertise{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;justify-content:center}
+.exp-tag{font-size:11.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:#555;background:var(--bg)}
+
+/* ─── SPEAKING ────────────────────────────────────────── */
+.speaking{background:var(--bg);padding:40px 32px}
+.speak-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.speak-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r12);padding:16px 18px;
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+}
+.speak-date{
+  background:var(--brand);color:#fff;
+  border-radius:var(--r8);padding:8px 10px;
+  text-align:center;min-width:52px;
+}
+.speak-month{font-size:10px;letter-spacing:.5px;opacity:.7}
+.speak-year{font-size:12px;font-weight:700}
+.speak-type{
+  display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;
+  border-radius:999px;margin-bottom:5px;
+}
+.speak-type.course{background:rgba(232,131,58,.12);color:var(--accent)}
+.speak-type.share{background:rgba(74,127,192,.12);color:var(--blue)}
+.speak-title{font-size:13px;font-weight:600;color:var(--brand);line-height:1.5;margin-bottom:3px}
+.speak-org{font-size:12px;color:var(--muted)}
+
+/* ─── CONTACT PAGE ────────────────────────────────────── */
+.contact-hero{
+  background:linear-gradient(135deg,var(--brand2),var(--brand));
+  padding:52px 32px 40px;
+}
+.contact-hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:8px}
+.contact-hero p{color:rgba(255,255,255,.6);font-size:14px}
+.contact-wrap{padding:40px 32px;max-width:1164px;margin:0 auto}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:40px}
+.contact-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:28px 24px;text-align:center;
+  transition:box-shadow .2s;
+}
+.contact-card:hover{box-shadow:var(--shadow-md)}
+.contact-icon{font-size:32px;margin-bottom:14px}
+.contact-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:6px}
+.contact-card p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.contact-card a.btn{margin:0 auto;width:fit-content}
+.ctype-label{
+  font-size:10.5px;font-weight:700;letter-spacing:.8px;
+  display:inline-block;margin-bottom:10px;padding:3px 10px;
+  border-radius:999px;
+}
+.ctype-cold{background:rgba(74,127,192,.1);color:var(--blue)}
+.ctype-warm{background:rgba(46,158,143,.1);color:var(--teal)}
+.ctype-hot{background:rgba(232,131,58,.1);color:var(--accent)}
+.contact-info{
+  background:var(--bg);border-radius:var(--r16);padding:28px;
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.ci-group h4{font-size:13px;font-weight:700;color:var(--brand);margin-bottom:8px}
+.ci-group p,.ci-group a{font-size:13.5px;color:var(--muted);text-decoration:none;display:block;line-height:1.8}
+.ci-group a:hover{color:var(--accent)}
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+.cta-footer{
+  max-width:1100px;margin:16px auto 0;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cta-footer-brand{font-size:11.5px;color:rgba(255,255,255,.35);font-weight:500}
+.cta-footer-icons{display:flex;gap:8px}
+.cta-icon-btn{
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;transition:.2s;
+}
+.cta-icon-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+footer{
+  background:var(--brand2);padding:32px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-brand{color:#fff;font-size:14px;font-weight:700}
+.footer-sub{color:rgba(255,255,255,.4);font-size:11.5px;margin-top:3px}
+.social-links{display:flex;gap:10px;align-items:center}
+.footer-link-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.7);background:rgba(255,255,255,.06);
+  text-decoration:none;font-size:13px;font-weight:500;
+  transition:.2s;white-space:nowrap;
+}
+.footer-link-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+
+/* ─── HIDDEN / UTILITY ────────────────────────────────── */
+.hidden{display:none!important}
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-card{display:none}
+  .pain-grid,.svc-grid{grid-template-columns:repeat(2,1fr)}
+  .cases-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-info{grid-template-columns:1fr}
+  .steps-wrap::before{display:none}
+  .steps-wrap{flex-direction:column;gap:16px}
+}
+@media(max-width:600px){
+  html,body{overflow-x:hidden;max-width:100vw}
+  nav{padding:0 12px;flex-wrap:nowrap;gap:6px}
+  .nav-logo{font-size:13px;gap:6px}
+  .bpo-badge{font-size:11px;padding:3px 6px}
+  .nav-links{gap:0}
+  .nav-links a{padding:0 7px;font-size:11.5px}
+  .nav-cta{display:none}
+  .sec,.hero,.cases-hero,.about-hero,.contact-hero,.speaking,.contact-wrap{padding-left:16px;padding-right:16px}
+  .cases-filters{padding:12px 16px}
+  .cases-grid{padding:20px 16px;grid-template-columns:1fr}
+  .team-grid,.contact-wrap{padding:20px 16px}
+  .pain-grid,.svc-grid{grid-template-columns:1fr}
+  .hero{padding:48px 16px 40px}
+  .hero-stats{gap:20px}
+  .hero h1{font-size:26px}
+  .cta-footer{
+  max-width:1100px;margin:16px auto 0;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cta-footer-brand{font-size:11.5px;color:rgba(255,255,255,.35);font-weight:500}
+.cta-footer-icons{display:flex;gap:8px}
+.cta-icon-btn{
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;transition:.2s;
+}
+.cta-icon-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
+  .inner{padding-left:16px;padding-right:16px}
+  .speak-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">
+    <span class="bpo-badge">BPO</span> 承啟事務所
+  </a>
+  <div class="nav-links">
+    <a onclick="showPage('home')" data-page="home" class="active">首頁</a>
+    <a onclick="showPage('cases')" data-page="cases">合作案例</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════ HOME PAGE ══════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-grid">
+        <div>
+          <h1>{{HERO_H1}}<br><em>{{HERO_H1_EM}}</em></h1>
+          <p class="hero-sub">{{HERO_SUB}}</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-num">{{STAT1_NUM}}</span>
+              <span class="stat-label">{{STAT1_LABEL}}</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">{{STAT2_NUM}}</span>
+              <span class="stat-label">{{STAT2_LABEL}}</span>
+            </div>
+          </div>
+          <div class="hero-btns">
+            <a href="{{CALENDAR_URL}}" target="_blank" class="btn btn-primary">預約咖啡諮詢</a>
+            <button class="btn btn-outline" onclick="showPage('cases')">查看合作案例</button>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="sec pain">
+    <div class="inner">
+      <p class="sec-label">COMMON STRUGGLES</p>
+      <h2 class="sec-title">{{PAIN_TITLE}}</h2>
+      <p class="sec-sub">{{PAIN_SUB}}</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN1_ICON}}</div>
+          <h3>{{PAIN1_TITLE}}</h3>
+          <p>{{PAIN1_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN2_ICON}}</div>
+          <h3>{{PAIN2_TITLE}}</h3>
+          <p>{{PAIN2_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN3_ICON}}</div>
+          <h3>{{PAIN3_TITLE}}</h3>
+          <p>{{PAIN3_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN4_ICON}}</div>
+          <h3>{{PAIN4_TITLE}}</h3>
+          <p>{{PAIN4_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN5_ICON}}</div>
+          <h3>{{PAIN5_TITLE}}</h3>
+          <p>{{PAIN5_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN6_ICON}}</div>
+          <h3>{{PAIN6_TITLE}}</h3>
+          <p>{{PAIN6_DESC}}</p>
+        </div>
+        <div class=pain-card>
+          <div class="pain-icon">{{PAIN7_ICON}}</div>
+          <h3>{{PAIN7_TITLE}}</h3>
+          <p>{{PAIN7_DESC}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="sec how">
+    <div class="inner">
+      <p class="sec-label">OUR APPROACH</p>
+      <h2 class="sec-title">{{HOW_TITLE}}</h2>
+      <p class="sec-sub">{{HOW_SUB}}</p>
+      <div class="steps-wrap">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <h3>{{STEP1_TITLE}}</h3>
+          <p>{{STEP1_DESC}}</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <h3>{{STEP2_TITLE}}</h3>
+          <p>{{STEP2_DESC}}</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <h3>{{STEP3_TITLE}}</h3>
+          <p>{{STEP3_DESC}}</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <h3>{{STEP4_TITLE}}</h3>
+          <p>{{STEP4_DESC}}</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">5</div>
+          <h3>{{STEP5_TITLE}}</h3>
+          <p>{{STEP5_DESC}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="sec services">
+    <div class="inner">
+      <p class="sec-label">EXPERTISE</p>
+      <h2 class="sec-title">{{SVC_TITLE}}</h2>
+      
+      <p class="sec-sub">{{SVC_SUB}}</p>
+      <div class="svc-grid">
+        <div class="svc-hr">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC1_ICON}}</div>
+            <h3>{{SVC1_TITLE}}</h3>
+            <p>{{SVC1_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC1_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-ops">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC2_ICON}}</div>
+            <h3>{{SVC2_TITLE}}</h3>
+            <p>{{SVC2_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC2_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-train">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC3_ICON}}</div>
+            <h3>{{SVC3_TITLE}}</h3>
+            <p>{{SVC3_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC3_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-fin">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC4_ICON}}</div>
+            <h3>{{SVC4_TITLE}}</h3>
+            <p>{{SVC4_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC4_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-acc">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC5_ICON}}</div>
+            <h3>{{SVC5_TITLE}}</h3>
+            <p>{{SVC5_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC5_TAGS}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-inner">
+      <div>
+        <h2>{{CTA_TITLE}}</h2>
+        <p>{{CTA_SUB}}</p>
+      </div>
+      <div class="cta-btns">
+        <a href="{{CALENDAR_URL}}" target="_blank" class="btn btn-primary">預約咖啡諮詢</a>
+        <a href="{{LINE_URL}}" target="_blank" class="btn btn-outline">加 LINE 詢問</a>
+      </div>
+    </div>
+    <div class="cta-footer">
+      <span class="cta-footer-brand">BPO 承啟事務所・Build & Pave Office</span>
+      <div class="cta-footer-icons">
+        <a href="{{IG_URL}}" target="_blank" aria-label="Instagram" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="{{VOCUS_URL}}" target="_blank" aria-label="方格子" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-home -->
+
+
+<!-- ══════════════════════════ CASES PAGE ══════════════════════════ -->
+<div id="page-cases" class="page">
+  <div class="cases-hero">
+    <div style="max-width:1100px;margin:0 auto">
+      <h1>{{CASES_H1}}</h1>
+      <p>{{CASES_SUB}}</p>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="cases-filters">
+    <span class="filter-label">角色</span>
+    <button class="filter-btn active" data-filter="all" onclick="filterCases(this,'all')">全部</button>
+    <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
+    <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
+    <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
+    <button class="filter-btn" data-filter="role-train" onclick="filterCases(this,'role-train')">培訓</button>
+    <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
+    <div class="filter-sep"></div>
+    <span class="filter-label">企業階段</span>
+    <button class="filter-btn" data-filter="stage-g" onclick="filterCases(this,'stage-g')">成長期</button>
+    <button class="filter-btn" data-filter="stage-s" onclick="filterCases(this,'stage-s')">穩健期</button>
+    <button class="filter-btn" data-filter="stage-m" onclick="filterCases(this,'stage-m')">成熟期</button>
+    <div class="filter-sep"></div>
+  </div>
+
+  <!-- CASES GRID -->
+  <div class="cases-grid" id="casesGrid">
+
+{{CASES_GRID}}
+
+  </div><!-- /cases-grid -->
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-inner">
+      <div>
+        <h2>{{CTA_TITLE}}</h2>
+        <p>{{CTA_SUB}}</p>
+      </div>
+      <div class="cta-btns">
+        <a href="{{CALENDAR_URL}}" target="_blank" class="btn btn-primary">預約咖啡諮詢</a>
+        <a href="{{LINE_URL}}" target="_blank" class="btn btn-outline">加 LINE 詢問</a>
+      </div>
+    </div>
+    <div class="cta-footer">
+      <span class="cta-footer-brand">BPO 承啟事務所・Build & Pave Office</span>
+      <div class="cta-footer-icons">
+        <a href="{{IG_URL}}" target="_blank" aria-label="Instagram" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="{{VOCUS_URL}}" target="_blank" aria-label="方格子" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-cases -->
+
+
+
+
+
+
+
+
+<script>
+/* ─── PAGE NAVIGATION ─── */
+function showPage(name){
+  // 強制用 inline style 控制顯示，避免 CSS specificity 問題（#page-home 會覆蓋 .page）
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
+    p.style.display='none';
+  });
+  var target=document.getElementById('page-'+name);
+  if(target){
+    target.classList.add('active');
+    target.style.display='block';
+  }
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a=>{
+    a.classList.toggle('active', a.dataset.page===name);
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+  // 切頁後回報高度
+  setTimeout(reportHeight, 200);
+  setTimeout(reportHeight, 600);
+}
+
+// 頁面載入時顯示首頁
+document.addEventListener('DOMContentLoaded', function(){
+  showPage('home');
+
+  // 偵測是否在 iframe 裡（Google Sites 嵌入）
+  if(window !== window.top){
+    // 所有 sticky 元素改成 relative，避免在 iframe 裡疊到內容
+    document.querySelectorAll('nav, .cases-filters').forEach(function(el){
+      el.style.position = 'relative';
+      el.style.top = 'auto';
+    });
+  }
+});
+
+// 通知 Google Sites iframe 高度（嘗試所有已知格式）
+function reportHeight(){
+  // 等待瀏覽器 repaint 完才量
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      var h = Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.scrollHeight,
+          document.documentElement.offsetHeight
+        )
+      );
+      var targets = ['*', 'https://sites.google.com'];
+      var msgs = [
+        {type:'setHeight', height:h},
+        {type:'SET_IFRAME_HEIGHT', height:h},
+        {type:'resize', height:h},
+        JSON.stringify({height:h}),
+        h
+      ];
+      targets.forEach(function(t){
+        msgs.forEach(function(m){
+          try{ window.parent.postMessage(m, t); }catch(e){}
+        });
+      });
+    });
+  });
+}
+
+// 
