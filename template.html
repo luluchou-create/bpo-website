@@ -536,7 +536,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 
 /* ─── FAQ（常見問題，手風琴，沿用站內既有色彩與間距語言） ─── */
 .faq{background:var(--white)}
-.faq-list{display:flex;flex-direction:column;gap:10px;max-width:760px}
+.faq-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
 .faq-item{
   border:1px solid var(--border);border-radius:var(--r12);
   overflow:hidden;background:var(--white);transition:box-shadow .2s;
@@ -552,6 +552,9 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease}
 .faq-a p{padding:0 18px 16px;font-size:13.5px;color:var(--muted);line-height:1.75;white-space:pre-line}
 .faq-item.open .faq-a{max-height:600px}
+@media(max-width:900px){
+  .faq-list{grid-template-columns:1fr}
+}
 @media(max-width:600px){
   .faq-q{padding:14px 16px;font-size:13.5px}
   .faq-a p{padding:0 16px 14px}
