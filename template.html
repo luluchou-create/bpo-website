@@ -291,7 +291,6 @@ nav{
 .tg-stage-g{background:rgba(46,158,143,.12);color:var(--teal)}
 .tg-stage-s{background:rgba(74,127,192,.12);color:var(--blue)}
 .tg-stage-m{background:rgba(90,100,120,.1);color:#555}
-.tg-ai{background:rgba(123,79,191,.12);color:var(--purple);border:1px solid rgba(123,79,191,.2)}
 .tg-role-hr{background:rgba(74,127,192,.12);color:var(--blue)}
 .tg-role-fin{background:rgba(232,131,58,.12);color:var(--accent)}
 .tg-role-ops{background:rgba(46,158,143,.12);color:var(--teal)}
@@ -310,6 +309,12 @@ nav{
   font-size:12px;color:var(--muted);margin-top:12px;
 }
 .case-size::before{content:'👥';font-size:11px}
+.ai-cue-link{
+  font-size:11px;font-weight:600;color:var(--accent);
+  text-decoration:none;margin-left:6px;cursor:pointer;
+  border-bottom:1px dashed var(--accent);white-space:nowrap;
+}
+.ai-cue-link:hover{color:var(--accent2);border-bottom-style:solid}
 
 /* ─── ABOUT PAGE ──────────────────────────────────────── */
 .about-hero{
@@ -488,6 +493,45 @@ footer{
 footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .inner{padding-left:16px;padding-right:16px}
   .speak-grid{grid-template-columns:1fr}
+}
+
+/* ─── Block 2：AI 如何加入決策過程（沿用站內既有視覺語言：pain／case-card，轉場刻意做輕，且預設收起） ─── */
+.ai-transition{background:var(--bg);padding:32px 32px 40px;text-align:center;border-top:1px solid var(--border)}
+.ai-transition .inner{max-width:600px}
+.ai-transition-p{color:var(--muted);font-size:13.5px;line-height:1.85;margin-bottom:18px}
+.ai-more-btn{margin:0 auto}
+.ai-more-wrap{display:none}
+.ai-more-wrap.open{display:block;animation:aiFadeIn .25s ease}
+@keyframes aiFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){
+  .ai-transition{padding:24px 16px 32px}
+}
+
+.ai-cap-grid .pain-card{display:flex;gap:12px;align-items:flex-start}
+.ai-cap-grid .pain-icon{margin-bottom:0;flex-shrink:0}
+
+/* AI 系統卡片：借用 .case-card 的視覺骨架，維持跟上面合作案例卡片同一套語言 */
+.ai-sys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ai-sys-card{cursor:default}
+.ai-sys-card::before{background:var(--ai-accent,var(--accent))}
+.ai-sys-tag{display:inline-block;font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:.3px;margin-bottom:4px}
+
+.ai-footer-sec .inner{padding-top:4px}
+.ai-footer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.ai-footer-h3{font-size:15px;font-weight:700;color:var(--brand);margin:2px 0 14px;line-height:1.5}
+.ai-trust-list{display:flex;flex-direction:column;gap:10px}
+.ai-trust-item{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.7}
+.ai-trust-item .ti{font-size:15px;flex-shrink:0}
+.ai-tools-row{display:flex;flex-wrap:wrap;gap:8px}
+.ai-tools-row .svc-tag{background:var(--white)}
+
+@media(max-width:900px){
+  .ai-sys-grid{grid-template-columns:repeat(2,1fr)}
+  .ai-footer-grid{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:600px){
+  .ai-sys-grid{grid-template-columns:1fr}
+  .ai-cap-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -739,6 +783,63 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 
   </div><!-- /cases-grid -->
 
+  <!-- ══════════════ Block 2：這些成果的背後，AI 如何加入決策過程 ══════════════ -->
+
+  <!-- 2-1 故事轉場：先把話講完，留一個「想看的人再點」的入口，不強迫每個人往下滑 -->
+  <section class="ai-transition">
+    <div class="inner">
+      <span class="eyebrow">幕後 · AI 如何加入</span>
+      <p class="ai-transition-p">這些合作案例的背後，我們也在陪企業釐清問題、做決策的過程中，
+        把重複性的工作交給 AI 處理，讓團隊把力氣留給真正重要的判斷。</p>
+      <button class="btn btn-primary ai-more-btn" id="aiMoreBtn" onclick="toggleAiMore()">
+        好奇我們具體用 AI 做了什麼？點開看看 ↓
+      </button>
+    </div>
+  </section>
+
+  <!-- 2-2～2-4：預設收起，點上面按鈕才展開，避免每個人都被迫往下滑過一輪 -->
+  <div id="aiMoreWrap" class="ai-more-wrap">
+
+    <!-- 2-2 靈感：什麼樣的麻煩可以交給 AI -->
+    <section class="sec pain">
+      <div class="inner">
+        <p class="sec-label">WHAT AI CAN DO</p>
+        <h2 class="sec-title">把麻煩交出來，剩下的交給對話</h2>
+        <p class="sec-sub">很多人知道 AI 很厲害，卻不確定能拿來做什麼——以下是我們實際用出來的答案</p>
+        <div class="pain-grid ai-cap-grid" id="aiCapGrid"></div>
+      </div>
+    </section>
+
+    <!-- 2-3 實際做出來的系統 -->
+    <section class="sec how">
+      <div class="inner">
+        <p class="sec-label">實際做出來的系統</p>
+        <h2 class="sec-title">同樣的方法，用在不同的問題上</h2>
+        <p class="sec-sub">以下每一套，都對應到一段真實的決策與陪跑過程，共 9 套，7 套已正式上線</p>
+        <div class="ai-sys-grid" id="aiSysGrid"></div>
+      </div>
+    </section>
+
+    <!-- 2-4 資安 + 工具箱（合併一個收尾小節，維持輕量） -->
+    <section class="sec services ai-footer-sec">
+      <div class="inner">
+        <div class="ai-footer-grid">
+          <div class="ai-footer-col">
+            <p class="sec-label">資料安全</p>
+            <h3 class="ai-footer-h3">用 AI 快速做系統，資料會不會外流？</h3>
+            <div class="ai-trust-list" id="aiTrustList"></div>
+          </div>
+          <div class="ai-footer-col">
+            <p class="sec-label">背後的工具箱</p>
+            <h3 class="ai-footer-h3">沒有另外買系統，用的是這些</h3>
+            <div class="ai-tools-row" id="aiToolsRow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /aiMoreWrap -->
+
   <!-- CTA BANNER -->
   <div class="cta-banner">
     <div class="cta-inner">
@@ -863,6 +964,115 @@ function filterCases(btn, cat){
       const cats = card.dataset.cats || '';
       card.classList.toggle('hidden', !cats.split(' ').includes(cat));
     }
+  });
+}
+
+/* ─── Block 2 展開／收起：預設收起，點按鈕才展開，不強迫每個訪客都往下滑過一輪 ─── */
+function toggleAiMore(forceOpen){
+  const wrap = document.getElementById('aiMoreWrap');
+  const btn  = document.getElementById('aiMoreBtn');
+  const opening = forceOpen === true ? true : !wrap.classList.contains('open');
+  wrap.classList.toggle('open', opening);
+  btn.textContent = opening ? '收起 ↑' : '好奇我們具體用 AI 做了什麼？點開看看 ↓';
+  if(opening){
+    setTimeout(()=> wrap.scrollIntoView({behavior:'smooth', block:'start'}), 50);
+  }
+}
+
+/* ─── Block 2 資料：靈感 / 系統 / 資安 / 工具箱（都不指名客戶，內容維持真實、不誇大） ─── */
+const AI_CAPS = [
+  {icon:'👂', title:'聽懂一句抱怨', desc:'不用寫規格書，一句「這樣太麻煩了」就能被拆解成資料結構與流程步驟。'},
+  {icon:'🔗', title:'打通原本就在用的工具', desc:'Sheets、Gmail、日曆、GitHub 彼此連動，不必為了自動化而換一套系統。'},
+  {icon:'📄', title:'自動生成文件與報表', desc:'PDF、報表、摘要文字一次到位，不用重複排版與計算。'},
+  {icon:'🔔', title:'排程與提醒自己來', desc:'時間到了自動寄信、自動抓資料、自動判斷，不必人工盯著。'},
+  {icon:'🗄️', title:'免工程維護', desc:'資料庫就是 Sheets，誰都能打開看、能改，不用等工程排期。'},
+  {icon:'🔁', title:'邊做邊修', desc:'用起來不順手，講一次哪裡卡，馬上就能改一版再試。'}
+];
+
+const AI_SYS = [
+  { tag:'行銷協作', accent:'var(--accent)', name:'官網建置與 CMS',
+    why:'整個網站的結構、文案、SEO，都是在對話裡一步步做出來的，不需要工程師才能改內容。',
+    items:['GAS 串接 GitHub，一鍵推送就能更新上線','內建 AI 潤稿選單，選取文字就能改寫成案例文案'] },
+  { tag:'營運協作', accent:'var(--blue)', name:'工作紀錄系統',
+    why:'同時支援多個客戶與專案，工時分散記錄，月底彙整報表非常花時間。',
+    items:['貼上一段流水帳，AI 自動分類彙整成主題摘要','一筆紀錄可同時掛在多個專案，報表不漏算'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'招募管理系統',
+    why:'人力增補申請、面試安排、錄用核決，常卡在「找不到人簽名」。',
+    items:['主管 Email 內直接點「同意／駁回」，免登入','面試與報到自動建立行事曆、自動生成線上會議連結'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'錄用作業生成包',
+    why:'每次錄用主管，要手動做好幾份格式不一致的文件。',
+    items:['單一頁面輸入，一次產出 5 種文件','核薪金額自動比對市場薪資，算出落點提示'] },
+  { tag:'財務協作', accent:'var(--brand)', name:'客戶服務後台',
+    why:'客戶合約、發票、多人分潤，原本靠 Excel 人工計算，容易出錯。',
+    items:['分潤依合約類型自動拆分計算，取代人工試算表','應收帳款天數、客戶留存率自動生成，不用憑感覺判斷'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'出勤系統',
+    why:'團隊成長後出勤靠人工彙整，時薪結算與特休試算容易出錯。',
+    items:['政府行事曆自動抓取，免人工下載上傳','連續工作天數自動警示，避免違反一例一休'] },
+  { tag:'營運協作', accent:'var(--blue)', name:'進銷存系統',
+    why:'多通路商品與庫存資料分散，需要一套系統整合起來。',
+    items:['低庫存自動警示，直接跳轉補貨流程','盤點差異自動記錄，不用人工比對'] },
+  { tag:'財務協作', accent:'var(--brand)', name:'品牌記帳系統',
+    why:'需要一套標準化記帳系統，也為未來電子申報預先做準備。',
+    items:['科目代碼自動帶出名稱，減少輸入錯誤','借貸即時平衡驗證，報表一鍵重新彙總'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'流程查詢 Gem 助理',
+    why:'新制度上線後，主管常反覆問 HR 同樣的操作規則。',
+    items:['主管用日常語言直接問，不用等 HR 回覆','知識庫跟著系統迭代同步更新'] }
+];
+
+const AI_TRUST = [
+  {icon:'🔒', text:'內部系統只認公司網域帳號或驗證碼登入，不開放底層試算表權限給使用者。'},
+  {icon:'🗝️', text:'核決信、面試反饋連結都帶專屬一次性 token，連結被偽造或重複使用會被擋下來。'},
+  {icon:'🗄️', text:'所有系統都跑在公司自己的 Google Workspace 帳號下，資料還是放在自己的雲端硬碟與試算表裡。'},
+  {icon:'🤖', text:'AI 潤稿、摘要這類功能是一次性請求，處理完就結束，不會被拿去訓練公開模型。'}
+];
+
+const AI_TOOLS = ['Google Apps Script','Google Sheets','Claude API','Gemini API','Gmail API','Google Calendar API','GitHub API','政府開放資料平台','Apps Script 時間觸發器'];
+
+const aiCapGrid = document.getElementById('aiCapGrid');
+if(aiCapGrid){
+  AI_CAPS.forEach(c=>{
+    const el = document.createElement('div');
+    el.className = 'pain-card';
+    el.innerHTML = `<div class="pain-icon">${c.icon}</div><div><h3>${c.title}</h3><p>${c.desc}</p></div>`;
+    aiCapGrid.appendChild(el);
+  });
+}
+
+const aiSysGrid = document.getElementById('aiSysGrid');
+if(aiSysGrid){
+  AI_SYS.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'case-card ai-sys-card';
+    el.style.setProperty('--ai-accent', s.accent);
+    el.innerHTML = `
+      <div class="ai-sys-tag">${s.tag}</div>
+      <div class="case-company">${s.name}</div>
+      <div class="case-title">${s.why}</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">亮點</div>
+      <ul class="case-items">${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+    `;
+    aiSysGrid.appendChild(el);
+  });
+}
+
+const aiTrustList = document.getElementById('aiTrustList');
+if(aiTrustList){
+  AI_TRUST.forEach(t=>{
+    const el = document.createElement('div');
+    el.className = 'ai-trust-item';
+    el.innerHTML = `<span class="ti">${t.icon}</span><span>${t.text}</span>`;
+    aiTrustList.appendChild(el);
+  });
+}
+
+const aiToolsRow = document.getElementById('aiToolsRow');
+if(aiToolsRow){
+  AI_TOOLS.forEach(t=>{
+    const el = document.createElement('span');
+    el.className = 'svc-tag';
+    el.textContent = t;
+    aiToolsRow.appendChild(el);
   });
 }
 </script>
