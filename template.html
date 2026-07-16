@@ -1058,24 +1058,24 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       <div class="booking-body">
         <form id="bkForm" onsubmit="submitBooking(event)">
           <div class="bk-field">
-            <label>姓名 <span class="req">*</span></label>
-            <input type="text" name="name" required maxlength="40" placeholder="怎麼稱呼你">
+            <label>怎麼稱呼你？ <span class="req">*</span></label>
+            <input type="text" name="name" required maxlength="40" placeholder="你的名字或暱稱都可以">
           </div>
           <div class="bk-field">
-            <label>公司 / 職稱</label>
-            <input type="text" name="company" maxlength="60" placeholder="方便的話，讓我們先認識你的公司">
+            <label>公司 / 職稱 <span class="req">*</span></label>
+            <input type="text" name="company" required maxlength="60" placeholder="讓我們先認識你和你的公司">
           </div>
           <div class="bk-field">
             <label>Email <span class="req">*</span></label>
             <input type="email" name="email" required placeholder="用來收確認信與日曆邀請">
           </div>
           <div class="bk-field">
-            <label>電話</label>
-            <input type="tel" name="phone" maxlength="20" placeholder="方便聯繫的電話（選填）">
+            <label>電話或 LINE ID</label>
+            <input type="text" name="phone" maxlength="30" placeholder="方便聯繫的方式（選填）">
           </div>
           <div class="bk-field">
-            <label>想先聊聊的主題</label>
-            <textarea name="topic" maxlength="300" placeholder="例如：組織制度、募資規劃、帳務清理……先讓我們有點準備"></textarea>
+            <label>簡單自我介紹，與想先聊聊的主題</label>
+            <textarea name="topic" maxlength="300" placeholder="讓我們先認識你，也想知道你目前最想聊的是什麼——例如組織制度、募資規劃、帳務清理……"></textarea>
           </div>
 
           <div class="bk-slot-title">這個月，你方便的 3 個時段 <span class="req">*</span></div>
@@ -1408,8 +1408,8 @@ async function submitBooking(e){
   const slotKeys = data.slots.map(function(s){ return s.date + ' ' + s.time; });
   const hasDup = new Set(slotKeys).size !== slotKeys.length;
 
-  if(!data.name || !emailOk || !slotsFilled){
-    errBox.textContent = '請填寫姓名、正確的 Email，並提供 3 個完整的時段（日期＋時間）。';
+  if(!data.name || !data.company || !emailOk || !slotsFilled){
+    errBox.textContent = '請填寫稱呼、公司／職稱、正確的 Email，並提供 3 個完整的時段（日期＋時間）。';
     errBox.classList.add('show');
     return;
   }
