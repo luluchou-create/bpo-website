@@ -1353,21 +1353,21 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
           </div>
 
           <div class="bk-slot-title">這個月，你方便的 3 個時段 <span class="req">*</span></div>
-          <p class="bk-slot-sub">我們會從中選一個時段確認，審核通過、收到確認信與日曆邀請才代表預約完成。<br>建議每個時段先保留 2 小時，讓我們可以好好聊，不趕時間。</p>
+          <p class="bk-slot-sub">僅開放平日（週一至週五）10:00–18:00，不含國定假日。我們會從中選一個時段確認，審核通過、收到確認信與日曆邀請才代表預約完成。<br>建議每個時段先保留 2 小時，讓我們可以好好聊，不趕時間。</p>
           <div class="bk-slot-row">
             <span class="bk-slot-num">1</span>
             <input type="date" name="date1" required>
-            <input type="time" name="time1" required>
+            <input type="time" name="time1" required min="10:00" max="18:00">
           </div>
           <div class="bk-slot-row">
             <span class="bk-slot-num">2</span>
             <input type="date" name="date2" required>
-            <input type="time" name="time2" required>
+            <input type="time" name="time2" required min="10:00" max="18:00">
           </div>
           <div class="bk-slot-row">
             <span class="bk-slot-num">3</span>
             <input type="date" name="date3" required>
-            <input type="time" name="time3" required>
+            <input type="time" name="time3" required min="10:00" max="18:00">
           </div>
 
           <div class="bk-consent">
@@ -1655,6 +1655,71 @@ function setBookingDateLimits(){
   });
 }
 
+// 只開放平日（週一至週五）10:00–18:00，排除國定假日。
+// 這份假日清單需要每年手動更新一次，可對照行政院人事行政總處官方行事曆（www.dgpa.gov.tw）。
+const BOOKING_HOLIDAYS = [
+  '2026-01-01', // 元旦
+  '2026-02-16', // 除夕
+  '2026-02-17', '2026-02-18', '2026-02-19', // 春節初一～初三
+  '2026-02-20', // 春節彈性放假
+  '2026-02-27', // 228 彈性放假
+  '2026-04-03', // 兒童節
+  '2026-04-06', // 清明彈性放假
+  '2026-05-01', // 勞動節
+  '2026-06-19', // 端午彈性放假
+  '2026-09-25', // 中秋節
+  '2026-09-28', // 中秋彈性放假
+  '2026-10-09', // 國慶彈性放假
+  '2026-10-26', // 臺灣光復節補假
+  '2026-12-25', // 行憲紀念日
+];
+
+function isBookableDate(dateStr){
+  if(!dateStr) return false;
+  const d = new Date(dateStr + 'T00:00:00');
+  const day = d.getDay(); // 0=週日, 6=週六
+  if(day === 0 || day === 6) return false;
+  if(BOOKING_HOLIDAYS.indexOf(dateStr) !== -1) return false;
+  return true;
+}
+
+function isBookableTime(timeStr){
+  if(!timeStr) return false;
+  return timeStr >= '10:00' && timeStr <= '18:00';
+}
+
+// 一次性掛上日期／時間欄位的即時檢查（選到假日或非上班時段就清空並提示，避免重複掛監聽）
+function initBookingSlotGuards(){
+  const errBox = document.getElementById('bkError');
+  ['date1','date2','date3'].forEach(function(n){
+    const el = document.querySelector('#bkForm [name="'+n+'"]');
+    if(!el) return;
+    el.addEventListener('change', function(){
+      if(this.value && !isBookableDate(this.value)){
+        if(errBox){
+          errBox.textContent = '這天是假日或非上班日，麻煩改選平日（週一至週五）的時段。';
+          errBox.classList.add('show');
+        }
+        this.value = '';
+      }
+    });
+  });
+  ['time1','time2','time3'].forEach(function(n){
+    const el = document.querySelector('#bkForm [name="'+n+'"]');
+    if(!el) return;
+    el.addEventListener('change', function(){
+      if(this.value && !isBookableTime(this.value)){
+        if(errBox){
+          errBox.textContent = '預約時間僅開放 10:00–18:00，麻煩改選這個區間內的時間。';
+          errBox.classList.add('show');
+        }
+        this.value = '';
+      }
+    });
+  });
+}
+initBookingSlotGuards();
+
 function bkFieldVal(form, name){
   const el = form.querySelector('[name="'+name+'"]');
   return el ? el.value.trim() : '';
@@ -1686,9 +1751,15 @@ async function submitBooking(e){
   const slotsFilled = data.slots.every(function(s){ return s.date && s.time; });
   const slotKeys = data.slots.map(function(s){ return s.date + ' ' + s.time; });
   const hasDup = new Set(slotKeys).size !== slotKeys.length;
+  const slotsBookable = data.slots.every(function(s){ return isBookableDate(s.date) && isBookableTime(s.time); });
 
   if(!data.name || !data.company || !emailOk || !slotsFilled){
     errBox.textContent = '請填寫稱呼、公司／職稱、正確的 Email，並提供 3 個完整的時段（日期＋時間）。';
+    errBox.classList.add('show');
+    return;
+  }
+  if(!slotsBookable){
+    errBox.textContent = '時段僅開放平日（週一至週五）10:00–18:00，且不含國定假日，麻煩重新選擇。';
     errBox.classList.add('show');
     return;
   }
