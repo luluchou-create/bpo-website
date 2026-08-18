@@ -589,6 +589,47 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .inner{padding-left:16px;padding-right:16px}
   .speak-grid{grid-template-columns:1fr}
 }
+/* ─── Block 2：AI 如何加入決策過程（沿用站內既有視覺語言：pain／case-card，轉場刻意做輕，且預設收起） ─── */
+.ai-transition{background:var(--bg);padding:32px 32px 40px;text-align:center;border-top:1px solid var(--border)}
+.ai-transition .inner{max-width:600px}
+.ai-transition-p{color:var(--muted);font-size:13.5px;line-height:1.85;margin-bottom:18px}
+.ai-more-btn{margin:0 auto}
+.ai-more-wrap{display:none}
+.ai-more-wrap.open{display:block;animation:aiFadeIn .25s ease}
+@keyframes aiFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){
+  .ai-transition{padding:24px 16px 32px}
+}
+
+.ai-cap-grid .pain-card{display:flex;gap:12px;align-items:flex-start}
+.ai-cap-grid .pain-icon{margin-bottom:0;flex-shrink:0}
+
+/* AI 系統卡片：借用 .case-card 的視覺骨架，維持跟上面合作案例卡片同一套語言 */
+.ai-sys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ai-sys-card{cursor:default}
+.ai-sys-card::before{background:var(--ai-accent,var(--accent))}
+.ai-sys-tag{display:inline-block;font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:.3px;margin-bottom:4px}
+
+.ai-footer-sec .inner{padding-top:4px}
+.ai-footer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.ai-footer-h3{font-size:15px;font-weight:700;color:var(--brand);margin:2px 0 14px;line-height:1.5}
+.ai-trust-list{display:flex;flex-direction:column;gap:10px}
+.ai-trust-item{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.7}
+.ai-trust-item .ti{font-size:15px;flex-shrink:0}
+.ai-tools-row{display:flex;flex-wrap:wrap;gap:8px}
+.ai-tools-row .svc-tag{background:var(--white)}
+
+@media(max-width:900px){
+  .ai-sys-grid{grid-template-columns:repeat(2,1fr)}
+  .ai-footer-grid{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:600px){
+  .ai-sys-grid{grid-template-columns:1fr}
+  .ai-cap-grid{grid-template-columns:1fr}
+}
+
+
+.ai-cue-link{display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#b54708;text-decoration:none;margin-left:8px;cursor:pointer;padding:3px 8px;border:1px solid #f3a25f;border-radius:999px;background:#fff3e8;white-space:nowrap}.ai-cue-link:hover{color:#8a3300;background:#ffe7d1;border-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -610,11 +651,11 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner"><div class="hero-grid"><div>
-      <h1>把老闆腦中的經營經驗<br><em>變成組織能承接的成長能力</em></h1>
-      <p class="hero-sub">承啟在企業需要組織化、募資或流程升級的階段進場<br>把策略、分工、制度與資料，整理成團隊能執行<br>並可由系統與 AI 放大的工作方式</p>
+      <h1>把經營策略與實務經驗<br><em>轉化為組織能承接的成長能力</em></h1>
+      <p class="hero-sub">承啟於企業組織化、募資或流程升級階段進場，協助整理策略、分工、制度與資料，建立團隊可執行、系統與 AI 可延伸的工作方式。</p>
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num">多產業</span><span class="stat-label">實戰經驗</span></div>
-        <div class="stat"><span class="stat-num">可承接</span><span class="stat-label">留下組織能力</span></div>
+        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">橫跨產業</span></div>
+        <div class="stat"><span class="stat-num">98%</span><span class="stat-label">客戶續約率</span></div>
       </div>
       <div class="hero-btns">
         <button type="button" class="btn btn-primary" onclick="openBookingModal()">先聊聊公司卡在哪裡</button>
@@ -626,37 +667,37 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   <!-- PAIN POINTS -->
   <section class="sec pain"><div class="inner">
     <p class="sec-label">COMMON STRUGGLES</p>
-    <h2 class="sec-title">公司不是沒有方法，而是還沒有變成團隊共同的方法</h2>
-    <p class="sec-sub">以下情境，是否也正在消耗你與團隊的時間？</p>
+    <h2 class="sec-title">企業進入下一階段，管理方式也需要同步升級</h2>
+    <p class="sec-sub">成長與轉型過程中，常見的經營議題包括：</p>
     <div class="pain-grid">
-      <div class="pain-card"><div class="pain-icon">01</div><h3>事情都在老闆腦中</h3><p>方向、判斷與追蹤集中在少數人身上；只要經營者沒有盯，事情就容易停住。</p></div>
-      <div class="pain-card"><div class="pain-icon">02</div><h3>人變多了，組織卻沒有一起長大</h3><p>分工、權責與協作方式仍靠默契，團隊忙碌，卻難以形成穩定節奏。</p></div>
-      <div class="pain-card"><div class="pain-icon">03</div><h3>主管有專業，但還不會承接經營</h3><p>主管能完成任務，卻不熟悉帶人、追蹤、成本與跨部門協作。</p></div>
-      <div class="pain-card"><div class="pain-icon">04</div><h3>準備募資、股權調整或下一階段</h3><p>企業方向已有輪廓，但財務架構、投資人論述與治理安排還沒有接上。</p></div>
-      <div class="pain-card"><div class="pain-icon">05</div><h3>流程與資料散落，系統也救不了</h3><p>試算表、訊息與個人經驗各自存在；問題不是少一套工具，而是工作尚未被整理。</p></div>
-      <div class="pain-card"><div class="pain-icon">06</div><h3>想用 AI，卻不知道先從哪個工作開始</h3><p>AI 可以加速任務，但若流程、資料與判斷規則不清楚，只會把原本的混亂放大。</p></div>
+      <div class="pain-card"><div class="pain-icon">01</div><h3>經營經驗尚未形成組織共識</h3><p>方向與判斷集中於少數角色，需要轉化為團隊可理解、可執行的工作方式。</p></div>
+      <div class="pain-card"><div class="pain-icon">02</div><h3>組織成長，分工與權責需要同步</h3><p>隨團隊規模擴大，需要更清楚的角色、責任與協作節奏。</p></div>
+      <div class="pain-card"><div class="pain-icon">03</div><h3>主管專業需要延伸為管理承接</h3><p>主管除了承接任務，也需要具備帶領、追蹤與跨部門協作能力。</p></div>
+      <div class="pain-card"><div class="pain-icon">04</div><h3>進入募資、治理或下一成長階段</h3><p>財務架構、投資人溝通與治理安排需要同步準備。</p></div>
+      <div class="pain-card"><div class="pain-icon">05</div><h3>流程與資料需要整合</h3><p>分散的資訊與工作經驗，需要整理為可追蹤、可持續運作的流程。</p></div>
+      <div class="pain-card"><div class="pain-icon">06</div><h3>AI 導入需要明確基礎</h3><p>先釐清流程、資料與判斷規則，才能形成有效的 AI 協作。</p></div>
     </div>
   </div></section>
 
   <!-- HOW WE WORK -->
   <section class="sec how"><div class="inner">
     <p class="sec-label">OUR APPROACH</p>
-    <h2 class="sec-title">從真實工作出發，讓改變留在組織裡</h2>
-    <p class="sec-sub">不先套方法論；先理解企業怎麼運作，再決定什麼該改、誰來承接。</p>
+    <h2 class="sec-title">從實際工作出發，讓改變成為組織能力</h2>
+    <p class="sec-sub">先理解企業運作，再確認調整重點與內部承接角色。</p>
     <div class="steps-wrap">
-      <div class="step-item"><div class="step-circle">1</div><h3>聽懂經營者</h3><p>釐清方向、顧慮與真正想解決的經營問題。</p></div>
+      <div class="step-item"><div class="step-circle">1</div><h3>釐清經營方向</h3><p>確認企業目標、考量與核心議題。</p></div>
       <div class="step-item"><div class="step-circle">2</div><h3>排定先後順序</h3><p>盤點策略、組織、財務、人才、流程與資料，找出最值得先動的一步。</p></div>
       <div class="step-item"><div class="step-circle">3</div><h3>建立內部共識</h3><p>讓主管與團隊理解改變要解決什麼，而不是只收到一套新規定。</p></div>
-      <div class="step-item"><div class="step-circle">4</div><h3>做出最小可行模組</h3><p>依企業文化建立剛剛好的制度、流程、會議、表單或系統。</p></div>
-      <div class="step-item"><div class="step-circle">5</div><h3>交回組織</h3><p>培養內部承接者，再由系統與 AI 放大，降低對個人的依賴。</p></div>
+      <div class="step-item"><div class="step-circle">4</div><h3>建立最小可行模組</h3><p>依企業文化建立合適的制度、流程、會議、表單或系統。</p></div>
+      <div class="step-item"><div class="step-circle">5</div><h3>建立內部承接</h3><p>培養承接角色，並由系統與 AI 延伸組織能力。</p></div>
     </div>
   </div></section>
 
   <!-- SERVICES -->
   <section class="sec services"><div class="inner">
     <p class="sec-label">EXPERTISE</p>
-    <h2 class="sec-title">依企業當下最重要的問題，安排適合的專業與投入深度</h2>
-    <p class="sec-sub">階段性經理人是合作方式，不是固定職稱。</p>
+    <h2 class="sec-title">依企業階段，配置適合的專業支持</h2>
+    <p class="sec-sub">以階段性經理人方式，依核心議題安排專業角色與投入深度。</p>
     <div class="svc-grid">
       <div class="svc-hr"><div class="svc-card"><div class="svc-icon">01</div><h3>組織化啟動</h3><p>把經營方向轉成組織架構、分工、制度與會議節奏，讓公司不再只靠老闆推動。</p><div class="svc-tags"><span class="svc-tag">策略承接</span><span class="svc-tag">組織設計</span><span class="svc-tag">制度建置</span></div></div></div>
       <div class="svc-train"><div class="svc-card"><div class="svc-icon">02</div><h3>主管與團隊承接</h3><p>透過工作坊、管理訓練與實際任務，讓主管能帶人、追蹤與做判斷。</p><div class="svc-tags"><span class="svc-tag">主管養成</span><span class="svc-tag">績效回饋</span><span class="svc-tag">共識工作坊</span></div></div></div>
@@ -665,24 +706,12 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       <div class="svc-acc"><div class="svc-card"><div class="svc-icon">05</div><h3>外部專業資源整合</h3><p>依企業規模串接合適的財務、會計、法務與專業夥伴，由承啟協助需求校準與合作承接。</p><div class="svc-tags"><span class="svc-tag">需求診斷</span><span class="svc-tag">顧問媒合</span><span class="svc-tag">專案管理</span></div></div></div>
     </div>
   </div></section>
-
-  <!-- INSIGHTS PLACEHOLDER -->
-  <section class="sec pain"><div class="inner">
-    <p class="sec-label">BPO INSIGHTS</p>
-    <h2 class="sec-title">從企業主真正卡住的地方開始談</h2>
-    <p class="sec-sub">承啟將實務現場整理成兩條觀點軌道，讓經營問題有更清楚的切入點。</p>
-    <div class="pain-grid">
-      <div class="pain-card"><div class="pain-icon">L</div><h3>Lulu｜組織與人才軌道</h3><p>組織化、主管承接、人資制度、文化與工作設計。</p></div>
-      <div class="pain-card"><div class="pain-icon">善</div><h3>朝善｜財務與營運軌道</h3><p>財務判斷、募資治理、營運流程與經營風險。</p></div>
-    </div>
-  </div></section>
-
   <!-- CTA BANNER -->
   <div class="cta-banner">
     <div class="cta-inner">
       <div>
-        <h2>不必先知道要買哪一種服務</h2>
-        <p>先說說公司目前卡住的地方，我們會先判斷真正的問題、優先順序，以及承啟是否適合介入。</p>
+        <h2>先從公司現在最需要解決的事開始</h2>
+        <p>告訴我們目前的狀況與卡點，我們會一起釐清問題、排出優先順序，再確認適合的合作方式。</p>
       </div>
       <div class="cta-btns">
         <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約交流</button>
@@ -709,8 +738,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 <div id="page-cases" class="page">
   <div class="cases-hero">
     <div style="max-width:1100px;margin:0 auto">
-      <h1>不同企業，從不同起點開始改變</h1>
-      <p>案例已去識別化與概括整理，重點是看承啟如何判斷問題、安排順序並協助團隊承接。</p>
+      <h1>依企業情境，建立適合的推進路徑</h1>
+      <p>案例已去識別化，呈現承啟如何判斷議題、安排順序並協助團隊承接。</p>
     </div>
   </div>
 
@@ -736,280 +765,341 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   <!-- CASES GRID -->
   <div class="cases-grid" id="casesGrid">
 
-    <div class="case-card role-proj" data-cats="role-proj stage-g">
+    <div class="case-card role-hr role-train role-proj has-ai" data-cats="role-hr role-train role-proj stage-g has-ai">
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-hr">人資長</span>
+        <span class="ctag tg-role-train">職場教練</span>
         <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">數位內容業</div>
       <div class="case-title">低阻力組織化 × 主管承接 × 簡易出勤數位化</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>創意內容團隊進入組織化階段，成員對制度與管理改變較為敏感</li>
-        <li>專案資訊分散，主管角色與跨團隊協作方式仍待建立共識</li>
-        <li>需要在不壓縮創作文化的前提下，建立最小可行的管理方式</li>
+        <li>創意內容團隊進入組織化階段，重視制度與創作文化的平衡</li>
+        <li>專案資訊、主管角色與跨團隊協作需要更清楚的共同方式</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>先以實際工作坊建立共識，讓團隊理解制度是為了解決工作問題</li>
-        <li>建立一頁式內部公約、出勤管理與績效評量的基本架構</li>
-        <li>導入主管認知課程並重新梳理分工，提升團隊自行承接能力</li>
-        <li>逐步把例行行政與管理任務從經營者身上拆出</li>
+        <li>透過工作坊建立組織化共識</li>
+        <li>建立內部公約、出勤管理與績效評量架構</li>
+        <li>導入主管培訓並重新梳理分工</li>
       </ul>
-      <div class="case-sl">AI 客製成果 <a class="ai-cue-link" onclick="toggleAiMore(true)">好奇我們具體用 AI 做了什麼？↓</a></div>
+      <div class="case-sl">AI 客製應用 <a class="ai-cue-link" onclick="toggleAiMore(true)">了解 AI 如何加入決策過程 ↓</a></div>
       <ul class="case-items">
-        <li>簡易出勤系統支援計時人員打卡、工時與工作任務紀錄</li>
-        <li>自動彙整工時，協助財務結算並讓管理者掌握出勤情形</li>
+        <li>簡易出勤系統支援計時人員打卡、工時與任務紀錄</li>
+        <li>自動彙整工時，支持薪資結算與出勤管理</li>
       </ul>
     </div>
 
-    <div class="case-card role-hr role-fin" data-cats="role-hr role-fin stage-s">
+    <div class="case-card role-hr role-fin role-ops role-proj has-ai" data-cats="role-hr role-fin role-ops role-proj stage-s has-ai">
       <div class="case-tags">
         <span class="ctag tg-stage-s">穩健期</span>
         <span class="ctag tg-role-hr">人資長</span>
         <span class="ctag tg-role-fin">財務長</span>
+        <span class="ctag tg-role-ops">營運長</span>
+        <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">生活消費品業</div>
       <div class="case-title">策略落地 × 組織擴增 × AI Ready資料底盤</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>產品與營運已具一定規模，準備進入更有制度的擴張與治理階段</li>
-        <li>任務下達與追蹤仍高度集中於經營者，主管的財務與經營觀念需要補強</li>
-        <li>組織、關鍵人才、人資流程與資料管理需依優先順序逐步補齊</li>
+        <li>企業營運已具規模，準備進入制度化擴張與治理階段</li>
+        <li>策略承接、關鍵人才、人資流程與資料管理需要依序補強</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>完成策略與目標架構，建立主管會議與任務追蹤節奏</li>
-        <li>盤點組織並縮成可負擔版本，逐步補進關鍵業務與人資角色</li>
-        <li>建立薪資架構及招募流程，並導入主管法務與損益基礎課程</li>
-        <li>啟動公司數據庫建置，以品牌行銷部作為優先示範單位</li>
+        <li>完成策略與目標架構，建立主管會議與追蹤節奏</li>
+        <li>盤點組織並補進關鍵業務與人資角色</li>
+        <li>建立薪資與招募流程，導入主管法務與損益課程</li>
+        <li>以品牌行銷部作為公司數據庫的優先示範單位</li>
       </ul>
-      <div class="case-sl">AI 客製成果 <a class="ai-cue-link" onclick="toggleAiMore(true)">好奇我們具體用 AI 做了什麼？↓</a></div>
+      <div class="case-sl">AI 客製應用 <a class="ai-cue-link" onclick="toggleAiMore(true)">了解 AI 如何加入決策過程 ↓</a></div>
       <ul class="case-items">
-        <li>招募管理系統串接人力申請、核決、邀約、通知與進度追蹤</li>
-        <li>完成品牌行銷部資料架構與存放規則，作為公司數據庫的起始範圍</li>
-        <li>透過工作盤點辨識適合系統化與AI協作的流程節點</li>
+        <li>招募管理系統串接申請、核決、邀約、通知與進度追蹤</li>
+        <li>完成品牌行銷部資料架構與存放規則</li>
+        <li>透過工作盤點辨識適合系統化與AI協作的流程</li>
       </ul>
     </div>
 
-    <div class="case-card role-train role-proj" data-cats="role-train role-proj stage-m">
+    <div class="case-card role-hr role-train role-proj" data-cats="role-hr role-train role-proj stage-m">
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
+        <span class="ctag tg-role-hr">人資長</span>
         <span class="ctag tg-role-train">職場教練</span>
         <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">整合行銷業</div>
       <div class="case-title">內部人資養成 × 人才管道 × 主管共識</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>成熟團隊希望建立人資能力，讓制度與人才發展不再只靠經營者推動</li>
-        <li>既有夥伴熟悉組織，但需要培養能承接人資工作的內部角色</li>
-        <li>企業也希望引入新觀點，並讓主管開始參與未來方向的討論</li>
+        <li>成熟團隊希望建立內部人資能力，支持制度與人才發展</li>
+        <li>企業亦希望拓展人才來源，並促進主管參與經營討論</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>從內部辨識合適夥伴，陪伴其逐步轉型並承接人資工作</li>
-        <li>串接校園實習與招募資源，建立可持續經營的人才管道</li>
-        <li>透過主管共識活動，打開經營者與主管之間的策略對話</li>
-        <li>從新事業探索中整理出既有服務可延伸的加值方向</li>
+        <li>培育內部人資承接角色，建立可持續的人資運作能力</li>
+        <li>串接校園實習與招募資源，拓展人才管道</li>
+        <li>透過主管共識活動，促進策略理解與跨部門交流</li>
+        <li>整理既有服務可延伸的加值方向</li>
       </ul>
     </div>
 
-    <div class="case-card role-proj" data-cats="role-proj stage-m">
+    <div class="case-card role-hr role-ops role-proj" data-cats="role-hr role-ops role-proj stage-m">
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
+        <span class="ctag tg-role-hr">人資長</span>
+        <span class="ctag tg-role-ops">營運長</span>
         <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">企業資訊系統服務業</div>
       <div class="case-title">關鍵服務接管 × 流程重建 × 團隊移交</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>關鍵服務單位在短時間內出現人力斷層，既有客戶服務不能因此中止</li>
-        <li>企業需要同步維持日常運作、補進人員，並還原原本仰賴經驗的工作方式</li>
-        <li>外部協力的目標不是長期代管，而是讓新團隊能穩定接手</li>
+        <li>關鍵服務單位進入團隊重整階段，仍需維持既有客戶服務</li>
+        <li>企業需要同步完成流程盤點、人才補進與工作移交</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>短期接住客戶對接、排班、值機與事件處理，維持服務運作</li>
-        <li>盤點工作內容與交接節點，完成工作說明、SOP及新人訓練程序</li>
-        <li>陪同新進成員接受訓練並逐步上線，建立後續追蹤方式</li>
-        <li>人員補齊並完成移交後，外部角色依計畫退出</li>
+        <li>短期承接客戶服務、排班與事件處理，維持營運穩定</li>
+        <li>完成工作說明、SOP與新人訓練程序</li>
+        <li>陪伴新進成員上線並完成團隊移交</li>
       </ul>
     </div>
 
-    <div class="case-card role-train role-proj" data-cats="role-train role-proj stage-g">
+    <div class="case-card role-hr role-ops role-train role-proj" data-cats="role-hr role-ops role-train role-proj stage-g">
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-hr">人資長</span>
+        <span class="ctag tg-role-ops">營運長</span>
         <span class="ctag tg-role-train">職場教練</span>
         <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">非營利組織</div>
       <div class="case-title">自主營運 × OKRM目標管理 × 內部能力養成</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>精簡公益團隊希望在不增加管理層級的前提下，維持自主與責任</li>
-        <li>沒有正式主管時，仍需要共同設定、追蹤並回顧組織目標</li>
-        <li>執行型夥伴也需要逐步發展規劃、表達與帶領能力</li>
+        <li>精簡公益團隊希望在維持自主文化的同時，建立共同管理節奏</li>
+        <li>團隊需要可持續的目標追蹤、成果回顧與能力發展機制</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>運用既有協作工具建立低度管理與OKRM目標追蹤節奏</li>
-        <li>每季共同回顧成果、設定下一階段目標，並加入學習指標</li>
-        <li>陪伴內部成員從執行者成長為能規劃內容並實際擔任講師的人</li>
-        <li>團隊成熟後，外部角色退回事件型行政、新項目與關鍵節點支持</li>
+        <li>建立OKRM目標管理與季度回顧節奏</li>
+        <li>加入學習指標，促進團隊共同檢視與改善</li>
+        <li>培養內部成員的規劃、表達與帶領能力</li>
       </ul>
     </div>
 
-    <div class="case-card role-proj" data-cats="role-proj stage-m">
+    <div class="case-card role-hr role-fin role-ops role-proj" data-cats="role-hr role-fin role-ops role-proj stage-m">
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
+        <span class="ctag tg-role-hr">人資長</span>
+        <span class="ctag tg-role-fin">財務長</span>
+        <span class="ctag tg-role-ops">營運長</span>
         <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">電子零組件製造業</div>
       <div class="case-title">IPO前置盤點 × 人事制度 × 內稽內控</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>製造企業為下一階段資本市場規劃，需先檢視組織制度與治理基礎</li>
-        <li>台灣營運與海外工廠並行，人事規章、組織圖及內部控制需要系統化整理</li>
-        <li>在券商正式輔導前，先建立可自行檢視與後續銜接的工作底稿</li>
+        <li>製造企業為下一階段資本規劃，需強化組織制度與治理基礎</li>
+        <li>跨地營運使人事規章、組織權責與內部控制更需要一致架構</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>盤點並調整人事規章制度，重新梳理組織圖與權責架構</li>
-        <li>依內稽內控九大循環檢視現況，建立自我檢查與改善清單</li>
-        <li>完成薪工循環等階段建置，並修正相關契約及流程規範</li>
-        <li>交付內控階段報告與上市櫃預審盤點內容，供後續輔導銜接</li>
+        <li>盤點人事規章並重新梳理組織與權責</li>
+        <li>依內稽內控循環建立自我檢查與改善清單</li>
+        <li>完成階段性內控建置與預審盤點報告</li>
       </ul>
     </div>
 
-    <div class="case-card role-proj" data-cats="role-proj stage-g">
+    <div class="case-card role-hr role-fin role-ops role-proj" data-cats="role-hr role-fin role-ops role-proj stage-g">
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-hr">人資長</span>
+        <span class="ctag tg-role-fin">財務長</span>
+        <span class="ctag tg-role-ops">營運長</span>
         <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">循環包裝與永續服務業</div>
       <div class="case-title">人資穩定 × 財務預測 × 營運協作</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>企業同步面臨人員異動、流程混亂與資金循環壓力，需要先穩住基本盤</li>
-        <li>內部信任與人資承接需要重建，經營者也需要更清楚掌握資金可運用時間</li>
-        <li>營運流程存在重複人工作業，跨部門任務仍需要持續協調與追蹤</li>
+        <li>企業在組織成長階段，同步面對人才、財務與營運協作議題</li>
+        <li>需要建立更穩定的人資承接、資金預測與跨部門管理方式</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>先穩定團隊並培養內部人資夥伴，使其能逐步獨立承接日常人資工作</li>
-        <li>梳理財務結構、募資任務與forecast，協助經營者掌握資金運用</li>
-        <li>盤點營運流程與重複工作，整理可改善的分工及作業方式</li>
-        <li>持續參與主管會議，協助跨部門議題落地；組織成熟後逐步降低外部投入</li>
+        <li>培養內部人資夥伴，逐步承接日常人資工作</li>
+        <li>梳理財務結構、募資任務與資金預測</li>
+        <li>盤點營運流程，改善分工與跨部門協作</li>
       </ul>
     </div>
 
-    <div class="case-card role-fin role-ops" data-cats="role-fin role-ops stage-m">
+    <div class="case-card role-fin role-ops role-proj" data-cats="role-fin role-ops role-proj stage-m">
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
         <span class="ctag tg-role-fin">財務長</span>
         <span class="ctag tg-role-ops">營運長</span>
+        <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">旅宿服務業</div>
       <div class="case-title">經營整理 × 募資溝通 × 營運陪跑</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>旅宿企業正處於經營與資金調整期，需要同時推進外部溝通與內部整理</li>
-        <li>募資論述、投資人關係及股東溝通需要一位能掌握整體脈絡的協力者</li>
+        <li>旅宿企業進入營運與資本規劃階段，需要同步整理內外部議題</li>
+        <li>募資溝通、股東關係與營運管理需要整體協調</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>協助整理募資方向，並持續參與投資人溝通與關係協調</li>
-        <li>以外部營運角色參與股東會與主管會議，協助釐清決策及追蹤事項</li>
-        <li>盤點內部流程與程序，逐步建立可以被組織承接的運作方式</li>
+        <li>協助整理募資方向與投資人溝通</li>
+        <li>參與股東會與主管會議，協助釐清決策與追蹤事項</li>
+        <li>盤點內部流程與程序，建立可承接的運作方式</li>
       </ul>
     </div>
 
-    <div class="case-card role-proj" data-cats="role-proj stage-s">
+    <div class="case-card role-fin role-proj" data-cats="role-fin role-proj stage-s">
       <div class="case-tags">
         <span class="ctag tg-stage-s">穩健期</span>
+        <span class="ctag tg-role-fin">財務長</span>
         <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">文創生活品牌業</div>
       <div class="case-title">成長治理轉換 × 募資陪跑 × 股權安排</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>品牌進入下一階段成長與治理轉換期，需要同步整理發展方向與資本規劃</li>
-        <li>投資人溝通、合作條件與股權安排彼此牽動，內部需要外部專業協助</li>
-        <li>重要會談前需要先校準論述，降低資訊落差與談判風險</li>
+        <li>品牌進入成長與治理轉換階段，需要同步整理資本與發展方向</li>
+        <li>投資人溝通、合作條件與股權安排需要一致規劃</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>協助整理募資架構、合作條件與相關合約重點</li>
-        <li>依不同投資人關注點進行會談模擬，強化溝通準備</li>
-        <li>完成投資人對接，讓資本合作進入具體討論階段</li>
-        <li>配合治理轉換完成股權安排，支持品牌延續發展</li>
+        <li>整理募資架構、合作條件與合約重點</li>
+        <li>依投資人關注重點進行會談準備</li>
+        <li>完成投資人對接與股權安排</li>
       </ul>
     </div>
 
-    <div class="case-card role-proj" data-cats="role-proj stage-m">
+    <div class="case-card role-fin role-ops role-proj" data-cats="role-fin role-ops role-proj stage-m">
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
+        <span class="ctag tg-role-fin">財務長</span>
+        <span class="ctag tg-role-ops">營運長</span>
         <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">數位媒體與廣告業</div>
       <div class="case-title">募資任務 × 團隊承接 × 企編流程盤點</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>企業在推進募資任務時，同步面臨管理協作與內部承接量能不足</li>
-        <li>高階主管與執行團隊的工作方式存在落差，影響任務推進與溝通品質</li>
-        <li>財務與企編流程仰賴個人經驗，需先梳理再評估自動化</li>
+        <li>企業推進募資任務，同步需要強化管理協作與內部承接</li>
+        <li>財務與企編工作需要更清楚的流程與責任節點</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>協助整理募資架構與投資人論述，完成關鍵募資任務</li>
-        <li>承接部分團隊管理與跨層溝通，降低向上管理衝突</li>
-        <li>補強財務人才並協助新夥伴掌握公司運作與工作重點</li>
-        <li>盤點企編工作節點，逐步形成可複製的提案與執行流程</li>
+        <li>整理募資架構與投資人論述，完成關鍵募資任務</li>
+        <li>協助團隊管理與跨層溝通</li>
+        <li>補強財務人才並盤點企編工作流程</li>
       </ul>
     </div>
 
-    <div class="case-card role-proj" data-cats="role-proj stage-g">
+    <div class="case-card role-fin role-proj" data-cats="role-fin role-proj stage-g">
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-fin">財務長</span>
         <span class="ctag tg-role-proj">專案顧問</span>
       </div>
       <div class="case-company">手作材料與文創零售業</div>
       <div class="case-title">財務底盤重整 × 專業協作 × 報表建立</div>
       <div class="case-divider"></div>
-      <div class="case-sl">背景</div>
+      <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>小型團隊開始需要更清楚的財務資訊，原有方式難以支持經營判斷</li>
-        <li>經營者主要以帳戶餘額感受公司狀況，缺少可持續更新的財務報表</li>
-        <li>若由高階顧問直接投入成本過高，需要更符合企業規模的專業協作方式</li>
+        <li>小型團隊需要更清楚的財務資訊，支持日常經營判斷</li>
+        <li>企業需要符合團隊規模的財務專業與報表架構</li>
       </ul>
-      <div class="case-sl">協助成果</div>
+      <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>由承啟先判斷需求，再安排適合的財務專業者進行整帳與資料梳理</li>
-        <li>建立損益、資產負債及營收資料，逐步形成固定的財務對焦方式</li>
-        <li>完成第一階段交付並續約，企業與服務團隊維持穩定協作</li>
-        <li>協助評估會計師事務所銜接，讓管理帳與報稅需求各自有適當承接</li>
+        <li>由承啟完成需求判斷並安排財務專業協作</li>
+        <li>建立損益、資產負債與營收資料</li>
+        <li>形成固定的財務對焦方式，並協助會計師事務所銜接</li>
       </ul>
     </div>
 
   </div><!-- /cases-grid -->
 
+  <!-- ══════════════ Block 2：這些成果的背後，AI 如何加入決策過程 ══════════════ -->
+
+  <!-- 2-1 故事轉場：先把話講完，留一個「想看的人再點」的入口，不強迫每個人往下滑 -->
+  <section class="ai-transition">
+    <div class="inner">
+      <span class="eyebrow">幕後 · AI 如何加入</span>
+      <p class="ai-transition-p">這些合作案例的背後，我們也在陪企業釐清問題、做決策的過程中，
+        把重複性的工作交給 AI 處理，讓團隊把力氣留給真正重要的判斷。</p>
+      <button class="btn btn-primary ai-more-btn" id="aiMoreBtn" onclick="toggleAiMore()">
+        好奇我們具體用 AI 做了什麼？點開看看 ↓
+      </button>
+    </div>
+  </section>
+
+  <!-- 2-2～2-4：預設收起，點上面按鈕才展開，避免每個人都被迫往下滑過一輪 -->
+  <div id="aiMoreWrap" class="ai-more-wrap">
+
+    <!-- 2-2 靈感：什麼樣的麻煩可以交給 AI -->
+    <section class="sec pain">
+      <div class="inner">
+        <p class="sec-label">WHAT AI CAN DO</p>
+        <h2 class="sec-title">把麻煩交出來，剩下的交給對話</h2>
+        <p class="sec-sub">很多人知道 AI 很厲害，卻不確定能拿來做什麼——以下是我們實際用出來的答案</p>
+        <div class="pain-grid ai-cap-grid" id="aiCapGrid"></div>
+      </div>
+    </section>
+
+    <!-- 2-3 實際做出來的系統 -->
+    <section class="sec how">
+      <div class="inner">
+        <p class="sec-label">實際做出來的系統</p>
+        <h2 class="sec-title">同樣的方法，用在不同的問題上</h2>
+        <p class="sec-sub">以下每一套，都對應到一段真實的決策與陪跑過程，共 9 套，7 套已正式上線</p>
+        <div class="ai-sys-grid" id="aiSysGrid"></div>
+      </div>
+    </section>
+
+    <!-- 2-4 資安 + 工具箱（合併一個收尾小節，維持輕量） -->
+    <section class="sec services ai-footer-sec">
+      <div class="inner">
+        <div class="ai-footer-grid">
+          <div class="ai-footer-col">
+            <p class="sec-label">資料安全</p>
+            <h3 class="ai-footer-h3">用 AI 快速做系統，資料會不會外流？</h3>
+            <div class="ai-trust-list" id="aiTrustList"></div>
+          </div>
+          <div class="ai-footer-col">
+            <p class="sec-label">背後的工具箱</p>
+            <h3 class="ai-footer-h3">沒有另外買系統，用的是這些</h3>
+            <div class="ai-tools-row" id="aiToolsRow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /aiMoreWrap -->
+
+
+
   <!-- CTA BANNER -->
   <div class="cta-banner">
     <div class="cta-inner">
       <div>
-        <h2>不必先知道要買哪一種服務</h2>
-        <p>先說說公司目前卡住的地方，我們會先判斷真正的問題、優先順序，以及承啟是否適合介入。</p>
+        <h2>先從公司現在最需要解決的事開始</h2>
+        <p>告訴我們目前的狀況與卡點，我們會一起釐清問題、排出優先順序，再確認適合的合作方式。</p>
       </div>
       <div class="cta-btns">
         <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約交流</button>
@@ -1277,6 +1367,116 @@ function filterCases(btn, cat){
     }
   });
 }
+
+/* ─── Block 2 展開／收起：預設收起，點按鈕才展開，不強迫每個訪客都往下滑過一輪 ─── */
+function toggleAiMore(forceOpen){
+  const wrap = document.getElementById('aiMoreWrap');
+  const btn  = document.getElementById('aiMoreBtn');
+  const opening = forceOpen === true ? true : !wrap.classList.contains('open');
+  wrap.classList.toggle('open', opening);
+  btn.textContent = opening ? '收起 ↑' : '好奇我們具體用 AI 做了什麼？點開看看 ↓';
+  if(opening){
+    setTimeout(()=> wrap.scrollIntoView({behavior:'smooth', block:'start'}), 50);
+  }
+}
+
+/* ─── Block 2 資料：靈感 / 系統 / 資安 / 工具箱（都不指名客戶，內容維持真實、不誇大） ─── */
+const AI_CAPS = [
+  {icon:'👂', title:'聽懂一句抱怨', desc:'不用寫規格書，一句「這樣太麻煩了」就能被拆解成資料結構與流程步驟。'},
+  {icon:'🔗', title:'打通原本就在用的工具', desc:'Sheets、Gmail、日曆、GitHub 彼此連動，不必為了自動化而換一套系統。'},
+  {icon:'📄', title:'自動生成文件與報表', desc:'PDF、報表、摘要文字一次到位，不用重複排版與計算。'},
+  {icon:'🔔', title:'排程與提醒自己來', desc:'時間到了自動寄信、自動抓資料、自動判斷，不必人工盯著。'},
+  {icon:'🗄️', title:'免工程維護', desc:'資料庫就是 Sheets，誰都能打開看、能改，不用等工程排期。'},
+  {icon:'🔁', title:'邊做邊修', desc:'用起來不順手，講一次哪裡卡，馬上就能改一版再試。'}
+];
+
+const AI_SYS = [
+  { tag:'行銷協作', accent:'var(--accent)', name:'官網建置與 CMS',
+    why:'整個網站的結構、文案、SEO，都是在對話裡一步步做出來的，不需要工程師才能改內容。',
+    items:['GAS 串接 GitHub，一鍵推送就能更新上線','內建 AI 潤稿選單，選取文字就能改寫成案例文案'] },
+  { tag:'營運協作', accent:'var(--blue)', name:'工作紀錄系統',
+    why:'同時支援多個客戶與專案，工時分散記錄，月底彙整報表非常花時間。',
+    items:['貼上一段流水帳，AI 自動分類彙整成主題摘要','一筆紀錄可同時掛在多個專案，報表不漏算'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'招募管理系統',
+    why:'人力增補申請、面試安排、錄用核決，常卡在「找不到人簽名」。',
+    items:['主管 Email 內直接點「同意／駁回」，免登入','面試與報到自動建立行事曆、自動生成線上會議連結'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'錄用作業生成包',
+    why:'每次錄用主管，要手動做好幾份格式不一致的文件。',
+    items:['單一頁面輸入，一次產出 5 種文件','核薪金額自動比對市場薪資，算出落點提示'] },
+  { tag:'財務協作', accent:'var(--brand)', name:'客戶服務後台',
+    why:'客戶合約、發票、多人分潤，原本靠 Excel 人工計算，容易出錯。',
+    items:['分潤依合約類型自動拆分計算，取代人工試算表','應收帳款天數、客戶留存率自動生成，不用憑感覺判斷'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'出勤系統',
+    why:'團隊成長後出勤靠人工彙整，時薪結算與特休試算容易出錯。',
+    items:['政府行事曆自動抓取，免人工下載上傳','連續工作天數自動警示，避免違反一例一休'] },
+  { tag:'營運協作', accent:'var(--blue)', name:'進銷存系統',
+    why:'多通路商品與庫存資料分散，需要一套系統整合起來。',
+    items:['低庫存自動警示，直接跳轉補貨流程','盤點差異自動記錄，不用人工比對'] },
+  { tag:'財務協作', accent:'var(--brand)', name:'品牌記帳系統',
+    why:'需要一套標準化記帳系統，也為未來電子申報預先做準備。',
+    items:['科目代碼自動帶出名稱，減少輸入錯誤','借貸即時平衡驗證，報表一鍵重新彙總'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'流程查詢 Gem 助理',
+    why:'新制度上線後，主管常反覆問 HR 同樣的操作規則。',
+    items:['主管用日常語言直接問，不用等 HR 回覆','知識庫跟著系統迭代同步更新'] }
+];
+
+const AI_TRUST = [
+  {icon:'🔒', text:'內部系統只認公司網域帳號或驗證碼登入，不開放底層試算表權限給使用者。'},
+  {icon:'🗝️', text:'核決信、面試反饋連結都帶專屬一次性 token，連結被偽造或重複使用會被擋下來。'},
+  {icon:'🗄️', text:'所有系統都跑在公司自己的 Google Workspace 帳號下，資料還是放在自己的雲端硬碟與試算表裡。'},
+  {icon:'🤖', text:'AI 潤稿、摘要這類功能是一次性請求，處理完就結束，不會被拿去訓練公開模型。'}
+];
+
+const AI_TOOLS = ['Google Apps Script','Google Sheets','Claude API','Gemini API','Gmail API','Google Calendar API','GitHub API','政府開放資料平台','Apps Script 時間觸發器'];
+
+const aiCapGrid = document.getElementById('aiCapGrid');
+if(aiCapGrid){
+  AI_CAPS.forEach(c=>{
+    const el = document.createElement('div');
+    el.className = 'pain-card';
+    el.innerHTML = `<div class="pain-icon">${c.icon}</div><div><h3>${c.title}</h3><p>${c.desc}</p></div>`;
+    aiCapGrid.appendChild(el);
+  });
+}
+
+const aiSysGrid = document.getElementById('aiSysGrid');
+if(aiSysGrid){
+  AI_SYS.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'case-card ai-sys-card';
+    el.style.setProperty('--ai-accent', s.accent);
+    el.innerHTML = `
+      <div class="ai-sys-tag">${s.tag}</div>
+      <div class="case-company">${s.name}</div>
+      <div class="case-title">${s.why}</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">亮點</div>
+      <ul class="case-items">${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+    `;
+    aiSysGrid.appendChild(el);
+  });
+}
+
+const aiTrustList = document.getElementById('aiTrustList');
+if(aiTrustList){
+  AI_TRUST.forEach(t=>{
+    const el = document.createElement('div');
+    el.className = 'ai-trust-item';
+    el.innerHTML = `<span class="ti">${t.icon}</span><span>${t.text}</span>`;
+    aiTrustList.appendChild(el);
+  });
+}
+
+const aiToolsRow = document.getElementById('aiToolsRow');
+if(aiToolsRow){
+  AI_TOOLS.forEach(t=>{
+    const el = document.createElement('span');
+    el.className = 'svc-tag';
+    el.textContent = t;
+    aiToolsRow.appendChild(el);
+  });
+}
+
 
 /* ═══════════ 預約交流：Modal ═══════════ */
 // 已部署的 GAS Web App 網址（2026/07/16 設定）。

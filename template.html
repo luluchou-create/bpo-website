@@ -311,11 +311,13 @@ nav{
 }
 .case-size::before{content:'👥';font-size:11px}
 .ai-cue-link{
-  font-size:11px;font-weight:600;color:var(--accent);
-  text-decoration:none;margin-left:6px;cursor:pointer;
-  border-bottom:1px dashed var(--accent);white-space:nowrap;
+  display:inline-flex;align-items:center;
+  font-size:11px;font-weight:700;color:#b54708;
+  text-decoration:none;margin-left:8px;cursor:pointer;
+  padding:3px 8px;border:1px solid #f3a25f;border-radius:999px;
+  background:#fff3e8;white-space:nowrap;
 }
-.ai-cue-link:hover{color:var(--accent2);border-bottom-style:solid}
+.ai-cue-link:hover{color:#8a3300;background:#ffe7d1;border-color:var(--accent)}
 
 /* ─── ABOUT PAGE ──────────────────────────────────────── */
 .about-hero{
@@ -843,16 +845,6 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 
   <!-- FAQ（常見問題：由 GAS 依「全站設定」的 FAQ_VISIBLE 開關決定是否輸出內容，發布前留白＝前端不顯示） -->
   <!-- FAQ_START -->{{FAQ_SECTION}}<!-- FAQ_END -->
-  <!-- INSIGHTS PLACEHOLDER -->
-  <section class="sec pain"><div class="inner">
-    <p class="sec-label">BPO INSIGHTS</p>
-    <h2 class="sec-title">從企業主真正卡住的地方開始談</h2>
-    <p class="sec-sub">承啟將實務現場整理成兩條觀點軌道，讓經營問題有更清楚的切入點。</p>
-    <div class="pain-grid">
-      <div class="pain-card"><div class="pain-icon">L</div><h3>Lulu｜組織與人才軌道</h3><p>組織化、主管承接、人資制度、文化與工作設計。</p></div>
-      <div class="pain-card"><div class="pain-icon">善</div><h3>朝善｜財務與營運軌道</h3><p>財務判斷、募資治理、營運流程與經營風險。</p></div>
-    </div>
-  </div></section>
 
   <!-- CTA BANNER -->
   <div class="cta-banner">
