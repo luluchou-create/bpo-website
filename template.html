@@ -1141,7 +1141,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 
 <script>
 /* ─── PAGE NAVIGATION ─── */
-function showPage(name){
+function showPage(name, updateUrl = true){
   // 強制用 inline style 控制顯示，避免 CSS specificity 問題（#page-home 會覆蓋 .page）
   document.querySelectorAll('.page').forEach(p=>{
     p.classList.remove('active');
@@ -1151,6 +1151,10 @@ function showPage(name){
   if(target){
     target.classList.add('active');
     target.style.display='block';
+    if(updateUrl){
+      const nextHash = name === 'home' ? '' : '#' + name;
+      history.pushState({page:name}, '', window.location.pathname + window.location.search + nextHash);
+    }
   }
   document.querySelectorAll('.nav-links a[data-page]').forEach(a=>{
     a.classList.toggle('active', a.dataset.page===name);
@@ -1161,9 +1165,14 @@ function showPage(name){
   setTimeout(reportHeight, 600);
 }
 
-// 頁面載入時顯示首頁（若網址帶 #privacy，直接開隱私權政策頁，方便從新分頁連結進來）
+function pageFromHash(){
+  const name = window.location.hash.slice(1);
+  return document.getElementById('page-' + name) ? name : 'home';
+}
+
+// 頁面載入時依網址顯示對應頁面，重新整理後保留所在頁面
 document.addEventListener('DOMContentLoaded', function(){
-  showPage(window.location.hash === '#privacy' ? 'privacy' : 'home');
+  showPage(pageFromHash(), false);
 
   // 網址帶 #booking 時（例如從 LINE 導過來的連結），自動跳出「預約一杯咖啡時光」表單
   if(window.location.hash === '#booking'){
@@ -1178,6 +1187,10 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.top = 'auto';
     });
   }
+});
+
+window.addEventListener('popstate', function(){
+  showPage(pageFromHash(), false);
 });
 
 // 通知 Google Sites iframe 高度（嘗試所有已知格式）
