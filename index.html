@@ -3,17 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>承啟事務所｜階段性經理人 × 企業工作設計</title>
-<meta name="description" content="承啟協助中小企業把經營者腦中的策略與經驗，轉化為團隊能執行、組織能承接、資料能追蹤，並可由系統與 AI 放大的企業能力。">
-<meta name="keywords" content="階段性經理人,中小企業顧問,組織設計顧問,人資顧問,財務顧問,募資顧問,IPO準備,台灣顧問,Build and Pave Office,BPO,承啟事務所"/>
-<meta name="author" content="承啟事務所 Build & Pave Office"/>
-<meta name="robots" content="index, follow"/>
-<meta property="og:title" content="承啟事務所｜階段性經理人"/>
-<meta property="og:description" content="從真實工作出發，把策略、制度、資料與協作落到團隊日常，讓改變成為組織能承接的能力。">
-<meta property="og:url" content="https://www.bpo.com.tw/"/>
-<meta property="og:type" content="website"/>
-<meta property="og:locale" content="zh_TW"/>
-<meta name="google-site-verification" content="gjDg5TdjDzUzYjV-2FrryH5y5NDhI_DNnddSYVCaVUY"/>
+<title>BPO 承啟事務所｜階段性經理人</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet"/>
@@ -235,6 +225,7 @@ nav{
   box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
 .filter-label{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.5px;white-space:nowrap}
+.filter-group{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .hero-tagline{
   display:inline-block;
   font-size:12px;font-weight:600;letter-spacing:.04em;
@@ -301,7 +292,6 @@ nav{
 .tg-stage-g{background:rgba(46,158,143,.12);color:var(--teal)}
 .tg-stage-s{background:rgba(74,127,192,.12);color:var(--blue)}
 .tg-stage-m{background:rgba(90,100,120,.1);color:#555}
-.tg-ai{background:rgba(123,79,191,.12);color:var(--purple);border:1px solid rgba(123,79,191,.2)}
 .tg-role-hr{background:rgba(74,127,192,.12);color:var(--blue)}
 .tg-role-fin{background:rgba(232,131,58,.12);color:var(--accent)}
 .tg-role-ops{background:rgba(46,158,143,.12);color:var(--teal)}
@@ -320,6 +310,14 @@ nav{
   font-size:12px;color:var(--muted);margin-top:12px;
 }
 .case-size::before{content:'👥';font-size:11px}
+.ai-cue-link{
+  display:inline-flex;align-items:center;
+  font-size:11px;font-weight:700;color:#b54708;
+  text-decoration:none;margin-left:8px;cursor:pointer;
+  padding:3px 8px;border:1px solid #f3a25f;border-radius:999px;
+  background:#fff3e8;white-space:nowrap;
+}
+.ai-cue-link:hover{color:#8a3300;background:#ffe7d1;border-color:var(--accent)}
 
 /* ─── ABOUT PAGE ──────────────────────────────────────── */
 .about-hero{
@@ -402,7 +400,7 @@ nav{
 .btn-ghost{background:transparent;color:var(--brand);border:1.5px solid var(--border)}
 .btn-ghost:hover{background:var(--bg)}
 
-/* ─── 預約交流：Modal ─────────────────────────── */
+/* ─── 預約一杯咖啡時光：Modal ─────────────────────────── */
 .booking-overlay{
   position:fixed;inset:0;z-index:1000;display:none;
   align-items:center;justify-content:center;padding:20px;
@@ -563,7 +561,10 @@ footer{
   .nav-links a{padding:0 7px;font-size:11.5px}
   .nav-cta{display:none}
   .sec,.hero,.cases-hero,.about-hero,.contact-hero,.speaking,.contact-wrap{padding-left:16px;padding-right:16px}
-  .cases-filters{padding:12px 16px}
+  .cases-filters{padding:14px 16px;flex-direction:column;align-items:stretch;gap:14px}
+  .filter-group{width:100%}
+  .filter-label{display:block;width:100%;margin-bottom:2px}
+  .filter-sep{display:none}
   .cases-grid{padding:20px 16px;grid-template-columns:1fr}
   .team-grid,.contact-wrap{padding:20px 16px}
   .pain-grid,.svc-grid{grid-template-columns:1fr}
@@ -589,6 +590,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .inner{padding-left:16px;padding-right:16px}
   .speak-grid{grid-template-columns:1fr}
 }
+
 /* ─── Block 2：AI 如何加入決策過程（沿用站內既有視覺語言：pain／case-card，轉場刻意做輕，且預設收起） ─── */
 .ai-transition{background:var(--bg);padding:32px 32px 40px;text-align:center;border-top:1px solid var(--border)}
 .ai-transition .inner{max-width:600px}
@@ -628,8 +630,31 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .ai-cap-grid{grid-template-columns:1fr}
 }
 
-
-.ai-cue-link{display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#b54708;text-decoration:none;margin-left:8px;cursor:pointer;padding:3px 8px;border:1px solid #f3a25f;border-radius:999px;background:#fff3e8;white-space:nowrap}.ai-cue-link:hover{color:#8a3300;background:#ffe7d1;border-color:var(--accent)}
+/* ─── FAQ（常見問題，手風琴，沿用站內既有色彩與間距語言） ─── */
+.faq{background:var(--white)}
+.faq-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
+.faq-item{
+  border:1px solid var(--border);border-radius:var(--r12);
+  overflow:hidden;background:var(--white);transition:box-shadow .2s;
+}
+.faq-item:hover{box-shadow:var(--shadow)}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 18px;background:none;border:none;text-align:left;cursor:pointer;
+  font:inherit;font-size:14px;font-weight:700;color:var(--brand);
+}
+.faq-icon{font-size:17px;color:var(--accent);flex-shrink:0;transition:transform .2s;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.faq-a p{padding:0 18px 16px;font-size:13.5px;color:var(--muted);line-height:1.75;white-space:pre-line}
+.faq-item.open .faq-a{max-height:600px}
+@media(max-width:900px){
+  .faq-list{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .faq-q{padding:14px 16px;font-size:13.5px}
+  .faq-a p{padding:0 16px 14px}
+}
 </style>
 </head>
 <body>
@@ -650,68 +675,205 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-inner"><div class="hero-grid"><div>
-      <h1>把經營策略與實務經驗<br><em>轉化為組織能承接的成長能力</em></h1>
-      <p class="hero-sub">協助企業梳理策略、優化分工與制度，建立兼具「團隊執行力」與「AI 延伸性」的系統化營運模式。</p>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">橫跨產業</span></div>
-        <div class="stat"><span class="stat-num">98%</span><span class="stat-label">客戶續約率</span></div>
-      </div>
-      <div class="hero-btns">
-        <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約諮詢</button>
-        <button class="btn btn-outline" onclick="showPage('cases')">服務案例</button>
-      </div>
-    </div></div></div>
+    <div class="hero-inner">
+      <div class="hero-grid">
+        <div>
+          <h1>每家企業面臨的挑戰不同<br><em>解方也不該一樣</em></h1>
+          <p class="hero-sub">將混亂變清晰，建構穩健的成長節奏<br>橫跨組織、財務與品牌，以進駐方式深度投入<br>在企業需要的階段進來，把問題變成行動</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-num">10+</span>
+              <span class="stat-label">橫跨產業</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">98%</span>
+              <span class="stat-label">客戶續約率</span>
+            </div>
+          </div>
+          <div class="hero-btns">
+            <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約諮詢</button>
+            <button class="btn btn-outline" onclick="showPage('cases')">查看合作案例</button>
+          </div>
+        </div>
+        </div>
+    </div>
   </section>
 
   <!-- PAIN POINTS -->
-  <section class="sec pain"><div class="inner">
-    <p class="sec-label">COMMON STRUGGLES</p>
-    <h2 class="sec-title">企業進入下一階段，管理與組織運作也需要同步升級</h2>
-    <p class="sec-sub">成長與轉型過程中，常見的經營議題包括：</p>
-    <div class="pain-grid">
-      <div class="pain-card"><div class="pain-icon">01</div><h3>經營經驗尚未形成組織共識</h3><p>方向與判斷集中於少數角色，需要轉化為團隊可理解、可執行的工作方式。</p></div>
-      <div class="pain-card"><div class="pain-icon">02</div><h3>組織成長，分工與權責需要同步</h3><p>隨團隊規模擴大，需要更清楚的角色、責任與協作節奏。</p></div>
-      <div class="pain-card"><div class="pain-icon">03</div><h3>主管專業需要延伸為管理承接</h3><p>主管除了承接任務，也需要具備帶領、追蹤與跨部門協作能力。</p></div>
-      <div class="pain-card"><div class="pain-icon">04</div><h3>進入募資、治理或下一成長階段</h3><p>財務架構、投資人溝通與治理安排需要同步準備。</p></div>
-      <div class="pain-card"><div class="pain-icon">05</div><h3>流程與資料需要整合</h3><p>分散的資訊與工作經驗，需要整理為可追蹤、可持續運作的流程。</p></div>
-      <div class="pain-card"><div class="pain-icon">06</div><h3>AI 導入需要明確基礎</h3><p>先釐清流程、資料與判斷規則，才能形成有效的 AI 協作。</p></div>
+  <section class="sec pain">
+    <div class="inner">
+      <p class="sec-label">COMMON STRUGGLES</p>
+      <h2 class="sec-title">成長過程中，挑戰往往不只一個面向</h2>
+      <p class="sec-sub">以下情境，是否正在發生？</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">🏗️</div>
+          <h3>組織混亂、制度還沒建起來</h3>
+          <p>人員快速增加，分工不清、流程缺乏 SOP，組織運作難以系統性推進。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">💰</div>
+          <h3>想募資或調整股權，不知從哪開始</h3>
+          <p>有成長計畫，財務架構與投資人溝通的準備尚未到位，影響談判主導權。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">👥</div>
+          <h3>團隊留不住人、主管不知怎麼帶</h3>
+          <p>管理方式或升遷機制尚不明確，人才難以留住，核心人員流失的風險持續存在。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">📊</div>
+          <h3>業務成長，但組織跟不上速度</h3>
+          <p>業務量增加，人力配置與流程尚未跟上，服務品質與執行效率面臨壓力。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🔀</div>
+          <h3>面臨轉型，不知道怎麼重新佈局</h3>
+          <p>外部環境持續變化，內部需要相應調整，優先順序與切入點仍不明確。</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🎯</div>
+          <h3>準備上市櫃，內控制度還沒到位</h3>
+          <p>IPO 時程明確，財務與人資制度的建置進度需要同步推進。</p>
+        </div>
+        <div class=pain-card>
+          <div class="pain-icon">📒</div>
+          <h3>帳務不清楚，財務狀況難以掌握</h3>
+          <p>收入、成本、庫存分散各處，財務數據難以整合，不清楚實際盈虧與潛在合規風險。</p>
+        </div>
+      </div>
     </div>
-  </div></section>
+  </section>
 
   <!-- HOW WE WORK -->
-  <section class="sec how"><div class="inner">
-    <p class="sec-label">OUR APPROACH</p>
-    <h2 class="sec-title">從實際工作出發，讓改變成為組織能力</h2>
-    <p class="sec-sub">先理解企業運作，再確認調整重點與內部承接角色。</p>
-    <div class="steps-wrap">
-      <div class="step-item"><div class="step-circle">1</div><h3>釐清經營方向</h3><p>確認企業目標、考量與核心議題。</p></div>
-      <div class="step-item"><div class="step-circle">2</div><h3>排定先後順序</h3><p>盤點策略、組織、財務、人才、流程與資料，確認優先推進項目。</p></div>
-      <div class="step-item"><div class="step-circle">3</div><h3>建立內部共識</h3><p>讓主管與團隊理解調整目的，形成共同的推進基礎。</p></div>
-      <div class="step-item"><div class="step-circle">4</div><h3>建立最小可行模組</h3><p>依企業文化建立合適的制度、流程、會議、表單或系統。</p></div>
-      <div class="step-item"><div class="step-circle">5</div><h3>內部承接</h3><p>培養承接角色，並由系統與 AI 延伸組織能力。</p></div>
+  <section class="sec how">
+    <div class="inner">
+      <p class="sec-label">OUR APPROACH</p>
+      <h2 class="sec-title">五步驟，從診斷走到落地</h2>
+      <p class="sec-sub">每一步都從企業現況出發，不套用通用框架</p>
+      <div class="steps-wrap">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <h3>問題釐清</h3>
+          <p>深入了解現況，找出真正需要優先解決的核心問題。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <h3>現況診斷</h3>
+          <p>盤點組織、財務、人力的實際狀況。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <h3>系統建構</h3>
+          <p>依企業所在階段，提出具體方案與合作模式。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <h3>執行陪跑</h3>
+          <p>實際進場，跟團隊一起把事情做到位。</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">5</div>
+          <h3>成果交付</h3>
+          <p>留下方法與制度，讓團隊可以持續自主運作。</p>
+        </div>
+      </div>
     </div>
-  </div></section>
+  </section>
 
   <!-- SERVICES -->
-  <section class="sec services"><div class="inner">
-    <p class="sec-label">EXPERTISE</p>
-    <h2 class="sec-title">依企業階段，配置適合的專業支持</h2>
-    <p class="sec-sub">以階段性經理人方式，依核心議題安排專業角色與投入深度。</p>
-    <div class="svc-grid">
-      <div class="svc-hr"><div class="svc-card"><div class="svc-icon">01</div><h3>組織化啟動</h3><p>將經營方向轉化為組織架構、分工、制度與會議節奏，建立團隊共同推進的運作基礎。</p><div class="svc-tags"><span class="svc-tag">策略承接</span><span class="svc-tag">組織設計</span><span class="svc-tag">制度建置</span></div></div></div>
-      <div class="svc-train"><div class="svc-card"><div class="svc-icon">02</div><h3>主管與團隊承接</h3><p>透過工作坊、管理訓練與實際任務，支持主管承接帶領、追蹤與判斷責任。</p><div class="svc-tags"><span class="svc-tag">主管養成</span><span class="svc-tag">績效回饋</span><span class="svc-tag">共識工作坊</span></div></div></div>
-      <div class="svc-fin"><div class="svc-card"><div class="svc-icon">03</div><h3>財務、募資與治理</h3><p>從財務底盤、募資架構到投資人溝通，建立下一階段需要的經營語言。</p><div class="svc-tags"><span class="svc-tag">財務架構</span><span class="svc-tag">募資策略</span><span class="svc-tag">IPO Ready</span></div></div></div>
-      <div class="svc-ops"><div class="svc-card"><div class="svc-icon">04</div><h3>企業工作設計 × AI Ready</h3><p>先拆解工作、資料、判斷與協作，再決定哪些交給人、系統與 AI。</p><div class="svc-tags"><span class="svc-tag">工作流拆解</span><span class="svc-tag">資料架構</span><span class="svc-tag">人機分工</span></div></div></div>
-      <div class="svc-acc"><div class="svc-card"><div class="svc-icon">05</div><h3>外部專業資源整合</h3><p>依企業規模串接合適的財務、會計、法務與專業夥伴，由承啟協助需求校準與合作承接。</p><div class="svc-tags"><span class="svc-tag">需求診斷</span><span class="svc-tag">顧問媒合</span><span class="svc-tag">專案管理</span></div></div></div>
+  <section class="sec services">
+    <div class="inner">
+      <p class="sec-label">EXPERTISE</p>
+      <h2 class="sec-title">精準補位，專業進駐</h2>
+      
+      <p class="sec-sub">組織人資・營運流程・管理培訓・財務募資・會計合規，以進駐方式深度投入</p>
+      <div class="svc-grid">
+        <div class="svc-hr">
+          <div class="svc-card">
+            <div class="svc-icon">🧩</div>
+            <h3>組織 × 人資</h3>
+            <p>從零到有建立人資制度、培育主管、設計薪酬結構，讓組織跟得上成長速度。</p>
+            <div class="svc-tags">
+              
+              <span class="svc-tag">制度建立</span>
+              <span class="svc-tag">主管養成</span>
+              <span class="svc-tag">招募規劃</span>
+              <span class="svc-tag">組織設計</span>
+            
+            </div>
+          </div>
+        </div>
+        <div class="svc-ops">
+          <div class="svc-card">
+            <div class="svc-icon">⚙️</div>
+            <h3>營運 × 流程</h3>
+            <p>標準化作業流程、跨部門協作規範，讓服務品質穩定，協作流程化，組織運作不依賴個人。</p>
+            <div class="svc-tags">
+              
+              <span class="svc-tag">SOP建置</span>
+              <span class="svc-tag">流程優化</span>
+              <span class="svc-tag">跨部門協作</span>
+            
+            </div>
+          </div>
+        </div>
+        <div class="svc-train">
+          <div class="svc-card">
+            <div class="svc-icon">🎓</div>
+            <h3>培訓 × 教練</h3>
+            <p>管理思維課程、主管一對一教練、共識工作坊，從方法論到行為改變都一起做。</p>
+            <div class="svc-tags">
+              
+              <span class="svc-tag">主管共識營</span>
+              <span class="svc-tag">管理培訓</span>
+              <span class="svc-tag">職場教練</span>
+            
+            </div>
+          </div>
+        </div>
+        <div class="svc-fin">
+          <div class="svc-card">
+            <div class="svc-icon">📈</div>
+            <h3>財務 × 募資</h3>
+            <p>財務健診、股權結構優化、募資文件建立，讓財務語言清晰可信，精準對接投資人期待。</p>
+            <div class="svc-tags">
+              
+              <span class="svc-tag">財務架構</span>
+              <span class="svc-tag">股權設計</span>
+              <span class="svc-tag">募資策略</span>
+              <span class="svc-tag">IPO準備</span>
+            
+            </div>
+          </div>
+        </div>
+        <div class="svc-acc">
+          <div class="svc-card">
+            <div class="svc-icon">📋</div>
+            <h3>會計 × 合規</h3>
+            <p>協助補帳、建立記帳制度、稅務申報，讓帳稅一致，財務清晰可掌握。</p>
+            <div class="svc-tags">
+              
+              <span class="svc-tag">補帳・建帳・記帳</span>
+              <span class="svc-tag">稅務申報</span>
+              <span class="svc-tag">查帳審計</span>
+            
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div></section>
+  </section>
+
+  <!-- FAQ（常見問題：由 GAS 依「全站設定」的 FAQ_VISIBLE 開關決定是否輸出內容，發布前留白＝前端不顯示） -->
+  <!-- FAQ_START --><!-- FAQ_END -->
+
   <!-- CTA BANNER -->
   <div class="cta-banner">
     <div class="cta-inner">
       <div>
-        <h2>先從公司現在最需要解決的事開始</h2>
-        <p>告訴我們目前的現狀與挑戰，一起釐清、排出優先順序，再確認適合的合作方式。</p>
+        <h2>不確定我們能幫什麼？歡迎先交流</h2>
+        <p>加 LINE 互動，或約咖啡深聊兩小時，找到最適合的合作起點</p>
       </div>
       <div class="cta-btns">
         <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約諮詢</button>
@@ -738,25 +900,28 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 <div id="page-cases" class="page">
   <div class="cases-hero">
     <div style="max-width:1100px;margin:0 auto">
-      <h1>依企業情境，建立適合的推進路徑</h1>
+      <h1>不同產業、不同階段，解方不複製</h1>
     </div>
   </div>
 
   <!-- FILTERS -->
   <div class="cases-filters">
-    <span class="filter-label">角色</span>
-    <button class="filter-btn active" data-filter="all" onclick="filterCases(this,'all')">全部</button>
-    <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
-    <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
-    <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
-    <button class="filter-btn" data-filter="role-train" onclick="filterCases(this,'role-train')">培訓</button>
-    <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
+    <div class="filter-group">
+      <span class="filter-label">角色</span>
+      <button class="filter-btn active" data-filter="all" onclick="filterCases(this,'all')">全部</button>
+      <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
+      <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
+      <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
+      <button class="filter-btn" data-filter="role-train" onclick="filterCases(this,'role-train')">培訓</button>
+      <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
+    </div>
     <div class="filter-sep"></div>
-    <span class="filter-label">企業階段</span>
-    <button class="filter-btn" data-filter="stage-g" onclick="filterCases(this,'stage-g')">成長期</button>
-    <button class="filter-btn" data-filter="stage-s" onclick="filterCases(this,'stage-s')">穩健期</button>
-    <button class="filter-btn" data-filter="stage-m" onclick="filterCases(this,'stage-m')">成熟期</button>
-    <div class="filter-sep"></div>
+    <div class="filter-group">
+      <span class="filter-label">企業階段</span>
+      <button class="filter-btn" data-filter="stage-g" onclick="filterCases(this,'stage-g')">成長期</button>
+      <button class="filter-btn" data-filter="stage-s" onclick="filterCases(this,'stage-s')">穩健期</button>
+      <button class="filter-btn" data-filter="stage-m" onclick="filterCases(this,'stage-m')">成熟期</button>
+    </div>
   </div>
 
   <!-- CASES GRID -->
@@ -769,11 +934,11 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <span class="ctag tg-role-proj">專案</span>
       </div>
       <div class="case-company">數位內容業</div>
-      <div class="case-title">低阻力組織化 × 主管承接 × 簡易出勤數位化</div>
+      <div class="case-title">組織建構 × 主管思維引導 × 績效評量機制導入</div>
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>創意內容團隊進入組織化階段，重視制度與創作文化的平衡</li>
+        <li>規模已達需進入組織化階段，梳理制度中又須維持團隊風格平衡</li>
         <li>專案資訊、主管角色與跨團隊協作需要更清楚的共同方式</li>
       </ul>
       <div class="case-sl">承啟協助</div>
@@ -786,6 +951,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       <ul class="case-items">
         <li>簡易出勤系統支援計時人員打卡、工時與任務紀錄</li>
         <li>自動彙整工時，支持薪資結算與出勤管理</li>
+        <li>績效管理系統，由上到下至由下到上貫穿，確保目標一致</li>
       </ul>
     </div>
 
@@ -796,7 +962,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <span class="ctag tg-role-fin">財務</span>
       </div>
       <div class="case-company">製造業</div>
-      <div class="case-title">策略落地 × 組織擴增 × AI Ready資料底盤</div>
+      <div class="case-title">策略落地 × 組織擴增 × 打造穩健團隊</div>
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
@@ -808,12 +974,12 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>完成策略與目標架構，建立主管會議與追蹤節奏</li>
         <li>盤點組織並補進關鍵業務與人資角色</li>
         <li>建立薪資與招募流程，導入主管法務與損益課程</li>
-        <li>以品牌行銷部作為公司數據庫的優先示範單位</li>
+        <li>匯集內部數據打造專屬數據與資訊庫，以利及時營運追蹤</li>
       </ul>
       <div class="case-sl">AI 客製應用 <a class="ai-cue-link" onclick="toggleAiMore(true)">了解 AI 如何加入決策過程 ↓</a></div>
       <ul class="case-items">
         <li>招募管理系統串接申請、核決、邀約、通知與進度追蹤</li>
-        <li>完成品牌行銷部資料架構與存放規則</li>
+        <li>完成資訊架構與存放規則</li>
         <li>透過工作盤點辨識適合系統化與AI協作的流程</li>
       </ul>
     </div>
@@ -829,15 +995,15 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>成熟團隊希望建立內部人資能力，支持制度與人才發展</li>
-        <li>企業亦希望拓展人才來源，並促進主管參與經營討論</li>
+        <li>建立內部人資，以利內部人才發展建置與人資規範架構建置</li>
+        <li>積極拓展招募渠道，提升雇主品牌能見度</li>
+        <li>找尋潛力人才為第二事業曲線暖身</li>
       </ul>
       <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>培育內部人資承接角色，建立可持續的人資運作能力</li>
+        <li>培育內部夥伴轉職為人資夥伴</li>
         <li>串接校園實習與招募資源，拓展人才管道</li>
         <li>透過主管共識活動，促進策略理解與跨部門交流</li>
-        <li>整理既有服務可延伸的加值方向</li>
       </ul>
     </div>
 
@@ -847,11 +1013,11 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <span class="ctag tg-role-proj">專案</span>
       </div>
       <div class="case-company">顧問服務業</div>
-      <div class="case-title">關鍵服務接管 × 流程重建 × 團隊移交</div>
+      <div class="case-title">團隊重整 × 流程建造 × 穩定營運</div>
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>關鍵服務單位進入團隊重整階段，仍需維持既有客戶服務</li>
+        <li>團隊重整階段，仍需維持既有客戶服務</li>
         <li>企業需要同步完成流程盤點、人才補進與工作移交</li>
       </ul>
       <div class="case-sl">承啟協助</div>
@@ -870,18 +1036,18 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <span class="ctag tg-role-proj">專案</span>
       </div>
       <div class="case-company">非營利組織</div>
-      <div class="case-title">自主營運 × OKRM目標管理 × 內部能力養成</div>
+      <div class="case-title">打造自主營管理團隊 × OGSM導入 × 內部能力養成</div>
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>精簡公益團隊希望在維持自主文化的同時，建立共同管理節奏</li>
+        <li>打造自主管理團隊，建立共同管理節奏</li>
         <li>團隊需要可持續的目標追蹤、成果回顧與能力發展機制</li>
       </ul>
       <div class="case-sl">承啟協助</div>
       <ul class="case-items">
-        <li>建立OKRM目標管理與季度回顧節奏</li>
+        <li>建立OGSM目標管理與季度回顧節奏</li>
         <li>加入學習指標，促進團隊共同檢視與改善</li>
-        <li>培養內部成員的規劃、表達與帶領能力</li>
+        <li>培養內部成員的規劃與整合能力</li>
       </ul>
     </div>
 
@@ -895,7 +1061,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>製造企業為下一階段資本規劃，需強化組織制度與治理基礎</li>
+        <li>為下一階段資本規劃，需強化組織制度與治理基礎</li>
         <li>跨地營運使人事規章、組織權責與內部控制更需要一致架構</li>
       </ul>
       <div class="case-sl">承啟協助</div>
@@ -938,14 +1104,13 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>旅宿企業進入營運與資本規劃階段，需要同步整理內外部議題</li>
-        <li>募資溝通、股東關係與營運管理需要整體協調</li>
+        <li>募資溝通、股東關係維繫，尋找投資人注入</li>
+        <li>營運管理重梳理，打造健全團隊</li>
       </ul>
       <div class="case-sl">承啟協助</div>
       <ul class="case-items">
         <li>協助整理募資方向與投資人溝通</li>
-        <li>參與股東會與主管會議，協助釐清決策與追蹤事項</li>
-        <li>盤點內部流程與程序，建立可承接的運作方式</li>
+        <li>參與主管會議，協助釐清決策與追蹤事項</li>
       </ul>
     </div>
 
@@ -955,12 +1120,12 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <span class="ctag tg-role-proj">專案</span>
       </div>
       <div class="case-company">文創零售業</div>
-      <div class="case-title">成長治理轉換 × 募資陪跑 × 股權安排</div>
+      <div class="case-title">治理轉換 × 募資陪跑 × 股權安排</div>
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
-        <li>品牌進入成長與治理轉換階段，需要同步整理資本與發展方向</li>
-        <li>投資人溝通、合作條件與股權安排需要一致規劃</li>
+        <li>治理轉換階段，需要同步整理資本與發展方向</li>
+        <li>投資人溝通、合作條件與股權安排規劃與架構設計</li>
       </ul>
       <div class="case-sl">承啟協助</div>
       <ul class="case-items">
@@ -976,12 +1141,12 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <span class="ctag tg-role-proj">專案</span>
       </div>
       <div class="case-company">數位媒體與廣告業</div>
-      <div class="case-title">募資任務 × 團隊承接 × 企編流程盤點</div>
+      <div class="case-title">募資任務 × 團隊管理 × 營運協作</div>
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
         <li>企業推進募資任務，同步需要強化管理協作與內部承接</li>
-        <li>財務與企編工作需要更清楚的流程與責任節點</li>
+        <li>各部門工作需要更清楚的流程與責任節點</li>
       </ul>
       <div class="case-sl">承啟協助</div>
       <ul class="case-items">
@@ -997,7 +1162,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <span class="ctag tg-role-proj">專案</span>
       </div>
       <div class="case-company">文創零售業</div>
-      <div class="case-title">財務底盤重整 × 專業協作 × 報表建立</div>
+      <div class="case-title">財務建置 × 專業協作 × 報表建立</div>
       <div class="case-divider"></div>
       <div class="case-sl">企業情境</div>
       <ul class="case-items">
@@ -1071,14 +1236,12 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 
   </div><!-- /aiMoreWrap -->
 
-
-
   <!-- CTA BANNER -->
   <div class="cta-banner">
     <div class="cta-inner">
       <div>
-        <h2>先從公司現在最需要解決的事開始</h2>
-        <p>告訴我們目前的現狀與挑戰，一起釐清、排出優先順序，再確認適合的合作方式。</p>
+        <h2>不確定我們能幫什麼？歡迎先交流</h2>
+        <p>加 LINE 互動，或約咖啡深聊兩小時，找到最適合的合作起點</p>
       </div>
       <div class="cta-btns">
         <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約諮詢</button>
@@ -1159,7 +1322,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   </div>
 </div><!-- /page-privacy -->
 
-<!-- ═══════════════════════ 預約交流：Modal ═══════════════════════ -->
+<!-- ═══════════════════════ 預約一杯咖啡時光：Modal ═══════════════════════ -->
 <div class="booking-overlay" id="bookingOverlay" onclick="if(event.target===this)closeBookingModal()">
   <div class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
 
@@ -1281,7 +1444,7 @@ function pageFromHash(){
 document.addEventListener('DOMContentLoaded', function(){
   showPage(pageFromHash(), false);
 
-  // 網址帶 #booking 時（例如從 LINE 導過來的連結），自動跳出「預約交流」表單
+  // 網址帶 #booking 時（例如從 LINE 導過來的連結），自動跳出「預約一杯咖啡時光」表單
   if(window.location.hash === '#booking'){
     setTimeout(function(){ openBookingModal(); }, 300);
   }
@@ -1329,7 +1492,6 @@ function reportHeight(){
     });
   });
 }
-
 // 載入後立即回報，並在前 3 秒持續嘗試
 window.addEventListener('load', function(){
   reportHeight();
@@ -1346,10 +1508,8 @@ if(window.ResizeObserver){
 
 /* ─── CASE FILTER ─── */
 function filterCases(btn, cat){
-  // update button states
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  // filter cards
   document.querySelectorAll('#casesGrid .case-card').forEach(card=>{
     if(cat==='all'){
       card.classList.remove('hidden');
@@ -1358,6 +1518,12 @@ function filterCases(btn, cat){
       card.classList.toggle('hidden', !cats.split(' ').includes(cat));
     }
   });
+}
+
+/* ─── FAQ 手風琴：點問題展開／收起答案，各題互不影響，允許同時展開多題 ─── */
+function toggleFaq(btn){
+  const item = btn.closest('.faq-item');
+  if(item) item.classList.toggle('open');
 }
 
 /* ─── Block 2 展開／收起：預設收起，點按鈕才展開，不強迫每個訪客都往下滑過一輪 ─── */
@@ -1469,12 +1635,9 @@ if(aiToolsRow){
   });
 }
 
-
-/* ═══════════ 預約交流：Modal ═══════════ */
-// 已部署的 GAS Web App 網址（2026/07/16 設定）。
-// 之後若透過「官網 CMS」試算表的「全站更新」重新推送，這裡會被「全站設定」分頁的 BOOKING_ENDPOINT 值自動覆蓋，記得也把網址填進那邊，不用再手改這裡。
+/* ═══════════ 預約一杯咖啡時光：Modal ═══════════ */
+// 由「全站設定」分頁的 BOOKING_ENDPOINT 帶入，值是部署後的 GAS Web App 網址
 const BOOKING_ENDPOINT = "https://script.google.com/macros/s/AKfycbyACTJ2kfVXGsMNWXUzEUNyx8ep8GcOCi7s8L4GTY7ze7LXodLZspWeqp5WUPA5K9lI/exec";
-const BOOKING_LINE_URL = "https://line.me/R/ti/p/@562malii";
 
 function openBookingModal(){
   const overlay = document.getElementById('bookingOverlay');
@@ -1663,9 +1826,9 @@ async function submitBooking(e){
 document.addEventListener('DOMContentLoaded', function(){
   const bkLineQr = document.getElementById('bkLineQr');
   if(bkLineQr){
-    bkLineQr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(BOOKING_LINE_URL);
+    bkLineQr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent("https://line.me/R/ti/p/@562malii");
   }
 });
 </script>
 </body>
-</htm                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+</html>
