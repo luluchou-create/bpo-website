@@ -73,7 +73,7 @@ nav{
 .hero::before{content:'';position:absolute;left:0;bottom:0;width:34%;height:5px;background:var(--accent)}
 .hero::after{content:'';position:absolute;left:34%;bottom:0;width:18%;height:5px;background:var(--teal)}
 .hero-inner{max-width:1100px;margin:0 auto;position:relative}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:720px}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:1100px}
 .eyebrow{
   display:inline-block;background:rgba(232,131,58,.18);
   color:var(--accent);font-size:11.5px;font-weight:700;
@@ -86,7 +86,7 @@ nav{
 }
 .hero-kicker{color:rgba(255,255,255,.72);font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:16px}
 .hero h1 em{color:var(--accent);font-style:normal}
-.hero-sub{color:rgba(255,255,255,.65);font-size:15.5px;line-height:1.8;margin-bottom:32px}
+.hero-sub{color:rgba(255,255,255,.65);font-size:15.5px;line-height:1.8;margin-bottom:32px;white-space:nowrap}
 .hero-stats{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
 .stat{text-align:left}
 .stat-num{display:block;font-size:28px;font-weight:800;color:var(--accent)}
@@ -560,6 +560,7 @@ footer{
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-sub{white-space:normal}
   .hero-card{display:none}
   .pain-grid,.svc-grid{grid-template-columns:repeat(2,1fr)}
   .cases-grid{grid-template-columns:repeat(2,1fr)}
