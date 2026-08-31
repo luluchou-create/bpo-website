@@ -21,7 +21,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font:15px/1.7 "Noto Sans TC","PingFang TC",system-ui,sans-serif;color:#222;background:var(--white)}
+body{font:16px/1.75 "Noto Sans TC","PingFang TC",system-ui,sans-serif;color:#222;background:var(--white)}
 
 /* ─── NAV ─────────────────────────────────────────────── */
 nav{
@@ -72,8 +72,8 @@ nav{
 }
 .hero::before{content:'';position:absolute;left:0;bottom:0;width:34%;height:5px;background:var(--accent)}
 .hero::after{content:'';position:absolute;left:34%;bottom:0;width:18%;height:5px;background:var(--teal)}
-.hero-inner{max-width:1100px;margin:0 auto;position:relative}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:1100px}
+.hero-inner{max-width:1020px;margin:0 auto;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:1020px}
 .eyebrow{
   display:inline-block;background:rgba(232,131,58,.18);
   color:var(--accent);font-size:11.5px;font-weight:700;
@@ -132,10 +132,10 @@ nav{
 
 /* ─── SECTION BASE ────────────────────────────────────── */
 .sec{padding:56px 32px}
-.inner{max-width:1100px;margin:0 auto}
+.inner{max-width:1020px;margin:0 auto}
 .sec-label{font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:1.2px;margin-bottom:6px}
 .sec-title{font-size:clamp(20px,2.6vw,28px);font-weight:800;color:var(--brand);margin-bottom:6px;line-height:1.3}
-.sec-sub{font-size:14.5px;color:var(--muted);margin-bottom:28px}
+.sec-sub{font-size:15.5px;color:var(--muted);margin-bottom:28px}
 
 /* ─── PAIN POINTS ─────────────────────────────────────── */
 .pain{background:var(--bg)}
@@ -148,8 +148,8 @@ nav{
 .pain-card:hover{box-shadow:none}
 .pain-card::before{counter-increment:needs;content:'0' counter(needs);position:absolute;left:0;top:18px;color:var(--accent);font:700 12px/1 'Montserrat',sans-serif}
 .pain-icon{display:none}
-.pain-card h3{font-size:14px;font-weight:700;color:var(--brand);margin-bottom:5px}
-.pain-card p{font-size:13px;color:var(--muted);line-height:1.65}
+.pain-card h3{font-size:15.5px;font-weight:700;color:var(--brand);margin-bottom:6px}
+.pain-card p{font-size:14.5px;color:var(--muted);line-height:1.7}
 
 /* ─── HOW IT WORKS ────────────────────────────────────── */
 .how{background:var(--white)}
@@ -160,8 +160,8 @@ nav{
   width:auto;height:auto;border-radius:0;background:transparent;color:var(--accent);
   font:800 30px/1 'Montserrat',sans-serif;display:block;margin:0 0 18px;border:0;box-shadow:none;
 }
-.step-item h3{font-size:13.5px;font-weight:700;color:var(--brand);margin-bottom:5px}
-.step-item p{font-size:12.5px;color:var(--muted);line-height:1.6}
+.step-item h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:6px}
+.step-item p{font-size:14px;color:var(--muted);line-height:1.7}
 
 /* ─── SERVICES ────────────────────────────────────────── */
 .services{background:var(--white)}
@@ -188,7 +188,7 @@ nav{
 .svc-ai .svc-card::before{background:var(--purple)}
 .svc-icon{font-size:26px;margin-bottom:12px}
 .svc-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:8px}
-.svc-card p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.svc-card p{font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:12px}
 .svc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
 .svc-tag{font-size:11.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:#555;background:var(--bg)}
 .service-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:18px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -199,10 +199,10 @@ nav{
 .service-lane:nth-child(2) .service-no{color:var(--teal)}
 .service-lane:nth-child(3) .service-no{color:var(--blue)}
 .service-lane h3{font-size:18px;color:var(--brand);margin-bottom:8px}
-.service-lane p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px}
-.service-items{font-size:12px;font-weight:700;color:var(--brand)}
+.service-lane p{font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.service-items{font-size:13.5px;font-weight:700;color:var(--brand)}
 .service-details{border-bottom:1px solid var(--border);margin-bottom:4px}
-.service-details summary{cursor:pointer;list-style:none;padding:14px 0;font-size:13px;font-weight:700;color:var(--brand)}
+.service-details summary{cursor:pointer;list-style:none;padding:14px 0;font-size:14.5px;font-weight:700;color:var(--brand)}
 .service-details summary::after{content:'＋';float:right;color:var(--accent);font-size:17px}
 .service-details[open] summary::after{content:'−'}
 .service-details .svc-grid{padding:8px 0 20px}
@@ -212,7 +212,7 @@ nav{
 .service-details .svc-card:hover{box-shadow:none;transform:none}
 .service-details .svc-card::before,.service-details .svc-icon,.service-details .svc-tags{display:none}
 .service-details .svc-card h3{font-size:14px;margin-bottom:5px}
-.service-details .svc-card p{font-size:12.5px;margin:0}
+.service-details .svc-card p{font-size:14px;margin:0}
 .service-details .svc-grid>div.is-filtered-out{display:none}
 #page-home.page.active{display:flex;flex-direction:column}
 #page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .proof{order:5}#page-home .faq{order:6}#page-home .cta-banner{order:7}
@@ -222,7 +222,7 @@ nav{
 .cta-banner{
   background:var(--brand);padding:48px 32px;
 }
-.cta-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-inner{max-width:1020px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .cta-banner h2{font-size:22px;font-weight:800;color:#fff}
 .cta-banner p{color:rgba(255,255,255,.6);font-size:14px;margin-top:4px}
 .cta-btns{display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap}
@@ -315,12 +315,12 @@ nav{
 .tg-role-train{background:rgba(139,92,246,.12);color:#7c3aed}
 .tg-role-proj{background:rgba(100,116,139,.12);color:#475569}
 .case-company{font-size:18px;font-weight:800;color:var(--brand);margin-bottom:3px}
-.case-title{font-size:13px;color:var(--muted);margin-bottom:14px}
+.case-title{font-size:14.5px;color:var(--muted);margin-bottom:14px}
 .case-divider{height:1px;background:var(--border);margin:12px 0}
 .case-sl{font-size:11.5px;font-weight:700;color:var(--brand);letter-spacing:.5px;margin-bottom:6px;margin-top:10px}
 .case-sl:first-of-type{margin-top:0}
 .case-items{list-style:none;display:flex;flex-direction:column;gap:4px}
-.case-items li{font-size:12.5px;color:#333;line-height:1.55;padding-left:12px;position:relative}
+.case-items li{font-size:14px;color:#333;line-height:1.65;padding-left:12px;position:relative}
 .case-items li::before{content:'·';position:absolute;left:2px;color:var(--accent);font-weight:700}
 .case-size{
   display:inline-flex;align-items:center;gap:4px;
@@ -522,7 +522,7 @@ nav{
 
 /* ─── FOOTER ──────────────────────────────────────────── */
 .cta-footer{
-  max-width:1100px;margin:16px auto 0;padding-top:16px;
+  max-width:1020px;margin:16px auto 0;padding-top:16px;
   border-top:1px solid rgba(255,255,255,.1);
   display:flex;align-items:center;justify-content:space-between;
 }
@@ -606,8 +606,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 
 /* ─── Block 2：AI 如何加入決策過程（沿用站內既有視覺語言：pain／case-card，轉場刻意做輕，且預設收起） ─── */
 .ai-transition{background:var(--bg);padding:36px 32px 40px;text-align:left;border-top:1px solid var(--border)}
-.ai-transition .inner{max-width:1100px}
-.ai-transition-p{color:var(--muted);font-size:13.5px;line-height:1.85;margin-bottom:18px}
+.ai-transition .inner{max-width:1020px}
+.ai-transition-p{color:var(--muted);font-size:15px;line-height:1.85;margin-bottom:18px}
 .ai-more-btn{margin:0}
 .ai-more-wrap{display:none}
 .ai-more-wrap.open{display:block;animation:aiFadeIn .25s ease}
@@ -661,7 +661,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 .faq-icon{font-size:17px;color:var(--accent);flex-shrink:0;transition:transform .2s;line-height:1}
 .faq-item.open .faq-icon{transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease}
-.faq-a p{padding:0 18px 16px;font-size:13.5px;color:var(--muted);line-height:1.75;white-space:pre-line}
+.faq-a p{padding:0 18px 16px;font-size:14.5px;color:var(--muted);line-height:1.8;white-space:pre-line}
 .faq-item.open .faq-a{max-height:600px}
 @media(max-width:900px){
   .faq-list{grid-template-columns:1fr}
@@ -735,7 +735,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 .proof-empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13.5px;padding:32px 0}
 .tab-more{display:inline-block;margin-top:20px;font-size:13px;font-weight:700;color:var(--accent);text-decoration:none}
 .tab-more:hover{text-decoration:underline}
-@media(max-width:900px){.tab-panel{grid-template-columns:1fr}}
+@media(max-width:900px){.tab-panel{grid-template-columns:1fr}.pain-reveal{opacity:1;transform:none}}
 
 /* ─── 尊重降低動態偏好設定 ─── */
 @media(prefers-reduced-motion:reduce){
@@ -877,7 +877,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(3,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(3,this)}"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-9"/><path d="M15 6h6v6"/></svg></span><span class="service-no">03</span><h3>{{SVC_GROUP3_TITLE}}</h3><p>{{SVC_GROUP3_DESC}}</p><div class="service-items">{{SVC6_TITLE}} ・ {{SVC7_TITLE}}</div></div>
       </div>
       <details class="service-details">
-        <summary onclick="resetServiceGroups()">查看完整服務項目</summary>
+        <summary onclick="resetServiceGroups()">展開全部 7 項服務</summary>
       <div class="service-reveal">
       <div class="svc-grid">
         <div class="svc-hr" data-service-group="1">
@@ -956,21 +956,19 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     </div>
   </section>
 
-  <!-- PROOF: 實績證明（合作案例／AI 成果／觀點文章 三分頁，資料來自既有案例卡片與 AI_SYS，觀點文章待 07_LINE社群推播 內容就緒後填入 ARTICLES 陣列） -->
+  <!-- PROOF: 實績證明（服務案例／AI 成果） -->
   <section class="sec proof" id="proofSection">
     <div class="inner">
       <p class="sec-label">PROOF OF WORK</p>
-      <h2 class="sec-title">我們做過什麼</h2>
-      <p class="sec-sub">服務案例、AI 落地成果、企業現場的觀察——三種證據，你想先看哪一種？</p>
+      <h2 class="sec-title">{{PROOF_TITLE}}</h2>
+      <p class="sec-sub">{{PROOF_SUB}}</p>
       <div class="tab-bar" role="tablist">
-        <button class="tab-btn active" data-panel="case" role="tab" aria-selected="true">服務案例</button>
-        <button class="tab-btn" data-panel="ai" role="tab" aria-selected="false">AI 成果</button>
-        <button class="tab-btn" data-panel="article" role="tab" aria-selected="false">觀點文章</button>
+        <button class="tab-btn active" data-panel="case" role="tab" aria-selected="true">{{PROOF_TAB_CASE}}</button>
+        <button class="tab-btn" data-panel="ai" role="tab" aria-selected="false">{{PROOF_TAB_AI}}</button>
       </div>
       <div class="tab-panels">
         <div class="tab-panel active" data-panel="case" id="proofCasePanel"></div>
         <div class="tab-panel" data-panel="ai" id="proofAiPanel"></div>
-        <div class="tab-panel" data-panel="article" id="proofArticlePanel"></div>
       </div>
       <a href="#" class="tab-more" id="proofMoreLink">查看全部服務案例 →</a>
     </div>
@@ -1010,7 +1008,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 <!-- ══════════════════════════ CASES PAGE ══════════════════════════ -->
 <div id="page-cases" class="page">
   <div class="cases-hero">
-    <div style="max-width:1100px;margin:0 auto">
+    <div style="max-width:1020px;margin:0 auto">
       <h1>{{CASES_H1}}</h1>
       <p>{{CASES_SUB}}</p>
     </div>
@@ -1131,7 +1129,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 <!-- ══════════════════════════ 隱私權政策 ══════════════════════════ -->
 <div id="page-privacy" class="page">
   <div class="contact-hero">
-    <div style="max-width:1100px;margin:0 auto">
+    <div style="max-width:1020px;margin:0 auto">
       <h1>隱私權政策</h1>
       <p>BPO 承啟事務所（Build & Pave Office）</p>
     </div>
@@ -1753,15 +1751,12 @@ function goToCaseFilter(role){
   items.forEach(function(el){ io.observe(el); });
 })();
 
-/* ─── PROOF：首頁「實績證明」三分頁——合作案例取自案例卡片前 3 筆，
-   AI 成果取自既有 AI_SYS 前 3 筆，觀點文章待 07_LINE社群推播 內容就緒後
-   填入下方 ARTICLES 陣列即可自動顯示（結構已就緒，目前先顯示待補提示） ─── */
+/* ─── PROOF：首頁實績證明，服務案例取自案例卡片，AI 成果取自 AI_SYS ─── */
 (function(){
   var casePanel = document.getElementById('proofCasePanel');
   var aiPanel = document.getElementById('proofAiPanel');
-  var articlePanel = document.getElementById('proofArticlePanel');
   var moreLink = document.getElementById('proofMoreLink');
-  if(!casePanel && !aiPanel && !articlePanel) return;
+  if(!casePanel && !aiPanel) return;
 
   if(casePanel){
     var sourceCards = document.querySelectorAll('#casesGrid .case-card');
@@ -1788,27 +1783,12 @@ function goToCaseFilter(role){
     });
   }
 
-  var ARTICLES = [];
-  if(articlePanel){
-    if(ARTICLES.length){
-      ARTICLES.slice(0, 3).forEach(function(a){
-        var el = document.createElement('div');
-        el.className = 'proof-card p-article';
-        el.innerHTML = '<span class="proof-tag">' + a.cat + ' · ' + a.date + '</span><h3>' + a.title + '</h3><p>' + a.desc + '</p><a href="' + a.link + '">閱讀全文 →</a>';
-        articlePanel.appendChild(el);
-      });
-    } else {
-      articlePanel.innerHTML = '<p class="proof-empty">觀點文章準備中，陸續更新——歡迎先追蹤 LINE 官方帳號。</p>';
-    }
-  }
-
   var tabBtns = document.querySelectorAll('#proofSection .tab-btn');
   var tabPanels = document.querySelectorAll('#proofSection .tab-panel');
-  var moreText = { case: '查看全部服務案例 →', ai: '查看更多 AI 應用 →', article: '查看全部文章 →' };
+  var moreText = { case: '查看全部服務案例 →', ai: '查看更多 AI 應用 →' };
   var moreAction = {
     case: function(){ showPage('cases'); },
-    ai: function(){ showPage('cases'); setTimeout(function(){ toggleAiMore(true); }, 350); },
-    article: function(){ /* 觀點文章頁尚未上線 */ }
+    ai: function(){ showPage('cases'); setTimeout(function(){ toggleAiMore(true); }, 350); }
   };
   tabBtns.forEach(function(btn){
     btn.addEventListener('click', function(){
