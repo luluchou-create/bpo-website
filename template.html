@@ -84,6 +84,7 @@ nav{
   color:#fff;font-size:clamp(28px,3.6vw,44px);font-weight:800;
   line-height:1.25;margin-bottom:16px;letter-spacing:-.3px;
 }
+.hero-kicker{color:rgba(255,255,255,.72);font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:16px}
 .hero h1 em{color:var(--accent);font-style:normal}
 .hero-sub{color:rgba(255,255,255,.65);font-size:15.5px;line-height:1.8;margin-bottom:32px}
 .hero-stats{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
@@ -215,7 +216,7 @@ nav{
 #page-home.page.active{display:flex;flex-direction:column}
 #page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .faq{order:5}#page-home .cta-banner{order:6}
 #page-home .pain-grid .pain-card:nth-child(2),#page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(7){display:none}
-#page-home .steps-wrap .step-item:nth-child(n+4){display:none}
+#page-home .steps-wrap .step-item:nth-child(n+5){display:none}
 
 /* ─── CTA BANNER ──────────────────────────────────────── */
 .cta-banner{
@@ -702,6 +703,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <div class="hero-inner">
       <div class="hero-grid">
         <div>
+          <p class="hero-kicker">階段性專業經理人 ・ 組織能力建置</p>
           <h1>{{HERO_H1}}<br><em>{{HERO_H1_EM}}</em></h1>
           <p class="hero-sub">{{HERO_SUB}}</p>
           <div class="hero-stats">
@@ -984,8 +986,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <section class="sec pain">
       <div class="inner">
         <p class="sec-label">WHAT AI CAN DO</p>
-        <h2 class="sec-title">讓 AI 承接重複工作，把時間留給關鍵判斷</h2>
-        <p class="sec-sub">以下是我們在實際合作中，為企業建立的 AI 協作方式。</p>
+        <h2 class="sec-title">重新設計人、流程、系統與 AI 的分工</h2>
+        <p class="sec-sub">不是套用一套系統，而是依企業現場建立真正能運作的協作方式。</p>
         <div class="pain-grid ai-cap-grid" id="aiCapGrid"></div>
       </div>
     </section>
