@@ -67,12 +67,13 @@ nav{
 /* ─── HERO ────────────────────────────────────────────── */
 .hero{
   background:var(--brand);
-  padding:72px 32px 64px;
+  padding:88px 32px 78px;
   position:relative;overflow:hidden;
 }
 .hero::before{content:'';position:absolute;left:0;bottom:0;width:34%;height:5px;background:var(--accent)}
 .hero::after{content:'';position:absolute;left:34%;bottom:0;width:18%;height:5px;background:var(--teal)}
 .hero-inner{max-width:1100px;margin:0 auto;position:relative}
+.hero-inner::after{content:'BPO';position:absolute;right:0;top:50%;transform:translateY(-50%);font:800 150px/1 'Montserrat',sans-serif;color:rgba(255,255,255,.035);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:1100px}
 .eyebrow{
   display:inline-block;background:rgba(232,131,58,.18);
@@ -81,8 +82,8 @@ nav{
   margin-bottom:18px;border:1px solid rgba(232,131,58,.3);
 }
 .hero h1{
-  color:#fff;font-size:clamp(28px,3.6vw,44px);font-weight:800;
-  line-height:1.25;margin-bottom:16px;letter-spacing:-.3px;
+  color:#fff;font-size:clamp(30px,4vw,52px);font-weight:800;
+  line-height:1.2;margin-bottom:20px;letter-spacing:0;
 }
 .hero-kicker{color:rgba(255,255,255,.72);font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:16px}
 .hero h1 em{color:var(--accent);font-style:normal}
@@ -140,6 +141,7 @@ nav{
 /* ─── PAIN POINTS ─────────────────────────────────────── */
 .pain{background:var(--bg)}
 .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 36px;counter-reset:needs}
+#page-home .pain-grid .pain-card:nth-child(even){transform:translateY(22px)}
 .pain-card{
   background:transparent;border:0;border-top:1px solid var(--border);
   border-radius:0;padding:20px 0 22px 46px;position:relative;
@@ -152,27 +154,18 @@ nav{
 
 /* ─── HOW IT WORKS ────────────────────────────────────── */
 .how{background:var(--white)}
-.steps-wrap{display:flex;gap:0;position:relative}
-.steps-wrap::before{
-  content:'';position:absolute;top:22px;left:22px;right:22px;height:2px;
-  background:linear-gradient(90deg,var(--accent),var(--blue));
-  z-index:0;
-}
-.step-item{flex:1;text-align:center;position:relative;z-index:1;padding:0 8px}
+.steps-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.steps-wrap::before{display:none}
+.step-item{text-align:left;position:relative;padding:18px 18px 0 0;border-top:1px solid var(--border)}
 .step-circle{
-  width:44px;height:44px;border-radius:50%;
-  background:var(--brand);color:#fff;
-  font-size:15px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 14px;
-  border:3px solid var(--white);
-  box-shadow:var(--shadow);
+  width:auto;height:auto;border-radius:0;background:transparent;color:var(--accent);
+  font:800 30px/1 'Montserrat',sans-serif;display:block;margin:0 0 18px;border:0;box-shadow:none;
 }
 .step-item h3{font-size:13.5px;font-weight:700;color:var(--brand);margin-bottom:5px}
 .step-item p{font-size:12.5px;color:var(--muted);line-height:1.6}
 
 /* ─── SERVICES ────────────────────────────────────────── */
-.services{background:var(--bg)}
+.services{background:var(--white)}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:14px}
 .svc-grid>div{display:flex;min-width:0}
 .svc-card{
@@ -213,6 +206,13 @@ nav{
 .service-details summary::after{content:'＋';float:right;color:var(--accent);font-size:17px}
 .service-details[open] summary::after{content:'−'}
 .service-details .svc-grid{padding:8px 0 20px}
+.service-details .svc-grid{grid-template-columns:repeat(2,1fr);gap:0 36px;grid-auto-rows:auto}
+.service-details .svc-grid>div{display:block}
+.service-details .svc-card{height:auto;display:block;border:0;border-top:1px solid var(--border);border-radius:0;padding:18px 0;background:transparent;overflow:visible}
+.service-details .svc-card:hover{box-shadow:none;transform:none}
+.service-details .svc-card::before,.service-details .svc-icon,.service-details .svc-tags{display:none}
+.service-details .svc-card h3{font-size:14px;margin-bottom:5px}
+.service-details .svc-card p{font-size:12.5px;margin:0}
 #page-home.page.active{display:flex;flex-direction:column}
 #page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .faq{order:5}#page-home .cta-banner{order:6}
 #page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(6),#page-home .pain-grid .pain-card:nth-child(7){display:none}
@@ -283,6 +283,7 @@ nav{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:16px;padding:28px 32px;max-width:1164px;margin:0 auto;
 }
+.cases-grid>.case-card:first-child{grid-column:span 2}
 .case-card{
   background:var(--white);border:1px solid var(--border);
   border-radius:6px;padding:20px;
@@ -563,6 +564,7 @@ footer{
   .hero-sub{white-space:normal}
   .hero-card{display:none}
   .pain-grid,.svc-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-wrap{grid-template-columns:repeat(2,1fr)}
   .cases-grid{grid-template-columns:repeat(2,1fr)}
   .team-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
@@ -587,6 +589,9 @@ footer{
   .cases-grid{padding:20px 16px;grid-template-columns:1fr}
   .team-grid,.contact-wrap{padding:20px 16px}
   .pain-grid,.svc-grid{grid-template-columns:1fr}
+  #page-home .pain-grid .pain-card:nth-child(even){transform:none}
+  .steps-wrap{grid-template-columns:1fr}
+  .service-details .svc-grid{grid-template-columns:1fr}
   .service-overview{grid-template-columns:1fr}
   .service-lane{padding:20px 0}
   .service-lane+.service-lane{border-left:0;border-top:1px solid var(--border);padding-left:0}
@@ -595,6 +600,8 @@ footer{
   .hero{padding:48px 16px 40px}
   .hero-stats{gap:20px}
   .hero h1{font-size:26px}
+  .hero-inner::after{font-size:84px;top:18%;right:-8px}
+  .cases-grid>.case-card:first-child{grid-column:auto}
 footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .inner{padding-left:16px;padding-right:16px}
   .speak-grid{grid-template-columns:1fr}
