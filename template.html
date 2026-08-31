@@ -66,28 +66,18 @@ nav{
 
 /* ─── HERO ────────────────────────────────────────────── */
 .hero{
-  background:linear-gradient(135deg,var(--brand2) 0%,var(--brand) 60%,#2d4060 100%);
+  background:var(--brand);
   padding:72px 32px 64px;
   position:relative;overflow:hidden;
 }
-.hero::before{
-  content:'';position:absolute;right:-80px;top:-80px;
-  width:480px;height:480px;border-radius:50%;
-  background:rgba(232,131,58,.06);
-  pointer-events:none;
-}
-.hero::after{
-  content:'';position:absolute;right:80px;bottom:-120px;
-  width:280px;height:280px;border-radius:50%;
-  background:rgba(74,127,192,.08);
-  pointer-events:none;
-}
+.hero::before{content:'';position:absolute;left:0;bottom:0;width:34%;height:5px;background:var(--accent)}
+.hero::after{content:'';position:absolute;left:34%;bottom:0;width:18%;height:5px;background:var(--teal)}
 .hero-inner{max-width:1100px;margin:0 auto;position:relative}
 .hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:720px}
 .eyebrow{
   display:inline-block;background:rgba(232,131,58,.18);
   color:var(--accent);font-size:11.5px;font-weight:700;
-  padding:4px 14px;border-radius:999px;letter-spacing:.8px;
+  padding:4px 10px;border-radius:3px;letter-spacing:.8px;
   margin-bottom:18px;border:1px solid rgba(232,131,58,.3);
 }
 .hero h1{
@@ -148,14 +138,14 @@ nav{
 
 /* ─── PAIN POINTS ─────────────────────────────────────── */
 .pain{background:var(--bg)}
-.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 36px;counter-reset:needs}
 .pain-card{
-  background:var(--white);border:1px solid var(--border);
-  border-radius:var(--r12);padding:20px 18px;
-  transition:box-shadow .2s;
+  background:transparent;border:0;border-top:1px solid var(--border);
+  border-radius:0;padding:20px 0 22px 46px;position:relative;
 }
-.pain-card:hover{box-shadow:var(--shadow)}
-.pain-icon{font-size:22px;margin-bottom:10px}
+.pain-card:hover{box-shadow:none}
+.pain-card::before{counter-increment:needs;content:'0' counter(needs);position:absolute;left:0;top:18px;color:var(--accent);font:700 12px/1 'Montserrat',sans-serif}
+.pain-icon{display:none}
 .pain-card h3{font-size:14px;font-weight:700;color:var(--brand);margin-bottom:5px}
 .pain-card p{font-size:13px;color:var(--muted);line-height:1.65}
 
@@ -208,6 +198,24 @@ nav{
 .svc-card p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px}
 .svc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
 .svc-tag{font-size:11.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:#555;background:var(--bg)}
+.service-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:18px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.service-lane{padding:26px 26px 24px 0;min-width:0}
+.service-lane+.service-lane{border-left:1px solid var(--border);padding-left:26px}
+.service-no{display:block;color:var(--accent);font:700 11px/1 'Montserrat',sans-serif;margin-bottom:14px}
+.service-lane:nth-child(2) .service-no{color:var(--teal)}
+.service-lane:nth-child(3) .service-no{color:var(--blue)}
+.service-lane h3{font-size:18px;color:var(--brand);margin-bottom:8px}
+.service-lane p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.service-items{font-size:12px;font-weight:700;color:var(--brand)}
+.service-details{border-bottom:1px solid var(--border);margin-bottom:4px}
+.service-details summary{cursor:pointer;list-style:none;padding:14px 0;font-size:13px;font-weight:700;color:var(--brand)}
+.service-details summary::after{content:'＋';float:right;color:var(--accent);font-size:17px}
+.service-details[open] summary::after{content:'−'}
+.service-details .svc-grid{padding:8px 0 20px}
+#page-home.page.active{display:flex;flex-direction:column}
+#page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .faq{order:5}#page-home .cta-banner{order:6}
+#page-home .pain-grid .pain-card:nth-child(2),#page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(7){display:none}
+#page-home .steps-wrap .step-item:nth-child(n+4){display:none}
 
 /* ─── CTA BANNER ──────────────────────────────────────── */
 .cta-banner{
@@ -251,13 +259,13 @@ nav{
   font-size:11px;color:rgba(255,255,255,.6);font-weight:600;
 }
 .filter-btn{
-  font-size:13px;padding:7px 18px;border-radius:999px;
+  font-size:13px;padding:7px 18px;border-radius:4px;
   border:1.5px solid var(--border);
   background:var(--white);
   color:#444;cursor:pointer;font-weight:600;
   transition:all .15s;white-space:nowrap;
   font-family:inherit;
-  box-shadow:0 1px 4px rgba(0,0,0,.08);
+  box-shadow:none;
 }
 .filter-btn.active{
   background:var(--brand);color:#fff;border-color:var(--brand);
@@ -276,12 +284,12 @@ nav{
 }
 .case-card{
   background:var(--white);border:1px solid var(--border);
-  border-radius:var(--r16);padding:20px;
+  border-radius:6px;padding:20px;
   transition:box-shadow .2s,transform .2s;cursor:default;
   position:relative;overflow:hidden;
 }
-.case-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
-.case-card::before{content:'';position:absolute;top:0;left:0;width:4px;bottom:0;border-radius:var(--r16) 0 0 var(--r16)}
+.case-card:hover{box-shadow:var(--shadow);transform:none;border-color:#cbd2dd}
+.case-card::before{content:'';position:absolute;top:0;left:0;width:4px;bottom:0;border-radius:0}
 .role-hr .case-card::before{background:var(--blue)}
 .role-fin .case-card::before{background:var(--accent)}
 .role-ops .case-card::before{background:var(--teal)}
@@ -291,7 +299,7 @@ nav{
 .role-proj .case-card::before{background:#64748b}
 .case-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .ctag{
-  font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;
+  font-size:11px;font-weight:600;padding:3px 8px;border-radius:3px;
   letter-spacing:.3px;
 }
 .tg-ind{background:rgba(38,48,69,.1);color:var(--brand)}
@@ -322,7 +330,7 @@ nav{
   display:inline-flex;align-items:center;
   font-size:11px;font-weight:700;color:#b54708;
   text-decoration:none;margin-left:8px;cursor:pointer;
-  padding:3px 8px;border:1px solid #f3a25f;border-radius:999px;
+  padding:3px 8px;border:1px solid #f3a25f;border-radius:4px;
   background:#fff3e8;white-space:nowrap;
 }
 .ai-cue-link:hover{color:#8a3300;background:#ffe7d1;border-color:var(--accent)}
@@ -577,6 +585,9 @@ footer{
   .cases-grid{padding:20px 16px;grid-template-columns:1fr}
   .team-grid,.contact-wrap{padding:20px 16px}
   .pain-grid,.svc-grid{grid-template-columns:1fr}
+  .service-overview{grid-template-columns:1fr}
+  .service-lane{padding:20px 0}
+  .service-lane+.service-lane{border-left:0;border-top:1px solid var(--border);padding-left:0}
   .svc-grid{grid-auto-rows:auto}
   .svc-card{height:auto}
   .hero{padding:48px 16px 40px}
@@ -603,10 +614,10 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 }
 
 /* ─── Block 2：AI 如何加入決策過程（沿用站內既有視覺語言：pain／case-card，轉場刻意做輕，且預設收起） ─── */
-.ai-transition{background:var(--bg);padding:32px 32px 40px;text-align:center;border-top:1px solid var(--border)}
-.ai-transition .inner{max-width:600px}
+.ai-transition{background:var(--bg);padding:36px 32px 40px;text-align:left;border-top:1px solid var(--border)}
+.ai-transition .inner{max-width:1100px}
 .ai-transition-p{color:var(--muted);font-size:13.5px;line-height:1.85;margin-bottom:18px}
-.ai-more-btn{margin:0 auto}
+.ai-more-btn{margin:0}
 .ai-more-wrap{display:none}
 .ai-more-wrap.open{display:block;animation:aiFadeIn .25s ease}
 @keyframes aiFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
@@ -615,7 +626,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 }
 
 .ai-cap-grid .pain-card{display:flex;gap:12px;align-items:flex-start}
-.ai-cap-grid .pain-icon{margin-bottom:0;flex-shrink:0}
+.ai-cap-grid .pain-icon{display:block;margin-bottom:0;flex-shrink:0}
 
 /* AI 系統卡片：借用 .case-card 的視覺骨架，維持跟上面合作案例卡片同一套語言 */
 .ai-sys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -801,6 +812,13 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       <h2 class="sec-title">{{SVC_TITLE}}</h2>
       
       <p class="sec-sub">{{SVC_SUB}}</p>
+      <div class="service-overview">
+        <div class="service-lane"><span class="service-no">01</span><h3>組織與人才</h3><p>讓制度、人才與主管能力，跟上企業發展節奏。</p><div class="service-items">{{SVC1_TITLE}} ・ {{SVC3_TITLE}}</div></div>
+        <div class="service-lane"><span class="service-no">02</span><h3>營運與財務</h3><p>把流程、數字與治理基礎，整理成可持續運作的方法。</p><div class="service-items">{{SVC2_TITLE}} ・ {{SVC4_TITLE}} ・ {{SVC5_TITLE}}</div></div>
+        <div class="service-lane"><span class="service-no">03</span><h3>成長與市場</h3><p>讓業務、品牌與行銷策略，轉化為可執行的成長行動。</p><div class="service-items">{{SVC6_TITLE}} ・ {{SVC7_TITLE}}</div></div>
+      </div>
+      <details class="service-details">
+        <summary>查看完整服務項目</summary>
       <div class="svc-grid">
         <div class="svc-hr">
           <div class="svc-card">
@@ -873,6 +891,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
           </div>
         </div>
       </div>
+      </details>
     </div>
   </section>
 
@@ -951,8 +970,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   <section class="ai-transition">
     <div class="inner">
       <span class="eyebrow">幕後 · AI 如何加入</span>
-      <p class="ai-transition-p">這些合作案例的背後，我們也在陪企業釐清問題、做決策的過程中，
-        把重複性的工作交給 AI 處理，讓團隊把力氣留給真正重要的判斷。</p>
+      <p class="ai-transition-p">在合作過程中，我們也把適合的重複工作交給 AI，讓團隊把時間留給判斷、溝通與決策。</p>
       <button class="btn btn-primary ai-more-btn" id="aiMoreBtn" onclick="toggleAiMore()">
         好奇我們具體用 AI 做了什麼？點開看看 ↓
       </button>
@@ -966,8 +984,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <section class="sec pain">
       <div class="inner">
         <p class="sec-label">WHAT AI CAN DO</p>
-        <h2 class="sec-title">把麻煩交出來，剩下的交給對話</h2>
-        <p class="sec-sub">很多人知道 AI 很厲害，卻不確定能拿來做什麼——以下是我們實際用出來的答案</p>
+        <h2 class="sec-title">讓 AI 承接重複工作，把時間留給關鍵判斷</h2>
+        <p class="sec-sub">以下是我們在實際合作中，為企業建立的 AI 協作方式。</p>
         <div class="pain-grid ai-cap-grid" id="aiCapGrid"></div>
       </div>
     </section>
@@ -1186,7 +1204,7 @@ function showPage(name, updateUrl = true){
   var target=document.getElementById('page-'+name);
   if(target){
     target.classList.add('active');
-    target.style.display='block';
+    target.style.display=name==='home'?'flex':'block';
     if(updateUrl){
       const nextHash = name === 'home' ? '' : '#' + name;
       history.pushState({page:name}, '', window.location.pathname + window.location.search + nextHash);
