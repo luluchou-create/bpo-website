@@ -213,8 +213,20 @@ nav{
 .service-details .svc-card::before,.service-details .svc-icon,.service-details .svc-tags{display:none}
 .service-details .svc-card h3{font-size:14px;margin-bottom:5px}
 .service-details .svc-card p{font-size:12.5px;margin:0}
+.brand-principles{background:var(--white);border-bottom:1px solid var(--border)}
+.brand-principles-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.15fr repeat(3,1fr);padding:0 32px}
+.principles-intro{background:var(--brand);color:#fff;padding:28px 28px 26px;position:relative}
+.principles-intro::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--accent)}
+.principles-intro span{display:block;font:700 10px/1 'Montserrat',sans-serif;color:rgba(255,255,255,.55);margin-bottom:9px}
+.principles-intro strong{font-size:17px;letter-spacing:0}
+.principle{padding:27px 22px 24px;border-right:1px solid var(--border);position:relative}
+.principle::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.principle:nth-child(3)::before{background:var(--teal)}
+.principle:nth-child(4)::before{background:var(--blue)}
+.principle small{display:block;font:700 10px/1 'Montserrat',sans-serif;color:var(--muted);margin-bottom:10px}
+.principle strong{font-size:17px;color:var(--brand)}
 #page-home.page.active{display:flex;flex-direction:column}
-#page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .faq{order:5}#page-home .cta-banner{order:6}
+#page-home .hero{order:1}#page-home .brand-principles{order:2}#page-home .services{order:3}#page-home .pain{order:4}#page-home .how{order:5}#page-home .faq{order:6}#page-home .cta-banner{order:7}
 #page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(6),#page-home .pain-grid .pain-card:nth-child(7){display:none}
 #page-home .steps-wrap .step-item:nth-child(n+5){display:none}
 
@@ -283,7 +295,6 @@ nav{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:16px;padding:28px 32px;max-width:1164px;margin:0 auto;
 }
-.cases-grid>.case-card:first-child{grid-column:span 2}
 .case-card{
   background:var(--white);border:1px solid var(--border);
   border-radius:6px;padding:20px;
@@ -593,6 +604,9 @@ footer{
   .steps-wrap{grid-template-columns:1fr}
   .service-details .svc-grid{grid-template-columns:1fr}
   .service-overview{grid-template-columns:1fr}
+  .brand-principles-inner{grid-template-columns:1fr;padding:0 20px}
+  .principles-intro{padding:22px 20px}
+  .principle{padding:18px 20px;border-left:1px solid var(--border)}
   .service-lane{padding:20px 0}
   .service-lane+.service-lane{border-left:0;border-top:1px solid var(--border);padding-left:0}
   .svc-grid{grid-auto-rows:auto}
@@ -601,7 +615,6 @@ footer{
   .hero-stats{gap:20px}
   .hero h1{font-size:26px}
   .hero-inner::after{font-size:84px;top:18%;right:-8px}
-  .cases-grid>.case-card:first-child{grid-column:auto}
 footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .inner{padding-left:16px;padding-right:16px}
   .speak-grid{grid-template-columns:1fr}
@@ -715,6 +728,15 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
           </div>
         </div>
         </div>
+    </div>
+  </section>
+
+  <section class="brand-principles" aria-label="承啟的工作方式">
+    <div class="brand-principles-inner">
+      <div class="principles-intro"><span>HOW WE CREATE VALUE</span><strong>{{VALUE_STRIP_LABEL}}</strong></div>
+      <div class="principle"><small>01</small><strong>{{VALUE1_TITLE}}</strong></div>
+      <div class="principle"><small>02</small><strong>{{VALUE2_TITLE}}</strong></div>
+      <div class="principle"><small>03</small><strong>{{VALUE3_TITLE}}</strong></div>
     </div>
   </section>
 
