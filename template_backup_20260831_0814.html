@@ -1,0 +1,1634 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>{{PAGE_TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root{
+  --brand:#263045;--brand2:#1a2235;
+  --accent:#E8833A;--accent2:#d4722c;
+  --blue:#4A7FC0;--teal:#2E9E8F;--purple:#7b4fbf;
+  --muted:#5a6478;--border:#e0e4ec;--bg:#f5f6f8;--bg2:#eef0f4;
+  --white:#fff;
+  --r8:8px;--r12:12px;--r16:16px;--r24:24px;
+  --shadow:0 2px 12px rgba(38,48,69,.09);
+  --shadow-md:0 4px 24px rgba(38,48,69,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:15px/1.7 "Noto Sans TC","PingFang TC",system-ui,sans-serif;color:#222;background:var(--white)}
+
+/* ─── NAV ─────────────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--brand);
+  height:60px;display:flex;align-items:center;
+  padding:0 32px;gap:0;
+  box-shadow:0 2px 16px rgba(0,0,0,.18);
+}
+.nav-logo{
+  color:#fff;font-size:15px;font-weight:700;letter-spacing:.5px;
+  white-space:nowrap;margin-right:auto;cursor:pointer;
+  display:flex;align-items:center;gap:8px;text-decoration:none;
+}
+.nav-logo .bpo-badge{
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;font-size:14px;letter-spacing:1px;
+  color:#263045;background:#fff;
+  padding:3px 9px;border-radius:5px;
+  line-height:1.4;
+}
+.nav-links{display:flex;gap:0;align-items:center}
+.nav-links a{
+  color:rgba(255,255,255,.72);font-size:13.5px;font-weight:500;
+  padding:0 16px;height:60px;display:flex;align-items:center;
+  text-decoration:none;border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;cursor:pointer;
+  white-space:nowrap;
+}
+.nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--accent)}
+.nav-cta{
+  margin-left:16px;background:var(--accent);color:#fff!important;
+  border-radius:var(--r8);height:36px!important;padding:0 18px!important;
+  font-weight:600!important;font-size:13px!important;
+  border-bottom:none!important;transition:background .2s!important;
+}
+.nav-cta:hover{background:var(--accent2)!important}
+
+/* ─── PAGE SYSTEM ─────────────────────────────────────── */
+.page{display:none}#page-home{display:block}
+.page.active{display:block}
+
+/* ─── HERO ────────────────────────────────────────────── */
+.hero{
+  background:var(--brand);
+  padding:88px 32px 78px;
+  position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;left:0;bottom:0;width:34%;height:5px;background:var(--accent)}
+.hero::after{content:'';position:absolute;left:34%;bottom:0;width:18%;height:5px;background:var(--teal)}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:1100px}
+.eyebrow{
+  display:inline-block;background:rgba(232,131,58,.18);
+  color:var(--accent);font-size:11.5px;font-weight:700;
+  padding:4px 10px;border-radius:3px;letter-spacing:.8px;
+  margin-bottom:18px;border:1px solid rgba(232,131,58,.3);
+}
+.hero h1{
+  color:#fff;font-size:clamp(30px,4vw,52px);font-weight:800;
+  line-height:1.2;margin-bottom:20px;letter-spacing:0;
+}
+.hero-kicker{color:rgba(255,255,255,.72);font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:16px}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero-sub{color:rgba(255,255,255,.65);font-size:15.5px;line-height:1.8;margin-bottom:32px;white-space:nowrap}
+.hero-stats{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
+.stat{text-align:left}
+.stat-num{display:block;font-size:28px;font-weight:800;color:var(--accent)}
+.stat-label{font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.3px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:11px 22px;border-radius:var(--r8);
+  font-size:14px;font-weight:600;text-decoration:none;
+  cursor:pointer;border:none;transition:.2s;
+}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2)}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.6)}
+/* Hero right card */
+.hero-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r16);padding:28px 24px;backdrop-filter:blur(8px);
+}
+.hero-card-title{color:rgba(255,255,255,.6);font-size:11px;letter-spacing:1px;font-weight:600;margin-bottom:14px}
+.value-steps{display:flex;flex-direction:column;gap:1px}
+.vs{
+  display:flex;align-items:center;gap:14px;padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.vs:last-child{border-bottom:none}
+.vs-num{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.vs-free .vs-num{background:rgba(255,255,255,.15)}
+.vs-body{flex:1}
+.vs-name{color:#fff;font-size:13.5px;font-weight:600;margin-bottom:2px}
+.vs-desc{color:rgba(255,255,255,.5);font-size:12px;line-height:1.5}
+.vs-tag{
+  font-size:11px;padding:2px 8px;border-radius:999px;
+  font-weight:600;white-space:nowrap;
+}
+.free-tag{background:rgba(255,255,255,.12);color:rgba(255,255,255,.6)}
+.paid-tag{background:rgba(232,131,58,.2);color:var(--accent)}
+
+/* ─── SECTION BASE ────────────────────────────────────── */
+.sec{padding:56px 32px}
+.inner{max-width:1100px;margin:0 auto}
+.sec-label{font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:1.2px;margin-bottom:6px}
+.sec-title{font-size:clamp(20px,2.6vw,28px);font-weight:800;color:var(--brand);margin-bottom:6px;line-height:1.3}
+.sec-sub{font-size:14.5px;color:var(--muted);margin-bottom:28px}
+
+/* ─── PAIN POINTS ─────────────────────────────────────── */
+.pain{background:var(--bg)}
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 36px;counter-reset:needs}
+#page-home .pain-grid .pain-card:nth-child(even){transform:translateY(22px)}
+.pain-card{
+  background:transparent;border:0;border-top:1px solid var(--border);
+  border-radius:0;padding:20px 0 22px 46px;position:relative;
+}
+.pain-card:hover{box-shadow:none}
+.pain-card::before{counter-increment:needs;content:'0' counter(needs);position:absolute;left:0;top:18px;color:var(--accent);font:700 12px/1 'Montserrat',sans-serif}
+.pain-icon{display:none}
+.pain-card h3{font-size:14px;font-weight:700;color:var(--brand);margin-bottom:5px}
+.pain-card p{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ─── HOW IT WORKS ────────────────────────────────────── */
+.how{background:var(--white)}
+.steps-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.steps-wrap::before{display:none}
+.step-item{text-align:left;position:relative;padding:18px 18px 0 0;border-top:1px solid var(--border)}
+.step-circle{
+  width:auto;height:auto;border-radius:0;background:transparent;color:var(--accent);
+  font:800 30px/1 'Montserrat',sans-serif;display:block;margin:0 0 18px;border:0;box-shadow:none;
+}
+.step-item h3{font-size:13.5px;font-weight:700;color:var(--brand);margin-bottom:5px}
+.step-item p{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* ─── SERVICES ────────────────────────────────────────── */
+.services{background:var(--white)}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:14px}
+.svc-grid>div{display:flex;min-width:0}
+.svc-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:24px 20px;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;width:100%;height:100%;
+  transition:box-shadow .2s,transform .2s;
+}
+.svc-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.svc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+}
+.svc-hr .svc-card::before{background:var(--accent)}
+.svc-fin .svc-card::before{background:var(--teal)}
+.svc-ops .svc-card::before{background:var(--teal)}
+.svc-train .svc-card::before{background:var(--accent)}
+.svc-acc .svc-card::before{background:var(--teal)}
+.svc-biz .svc-card::before{background:var(--blue)}
+.svc-mkt .svc-card::before{background:var(--blue)}
+.svc-ai .svc-card::before{background:var(--purple)}
+.svc-icon{font-size:26px;margin-bottom:12px}
+.svc-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:8px}
+.svc-card p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.svc-tag{font-size:11.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:#555;background:var(--bg)}
+.service-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:18px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.service-lane{padding:26px 26px 24px 0;min-width:0;cursor:pointer;transition:background .2s}
+.service-lane+.service-lane{border-left:1px solid var(--border);padding-left:26px}
+.service-lane:hover,.service-lane:focus-visible,.service-lane.is-active{background:#f7f8fa;outline:0}
+.service-no{display:block;color:var(--accent);font:700 11px/1 'Montserrat',sans-serif;margin-bottom:14px}
+.service-lane:nth-child(2) .service-no{color:var(--teal)}
+.service-lane:nth-child(3) .service-no{color:var(--blue)}
+.service-lane h3{font-size:18px;color:var(--brand);margin-bottom:8px}
+.service-lane p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.service-items{font-size:12px;font-weight:700;color:var(--brand)}
+.service-details{border-bottom:1px solid var(--border);margin-bottom:4px}
+.service-details summary{cursor:pointer;list-style:none;padding:14px 0;font-size:13px;font-weight:700;color:var(--brand)}
+.service-details summary::after{content:'＋';float:right;color:var(--accent);font-size:17px}
+.service-details[open] summary::after{content:'−'}
+.service-details .svc-grid{padding:8px 0 20px}
+.service-details .svc-grid{grid-template-columns:repeat(2,1fr);gap:0 36px;grid-auto-rows:auto}
+.service-details .svc-grid>div{display:block}
+.service-details .svc-card{height:auto;display:block;border:0;border-top:1px solid var(--border);border-radius:0;padding:18px 0;background:transparent;overflow:visible}
+.service-details .svc-card:hover{box-shadow:none;transform:none}
+.service-details .svc-card::before,.service-details .svc-icon,.service-details .svc-tags{display:none}
+.service-details .svc-card h3{font-size:14px;margin-bottom:5px}
+.service-details .svc-card p{font-size:12.5px;margin:0}
+.service-details .svc-grid>div.is-filtered-out{display:none}
+#page-home.page.active{display:flex;flex-direction:column}
+#page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .faq{order:5}#page-home .cta-banner{order:6}
+#page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(6),#page-home .pain-grid .pain-card:nth-child(7){display:none}
+#page-home .steps-wrap .step-item:nth-child(n+5){display:none}
+
+/* ─── CTA BANNER ──────────────────────────────────────── */
+.cta-banner{
+  background:var(--brand);padding:48px 32px;
+}
+.cta-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-banner h2{font-size:22px;font-weight:800;color:#fff}
+.cta-banner p{color:rgba(255,255,255,.6);font-size:14px;margin-top:4px}
+.cta-btns{display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap}
+
+/* ─── CASES PAGE ──────────────────────────────────────── */
+.cases-hero{background:var(--brand);padding:40px 32px 32px}
+.cases-hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:6px}
+.cases-hero p{color:rgba(255,255,255,.6);font-size:14px}
+.cases-filters{
+  background:var(--white);border-bottom:1px solid var(--border);
+  padding:16px 32px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  position:relative;top:auto;z-index:50;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.filter-label{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.5px;white-space:nowrap}
+.filter-group{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.hero-tagline{
+  display:inline-block;
+  font-size:12px;font-weight:600;letter-spacing:.04em;
+  color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:999px;
+  padding:4px 14px;
+  margin-bottom:16px;
+}
+.line-qr-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.line-qr-img{
+  width:90px;height:90px;border-radius:8px;
+  background:#fff;padding:4px;
+}
+.line-qr-label{
+  font-size:11px;color:rgba(255,255,255,.6);font-weight:600;
+}
+.filter-btn{
+  font-size:13px;padding:7px 18px;border-radius:4px;
+  border:1.5px solid var(--border);
+  background:var(--white);
+  color:#444;cursor:pointer;font-weight:600;
+  transition:all .15s;white-space:nowrap;
+  font-family:inherit;
+  box-shadow:none;
+}
+.filter-btn.active{
+  background:var(--brand);color:#fff;border-color:var(--brand);
+  box-shadow:0 2px 8px rgba(38,48,69,.25);
+}
+.filter-btn:hover:not(.active){
+  border-color:var(--brand);color:var(--brand);
+  background:#f0f3f8;
+  box-shadow:0 2px 8px rgba(38,48,69,.12);
+  transform:translateY(-1px);
+}
+.filter-sep{width:1px;height:20px;background:var(--border);margin:0 4px;flex-shrink:0}
+.cases-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;padding:28px 32px;max-width:1164px;margin:0 auto;
+}
+.case-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:6px;padding:20px;
+  transition:box-shadow .2s,transform .2s;cursor:default;
+  position:relative;overflow:hidden;
+}
+.case-card:hover{box-shadow:var(--shadow);transform:none;border-color:#cbd2dd}
+.case-card::before{content:'';position:absolute;top:0;left:0;width:4px;bottom:0;border-radius:0}
+.role-hr .case-card::before{background:var(--blue)}
+.role-fin .case-card::before{background:var(--accent)}
+.role-ops .case-card::before{background:var(--teal)}
+.role-biz .case-card::before{background:#3f7d20}
+.role-mkt .case-card::before{background:#c2416c}
+.role-train .case-card::before{background:#8b5cf6}
+.role-proj .case-card::before{background:#64748b}
+.case-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ctag{
+  font-size:11px;font-weight:600;padding:3px 8px;border-radius:3px;
+  letter-spacing:.3px;
+}
+.tg-ind{background:rgba(38,48,69,.1);color:var(--brand)}
+.tg-stage-g{background:rgba(46,158,143,.12);color:var(--teal)}
+.tg-stage-s{background:rgba(74,127,192,.12);color:var(--blue)}
+.tg-stage-m{background:rgba(90,100,120,.1);color:#555}
+.tg-role-hr{background:rgba(74,127,192,.12);color:var(--blue)}
+.tg-role-fin{background:rgba(232,131,58,.12);color:var(--accent)}
+.tg-role-ops{background:rgba(46,158,143,.12);color:var(--teal)}
+.tg-role-biz{background:rgba(63,125,32,.12);color:#3f7d20}
+.tg-role-mkt{background:rgba(194,65,108,.12);color:#a8325b}
+.tg-role-train{background:rgba(139,92,246,.12);color:#7c3aed}
+.tg-role-proj{background:rgba(100,116,139,.12);color:#475569}
+.case-company{font-size:18px;font-weight:800;color:var(--brand);margin-bottom:3px}
+.case-title{font-size:13px;color:var(--muted);margin-bottom:14px}
+.case-divider{height:1px;background:var(--border);margin:12px 0}
+.case-sl{font-size:11.5px;font-weight:700;color:var(--brand);letter-spacing:.5px;margin-bottom:6px;margin-top:10px}
+.case-sl:first-of-type{margin-top:0}
+.case-items{list-style:none;display:flex;flex-direction:column;gap:4px}
+.case-items li{font-size:12.5px;color:#333;line-height:1.55;padding-left:12px;position:relative}
+.case-items li::before{content:'·';position:absolute;left:2px;color:var(--accent);font-weight:700}
+.case-size{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:12px;color:var(--muted);margin-top:12px;
+}
+.case-size::before{content:'👥';font-size:11px}
+.ai-cue-link{
+  display:inline-flex;align-items:center;
+  font-size:11px;font-weight:700;color:#b54708;
+  text-decoration:none;margin-left:8px;cursor:pointer;
+  padding:3px 8px;border:1px solid #f3a25f;border-radius:4px;
+  background:#fff3e8;white-space:nowrap;
+}
+.ai-cue-link:hover{color:#8a3300;background:#ffe7d1;border-color:var(--accent)}
+
+/* ─── ABOUT PAGE ──────────────────────────────────────── */
+.about-hero{
+  background:linear-gradient(135deg,var(--brand2),var(--brand));
+  padding:52px 32px 40px;
+}
+.about-hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:8px}
+.about-hero p{color:rgba(255,255,255,.6);font-size:14px;line-height:1.8;max-width:600px}
+.team-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;padding:36px 32px;max-width:1164px;margin:0 auto;
+}
+.team-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:28px 24px;
+  text-align:center;
+}
+.team-avatar{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  font-size:24px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+}
+.team-name{font-size:17px;font-weight:800;color:var(--brand);margin-bottom:2px}
+.team-en{font-size:12px;color:var(--muted);margin-bottom:10px;letter-spacing:.3px}
+.team-role{
+  display:inline-block;font-size:12px;font-weight:600;
+  padding:4px 14px;border-radius:999px;
+  background:rgba(38,48,69,.08);color:var(--brand);
+  margin-bottom:14px;
+}
+.team-desc{font-size:13px;color:var(--muted);line-height:1.75;text-align:left}
+.team-expertise{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;justify-content:center}
+.exp-tag{font-size:11.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:#555;background:var(--bg)}
+
+/* ─── SPEAKING ────────────────────────────────────────── */
+.speaking{background:var(--bg);padding:40px 32px}
+.speak-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.speak-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r12);padding:16px 18px;
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+}
+.speak-date{
+  background:var(--brand);color:#fff;
+  border-radius:var(--r8);padding:8px 10px;
+  text-align:center;min-width:52px;
+}
+.speak-month{font-size:10px;letter-spacing:.5px;opacity:.7}
+.speak-year{font-size:12px;font-weight:700}
+.speak-type{
+  display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;
+  border-radius:999px;margin-bottom:5px;
+}
+.speak-type.course{background:rgba(232,131,58,.12);color:var(--accent)}
+.speak-type.share{background:rgba(74,127,192,.12);color:var(--blue)}
+.speak-title{font-size:13px;font-weight:600;color:var(--brand);line-height:1.5;margin-bottom:3px}
+.speak-org{font-size:12px;color:var(--muted)}
+
+/* ─── CONTACT PAGE ────────────────────────────────────── */
+.contact-hero{
+  background:linear-gradient(135deg,var(--brand2),var(--brand));
+  padding:52px 32px 40px;
+}
+.contact-hero h1{color:#fff;font-size:26px;font-weight:800;margin-bottom:8px}
+.contact-hero p{color:rgba(255,255,255,.6);font-size:14px}
+.contact-wrap{padding:40px 32px;max-width:1164px;margin:0 auto}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:40px}
+.contact-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r16);padding:28px 24px;text-align:center;
+  transition:box-shadow .2s;
+}
+.contact-card:hover{box-shadow:var(--shadow-md)}
+.contact-icon{font-size:32px;margin-bottom:14px}
+.contact-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:6px}
+.contact-card p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.contact-card a.btn{margin:0 auto;width:fit-content}
+.btn-ghost{background:transparent;color:var(--brand);border:1.5px solid var(--border)}
+.btn-ghost:hover{background:var(--bg)}
+
+/* ─── 預約一杯咖啡時光：Modal ─────────────────────────── */
+.booking-overlay{
+  position:fixed;inset:0;z-index:1000;display:none;
+  align-items:center;justify-content:center;padding:20px;
+  background:rgba(26,34,53,.6);backdrop-filter:blur(2px);
+}
+.booking-overlay.open{display:flex}
+.booking-modal{
+  background:#fff;border-radius:var(--r16);max-width:560px;width:100%;
+  max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-md);
+  animation:bkIn .25s ease;
+}
+@keyframes bkIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.booking-head{
+  background:var(--brand);color:#fff;padding:28px 28px 22px;
+  border-radius:var(--r16) var(--r16) 0 0;position:relative;
+}
+.booking-head h3{font-size:20px;font-weight:800;margin-bottom:6px}
+.booking-head p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+.booking-close{
+  position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:none;color:#fff;font-size:15px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:.2s;
+}
+.booking-close:hover{background:rgba(255,255,255,.2)}
+.booking-body{padding:24px 28px 28px}
+.bk-field{margin-bottom:16px}
+.bk-field label{display:block;font-size:13px;font-weight:600;color:var(--brand);margin-bottom:6px}
+.bk-field label .req{color:var(--accent)}
+.bk-field input[type=text],.bk-field input[type=email],.bk-field input[type=tel],.bk-field textarea{
+  width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--r8);
+  font:14px/1.6 "Noto Sans TC","PingFang TC",sans-serif;color:#222;transition:.2s;
+}
+.bk-field input:focus,.bk-field textarea:focus{outline:none;border-color:var(--accent)}
+.bk-field textarea{resize:vertical;min-height:64px}
+.bk-slot-title{font-size:13px;font-weight:700;color:var(--brand);margin:22px 0 4px}
+.bk-slot-sub{font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.6}
+.bk-slot-row{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.bk-slot-num{
+  width:22px;height:22px;border-radius:50%;background:var(--bg2);color:var(--muted);
+  font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.bk-slot-row input[type=date],.bk-slot-row input[type=time]{
+  flex:1 1 120px;padding:9px 10px;border:1.5px solid var(--border);border-radius:var(--r8);
+  font:13px "Noto Sans TC","PingFang TC",sans-serif;color:#222;
+}
+.bk-submit{width:100%;justify-content:center;margin-top:8px;padding:13px;font-size:15px}
+.bk-error{color:#c0392b;font-size:12.5px;margin-top:10px;display:none;line-height:1.6}
+.bk-error.show{display:block}
+.bk-note{font-size:11.5px;color:var(--muted);margin-top:14px;line-height:1.7;padding-top:14px;border-top:1px solid var(--border)}
+.bk-success{padding:36px 28px 32px;text-align:center;display:none}
+.bk-success.show{display:block}
+.bk-success .bk-check{
+  width:56px;height:56px;border-radius:50%;background:var(--teal);color:#fff;font-size:26px;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
+}
+.bk-success h3{font-size:19px;font-weight:800;color:var(--brand);margin-bottom:10px}
+.bk-success p{font-size:13.5px;color:var(--muted);line-height:1.8;margin-bottom:22px}
+.bk-line-box{background:var(--bg);border-radius:var(--r12);padding:20px;margin-bottom:20px}
+.bk-line-box img{width:120px;height:120px;border-radius:var(--r8);margin-bottom:12px}
+.bk-line-box p{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+@media(max-width:600px){
+  .booking-head{padding:22px 20px 18px}
+  .booking-body{padding:20px 20px 24px}
+}
+.bk-consent{margin:18px 0 4px;padding:12px 14px;background:var(--bg);border-radius:var(--r8)}
+.bk-consent-label{display:flex;align-items:flex-start;gap:9px;cursor:pointer}
+.bk-consent-label input{margin-top:3px;flex-shrink:0;width:15px;height:15px;accent-color:var(--accent);cursor:pointer}
+.bk-consent-label span{font-size:12px;color:var(--muted);line-height:1.7}
+.bk-consent-label a{color:var(--accent);font-weight:600;text-decoration:underline}
+
+/* ─── 隱私權政策頁尾連結 ─── */
+.cta-footer-link{color:rgba(255,255,255,.35);font-size:11.5px;text-decoration:underline;margin-left:10px;transition:.2s}
+.cta-footer-link:hover{color:rgba(255,255,255,.6)}
+
+/* ─── 隱私權政策頁面 ─── */
+.policy-wrap{padding:44px 32px 64px;max-width:760px;margin:0 auto}
+.policy-wrap h2{font-size:18px;font-weight:800;color:var(--brand);margin:32px 0 12px}
+.policy-wrap h2:first-child{margin-top:0}
+.policy-wrap p{font-size:14px;color:#333;line-height:1.9;margin-bottom:12px}
+.policy-wrap ul{margin:0 0 12px 20px}
+.policy-wrap li{font-size:14px;color:#333;line-height:1.9;margin-bottom:6px}
+.policy-wrap .policy-updated{font-size:12.5px;color:var(--muted);margin-bottom:32px}
+.policy-back{margin-top:24px}
+@media(max-width:600px){
+  .policy-wrap{padding:32px 20px 48px}
+}
+.ctype-label{
+  font-size:10.5px;font-weight:700;letter-spacing:.8px;
+  display:inline-block;margin-bottom:10px;padding:3px 10px;
+  border-radius:999px;
+}
+.ctype-cold{background:rgba(74,127,192,.1);color:var(--blue)}
+.ctype-warm{background:rgba(46,158,143,.1);color:var(--teal)}
+.ctype-hot{background:rgba(232,131,58,.1);color:var(--accent)}
+.contact-info{
+  background:var(--bg);border-radius:var(--r16);padding:28px;
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.ci-group h4{font-size:13px;font-weight:700;color:var(--brand);margin-bottom:8px}
+.ci-group p,.ci-group a{font-size:13.5px;color:var(--muted);text-decoration:none;display:block;line-height:1.8}
+.ci-group a:hover{color:var(--accent)}
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+.cta-footer{
+  max-width:1100px;margin:16px auto 0;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cta-footer-brand{font-size:11.5px;color:rgba(255,255,255,.35);font-weight:500}
+.cta-footer-icons{display:flex;gap:8px}
+.cta-icon-btn{
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;transition:.2s;
+}
+.cta-icon-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+footer{
+  background:var(--brand2);padding:32px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-brand{color:#fff;font-size:14px;font-weight:700}
+.footer-sub{color:rgba(255,255,255,.4);font-size:11.5px;margin-top:3px}
+.social-links{display:flex;gap:10px;align-items:center}
+.footer-link-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.7);background:rgba(255,255,255,.06);
+  text-decoration:none;font-size:13px;font-weight:500;
+  transition:.2s;white-space:nowrap;
+}
+.footer-link-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+
+/* ─── HIDDEN / UTILITY ────────────────────────────────── */
+.hidden{display:none!important}
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-sub{white-space:normal}
+  .hero-card{display:none}
+  .pain-grid,.svc-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-wrap{grid-template-columns:repeat(2,1fr)}
+  .cases-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-info{grid-template-columns:1fr}
+  .steps-wrap::before{display:none}
+  .steps-wrap{flex-direction:column;gap:16px}
+}
+@media(max-width:600px){
+  html,body{overflow-x:hidden;max-width:100vw}
+  nav{padding:0 12px;flex-wrap:nowrap;gap:6px}
+  .nav-logo{font-size:13px;gap:6px}
+  .bpo-badge{font-size:11px;padding:3px 6px}
+  .nav-links{gap:0}
+  .nav-links a{padding:0 7px;font-size:11.5px}
+  .nav-cta{display:none}
+  .sec,.hero,.cases-hero,.about-hero,.contact-hero,.speaking,.contact-wrap{padding-left:16px;padding-right:16px}
+  .cases-filters{padding:14px 16px;flex-direction:column;align-items:stretch;gap:14px}
+  .filter-group{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+  .filter-label{display:block;width:100%;margin-bottom:2px;grid-column:1/-1}
+  .filter-btn{width:100%;min-height:36px;padding:7px 4px;text-align:center}
+  .filter-sep{display:none}
+  .cases-grid{padding:20px 16px;grid-template-columns:1fr}
+  .team-grid,.contact-wrap{padding:20px 16px}
+  .pain-grid,.svc-grid{grid-template-columns:1fr}
+  #page-home .pain-grid .pain-card:nth-child(even){transform:none}
+  .steps-wrap{grid-template-columns:1fr}
+  .service-details .svc-grid{grid-template-columns:1fr}
+  .service-overview{grid-template-columns:1fr}
+  .service-lane{padding:20px 0}
+  .service-lane+.service-lane{border-left:0;border-top:1px solid var(--border);padding-left:0}
+  .svc-grid{grid-auto-rows:auto}
+  .svc-card{height:auto}
+  .hero{padding:48px 16px 40px}
+  .hero-stats{gap:20px}
+  .hero h1{font-size:26px}
+footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
+  .inner{padding-left:16px;padding-right:16px}
+  .speak-grid{grid-template-columns:1fr}
+}
+
+/* ─── Block 2：AI 如何加入決策過程（沿用站內既有視覺語言：pain／case-card，轉場刻意做輕，且預設收起） ─── */
+.ai-transition{background:var(--bg);padding:36px 32px 40px;text-align:left;border-top:1px solid var(--border)}
+.ai-transition .inner{max-width:1100px}
+.ai-transition-p{color:var(--muted);font-size:13.5px;line-height:1.85;margin-bottom:18px}
+.ai-more-btn{margin:0}
+.ai-more-wrap{display:none}
+.ai-more-wrap.open{display:block;animation:aiFadeIn .25s ease}
+@keyframes aiFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){
+  .ai-transition{padding:24px 16px 32px}
+}
+
+.ai-cap-grid .pain-card{display:flex;gap:12px;align-items:flex-start}
+.ai-cap-grid .pain-icon{display:block;margin-bottom:0;flex-shrink:0}
+
+/* AI 系統卡片：借用 .case-card 的視覺骨架，維持跟上面合作案例卡片同一套語言 */
+.ai-sys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ai-sys-card{cursor:default}
+.ai-sys-card::before{background:var(--ai-accent,var(--accent))}
+.ai-sys-tag{display:inline-block;font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:.3px;margin-bottom:4px}
+.ai-demo-link{display:inline-flex;align-items:center;margin-top:14px;color:var(--accent);font-size:12.5px;font-weight:700;text-decoration:none}
+.ai-demo-link:hover{text-decoration:underline}
+
+.ai-footer-sec .inner{padding-top:4px}
+.ai-footer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.ai-footer-h3{font-size:15px;font-weight:700;color:var(--brand);margin:2px 0 14px;line-height:1.5}
+.ai-trust-list{display:flex;flex-direction:column;gap:10px}
+.ai-trust-item{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.7}
+.ai-trust-item .ti{font-size:15px;flex-shrink:0}
+.ai-tools-row{display:flex;flex-wrap:wrap;gap:8px}
+.ai-tools-row .svc-tag{background:var(--white)}
+
+@media(max-width:900px){
+  .ai-sys-grid{grid-template-columns:repeat(2,1fr)}
+  .ai-footer-grid{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:600px){
+  .ai-sys-grid{grid-template-columns:1fr}
+  .ai-cap-grid{grid-template-columns:1fr}
+}
+
+/* ─── FAQ（常見問題，手風琴，沿用站內既有色彩與間距語言） ─── */
+.faq{background:var(--white)}
+.faq-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
+.faq-item{
+  border:1px solid var(--border);border-radius:var(--r12);
+  overflow:hidden;background:var(--white);transition:box-shadow .2s;
+}
+.faq-item:hover{box-shadow:var(--shadow)}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 18px;background:none;border:none;text-align:left;cursor:pointer;
+  font:inherit;font-size:14px;font-weight:700;color:var(--brand);
+}
+.faq-icon{font-size:17px;color:var(--accent);flex-shrink:0;transition:transform .2s;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.faq-a p{padding:0 18px 16px;font-size:13.5px;color:var(--muted);line-height:1.75;white-space:pre-line}
+.faq-item.open .faq-a{max-height:600px}
+@media(max-width:900px){
+  .faq-list{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .faq-q{padding:14px 16px;font-size:13.5px}
+  .faq-a p{padding:0 16px 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">
+    <span class="bpo-badge">BPO</span> 承啟事務所
+  </a>
+  <div class="nav-links">
+    <a onclick="showPage('home')" data-page="home" class="active">首頁</a>
+    <a onclick="showPage('cases')" data-page="cases">服務案例</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════ HOME PAGE ══════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-grid">
+        <div>
+          <p class="hero-kicker">{{HERO_KICKER}}</p>
+          <h1>{{HERO_H1}}<br><em>{{HERO_H1_EM}}</em></h1>
+          <p class="hero-sub">{{HERO_SUB}}</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-num">{{STAT1_NUM}}</span>
+              <span class="stat-label">{{STAT1_LABEL}}</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">{{STAT2_NUM}}</span>
+              <span class="stat-label">{{STAT2_LABEL}}</span>
+            </div>
+          </div>
+          <div class="hero-btns">
+            <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約一杯咖啡時光</button>
+            <button class="btn btn-outline" onclick="showPage('cases')">查看合作案例</button>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="sec pain">
+    <div class="inner">
+      <p class="sec-label">COMMON STRUGGLES</p>
+      <h2 class="sec-title">{{PAIN_TITLE}}</h2>
+      <p class="sec-sub">{{PAIN_SUB}}</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN1_ICON}}</div>
+          <h3>{{PAIN1_TITLE}}</h3>
+          <p>{{PAIN1_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN2_ICON}}</div>
+          <h3>{{PAIN2_TITLE}}</h3>
+          <p>{{PAIN2_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN3_ICON}}</div>
+          <h3>{{PAIN3_TITLE}}</h3>
+          <p>{{PAIN3_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN4_ICON}}</div>
+          <h3>{{PAIN4_TITLE}}</h3>
+          <p>{{PAIN4_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN5_ICON}}</div>
+          <h3>{{PAIN5_TITLE}}</h3>
+          <p>{{PAIN5_DESC}}</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">{{PAIN6_ICON}}</div>
+          <h3>{{PAIN6_TITLE}}</h3>
+          <p>{{PAIN6_DESC}}</p>
+        </div>
+        <div class=pain-card>
+          <div class="pain-icon">{{PAIN7_ICON}}</div>
+          <h3>{{PAIN7_TITLE}}</h3>
+          <p>{{PAIN7_DESC}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="sec how">
+    <div class="inner">
+      <p class="sec-label">OUR APPROACH</p>
+      <h2 class="sec-title">{{HOW_TITLE}}</h2>
+      <p class="sec-sub">{{HOW_SUB}}</p>
+      <div class="steps-wrap">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <h3>{{STEP1_TITLE}}</h3>
+          <p>{{STEP1_DESC}}</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <h3>{{STEP2_TITLE}}</h3>
+          <p>{{STEP2_DESC}}</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <h3>{{STEP3_TITLE}}</h3>
+          <p>{{STEP3_DESC}}</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <h3>{{STEP4_TITLE}}</h3>
+          <p>{{STEP4_DESC}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="sec services">
+    <div class="inner">
+      <p class="sec-label">EXPERTISE</p>
+      <h2 class="sec-title">{{SVC_TITLE}}</h2>
+      
+      <p class="sec-sub">{{SVC_SUB}}</p>
+      <div class="service-overview">
+        <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(1,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(1,this)}"><span class="service-no">01</span><h3>{{SVC_GROUP1_TITLE}}</h3><p>{{SVC_GROUP1_DESC}}</p><div class="service-items">{{SVC1_TITLE}} ・ {{SVC3_TITLE}}</div></div>
+        <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(2,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(2,this)}"><span class="service-no">02</span><h3>{{SVC_GROUP2_TITLE}}</h3><p>{{SVC_GROUP2_DESC}}</p><div class="service-items">{{SVC2_TITLE}} ・ {{SVC4_TITLE}} ・ {{SVC5_TITLE}}</div></div>
+        <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(3,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(3,this)}"><span class="service-no">03</span><h3>{{SVC_GROUP3_TITLE}}</h3><p>{{SVC_GROUP3_DESC}}</p><div class="service-items">{{SVC6_TITLE}} ・ {{SVC7_TITLE}}</div></div>
+      </div>
+      <details class="service-details">
+        <summary onclick="resetServiceGroups()">查看完整服務項目</summary>
+      <div class="svc-grid">
+        <div class="svc-hr" data-service-group="1">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC1_ICON}}</div>
+            <h3>{{SVC1_TITLE}}</h3>
+            <p>{{SVC1_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC1_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-ops" data-service-group="2">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC2_ICON}}</div>
+            <h3>{{SVC2_TITLE}}</h3>
+            <p>{{SVC2_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC2_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-train" data-service-group="1">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC3_ICON}}</div>
+            <h3>{{SVC3_TITLE}}</h3>
+            <p>{{SVC3_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC3_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-fin" data-service-group="2">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC4_ICON}}</div>
+            <h3>{{SVC4_TITLE}}</h3>
+            <p>{{SVC4_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC4_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-acc" data-service-group="2">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC5_ICON}}</div>
+            <h3>{{SVC5_TITLE}}</h3>
+            <p>{{SVC5_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC5_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-biz" data-service-group="3">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC6_ICON}}</div>
+            <h3>{{SVC6_TITLE}}</h3>
+            <p>{{SVC6_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC6_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-mkt" data-service-group="3">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC7_ICON}}</div>
+            <h3>{{SVC7_TITLE}}</h3>
+            <p>{{SVC7_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC7_TAGS}}
+            </div>
+          </div>
+        </div>
+      </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- FAQ（常見問題：由 GAS 依「全站設定」的 FAQ_VISIBLE 開關決定是否輸出內容，發布前留白＝前端不顯示） -->
+  <!-- FAQ_START -->{{FAQ_SECTION}}<!-- FAQ_END -->
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-inner">
+      <div>
+        <h2>{{CTA_TITLE}}</h2>
+        <p>{{CTA_SUB}}</p>
+      </div>
+      <div class="cta-btns">
+        <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約一杯咖啡時光</button>
+        <a href="{{LINE_URL}}" target="_blank" class="btn btn-outline">加 LINE 詢問</a>
+      </div>
+    </div>
+    <div class="cta-footer">
+      <span class="cta-footer-brand">BPO 承啟事務所・Build & Pave Office<a href="#privacy" target="_blank" rel="noopener" class="cta-footer-link">隱私權政策</a></span>
+      <div class="cta-footer-icons">
+        <a href="{{IG_URL}}" target="_blank" aria-label="Instagram" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="{{VOCUS_URL}}" target="_blank" aria-label="方格子" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-home -->
+
+
+<!-- ══════════════════════════ CASES PAGE ══════════════════════════ -->
+<div id="page-cases" class="page">
+  <div class="cases-hero">
+    <div style="max-width:1100px;margin:0 auto">
+      <h1>{{CASES_H1}}</h1>
+      <p>{{CASES_SUB}}</p>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="cases-filters">
+    <div class="filter-group">
+      <span class="filter-label">角色</span>
+      <button class="filter-btn active" data-filter="all" onclick="filterCases(this,'all')">全部</button>
+      <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
+      <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
+      <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
+      <button class="filter-btn" data-filter="role-biz" onclick="filterCases(this,'role-biz')">業務</button>
+      <button class="filter-btn" data-filter="role-mkt" onclick="filterCases(this,'role-mkt')">行銷</button>
+      <button class="filter-btn" data-filter="role-train" onclick="filterCases(this,'role-train')">培訓</button>
+      <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
+    </div>
+    <div class="filter-sep"></div>
+    <div class="filter-group">
+      <span class="filter-label">企業階段</span>
+      <button class="filter-btn" data-filter="stage-g" onclick="filterCases(this,'stage-g')">成長期</button>
+      <button class="filter-btn" data-filter="stage-s" onclick="filterCases(this,'stage-s')">穩健期</button>
+      <button class="filter-btn" data-filter="stage-m" onclick="filterCases(this,'stage-m')">成熟期</button>
+    </div>
+  </div>
+
+  <!-- CASES GRID -->
+  <div class="cases-grid" id="casesGrid">
+
+{{CASES_GRID}}
+
+  </div><!-- /cases-grid -->
+
+  <!-- ══════════════ Block 2：這些成果的背後，AI 如何加入決策過程 ══════════════ -->
+
+  <!-- 2-1 故事轉場：先把話講完，留一個「想看的人再點」的入口，不強迫每個人往下滑 -->
+  <section class="ai-transition">
+    <div class="inner">
+      <span class="eyebrow">幕後 · AI 如何加入</span>
+      <p class="ai-transition-p">在合作過程中，我們也把適合的重複工作交給 AI，讓團隊把時間留給判斷、溝通與決策。</p>
+      <button class="btn btn-primary ai-more-btn" id="aiMoreBtn" onclick="toggleAiMore()">
+        好奇我們具體用 AI 做了什麼？點開看看 ↓
+      </button>
+    </div>
+  </section>
+
+  <!-- 2-2～2-4：預設收起，點上面按鈕才展開，避免每個人都被迫往下滑過一輪 -->
+  <div id="aiMoreWrap" class="ai-more-wrap">
+
+    <!-- 2-2 靈感：什麼樣的麻煩可以交給 AI -->
+    <section class="sec pain">
+      <div class="inner">
+        <p class="sec-label">WHAT AI CAN DO</p>
+        <h2 class="sec-title">重新設計人、流程、系統與 AI 的分工</h2>
+        <p class="sec-sub">不是套用一套系統，而是依企業現場建立真正能運作的協作方式。</p>
+        <div class="pain-grid ai-cap-grid" id="aiCapGrid"></div>
+      </div>
+    </section>
+
+    <!-- 2-3 實際做出來的系統 -->
+    <section class="sec how">
+      <div class="inner">
+        <p class="sec-label">實際做出來的系統</p>
+        <h2 class="sec-title">同樣的方法，用在不同的問題上</h2>
+        <p class="sec-sub">以下每一項，都對應一段真實的決策與陪跑過程，從正式上線系統到流程規格與互動原型</p>
+        <div class="ai-sys-grid" id="aiSysGrid"></div>
+      </div>
+    </section>
+
+    <!-- 2-4 資安 + 工具箱（合併一個收尾小節，維持輕量） -->
+    <section class="sec services ai-footer-sec">
+      <div class="inner">
+        <div class="ai-footer-grid">
+          <div class="ai-footer-col">
+            <p class="sec-label">資料安全</p>
+            <h3 class="ai-footer-h3">用 AI 快速做系統，資料會不會外流？</h3>
+            <div class="ai-trust-list" id="aiTrustList"></div>
+          </div>
+          <div class="ai-footer-col">
+            <p class="sec-label">背後的工具箱</p>
+            <h3 class="ai-footer-h3">沒有另外買系統，用的是這些</h3>
+            <div class="ai-tools-row" id="aiToolsRow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /aiMoreWrap -->
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-inner">
+      <div>
+        <h2>{{CTA_TITLE}}</h2>
+        <p>{{CTA_SUB}}</p>
+      </div>
+      <div class="cta-btns">
+        <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約一杯咖啡時光</button>
+        <a href="{{LINE_URL}}" target="_blank" class="btn btn-outline">加 LINE 詢問</a>
+      </div>
+    </div>
+    <div class="cta-footer">
+      <span class="cta-footer-brand">BPO 承啟事務所・Build & Pave Office<a href="#privacy" target="_blank" rel="noopener" class="cta-footer-link">隱私權政策</a></span>
+      <div class="cta-footer-icons">
+        <a href="{{IG_URL}}" target="_blank" aria-label="Instagram" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="{{VOCUS_URL}}" target="_blank" aria-label="方格子" class="cta-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-cases -->
+
+<!-- ══════════════════════════ 隱私權政策 ══════════════════════════ -->
+<div id="page-privacy" class="page">
+  <div class="contact-hero">
+    <div style="max-width:1100px;margin:0 auto">
+      <h1>隱私權政策</h1>
+      <p>BPO 承啟事務所（Build & Pave Office）</p>
+    </div>
+  </div>
+  <div class="policy-wrap">
+    <p class="policy-updated">最後更新日期：2026 年 7 月 16 日</p>
+
+    <p>感謝你使用 BPO 承啟事務所（以下稱「本公司」）的官方網站與相關服務。本公司非常重視你的個人資料保護，依據「個人資料保護法」（下稱個資法）及相關規定，向你說明本公司蒐集、處理及利用個人資料之政策，請於提供個人資料前詳閱以下內容。</p>
+
+    <h2>一、適用範圍</h2>
+    <p>本政策適用於你透過本公司官方網站（www.bpo.com.tw）填寫表單（例如「預約一杯咖啡時光」）、來信、加入 LINE 官方帳號或其他管道，主動提供個人資料予本公司之情形。</p>
+
+    <h2>二、蒐集之目的</h2>
+    <ul>
+      <li>提供顧問諮詢、預約安排與相關聯繫服務</li>
+      <li>回覆你的詢問、確認合作內容</li>
+      <li>後續合作聯繫與服務品質改善</li>
+      <li>依你的同意進行行銷或活動通知（如有）</li>
+    </ul>
+
+    <h2>三、蒐集之個人資料類別</h2>
+    <p>依你實際填寫的內容，可能包含：姓名、電話、電子郵件信箱等足資識別個人之資料，以及公司名稱、職稱、欲諮詢主題等業務相關資訊。</p>
+
+    <h2>四、利用之期間、地區、對象及方式</h2>
+    <ul>
+      <li><b>期間：</b>自蒐集之日起，至前述蒐集目的完成、或依相關法令規定之保存期限屆滿為止。</li>
+      <li><b>地區：</b>台灣境內，以及本公司所使用之雲端服務（如 Google Workspace）伺服器所在地區。</li>
+      <li><b>對象：</b>本公司及提供本公司雲端服務、電子郵件、日曆等技術支援之受託處理業者（如 Google LLC），本公司不會將你的個人資料出售或提供予前述以外之第三人。</li>
+      <li><b>方式：</b>以自動化設備或其他非自動化方式，於蒐集之特定目的範圍內為處理及利用。</li>
+    </ul>
+
+    <h2>五、你的權利</h2>
+    <p>依個資法第 3 條規定，你就本公司保有之個人資料得行使以下權利：查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用、請求刪除。如需行使前述權利，歡迎來信 <a href="mailto:info@bpo.com.tw" style="color:var(--accent);font-weight:600">info@bpo.com.tw</a> 與我們聯繫，本公司將於合理期間內處理。</p>
+
+    <h2>六、得否拒絕提供及其影響</h2>
+    <p>你所提供之個人資料均為自願性質。若你選擇不提供姓名、Email 等必要資料，本公司將無法為你安排預約諮詢或回覆你的詢問。</p>
+
+    <h2>七、行銷聯繫之退出機制</h2>
+    <p>若本公司以你的個人資料進行行銷聯繫（如電子郵件、LINE 訊息），你可隨時依個資法第 20 條規定，透過來信 info@bpo.com.tw 或直接於 LINE 官方帳號中告知，表示拒絕接受後續行銷聯繫，本公司將立即停止。</p>
+
+    <h2>八、資料安全</h2>
+    <p>本公司採取合理之技術與管理措施，保護你的個人資料不受未經授權之存取、使用或洩漏。相關資料儲存於本公司之 Google Workspace 帳號下，並依實際需要限制存取權限。</p>
+
+    <h2>九、政策之修訂</h2>
+    <p>本政策將因應法令變動或業務需要適時修訂，修訂後之內容將公布於本頁面，恕不另行個別通知。</p>
+
+    <h2>十、聯絡我們</h2>
+    <p>若你對本政策或個人資料之處理有任何疑問，歡迎透過 <a href="mailto:info@bpo.com.tw" style="color:var(--accent);font-weight:600">info@bpo.com.tw</a> 與本公司聯繫。</p>
+
+    <div class="policy-back">
+      <button class="btn btn-ghost" onclick="showPage('home')" style="color:var(--brand);border-color:var(--border)">回首頁</button>
+    </div>
+  </div>
+</div><!-- /page-privacy -->
+
+<!-- ═══════════════════════ 預約一杯咖啡時光：Modal ═══════════════════════ -->
+<div class="booking-overlay" id="bookingOverlay" onclick="if(event.target===this)closeBookingModal()">
+  <div class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+
+    <!-- 表單畫面 -->
+    <div id="bookingForm">
+      <div class="booking-head">
+        <button class="booking-close" onclick="closeBookingModal()" aria-label="關閉">✕</button>
+        <h3 id="bookingTitle">☕ 預約一杯咖啡時光</h3>
+        <p>留下你的資訊與這個月方便的 3 個時段，我們會盡快確認，並透過 Email 與日曆邀請通知你。</p>
+      </div>
+      <div class="booking-body">
+        <form id="bkForm" onsubmit="submitBooking(event)">
+          <div class="bk-field">
+            <label>怎麼稱呼你？ <span class="req">*</span></label>
+            <input type="text" name="name" required maxlength="40" placeholder="你的名字或暱稱都可以">
+          </div>
+          <div class="bk-field">
+            <label>公司 / 職稱 <span class="req">*</span></label>
+            <input type="text" name="company" required maxlength="60" placeholder="讓我們先認識你和你的公司">
+          </div>
+          <div class="bk-field">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" name="email" required placeholder="用來收確認信與日曆邀請">
+          </div>
+          <div class="bk-field">
+            <label>電話或 LINE ID</label>
+            <input type="text" name="phone" maxlength="30" placeholder="方便聯繫的方式（選填）">
+          </div>
+          <div class="bk-field">
+            <label>簡單介紹現況與本次想先聊聊的主題</label>
+            <textarea name="topic" maxlength="300" placeholder="讓我們先了解你或公司目前的狀況，也想知道這次最想聊的是什麼——例如組織制度、募資規劃、帳務清理……"></textarea>
+          </div>
+
+          <div class="bk-slot-title">這個月，你方便的 3 個時段 <span class="req">*</span></div>
+          <p class="bk-slot-sub">僅開放平日（週一至週五）10:00–18:00，不含國定假日。我們會從中選一個時段確認，審核通過、收到確認信與日曆邀請才代表預約完成。<br>建議每個時段先保留 2 小時，讓我們可以好好聊，不趕時間。</p>
+          <div class="bk-slot-row">
+            <span class="bk-slot-num">1</span>
+            <input type="date" name="date1" required>
+            <input type="time" name="time1" required min="10:00" max="18:00">
+          </div>
+          <div class="bk-slot-row">
+            <span class="bk-slot-num">2</span>
+            <input type="date" name="date2" required>
+            <input type="time" name="time2" required min="10:00" max="18:00">
+          </div>
+          <div class="bk-slot-row">
+            <span class="bk-slot-num">3</span>
+            <input type="date" name="date3" required>
+            <input type="time" name="time3" required min="10:00" max="18:00">
+          </div>
+
+          <div class="bk-consent">
+            <label class="bk-consent-label">
+              <input type="checkbox" name="consent" required>
+              <span>我已閱讀並同意 <a href="#privacy" target="_blank" rel="noopener">隱私權政策</a>，同意 BPO 承啟事務所蒐集、處理及利用我所填寫的個人資料，以安排本次諮詢及後續聯繫。</span>
+            </label>
+          </div>
+
+          <div class="bk-error" id="bkError"></div>
+          <button type="submit" class="btn btn-primary bk-submit" id="bkSubmitBtn">送出預約申請</button>
+          <p class="bk-note">送出後我們會在 1-2 個工作天內確認，通過審核才會發送確認信與日曆邀請——收到通知才代表預約成立。</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- 送出成功畫面 -->
+    <div class="bk-success" id="bookingSuccess">
+      <div class="bk-check">✓</div>
+      <h3>已收到你的預約申請</h3>
+      <p>我們會在 1-2 個工作天內確認時段，審核通過後會寄出確認信與日曆邀請——收到通知才代表預約完成。<br>先加入 LINE 官方帳號，有任何問題可以先聊聊。</p>
+      <div class="bk-line-box">
+        <img id="bkLineQr" src="" alt="BPO LINE 官方帳號 QR Code" loading="lazy">
+        <p>掃描加入，或點下方按鈕直接開啟 LINE</p>
+        <a href="{{LINE_URL}}" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">加入 BPO LINE 官方帳號</a>
+      </div>
+      <button class="btn btn-ghost" style="width:100%;justify-content:center" onclick="closeBookingModal()">關閉視窗</button>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<script>
+/* ─── PAGE NAVIGATION ─── */
+function showPage(name, updateUrl = true){
+  // 強制用 inline style 控制顯示，避免 CSS specificity 問題（#page-home 會覆蓋 .page）
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
+    p.style.display='none';
+  });
+  var target=document.getElementById('page-'+name);
+  if(target){
+    target.classList.add('active');
+    target.style.display=name==='home'?'flex':'block';
+    if(updateUrl){
+      const nextHash = name === 'home' ? '' : '#' + name;
+      history.pushState({page:name}, '', window.location.pathname + window.location.search + nextHash);
+    }
+  }
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a=>{
+    a.classList.toggle('active', a.dataset.page===name);
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+  // 切頁後回報高度
+  setTimeout(reportHeight, 200);
+  setTimeout(reportHeight, 600);
+}
+
+function pageFromHash(){
+  const name = window.location.hash.slice(1);
+  return document.getElementById('page-' + name) ? name : 'home';
+}
+
+// 頁面載入時依網址顯示對應頁面，重新整理後保留所在頁面
+document.addEventListener('DOMContentLoaded', function(){
+  showPage(pageFromHash(), false);
+
+  // 網址帶 #booking 時（例如從 LINE 導過來的連結），自動跳出「預約一杯咖啡時光」表單
+  if(window.location.hash === '#booking'){
+    setTimeout(function(){ openBookingModal(); }, 300);
+  }
+
+  // 偵測是否在 iframe 裡（Google Sites 嵌入）
+  if(window !== window.top){
+    // 所有 sticky 元素改成 relative，避免在 iframe 裡疊到內容
+    document.querySelectorAll('nav, .cases-filters').forEach(function(el){
+      el.style.position = 'relative';
+      el.style.top = 'auto';
+    });
+  }
+});
+
+window.addEventListener('popstate', function(){
+  showPage(pageFromHash(), false);
+});
+
+// 通知 Google Sites iframe 高度（嘗試所有已知格式）
+function reportHeight(){
+  // 等待瀏覽器 repaint 完才量
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      var h = Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.scrollHeight,
+          document.documentElement.offsetHeight
+        )
+      );
+      var targets = ['*', 'https://sites.google.com'];
+      var msgs = [
+        {type:'setHeight', height:h},
+        {type:'SET_IFRAME_HEIGHT', height:h},
+        {type:'resize', height:h},
+        JSON.stringify({height:h}),
+        h
+      ];
+      targets.forEach(function(t){
+        msgs.forEach(function(m){
+          try{ window.parent.postMessage(m, t); }catch(e){}
+        });
+      });
+    });
+  });
+}
+// 載入後立即回報，並在前 3 秒持續嘗試
+window.addEventListener('load', function(){
+  reportHeight();
+  var count = 0;
+  var retry = setInterval(function(){
+    reportHeight();
+    if(++count >= 6) clearInterval(retry);
+  }, 500);
+});
+
+if(window.ResizeObserver){
+  new ResizeObserver(reportHeight).observe(document.body);
+}
+
+function resetServiceGroups(){
+  document.querySelectorAll('.service-lane').forEach(lane=>lane.classList.remove('is-active'));
+  document.querySelectorAll('.service-details [data-service-group]').forEach(item=>item.classList.remove('is-filtered-out'));
+}
+
+function selectServiceGroup(group, lane){
+  const details=document.querySelector('#page-home .service-details');
+  if(!details)return;
+  resetServiceGroups();
+  lane.classList.add('is-active');
+  details.querySelectorAll('[data-service-group]').forEach(item=>{
+    item.classList.toggle('is-filtered-out',item.dataset.serviceGroup!==String(group));
+  });
+  details.open=true;
+  requestAnimationFrame(()=>details.scrollIntoView({behavior:'smooth',block:'start'}));
+}
+
+/* ─── CASE FILTER ─── */
+function filterCases(btn, cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#casesGrid .case-card').forEach(card=>{
+    if(cat==='all'){
+      card.classList.remove('hidden');
+    } else {
+      const cats = card.dataset.cats || '';
+      card.classList.toggle('hidden', !cats.split(' ').includes(cat));
+    }
+  });
+}
+
+/* ─── FAQ 手風琴：點問題展開／收起答案，各題互不影響，允許同時展開多題 ─── */
+function toggleFaq(btn){
+  const item = btn.closest('.faq-item');
+  if(item) item.classList.toggle('open');
+}
+
+/* ─── Block 2 展開／收起：預設收起，點按鈕才展開，不強迫每個訪客都往下滑過一輪 ─── */
+function toggleAiMore(forceOpen){
+  const wrap = document.getElementById('aiMoreWrap');
+  const btn  = document.getElementById('aiMoreBtn');
+  const opening = forceOpen === true ? true : !wrap.classList.contains('open');
+  wrap.classList.toggle('open', opening);
+  btn.textContent = opening ? '收起 ↑' : '好奇我們具體用 AI 做了什麼？點開看看 ↓';
+  if(opening){
+    setTimeout(()=> wrap.scrollIntoView({behavior:'smooth', block:'start'}), 50);
+  }
+}
+
+/* ─── Block 2 資料：靈感 / 系統 / 資安 / 工具箱（都不指名客戶，內容維持真實、不誇大） ─── */
+const AI_CAPS = [
+  {icon:'👂', title:'聽懂一句抱怨', desc:'不用寫規格書，一句「這樣太麻煩了」就能被拆解成資料結構與流程步驟。'},
+  {icon:'🔗', title:'打通原本就在用的工具', desc:'Sheets、Gmail、日曆、GitHub 彼此連動，不必為了自動化而換一套系統。'},
+  {icon:'📄', title:'自動生成文件與報表', desc:'PDF、報表、摘要文字一次到位，不用重複排版與計算。'},
+  {icon:'🔔', title:'排程與提醒自己來', desc:'時間到了自動寄信、自動抓資料、自動判斷，不必人工盯著。'},
+  {icon:'🗄️', title:'免工程維護', desc:'資料庫就是 Sheets，誰都能打開看、能改，不用等工程排期。'},
+  {icon:'🔁', title:'邊做邊修', desc:'用起來不順手，講一次哪裡卡，馬上就能改一版再試。'}
+];
+
+const AI_SYS = [
+  { tag:'行銷協作', accent:'var(--accent)', name:'官網建置與 CMS',
+    why:'整個網站的結構、文案、SEO，都是在對話裡一步步做出來的，不需要工程師才能改內容。',
+    items:['GAS 串接 GitHub，一鍵推送就能更新上線','內建 AI 潤稿選單，選取文字就能改寫成案例文案'] },
+  { tag:'營運協作', accent:'var(--blue)', name:'工作紀錄系統',
+    why:'同時支援多個客戶與專案，工時分散記錄，月底彙整報表非常花時間。',
+    items:['貼上一段流水帳，AI 自動分類彙整成主題摘要','一筆紀錄可同時掛在多個專案，報表不漏算'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'招募管理系統',
+    why:'人力增補申請、面試安排、錄用核決，常卡在「找不到人簽名」。',
+    items:['主管 Email 內直接點「同意／駁回」，免登入','面試與報到自動建立行事曆、自動生成線上會議連結'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'錄用作業生成包',
+    why:'每次錄用主管，要手動做好幾份格式不一致的文件。',
+    items:['單一頁面輸入，一次產出 5 種文件','核薪金額自動比對市場薪資，算出落點提示'] },
+  { tag:'財務協作', accent:'var(--brand)', name:'客戶服務後台',
+    why:'客戶合約、發票、多人分潤，原本靠 Excel 人工計算，容易出錯。',
+    items:['分潤依合約類型自動拆分計算，取代人工試算表','應收帳款天數、客戶留存率自動生成，不用憑感覺判斷'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'出勤系統',
+    why:'團隊成長後出勤靠人工彙整，時薪結算與特休試算容易出錯。',
+    items:['政府行事曆自動抓取，免人工下載上傳','連續工作天數自動警示，避免違反一例一休'] },
+  { tag:'營運協作', accent:'var(--blue)', name:'進銷存系統',
+    why:'多通路商品與庫存資料分散，需要一套系統整合起來。',
+    items:['低庫存自動警示，直接跳轉補貨流程','盤點差異自動記錄，不用人工比對'] },
+  { tag:'財務協作', accent:'var(--brand)', name:'品牌記帳系統',
+    why:'需要一套標準化記帳系統，也為未來電子申報預先做準備。',
+    items:['科目代碼自動帶出名稱，減少輸入錯誤','借貸即時平衡驗證，報表一鍵重新彙總'] },
+  { tag:'人資協作', accent:'var(--teal)', name:'流程查詢 Gem 助理',
+    why:'新制度上線後，主管常反覆問 HR 同樣的操作規則。',
+    items:['主管用日常語言直接問，不用等 HR 回覆','知識庫跟著系統迭代同步更新'] },
+  { tag:'財務協作', accent:'var(--brand)', name:'費用申請 AI 判讀原型',
+    why:'把\u6191證上傳、費用說明、會計科目建議與財務覆核串成一條可驗證的流程。',
+    items:['AI 依\u6191證與摘要分別判讀科目，顯示綠區或需人工判斷的灰區','自動生成暫存傳票預覽，財務人員保留調整與最終過帳權'] },
+  { tag:'策略協作', accent:'var(--purple)', name:'AI First 企劃提案工作流',
+    why:'把企編提案從收件、BRIEF、證據、洞察、方案到交付，拆成可覆核與可追溯的決策流程。',
+    items:['五階段、13 節點：AI 處理整理、搜尋、比較與同步修改，人類保留選擇、承諾與放行','加入缺口追蹤、根因式退回與唯一版本，降低重工與誤用假設風險'] },
+  { tag:'財務協作', accent:'var(--blue)', name:'訂單到經營結果互動學習頁',
+    why:'財務課程不再只看簡報，而是沿著一筆訂單理解工作決定如何走進會計科目與經營成果。',
+    items:['以 16 個業務站點串聯現貨、促銷、付款、出貨、撥款與退貨','每站依序展開真實場景、先做判斷、科目連動與經營結果，同時說明部門責任'] }
+];
+
+const AI_TRUST = [
+  {icon:'🔒', text:'內部系統只認公司網域帳號或驗證碼登入，不開放底層試算表權限給使用者。'},
+  {icon:'🗝️', text:'核決信與面試反饋連結具備防偽造、防重複使用的保護機制。'},
+  {icon:'🗄️', text:'正式內部系統以企業自有帳號與雲端空間為主，不對外開放底層資料。'},
+  {icon:'🧪', text:'對外展示的互動原型只使用模擬情境與示意資料，不串接正式 ERP、付款或客戶營運資料。'},
+  {icon:'🤖', text:'AI 潤稿、摘要這類功能是一次性請求，處理完就結束，不會被拿去訓練公開模型。'}
+];
+
+const AI_TOOLS = ['Google Apps Script','Google Sheets','Claude API','Gemini API','ChatGPT Site','Gmail API','Google Calendar API','GitHub API','政府開放資料平台','Apps Script 時間觸發器'];
+
+const aiCapGrid = document.getElementById('aiCapGrid');
+if(aiCapGrid){
+  AI_CAPS.forEach(c=>{
+    const el = document.createElement('div');
+    el.className = 'pain-card';
+    el.innerHTML = `<div class="pain-icon">${c.icon}</div><div><h3>${c.title}</h3><p>${c.desc}</p></div>`;
+    aiCapGrid.appendChild(el);
+  });
+}
+
+const aiSysGrid = document.getElementById('aiSysGrid');
+if(aiSysGrid){
+  AI_SYS.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'case-card ai-sys-card';
+    el.style.setProperty('--ai-accent', s.accent);
+    el.innerHTML = `
+      <div class="ai-sys-tag">${s.tag}</div>
+      <div class="case-company">${s.name}</div>
+      <div class="case-title">${s.why}</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">亮點</div>
+      <ul class="case-items">${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+      ${s.link ? `<a class="ai-demo-link" href="${s.link}" target="_blank" rel="noopener noreferrer">開啟互動原型 ↗</a>` : ''}
+    `;
+    aiSysGrid.appendChild(el);
+  });
+}
+
+const aiTrustList = document.getElementById('aiTrustList');
+if(aiTrustList){
+  AI_TRUST.forEach(t=>{
+    const el = document.createElement('div');
+    el.className = 'ai-trust-item';
+    el.innerHTML = `<span class="ti">${t.icon}</span><span>${t.text}</span>`;
+    aiTrustList.appendChild(el);
+  });
+}
+
+const aiToolsRow = document.getElementById('aiToolsRow');
+if(aiToolsRow){
+  AI_TOOLS.forEach(t=>{
+    const el = document.createElement('span');
+    el.className = 'svc-tag';
+    el.textContent = t;
+    aiToolsRow.appendChild(el);
+  });
+}
+
+/* ═══════════ 預約一杯咖啡時光：Modal ═══════════ */
+// 由「全站設定」分頁的 BOOKING_ENDPOINT 帶入，值是部署後的 GAS Web App 網址
+const BOOKING_ENDPOINT = "{{BOOKING_ENDPOINT}}";
+
+function openBookingModal(){
+  const overlay = document.getElementById('bookingOverlay');
+  if(!overlay) return;
+  document.getElementById('bookingForm').style.display = 'block';
+  document.getElementById('bookingSuccess').classList.remove('show');
+  const err = document.getElementById('bkError');
+  err.classList.remove('show'); err.textContent = '';
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setBookingDateLimits();
+}
+function closeBookingModal(){
+  const overlay = document.getElementById('bookingOverlay');
+  if(!overlay) return;
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeBookingModal();
+});
+
+// 日期只能選「今天～這個月最後一天」
+function setBookingDateLimits(){
+  const now = new Date();
+  const todayStr = now.toISOString().slice(0,10);
+  const lastDay = new Date(now.getFullYear(), now.getMonth()+1, 0);
+  const lastDayStr = lastDay.toISOString().slice(0,10);
+  ['date1','date2','date3'].forEach(function(n){
+    const el = document.querySelector('#bkForm [name="'+n+'"]');
+    if(el){ el.min = todayStr; el.max = lastDayStr; }
+  });
+}
+
+// 只開放平日（週一至週五）10:00–18:00，排除國定假日。
+// 這份假日清單需要每年手動更新一次，可對照行政院人事行政總處官方行事曆（www.dgpa.gov.tw）。
+const BOOKING_HOLIDAYS = [
+  '2026-01-01', // 元旦
+  '2026-02-16', // 除夕
+  '2026-02-17', '2026-02-18', '2026-02-19', // 春節初一～初三
+  '2026-02-20', // 春節彈性放假
+  '2026-02-27', // 228 彈性放假
+  '2026-04-03', // 兒童節
+  '2026-04-06', // 清明彈性放假
+  '2026-05-01', // 勞動節
+  '2026-06-19', // 端午彈性放假
+  '2026-09-25', // 中秋節
+  '2026-09-28', // 中秋彈性放假
+  '2026-10-09', // 國慶彈性放假
+  '2026-10-26', // 臺灣光復節補假
+  '2026-12-25', // 行憲紀念日
+];
+
+function isBookableDate(dateStr){
+  if(!dateStr) return false;
+  const d = new Date(dateStr + 'T00:00:00');
+  const day = d.getDay(); // 0=週日, 6=週六
+  if(day === 0 || day === 6) return false;
+  if(BOOKING_HOLIDAYS.indexOf(dateStr) !== -1) return false;
+  return true;
+}
+
+function isBookableTime(timeStr){
+  if(!timeStr) return false;
+  return timeStr >= '10:00' && timeStr <= '18:00';
+}
+
+// 一次性掛上日期／時間欄位的即時檢查（選到假日或非上班時段就清空並提示，避免重複掛監聽）
+function initBookingSlotGuards(){
+  const errBox = document.getElementById('bkError');
+  ['date1','date2','date3'].forEach(function(n){
+    const el = document.querySelector('#bkForm [name="'+n+'"]');
+    if(!el) return;
+    el.addEventListener('change', function(){
+      if(this.value && !isBookableDate(this.value)){
+        if(errBox){
+          errBox.textContent = '這天是假日或非上班日，麻煩改選平日（週一至週五）的時段。';
+          errBox.classList.add('show');
+        }
+        this.value = '';
+      }
+    });
+  });
+  ['time1','time2','time3'].forEach(function(n){
+    const el = document.querySelector('#bkForm [name="'+n+'"]');
+    if(!el) return;
+    el.addEventListener('change', function(){
+      if(this.value && !isBookableTime(this.value)){
+        if(errBox){
+          errBox.textContent = '預約時間僅開放 10:00–18:00，麻煩改選這個區間內的時間。';
+          errBox.classList.add('show');
+        }
+        this.value = '';
+      }
+    });
+  });
+}
+initBookingSlotGuards();
+
+function bkFieldVal(form, name){
+  const el = form.querySelector('[name="'+name+'"]');
+  return el ? el.value.trim() : '';
+}
+
+async function submitBooking(e){
+  e.preventDefault();
+  const form = e.target;
+  const errBox = document.getElementById('bkError');
+  errBox.classList.remove('show'); errBox.textContent = '';
+
+  const data = {
+    name: bkFieldVal(form,'name'),
+    company: bkFieldVal(form,'company'),
+    email: bkFieldVal(form,'email'),
+    phone: bkFieldVal(form,'phone'),
+    topic: bkFieldVal(form,'topic'),
+    slots: [
+      { date: bkFieldVal(form,'date1'), time: bkFieldVal(form,'time1') },
+      { date: bkFieldVal(form,'date2'), time: bkFieldVal(form,'time2') },
+      { date: bkFieldVal(form,'date3'), time: bkFieldVal(form,'time3') },
+    ],
+    consent: !!form.querySelector('[name="consent"]').checked,
+    source: 'www.bpo.com.tw',
+    submittedAt: new Date().toISOString(),
+  };
+
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
+  const slotsFilled = data.slots.every(function(s){ return s.date && s.time; });
+  const slotKeys = data.slots.map(function(s){ return s.date + ' ' + s.time; });
+  const hasDup = new Set(slotKeys).size !== slotKeys.length;
+  const slotsBookable = data.slots.every(function(s){ return isBookableDate(s.date) && isBookableTime(s.time); });
+
+  if(!data.name || !data.company || !emailOk || !slotsFilled){
+    errBox.textContent = '請填寫稱呼、公司／職稱、正確的 Email，並提供 3 個完整的時段（日期＋時間）。';
+    errBox.classList.add('show');
+    return;
+  }
+  if(!slotsBookable){
+    errBox.textContent = '時段僅開放平日（週一至週五）10:00–18:00，且不含國定假日，麻煩重新選擇。';
+    errBox.classList.add('show');
+    return;
+  }
+  if(!data.consent){
+    errBox.textContent = '請先閱讀並勾選同意隱私權政策，才能送出預約申請。';
+    errBox.classList.add('show');
+    return;
+  }
+  if(hasDup){
+    errBox.textContent = '3 個時段請不要重複，讓我們有更多選擇空間。';
+    errBox.classList.add('show');
+    return;
+  }
+  if(!BOOKING_ENDPOINT || BOOKING_ENDPOINT.indexOf('http') !== 0){
+    errBox.textContent = '預約系統設定中，請改用 LINE 官方帳號或來信 info@bpo.com.tw 與我們聯繫，謝謝你的耐心。';
+    errBox.classList.add('show');
+    return;
+  }
+
+  const btn = document.getElementById('bkSubmitBtn');
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '送出中…';
+
+  try{
+    // Content-Type 用 text/plain 是刻意的：避開瀏覽器對 GAS Web App 的 CORS 預檢請求
+    const resp = await fetch(BOOKING_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data),
+    });
+    const result = await resp.json().catch(function(){ return { ok: true }; });
+    if(result && result.ok === false) throw new Error(result.error || '送出失敗');
+
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('bookingSuccess').classList.add('show');
+    form.reset();
+  }catch(err){
+    errBox.textContent = '送出時發生問題，麻煩改用 LINE 官方帳號或來信 info@bpo.com.tw，我們會盡快回覆你。';
+    errBox.classList.add('show');
+  }finally{
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  const bkLineQr = document.getElementById('bkLineQr');
+  if(bkLineQr){
+    bkLineQr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent("{{LINE_URL}}");
+  }
+});
+</script>
+</body>
+</html>
