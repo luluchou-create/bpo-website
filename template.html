@@ -73,7 +73,7 @@ nav{
 .hero::before{content:'';position:absolute;left:0;bottom:0;width:34%;height:5px;background:var(--accent)}
 .hero::after{content:'';position:absolute;left:34%;bottom:0;width:18%;height:5px;background:var(--teal)}
 .hero-inner{max-width:1100px;margin:0 auto;position:relative}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:1100px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:48px;align-items:center;max-width:1100px}
 .eyebrow{
   display:inline-block;background:rgba(232,131,58,.18);
   color:var(--accent);font-size:11.5px;font-weight:700;
@@ -215,9 +215,8 @@ nav{
 .service-details .svc-card p{font-size:12.5px;margin:0}
 .service-details .svc-grid>div.is-filtered-out{display:none}
 #page-home.page.active{display:flex;flex-direction:column}
-#page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .faq{order:5}#page-home .cta-banner{order:6}
+#page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .proof{order:5}#page-home .faq{order:6}#page-home .cta-banner{order:7}
 #page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(6),#page-home .pain-grid .pain-card:nth-child(7){display:none}
-#page-home .steps-wrap .step-item:nth-child(n+5){display:none}
 
 /* ─── CTA BANNER ──────────────────────────────────────── */
 .cta-banner{
@@ -671,6 +670,95 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .faq-q{padding:14px 16px;font-size:13.5px}
   .faq-a p{padding:0 16px 14px}
 }
+
+/* ─── HERO ROTATOR（情境／方法縮影，不指名客戶） ─── */
+.hero-rotator{
+  position:relative;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r16);padding:26px 24px 22px;min-height:180px;backdrop-filter:blur(6px);
+  display:flex;flex-direction:column;
+}
+.hr-card{display:none;flex-direction:column;gap:14px}
+.hr-card.active{display:flex;animation:hrFade .35s ease}
+@keyframes hrFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.hr-stage{display:inline-block;font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:.4px;background:rgba(232,131,58,.16);padding:3px 10px;border-radius:999px;width:fit-content}
+.hr-quote{color:#fff;font-size:16px;line-height:1.6;font-weight:600;margin:0}
+.hr-link{color:rgba(255,255,255,.85);font-size:12.5px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;width:fit-content}
+.hr-link:hover{color:#fff;text-decoration:underline}
+.hr-dots{display:flex;gap:6px;margin-top:18px}
+.hr-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);border:none;cursor:pointer;padding:0;transition:background .2s,width .2s}
+.hr-dot.active{background:var(--accent);width:18px;border-radius:3px}
+@media(max-width:900px){.hero-rotator{display:none}}
+
+/* ─── 企業情境卡片：hover 浮現「查看相關案例」 ─── */
+.pain-card{overflow:hidden}
+.pain-reveal{
+  display:inline-flex;align-items:center;gap:4px;margin-top:10px;
+  font-size:12px;font-weight:700;color:var(--accent);text-decoration:none;
+  opacity:0;transform:translateY(4px);transition:opacity .2s ease,transform .2s ease;
+}
+.pain-reveal:hover{text-decoration:underline}
+.pain-card:hover .pain-reveal,.pain-card:focus-within .pain-reveal{opacity:1;transform:translateY(0)}
+
+/* ─── 四階段：捲動漸進 stagger + 進度線 wipe 動畫 ─── */
+.step-item{opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease}
+.step-item.in-view{opacity:1;transform:translateY(0)}
+.step-item::before{content:'';position:absolute;top:-1px;left:0;height:2px;width:0;background:var(--accent);transition:width .5s ease}
+.step-item.in-view::before{width:100%}
+.step-item:nth-child(1){transition-delay:0s}.step-item:nth-child(1).in-view::before{transition-delay:.05s}
+.step-item:nth-child(2){transition-delay:.1s}.step-item:nth-child(2).in-view::before{transition-delay:.2s}
+.step-item:nth-child(3){transition-delay:.2s}.step-item:nth-child(3).in-view::before{transition-delay:.35s}
+.step-item:nth-child(4){transition-delay:.3s}.step-item:nth-child(4).in-view::before{transition-delay:.5s}
+
+/* ─── 服務：01/02/03 圖示 + 手風琴展開動畫 ─── */
+.service-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;margin-bottom:10px;color:var(--accent);transition:color .2s}
+.service-lane:nth-child(2) .service-icon{color:var(--teal)}
+.service-lane:nth-child(3) .service-icon{color:var(--blue)}
+.service-lane:hover .service-icon{color:var(--brand)}
+.service-icon svg{width:100%;height:100%;display:block}
+.service-reveal{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.service-details[open] .service-reveal{grid-template-rows:1fr}
+.service-reveal>.svc-grid{overflow:hidden;min-height:0}
+
+/* ─── 案例卡片：hover 浮現「留下的能力」標籤 ─── */
+.case-leave-badge{
+  position:absolute;top:0;left:0;right:0;min-height:46px;
+  display:flex;align-items:center;
+  background:var(--brand);color:#fff;font-size:11px;font-weight:700;
+  padding:0 20px;border-radius:5px 5px 0 0;line-height:1.3;
+  opacity:0;transform:translateY(-100%);transition:opacity .2s ease,transform .2s ease;
+  pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  z-index:3;
+}
+.case-card:hover .case-leave-badge,.case-card:focus-within .case-leave-badge{opacity:1;transform:translateY(0)}
+
+/* ─── PROOF：實績證明三分頁（合作案例／AI 成果／觀點文章） ─── */
+.tab-bar{display:flex;gap:28px;border-bottom:1px solid var(--border);margin-bottom:24px}
+.tab-btn{
+  background:none;border:none;cursor:pointer;font:inherit;
+  font-size:14px;font-weight:700;color:var(--muted);
+  padding:0 0 12px;border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.tab-btn:hover{color:var(--brand)}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-panel{display:none;grid-template-columns:repeat(3,1fr);gap:16px}
+.tab-panel.active{display:grid;animation:tabFadeIn .3s ease}
+@keyframes tabFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.tab-panel .case-card{max-height:300px;overflow:hidden;position:relative}
+.tab-panel .case-card::after{content:'';position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,1));pointer-events:none}
+.proof-empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13.5px;padding:32px 0}
+.tab-more{display:inline-block;margin-top:20px;font-size:13px;font-weight:700;color:var(--accent);text-decoration:none}
+.tab-more:hover{text-decoration:underline}
+@media(max-width:900px){.tab-panel{grid-template-columns:1fr}}
+
+/* ─── 尊重降低動態偏好設定 ─── */
+@media(prefers-reduced-motion:reduce){
+  .hr-card,.pain-reveal,.step-item,.step-item::before,.tab-panel.active,.case-leave-badge,.service-reveal{
+    transition:none!important;animation:none!important;
+  }
+  .step-item{opacity:1;transform:none}
+  .step-item::before{width:100%}
+}
 </style>
 </head>
 <body>
@@ -697,20 +785,28 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
           <p class="hero-kicker">{{HERO_KICKER}}</p>
           <h1>{{HERO_H1}}<br><em>{{HERO_H1_EM}}</em></h1>
           <p class="hero-sub">{{HERO_SUB}}</p>
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-num">{{STAT1_NUM}}</span>
-              <span class="stat-label">{{STAT1_LABEL}}</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num">{{STAT2_NUM}}</span>
-              <span class="stat-label">{{STAT2_LABEL}}</span>
-            </div>
-          </div>
           <div class="hero-btns">
             <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約一杯咖啡時光</button>
-            <button class="btn btn-outline" onclick="showPage('cases')">查看合作案例</button>
+            <button class="btn btn-outline" onclick="showPage('cases')">查看服務案例</button>
           </div>
+        </div>
+        <div class="hero-rotator" id="heroRotator">
+          <div class="hr-card active" data-i="0">
+            <span class="hr-stage">穩健期企業・常見情境</span>
+            <p class="hr-quote">「主管分工不清，成長天花板卡住晉升」</p>
+            <a class="hr-link" href="#" onclick="goToCaseFilter('role-hr');return false;">我們怎麼協助 →</a>
+          </div>
+          <div class="hr-card" data-i="1">
+            <span class="hr-stage">我們的合作方法</span>
+            <p class="hr-quote">四階段陪跑：看懂現場 → 重整分工 → 建置方法 → 交給團隊</p>
+            <a class="hr-link" href="#" onclick="document.querySelector('.how').scrollIntoView({behavior:'smooth'});return false;">了解合作方法 →</a>
+          </div>
+          <div class="hr-card" data-i="2">
+            <span class="hr-stage">成長期企業・常見情境</span>
+            <p class="hr-quote">「業績快速成長，組織架構跟招募能力沒跟上」</p>
+            <a class="hr-link" href="#" onclick="goToCaseFilter('role-biz');return false;">我們怎麼協助 →</a>
+          </div>
+          <div class="hr-dots" id="heroRotatorDots"></div>
         </div>
         </div>
     </div>
@@ -727,36 +823,43 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
           <div class="pain-icon">{{PAIN1_ICON}}</div>
           <h3>{{PAIN1_TITLE}}</h3>
           <p>{{PAIN1_DESC}}</p>
+          <a class="pain-reveal" href="#" onclick="goToCaseFilter('role-hr');return false;">查看相關案例 →</a>
         </div>
         <div class="pain-card">
           <div class="pain-icon">{{PAIN2_ICON}}</div>
           <h3>{{PAIN2_TITLE}}</h3>
           <p>{{PAIN2_DESC}}</p>
+          <a class="pain-reveal" href="#" onclick="goToCaseFilter('role-fin');return false;">查看相關案例 →</a>
         </div>
         <div class="pain-card">
           <div class="pain-icon">{{PAIN3_ICON}}</div>
           <h3>{{PAIN3_TITLE}}</h3>
           <p>{{PAIN3_DESC}}</p>
+          <a class="pain-reveal" href="#" onclick="goToCaseFilter('role-train');return false;">查看相關案例 →</a>
         </div>
         <div class="pain-card">
           <div class="pain-icon">{{PAIN4_ICON}}</div>
           <h3>{{PAIN4_TITLE}}</h3>
           <p>{{PAIN4_DESC}}</p>
+          <a class="pain-reveal" href="#" onclick="goToCaseFilter('role-ops');return false;">查看相關案例 →</a>
         </div>
         <div class="pain-card">
           <div class="pain-icon">{{PAIN5_ICON}}</div>
           <h3>{{PAIN5_TITLE}}</h3>
           <p>{{PAIN5_DESC}}</p>
+          <a class="pain-reveal" href="#" onclick="goToCaseFilter('role-biz');return false;">查看相關案例 →</a>
         </div>
         <div class="pain-card">
           <div class="pain-icon">{{PAIN6_ICON}}</div>
           <h3>{{PAIN6_TITLE}}</h3>
           <p>{{PAIN6_DESC}}</p>
+          <a class="pain-reveal" href="#" onclick="goToCaseFilter('role-mkt');return false;">查看相關案例 →</a>
         </div>
-        <div class=pain-card>
+        <div class="pain-card">
           <div class="pain-icon">{{PAIN7_ICON}}</div>
           <h3>{{PAIN7_TITLE}}</h3>
           <p>{{PAIN7_DESC}}</p>
+          <a class="pain-reveal" href="#" onclick="goToCaseFilter('role-fin');return false;">查看相關案例 →</a>
         </div>
       </div>
     </div>
@@ -801,12 +904,13 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       
       <p class="sec-sub">{{SVC_SUB}}</p>
       <div class="service-overview">
-        <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(1,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(1,this)}"><span class="service-no">01</span><h3>{{SVC_GROUP1_TITLE}}</h3><p>{{SVC_GROUP1_DESC}}</p><div class="service-items">{{SVC1_TITLE}} ・ {{SVC3_TITLE}}</div></div>
-        <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(2,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(2,this)}"><span class="service-no">02</span><h3>{{SVC_GROUP2_TITLE}}</h3><p>{{SVC_GROUP2_DESC}}</p><div class="service-items">{{SVC2_TITLE}} ・ {{SVC4_TITLE}} ・ {{SVC5_TITLE}}</div></div>
-        <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(3,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(3,this)}"><span class="service-no">03</span><h3>{{SVC_GROUP3_TITLE}}</h3><p>{{SVC_GROUP3_DESC}}</p><div class="service-items">{{SVC6_TITLE}} ・ {{SVC7_TITLE}}</div></div>
+        <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(1,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(1,this)}"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.3"/><path d="M15.5 20c.3-2.6 2-4.6 4.5-5"/></svg></span><span class="service-no">01</span><h3>{{SVC_GROUP1_TITLE}}</h3><p>{{SVC_GROUP1_DESC}}</p><div class="service-items">{{SVC1_TITLE}} ・ {{SVC3_TITLE}}</div></div>
+        <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(2,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(2,this)}"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="6" height="6" rx="1.2"/><rect x="15" y="14" width="6" height="6" rx="1.2"/><path d="M9 7h6a3 3 0 0 1 3 3v4"/><path d="M15 17H9a3 3 0 0 1-3-3V7"/></svg></span><span class="service-no">02</span><h3>{{SVC_GROUP2_TITLE}}</h3><p>{{SVC_GROUP2_DESC}}</p><div class="service-items">{{SVC2_TITLE}} ・ {{SVC4_TITLE}} ・ {{SVC5_TITLE}}</div></div>
+        <div class="service-lane" role="button" tabindex="0" onclick="selectServiceGroup(3,this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectServiceGroup(3,this)}"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-9"/><path d="M15 6h6v6"/></svg></span><span class="service-no">03</span><h3>{{SVC_GROUP3_TITLE}}</h3><p>{{SVC_GROUP3_DESC}}</p><div class="service-items">{{SVC6_TITLE}} ・ {{SVC7_TITLE}}</div></div>
       </div>
       <details class="service-details">
         <summary onclick="resetServiceGroups()">查看完整服務項目</summary>
+      <div class="service-reveal">
       <div class="svc-grid">
         <div class="svc-hr" data-service-group="1">
           <div class="svc-card">
@@ -879,7 +983,28 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
           </div>
         </div>
       </div>
+      </div>
       </details>
+    </div>
+  </section>
+
+  <!-- PROOF: 實績證明（合作案例／AI 成果／觀點文章 三分頁，資料來自既有案例卡片與 AI_SYS，觀點文章待 07_LINE社群推播 內容就緒後填入 ARTICLES 陣列） -->
+  <section class="sec proof" id="proofSection">
+    <div class="inner">
+      <p class="sec-label">PROOF OF WORK</p>
+      <h2 class="sec-title">我們做過什麼</h2>
+      <p class="sec-sub">服務案例、AI 落地成果、企業現場的觀察——三種證據，你想先看哪一種？</p>
+      <div class="tab-bar" role="tablist">
+        <button class="tab-btn active" data-panel="case" role="tab" aria-selected="true">服務案例</button>
+        <button class="tab-btn" data-panel="ai" role="tab" aria-selected="false">AI 成果</button>
+        <button class="tab-btn" data-panel="article" role="tab" aria-selected="false">觀點文章</button>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel active" data-panel="case" id="proofCasePanel"></div>
+        <div class="tab-panel" data-panel="ai" id="proofAiPanel"></div>
+        <div class="tab-panel" data-panel="article" id="proofArticlePanel"></div>
+      </div>
+      <a href="#" class="tab-more" id="proofMoreLink">查看全部服務案例 →</a>
     </div>
   </section>
 
@@ -1629,6 +1754,141 @@ document.addEventListener('DOMContentLoaded', function(){
     bkLineQr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent("{{LINE_URL}}");
   }
 });
+
+/* ─── 情境卡連結：導到服務案例頁並套用對應角色篩選 ─── */
+function goToCaseFilter(role){
+  showPage('cases');
+  setTimeout(function(){
+    var btn = document.querySelector('.filter-btn[data-filter="' + role + '"]');
+    if(btn) btn.click();
+    var grid = document.getElementById('casesGrid');
+    if(grid) grid.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 350);
+}
+
+/* ─── Hero 輪播卡：自動播放，滑鼠移入暫停 ─── */
+(function(){
+  var wrap = document.getElementById('heroRotator');
+  if(!wrap) return;
+  var cards = Array.prototype.slice.call(wrap.querySelectorAll('.hr-card'));
+  var dotsWrap = document.getElementById('heroRotatorDots');
+  if(!cards.length || !dotsWrap) return;
+  cards.forEach(function(c, i){
+    var dot = document.createElement('button');
+    dot.className = 'hr-dot' + (i === 0 ? ' active' : '');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', '第 ' + (i + 1) + ' 張');
+    dot.addEventListener('click', function(){ show(i); });
+    dotsWrap.appendChild(dot);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.hr-dot'));
+  var idx = 0, timer;
+  function show(i){
+    idx = i;
+    cards.forEach(function(c, ci){ c.classList.toggle('active', ci === i); });
+    dots.forEach(function(d, di){ d.classList.toggle('active', di === i); });
+  }
+  function next(){ show((idx + 1) % cards.length); }
+  function start(){ timer = setInterval(next, 4000); }
+  function stop(){ clearInterval(timer); }
+  start();
+  wrap.addEventListener('mouseenter', stop);
+  wrap.addEventListener('mouseleave', start);
+})();
+
+/* ─── 四階段：捲動進入畫面時觸發漸進動畫 ─── */
+(function(){
+  var items = document.querySelectorAll('.steps-wrap .step-item');
+  if(!items.length) return;
+  if(!window.IntersectionObserver){
+    items.forEach(function(el){ el.classList.add('in-view'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  items.forEach(function(el){ io.observe(el); });
+})();
+
+/* ─── PROOF：首頁「實績證明」三分頁——合作案例取自案例卡片前 3 筆，
+   AI 成果取自既有 AI_SYS 前 3 筆，觀點文章待 07_LINE社群推播 內容就緒後
+   填入下方 ARTICLES 陣列即可自動顯示（結構已就緒，目前先顯示待補提示） ─── */
+(function(){
+  var casePanel = document.getElementById('proofCasePanel');
+  var aiPanel = document.getElementById('proofAiPanel');
+  var articlePanel = document.getElementById('proofArticlePanel');
+  var moreLink = document.getElementById('proofMoreLink');
+  if(!casePanel && !aiPanel && !articlePanel) return;
+
+  if(casePanel){
+    var sourceCards = document.querySelectorAll('#casesGrid .case-card');
+    var picked = Array.prototype.slice.call(sourceCards, 0, 3);
+    if(picked.length){
+      picked.forEach(function(card){ casePanel.appendChild(card.cloneNode(true)); });
+    } else {
+      casePanel.innerHTML = '<p class="proof-empty">案例整理中，請先查看「服務案例」頁。</p>';
+    }
+  }
+
+  if(aiPanel && typeof AI_SYS !== 'undefined'){
+    AI_SYS.slice(0, 3).forEach(function(s){
+      var el = document.createElement('div');
+      el.className = 'case-card ai-sys-card';
+      el.style.setProperty('--ai-accent', s.accent);
+      el.innerHTML = '<div class="ai-sys-tag">' + s.tag + '</div>' +
+        '<div class="case-company">' + s.name + '</div>' +
+        '<div class="case-title">' + s.why + '</div>' +
+        '<div class="case-divider"></div>' +
+        '<div class="case-sl">亮點</div>' +
+        '<ul class="case-items">' + s.items.map(function(i){ return '<li>' + i + '</li>'; }).join('') + '</ul>';
+      aiPanel.appendChild(el);
+    });
+  }
+
+  var ARTICLES = [];
+  if(articlePanel){
+    if(ARTICLES.length){
+      ARTICLES.slice(0, 3).forEach(function(a){
+        var el = document.createElement('div');
+        el.className = 'proof-card p-article';
+        el.innerHTML = '<span class="proof-tag">' + a.cat + ' · ' + a.date + '</span><h3>' + a.title + '</h3><p>' + a.desc + '</p><a href="' + a.link + '">閱讀全文 →</a>';
+        articlePanel.appendChild(el);
+      });
+    } else {
+      articlePanel.innerHTML = '<p class="proof-empty">觀點文章準備中，陸續更新——歡迎先追蹤 LINE 官方帳號。</p>';
+    }
+  }
+
+  var tabBtns = document.querySelectorAll('#proofSection .tab-btn');
+  var tabPanels = document.querySelectorAll('#proofSection .tab-panel');
+  var moreText = { case: '查看全部服務案例 →', ai: '查看更多 AI 應用 →', article: '查看全部文章 →' };
+  var moreAction = {
+    case: function(){ showPage('cases'); },
+    ai: function(){ showPage('cases'); setTimeout(function(){ toggleAiMore(true); }, 350); },
+    article: function(){ /* 觀點文章頁尚未上線 */ }
+  };
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var panel = btn.dataset.panel;
+      tabBtns.forEach(function(b){ b.classList.toggle('active', b === btn); b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
+      tabPanels.forEach(function(p){ p.classList.toggle('active', p.dataset.panel === panel); });
+      if(moreLink) moreLink.textContent = moreText[panel] || '查看更多 →';
+    });
+  });
+  if(moreLink){
+    moreLink.addEventListener('click', function(e){
+      e.preventDefault();
+      var active = document.querySelector('#proofSection .tab-btn.active');
+      var panel = active ? active.dataset.panel : 'case';
+      if(moreAction[panel]) moreAction[panel]();
+    });
+  }
+})();
 </script>
 </body>
 </html>
