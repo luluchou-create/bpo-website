@@ -73,7 +73,7 @@ nav{
 .hero::before{content:'';position:absolute;left:0;bottom:0;width:34%;height:5px;background:var(--accent)}
 .hero::after{content:'';position:absolute;left:34%;bottom:0;width:18%;height:5px;background:var(--teal)}
 .hero-inner{max-width:1100px;margin:0 auto;position:relative}
-.hero-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:48px;align-items:center;max-width:1100px}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:1100px}
 .eyebrow{
   display:inline-block;background:rgba(232,131,58,.18);
   color:var(--accent);font-size:11.5px;font-weight:700;
@@ -671,24 +671,6 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .faq-a p{padding:0 16px 14px}
 }
 
-/* ─── HERO ROTATOR（情境／方法縮影，不指名客戶） ─── */
-.hero-rotator{
-  position:relative;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
-  border-radius:var(--r16);padding:26px 24px 22px;min-height:180px;backdrop-filter:blur(6px);
-  display:flex;flex-direction:column;
-}
-.hr-card{display:none;flex-direction:column;gap:14px}
-.hr-card.active{display:flex;animation:hrFade .35s ease}
-@keyframes hrFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.hr-stage{display:inline-block;font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:.4px;background:rgba(232,131,58,.16);padding:3px 10px;border-radius:999px;width:fit-content}
-.hr-quote{color:#fff;font-size:16px;line-height:1.6;font-weight:600;margin:0}
-.hr-link{color:rgba(255,255,255,.85);font-size:12.5px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;width:fit-content}
-.hr-link:hover{color:#fff;text-decoration:underline}
-.hr-dots{display:flex;gap:6px;margin-top:18px}
-.hr-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);border:none;cursor:pointer;padding:0;transition:background .2s,width .2s}
-.hr-dot.active{background:var(--accent);width:18px;border-radius:3px}
-@media(max-width:900px){.hero-rotator{display:none}}
-
 /* ─── 企業情境卡片：hover 浮現「查看相關案例」 ─── */
 .pain-card{overflow:hidden}
 .pain-reveal{
@@ -726,8 +708,12 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   background:var(--brand);color:#fff;font-size:11px;font-weight:700;
   padding:0 20px;border-radius:5px 5px 0 0;line-height:1.3;
   opacity:0;transform:translateY(-100%);transition:opacity .2s ease,transform .2s ease;
-  pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  pointer-events:none;
   z-index:3;
+}
+.case-leave-badge>span{
+  display:block;min-width:0;flex:1 1 auto;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .case-card:hover .case-leave-badge,.case-card:focus-within .case-leave-badge{opacity:1;transform:translateY(0)}
 
@@ -753,7 +739,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 
 /* ─── 尊重降低動態偏好設定 ─── */
 @media(prefers-reduced-motion:reduce){
-  .hr-card,.pain-reveal,.step-item,.step-item::before,.tab-panel.active,.case-leave-badge,.service-reveal{
+  .pain-reveal,.step-item,.step-item::before,.tab-panel.active,.case-leave-badge,.service-reveal{
     transition:none!important;animation:none!important;
   }
   .step-item{opacity:1;transform:none}
@@ -790,25 +776,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
             <button class="btn btn-outline" onclick="showPage('cases')">查看服務案例</button>
           </div>
         </div>
-        <div class="hero-rotator" id="heroRotator">
-          <div class="hr-card active" data-i="0">
-            <span class="hr-stage">穩健期企業・常見情境</span>
-            <p class="hr-quote">「主管分工不清，成長天花板卡住晉升」</p>
-            <a class="hr-link" href="#" onclick="goToCaseFilter('role-hr');return false;">我們怎麼協助 →</a>
-          </div>
-          <div class="hr-card" data-i="1">
-            <span class="hr-stage">我們的合作方法</span>
-            <p class="hr-quote">四階段陪跑：看懂現場 → 重整分工 → 建置方法 → 交給團隊</p>
-            <a class="hr-link" href="#" onclick="document.querySelector('.how').scrollIntoView({behavior:'smooth'});return false;">了解合作方法 →</a>
-          </div>
-          <div class="hr-card" data-i="2">
-            <span class="hr-stage">成長期企業・常見情境</span>
-            <p class="hr-quote">「業績快速成長，組織架構跟招募能力沒跟上」</p>
-            <a class="hr-link" href="#" onclick="goToCaseFilter('role-biz');return false;">我們怎麼協助 →</a>
-          </div>
-          <div class="hr-dots" id="heroRotatorDots"></div>
-        </div>
-        </div>
+      </div>
     </div>
   </section>
 
@@ -1765,36 +1733,6 @@ function goToCaseFilter(role){
     if(grid) grid.scrollIntoView({behavior:'smooth', block:'start'});
   }, 350);
 }
-
-/* ─── Hero 輪播卡：自動播放，滑鼠移入暫停 ─── */
-(function(){
-  var wrap = document.getElementById('heroRotator');
-  if(!wrap) return;
-  var cards = Array.prototype.slice.call(wrap.querySelectorAll('.hr-card'));
-  var dotsWrap = document.getElementById('heroRotatorDots');
-  if(!cards.length || !dotsWrap) return;
-  cards.forEach(function(c, i){
-    var dot = document.createElement('button');
-    dot.className = 'hr-dot' + (i === 0 ? ' active' : '');
-    dot.type = 'button';
-    dot.setAttribute('aria-label', '第 ' + (i + 1) + ' 張');
-    dot.addEventListener('click', function(){ show(i); });
-    dotsWrap.appendChild(dot);
-  });
-  var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.hr-dot'));
-  var idx = 0, timer;
-  function show(i){
-    idx = i;
-    cards.forEach(function(c, ci){ c.classList.toggle('active', ci === i); });
-    dots.forEach(function(d, di){ d.classList.toggle('active', di === i); });
-  }
-  function next(){ show((idx + 1) % cards.length); }
-  function start(){ timer = setInterval(next, 4000); }
-  function stop(){ clearInterval(timer); }
-  start();
-  wrap.addEventListener('mouseenter', stop);
-  wrap.addEventListener('mouseleave', start);
-})();
 
 /* ─── 四階段：捲動進入畫面時觸發漸進動畫 ─── */
 (function(){
