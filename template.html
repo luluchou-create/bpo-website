@@ -182,7 +182,7 @@ nav{
 
 /* ─── SERVICES ────────────────────────────────────────── */
 .services{background:var(--bg)}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .svc-card{
   background:var(--white);border:1px solid var(--border);
   border-radius:var(--r16);padding:24px 20px;
@@ -198,6 +198,8 @@ nav{
 .svc-ops .svc-card::before{background:var(--teal)}
 .svc-train .svc-card::before{background:#7B5EA7}
 .svc-acc .svc-card::before{background:#2E9E8F}
+.svc-biz .svc-card::before{background:#3f7d20}
+.svc-mkt .svc-card::before{background:#c2416c}
 .svc-ai .svc-card::before{background:var(--purple)}
 .svc-icon{font-size:26px;margin-bottom:12px}
 .svc-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:8px}
@@ -846,6 +848,26 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
             </div>
           </div>
         </div>
+        <div class="svc-biz">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC6_ICON}}</div>
+            <h3>{{SVC6_TITLE}}</h3>
+            <p>{{SVC6_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC6_TAGS}}
+            </div>
+          </div>
+        </div>
+        <div class="svc-mkt">
+          <div class="svc-card">
+            <div class="svc-icon">{{SVC7_ICON}}</div>
+            <h3>{{SVC7_TITLE}}</h3>
+            <p>{{SVC7_DESC}}</p>
+            <div class="svc-tags">
+              {{SVC7_TAGS}}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1318,15 +1340,13 @@ const AI_SYS = [
     items:['主管用日常語言直接問，不用等 HR 回覆','知識庫跟著系統迭代同步更新'] },
   { tag:'財務協作', accent:'var(--brand)', name:'費用申請 AI 判讀原型',
     why:'把\u6191證上傳、費用說明、會計科目建議與財務覆核串成一條可驗證的流程。',
-    items:['AI 依\u6191證與摘要分別判讀科目，顯示綠區或需人工判斷的灰區','自動生成暫存傳票預覽，財務人員保留調整與最終過帳權'],
-    link:'https://xinchaofangwu-expense-poc.ffcb6b51-5cbf-40e2-ae3c-a9665763db10.chatgpt.site/' },
+    items:['AI 依\u6191證與摘要分別判讀科目，顯示綠區或需人工判斷的灰區','自動生成暫存傳票預覽，財務人員保留調整與最終過帳權'] },
   { tag:'策略協作', accent:'var(--purple)', name:'AI First 企劃提案工作流',
     why:'把企編提案從收件、BRIEF、證據、洞察、方案到交付，拆成可覆核與可追溯的決策流程。',
     items:['五階段、13 節點：AI 處理整理、搜尋、比較與同步修改，人類保留選擇、承諾與放行','加入缺口追蹤、根因式退回與唯一版本，降低重工與誤用假設風險'] },
   { tag:'財務協作', accent:'var(--blue)', name:'訂單到經營結果互動學習頁',
     why:'財務課程不再只看簡報，而是沿著一筆訂單理解工作決定如何走進會計科目與經營成果。',
-    items:['以 16 個業務站點串聯現貨、促銷、付款、出貨、撥款與退貨','每站依序展開真實場景、先做判斷、科目連動與經營結果，同時說明部門責任'],
-    link:'https://kangding-order-flow.ffcb6b51-5cbf-40e2-ae3c-a9665763db10.chatgpt.site/' }
+    items:['以 16 個業務站點串聯現貨、促銷、付款、出貨、撥款與退貨','每站依序展開真實場景、先做判斷、科目連動與經營結果，同時說明部門責任'] }
 ];
 
 const AI_TRUST = [
