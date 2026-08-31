@@ -67,13 +67,14 @@ nav{
 /* ─── HERO ────────────────────────────────────────────── */
 .hero{
   background:var(--brand);
-  padding:72px 32px 64px;
+  padding:88px 32px 78px;
   position:relative;overflow:hidden;
 }
 .hero::before{content:'';position:absolute;left:0;bottom:0;width:34%;height:5px;background:var(--accent)}
 .hero::after{content:'';position:absolute;left:34%;bottom:0;width:18%;height:5px;background:var(--teal)}
 .hero-inner{max-width:1100px;margin:0 auto;position:relative}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:720px}
+.hero-inner::after{content:'BPO';position:absolute;right:0;top:50%;transform:translateY(-50%);font:800 150px/1 'Montserrat',sans-serif;color:rgba(255,255,255,.035);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:1100px}
 .eyebrow{
   display:inline-block;background:rgba(232,131,58,.18);
   color:var(--accent);font-size:11.5px;font-weight:700;
@@ -81,12 +82,12 @@ nav{
   margin-bottom:18px;border:1px solid rgba(232,131,58,.3);
 }
 .hero h1{
-  color:#fff;font-size:clamp(28px,3.6vw,44px);font-weight:800;
-  line-height:1.25;margin-bottom:16px;letter-spacing:-.3px;
+  color:#fff;font-size:clamp(30px,4vw,52px);font-weight:800;
+  line-height:1.2;margin-bottom:20px;letter-spacing:0;
 }
 .hero-kicker{color:rgba(255,255,255,.72);font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:16px}
 .hero h1 em{color:var(--accent);font-style:normal}
-.hero-sub{color:rgba(255,255,255,.65);font-size:15.5px;line-height:1.8;margin-bottom:32px}
+.hero-sub{color:rgba(255,255,255,.65);font-size:15.5px;line-height:1.8;margin-bottom:32px;white-space:nowrap}
 .hero-stats{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
 .stat{text-align:left}
 .stat-num{display:block;font-size:28px;font-weight:800;color:var(--accent)}
@@ -140,6 +141,7 @@ nav{
 /* ─── PAIN POINTS ─────────────────────────────────────── */
 .pain{background:var(--bg)}
 .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 36px;counter-reset:needs}
+#page-home .pain-grid .pain-card:nth-child(even){transform:translateY(22px)}
 .pain-card{
   background:transparent;border:0;border-top:1px solid var(--border);
   border-radius:0;padding:20px 0 22px 46px;position:relative;
@@ -152,27 +154,18 @@ nav{
 
 /* ─── HOW IT WORKS ────────────────────────────────────── */
 .how{background:var(--white)}
-.steps-wrap{display:flex;gap:0;position:relative}
-.steps-wrap::before{
-  content:'';position:absolute;top:22px;left:22px;right:22px;height:2px;
-  background:linear-gradient(90deg,var(--accent),var(--blue));
-  z-index:0;
-}
-.step-item{flex:1;text-align:center;position:relative;z-index:1;padding:0 8px}
+.steps-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.steps-wrap::before{display:none}
+.step-item{text-align:left;position:relative;padding:18px 18px 0 0;border-top:1px solid var(--border)}
 .step-circle{
-  width:44px;height:44px;border-radius:50%;
-  background:var(--brand);color:#fff;
-  font-size:15px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 14px;
-  border:3px solid var(--white);
-  box-shadow:var(--shadow);
+  width:auto;height:auto;border-radius:0;background:transparent;color:var(--accent);
+  font:800 30px/1 'Montserrat',sans-serif;display:block;margin:0 0 18px;border:0;box-shadow:none;
 }
 .step-item h3{font-size:13.5px;font-weight:700;color:var(--brand);margin-bottom:5px}
 .step-item p{font-size:12.5px;color:var(--muted);line-height:1.6}
 
 /* ─── SERVICES ────────────────────────────────────────── */
-.services{background:var(--bg)}
+.services{background:var(--white)}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:14px}
 .svc-grid>div{display:flex;min-width:0}
 .svc-card{
@@ -186,13 +179,13 @@ nav{
 .svc-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
 }
-.svc-hr .svc-card::before{background:var(--blue)}
-.svc-fin .svc-card::before{background:var(--accent)}
+.svc-hr .svc-card::before{background:var(--accent)}
+.svc-fin .svc-card::before{background:var(--teal)}
 .svc-ops .svc-card::before{background:var(--teal)}
-.svc-train .svc-card::before{background:#7B5EA7}
-.svc-acc .svc-card::before{background:#2E9E8F}
-.svc-biz .svc-card::before{background:#3f7d20}
-.svc-mkt .svc-card::before{background:#c2416c}
+.svc-train .svc-card::before{background:var(--accent)}
+.svc-acc .svc-card::before{background:var(--teal)}
+.svc-biz .svc-card::before{background:var(--blue)}
+.svc-mkt .svc-card::before{background:var(--blue)}
 .svc-ai .svc-card::before{background:var(--purple)}
 .svc-icon{font-size:26px;margin-bottom:12px}
 .svc-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:8px}
@@ -213,9 +206,16 @@ nav{
 .service-details summary::after{content:'＋';float:right;color:var(--accent);font-size:17px}
 .service-details[open] summary::after{content:'−'}
 .service-details .svc-grid{padding:8px 0 20px}
+.service-details .svc-grid{grid-template-columns:repeat(2,1fr);gap:0 36px;grid-auto-rows:auto}
+.service-details .svc-grid>div{display:block}
+.service-details .svc-card{height:auto;display:block;border:0;border-top:1px solid var(--border);border-radius:0;padding:18px 0;background:transparent;overflow:visible}
+.service-details .svc-card:hover{box-shadow:none;transform:none}
+.service-details .svc-card::before,.service-details .svc-icon,.service-details .svc-tags{display:none}
+.service-details .svc-card h3{font-size:14px;margin-bottom:5px}
+.service-details .svc-card p{font-size:12.5px;margin:0}
 #page-home.page.active{display:flex;flex-direction:column}
 #page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .faq{order:5}#page-home .cta-banner{order:6}
-#page-home .pain-grid .pain-card:nth-child(2),#page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(7){display:none}
+#page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(6),#page-home .pain-grid .pain-card:nth-child(7){display:none}
 #page-home .steps-wrap .step-item:nth-child(n+5){display:none}
 
 /* ─── CTA BANNER ──────────────────────────────────────── */
@@ -283,6 +283,7 @@ nav{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:16px;padding:28px 32px;max-width:1164px;margin:0 auto;
 }
+.cases-grid>.case-card:first-child{grid-column:span 2}
 .case-card{
   background:var(--white);border:1px solid var(--border);
   border-radius:6px;padding:20px;
@@ -560,8 +561,10 @@ footer{
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-sub{white-space:normal}
   .hero-card{display:none}
   .pain-grid,.svc-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-wrap{grid-template-columns:repeat(2,1fr)}
   .cases-grid{grid-template-columns:repeat(2,1fr)}
   .team-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
@@ -586,6 +589,9 @@ footer{
   .cases-grid{padding:20px 16px;grid-template-columns:1fr}
   .team-grid,.contact-wrap{padding:20px 16px}
   .pain-grid,.svc-grid{grid-template-columns:1fr}
+  #page-home .pain-grid .pain-card:nth-child(even){transform:none}
+  .steps-wrap{grid-template-columns:1fr}
+  .service-details .svc-grid{grid-template-columns:1fr}
   .service-overview{grid-template-columns:1fr}
   .service-lane{padding:20px 0}
   .service-lane+.service-lane{border-left:0;border-top:1px solid var(--border);padding-left:0}
@@ -594,21 +600,8 @@ footer{
   .hero{padding:48px 16px 40px}
   .hero-stats{gap:20px}
   .hero h1{font-size:26px}
-  .cta-footer{
-  max-width:1100px;margin:16px auto 0;padding-top:16px;
-  border-top:1px solid rgba(255,255,255,.1);
-  display:flex;align-items:center;justify-content:space-between;
-}
-.cta-footer-brand{font-size:11.5px;color:rgba(255,255,255,.35);font-weight:500}
-.cta-footer-icons{display:flex;gap:8px}
-.cta-icon-btn{
-  width:32px;height:32px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.15);
-  color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);
-  display:flex;align-items:center;justify-content:center;
-  text-decoration:none;transition:.2s;
-}
-.cta-icon-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+  .hero-inner::after{font-size:84px;top:18%;right:-8px}
+  .cases-grid>.case-card:first-child{grid-column:auto}
 footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .inner{padding-left:16px;padding-right:16px}
   .speak-grid{grid-template-columns:1fr}
@@ -703,7 +696,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <div class="hero-inner">
       <div class="hero-grid">
         <div>
-          <p class="hero-kicker">階段性專業經理人 ・ 組織能力建置</p>
+          <p class="hero-kicker">階段性專業經理人・組織能力建置</p>
           <h1>把老闆的經營經驗<br><em>變成團隊能持續運作的能力</em></h1>
           <p class="hero-sub">承啟以階段性專業經理人進駐，理解企業現場，整合人、流程、制度、系統與 AI，陪團隊把方法真正落地。</p>
           <div class="hero-stats">
@@ -754,8 +747,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         </div>
         <div class="pain-card">
           <div class="pain-icon">🔀</div>
-          <h3>面臨轉型，不知道怎麼重新佈局</h3>
-          <p>外部環境持續變化，內部需要相應調整，優先順序與切入點仍不明確。</p>
+          <h3>業務與品牌方向清楚，成長行動更一致</h3>
+          <p>串連業務制度、品牌定位與行銷節奏，讓市場策略轉化為可追蹤的行動。</p>
         </div>
         <div class="pain-card">
           <div class="pain-icon">🎯</div>
@@ -797,11 +790,6 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
           <div class="step-circle">4</div>
           <h3>交給團隊</h3>
           <p>陪同落地並移轉方法，讓能力留在組織裡。</p>
-        </div>
-        <div class="step-item">
-          <div class="step-circle">5</div>
-          <h3>成果交付</h3>
-          <p>留下方法與制度，讓團隊可以持續自主運作。</p>
         </div>
       </div>
     </div>
@@ -930,7 +918,22 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   </section>
 
   <!-- FAQ（常見問題：由 GAS 依「全站設定」的 FAQ_VISIBLE 開關決定是否輸出內容，發布前留白＝前端不顯示） -->
-  <!-- FAQ_START --><!-- FAQ_END -->
+  <!-- FAQ_START -->  <section class="sec faq" id="faqSection">
+    <div class="inner">
+      <p class="sec-label">FAQ</p>
+      <h2 class="sec-title">常見問題</h2>
+      <p class="sec-sub">合作前，你可能會想先了解這些</p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>什麼是階段性專業經理人？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-a"><p>承啟會在企業需要建立或升級組織能力的階段進入團隊，實際參與釐清、建置與落地；完成後把制度、流程、工具與方法留給團隊持續運作，而不是長期取代內部主管。</p></div>
+        </div>
+      </div>
+    </div>
+  </section><!-- FAQ_END -->
 
   <!-- CTA BANNER -->
   <div class="cta-banner">
@@ -1008,7 +1011,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>快速成長的新興產業，組織內部各項管理制度需從零建立</li>
         <li>出勤與請假仰賴人工傳訊，資訊分散造成管理負擔沉重</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>建立內部管理規範與績效考核制度，為組織運作奠定基礎</li>
         <li>設計客製化培訓課程，引導成員理解制度必要性，建立主動認同感</li>
@@ -1034,7 +1037,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>業務制度與獎勵機制需重新盤點，明確規則與管理責任</li>
         <li>企劃與編輯流程缺乏標準化，AI 導入尚未建立人機分工</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>盤點業務制度與獎勵機制，建立可執行的管理規則</li>
         <li>優化企劃、編輯與特定提案流程，完成任務拆解</li>
@@ -1060,7 +1063,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>公司擴編並發展海外市場，財務數據與組織能力需同步升級</li>
         <li>銷售、採購、庫存與履約資料分散，尚未形成管理閉環</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>建立管理報表與損益敏感度分析，支援成長路徑與用人評估</li>
         <li>串聯訂單、銷售、採購、庫存與財務結果，建立決策管理閉環</li>
@@ -1088,7 +1091,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>營收逐步擴增並計畫面向海外，庫存仰賴人工記帳</li>
         <li>財務數據散落多份試算表，月度損益需手動彙整</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>以財務健診為起點，梳理財務流程與制度</li>
         <li>建立進銷存管理，明確公司庫存與資金狀況</li>
@@ -1116,7 +1119,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>業務制度、獎金認列與角色分工依賴經驗，難以支撐持續擴張</li>
         <li>費用申請至 ERP 入帳人工節點多，並面臨募資盡職調查需求</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>完成業務組織、績效管理與制度重整方案，明確角色權責</li>
         <li>梳理費用申請、主管審核、財務覆核至 ERP 入帳流程</li>
@@ -1142,7 +1145,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>進入穩健期，面臨成長天花板，需開創新業務方向</li>
         <li>人才培育機制缺乏系統性，核心人員流失風險高</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>規劃主管共識工作坊，系統化挖掘關鍵人才潛能</li>
         <li>培育內部人資夥伴，建立企業校園招募管道</li>
@@ -1163,7 +1166,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>核心人員陸續離職，組織運作出現明顯人力缺口</li>
         <li>作業標準付之闕如，新人銜接混亂，執行出錯率偏高</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>全面組織架構盤點與重組，各職位職責重新定義</li>
         <li>建立部門作業 SOP，降低溝通與協作摩擦</li>
@@ -1184,7 +1187,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>組織從草創期轉型，管理方式需系統性升級</li>
         <li>主管缺乏管理框架，帶人靠直覺而非方法</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>導入低度管理架構，建立員工高度自主運行的組織模型</li>
         <li>建置組織知識庫，設計結構化新人入職學習路徑</li>
@@ -1205,7 +1208,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>引入外部視角，強化管理層主動思維，推動組織突破</li>
         <li>新人流動不穩定，同步籌備 IPO，全面盤點並完成內控制度達標建置</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>建立內控文件教育訓練體系，完成 IPO 前置自行診斷</li>
         <li>規劃新人養成培育架構，設計結構化學習路徑，提升留任穩定度</li>
@@ -1227,7 +1230,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>募資前財務、營運與商業資料分散，難以形成完整論述</li>
         <li>募資後快速成長，財務、現金流與循環營運需同步管理</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>建立 BP、估值邏輯與投資人溝通材料，完整呈現成長模式</li>
         <li>建立管理數據、現金與付款節奏，提升財務決策穩定度</li>
@@ -1250,7 +1253,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>多據點營運議題交錯，總部與現場間需建立一致管理節奏</li>
         <li>募資、品牌、行銷與營運計畫分散，跨部門協作效率待提升</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>建立募資策略、BP 與投資人溝通架構，整合品牌願景與資本需求</li>
         <li>重整品牌與通路策略，明確專案優先順序及跨部門分工</li>
@@ -1272,7 +1275,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>既有募資經驗已難回應新一輪投資人對轉型與成長的關注</li>
         <li>品牌、設計資產、授權與企業服務間的投資邏輯尚未整合</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>重新梳理商業模式轉型、中期成長策略與資源需求</li>
         <li>建構 BP、財務預測與估值架構，整合無形資產的投資價值</li>
@@ -1293,7 +1296,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>AI 醫療新創技術實力完整，但專職財務與資本溝通能力尚未成形</li>
         <li>產品價值、院所導入模式與成長計畫需轉化為投資人語言</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>建構 BP、財務預測與估值邏輯，整合技術價值與收入模式</li>
         <li>完成募資方案、投資人問答與資料室準備，支援資本合作</li>
@@ -1315,7 +1318,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <li>產品獲得市場驗證並快速成長，股權、財務與組織尚未同步成熟</li>
         <li>市場擴張、產品佈局與資本需求交錯，決策過度集中於創辦人</li>
       </ul>
-      <div class="case-sl">承啟協助</div>
+      <div class="case-sl">承啟協助與留下的能力</div>
       <ul class="case-items">
         <li>盤點股權與公司架構，建立募資方向、財務規劃與溝通架構</li>
         <li>梳理市場擴張、產品佈局與組織需求，建立可排序的策略主線</li>
@@ -1422,7 +1425,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <p>感謝你使用 BPO 承啟事務所（以下稱「本公司」）的官方網站與相關服務。本公司非常重視你的個人資料保護，依據「個人資料保護法」（下稱個資法）及相關規定，向你說明本公司蒐集、處理及利用個人資料之政策，請於提供個人資料前詳閱以下內容。</p>
 
     <h2>一、適用範圍</h2>
-    <p>本政策適用於你透過本公司官方網站（www.bpo.com.tw）填寫表單（例如「預約一杯咖啡時光」）、來信、加入 LINE@ 或其他管道，主動提供個人資料予本公司之情形。</p>
+    <p>本政策適用於你透過本公司官方網站（www.bpo.com.tw）填寫表單（例如「預約一杯咖啡時光」）、來信、加入 LINE 官方帳號或其他管道，主動提供個人資料予本公司之情形。</p>
 
     <h2>二、蒐集之目的</h2>
     <ul>
@@ -1450,7 +1453,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <p>你所提供之個人資料均為自願性質。若你選擇不提供姓名、Email 等必要資料，本公司將無法為你安排預約諮詢或回覆你的詢問。</p>
 
     <h2>七、行銷聯繫之退出機制</h2>
-    <p>若本公司以你的個人資料進行行銷聯繫（如電子郵件、LINE 訊息），你可隨時依個資法第 20 條規定，透過來信 info@bpo.com.tw 或直接於 LINE@ 中告知，表示拒絕接受後續行銷聯繫，本公司將立即停止。</p>
+    <p>若本公司以你的個人資料進行行銷聯繫（如電子郵件、LINE 訊息），你可隨時依個資法第 20 條規定，透過來信 info@bpo.com.tw 或直接於 LINE 官方帳號中告知，表示拒絕接受後續行銷聯繫，本公司將立即停止。</p>
 
     <h2>八、資料安全</h2>
     <p>本公司採取合理之技術與管理措施，保護你的個人資料不受未經授權之存取、使用或洩漏。相關資料儲存於本公司之 Google Workspace 帳號下，並依實際需要限制存取權限。</p>
@@ -1537,11 +1540,11 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <div class="bk-success" id="bookingSuccess">
       <div class="bk-check">✓</div>
       <h3>已收到你的預約申請</h3>
-      <p>我們會在 1-2 個工作天內確認時段，審核通過後會寄出確認信與日曆邀請——收到通知才代表預約完成。<br>先加 LINE@，有任何問題可以先聊聊。</p>
+      <p>我們會在 1-2 個工作天內確認時段，審核通過後會寄出確認信與日曆邀請——收到通知才代表預約完成。<br>先加入 LINE 官方帳號，有任何問題可以先聊聊。</p>
       <div class="bk-line-box">
-        <img id="bkLineQr" src="" alt="BPO LINE@ QR Code" loading="lazy">
+        <img id="bkLineQr" src="" alt="BPO LINE 官方帳號 QR Code" loading="lazy">
         <p>掃描加入，或點下方按鈕直接開啟 LINE</p>
-        <a href="https://line.me/R/ti/p/@562malii" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">加入 BPO LINE@</a>
+        <a href="https://line.me/R/ti/p/@562malii" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">加入 BPO LINE 官方帳號</a>
       </div>
       <button class="btn btn-ghost" style="width:100%;justify-content:center" onclick="closeBookingModal()">關閉視窗</button>
     </div>
@@ -1734,7 +1737,7 @@ const AI_SYS = [
 
 const AI_TRUST = [
   {icon:'🔒', text:'內部系統只認公司網域帳號或驗證碼登入，不開放底層試算表權限給使用者。'},
-  {icon:'🗝️', text:'核決信、面試反饋連結都帶專屬一次性 token，連結被偽造或重複使用會被擋下來。'},
+  {icon:'🗝️', text:'核決信與面試反饋連結具備防偽造、防重複使用的保護機制。'},
   {icon:'🗄️', text:'正式內部系統以企業自有帳號與雲端空間為主，不對外開放底層資料。'},
   {icon:'🧪', text:'對外展示的互動原型只使用模擬情境與示意資料，不串接正式 ERP、付款或客戶營運資料。'},
   {icon:'🤖', text:'AI 潤稿、摘要這類功能是一次性請求，處理完就結束，不會被拿去訓練公開模型。'}
@@ -1947,7 +1950,7 @@ async function submitBooking(e){
     return;
   }
   if(!BOOKING_ENDPOINT || BOOKING_ENDPOINT.indexOf('http') !== 0){
-    errBox.textContent = '預約系統設定中，請改用加 LINE@ 或來信 info@bpo.com.tw 與我們聯繫，謝謝你的耐心。';
+    errBox.textContent = '預約系統設定中，請改用 LINE 官方帳號或來信 info@bpo.com.tw 與我們聯繫，謝謝你的耐心。';
     errBox.classList.add('show');
     return;
   }
@@ -1971,7 +1974,7 @@ async function submitBooking(e){
     document.getElementById('bookingSuccess').classList.add('show');
     form.reset();
   }catch(err){
-    errBox.textContent = '送出時發生問題，麻煩改加 LINE@ 或來信 info@bpo.com.tw，我們會盡快回覆你。';
+    errBox.textContent = '送出時發生問題，麻煩改用 LINE 官方帳號或來信 info@bpo.com.tw，我們會盡快回覆你。';
     errBox.classList.add('show');
   }finally{
     btn.disabled = false;
