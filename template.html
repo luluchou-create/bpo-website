@@ -186,13 +186,13 @@ nav{
 .svc-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
 }
-.svc-hr .svc-card::before{background:var(--blue)}
-.svc-fin .svc-card::before{background:var(--accent)}
+.svc-hr .svc-card::before{background:var(--accent)}
+.svc-fin .svc-card::before{background:var(--teal)}
 .svc-ops .svc-card::before{background:var(--teal)}
-.svc-train .svc-card::before{background:#7B5EA7}
-.svc-acc .svc-card::before{background:#2E9E8F}
-.svc-biz .svc-card::before{background:#3f7d20}
-.svc-mkt .svc-card::before{background:#c2416c}
+.svc-train .svc-card::before{background:var(--accent)}
+.svc-acc .svc-card::before{background:var(--teal)}
+.svc-biz .svc-card::before{background:var(--blue)}
+.svc-mkt .svc-card::before{background:var(--blue)}
 .svc-ai .svc-card::before{background:var(--purple)}
 .svc-icon{font-size:26px;margin-bottom:12px}
 .svc-card h3{font-size:15px;font-weight:700;color:var(--brand);margin-bottom:8px}
@@ -215,7 +215,7 @@ nav{
 .service-details .svc-grid{padding:8px 0 20px}
 #page-home.page.active{display:flex;flex-direction:column}
 #page-home .hero{order:1}#page-home .services{order:2}#page-home .pain{order:3}#page-home .how{order:4}#page-home .faq{order:5}#page-home .cta-banner{order:6}
-#page-home .pain-grid .pain-card:nth-child(2),#page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(7){display:none}
+#page-home .pain-grid .pain-card:nth-child(3),#page-home .pain-grid .pain-card:nth-child(6),#page-home .pain-grid .pain-card:nth-child(7){display:none}
 #page-home .steps-wrap .step-item:nth-child(n+5){display:none}
 
 /* ─── CTA BANNER ──────────────────────────────────────── */
@@ -594,21 +594,6 @@ footer{
   .hero{padding:48px 16px 40px}
   .hero-stats{gap:20px}
   .hero h1{font-size:26px}
-  .cta-footer{
-  max-width:1100px;margin:16px auto 0;padding-top:16px;
-  border-top:1px solid rgba(255,255,255,.1);
-  display:flex;align-items:center;justify-content:space-between;
-}
-.cta-footer-brand{font-size:11.5px;color:rgba(255,255,255,.35);font-weight:500}
-.cta-footer-icons{display:flex;gap:8px}
-.cta-icon-btn{
-  width:32px;height:32px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.15);
-  color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);
-  display:flex;align-items:center;justify-content:center;
-  text-decoration:none;transition:.2s;
-}
-.cta-icon-btn:hover{background:rgba(255,255,255,.14);color:#fff}
 footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   .inner{padding-left:16px;padding-right:16px}
   .speak-grid{grid-template-columns:1fr}
@@ -703,7 +688,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <div class="hero-inner">
       <div class="hero-grid">
         <div>
-          <p class="hero-kicker">階段性專業經理人 ・ 組織能力建置</p>
+          <p class="hero-kicker">{{HERO_KICKER}}</p>
           <h1>{{HERO_H1}}<br><em>{{HERO_H1_EM}}</em></h1>
           <p class="hero-sub">{{HERO_SUB}}</p>
           <div class="hero-stats">
@@ -798,11 +783,6 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
           <h3>{{STEP4_TITLE}}</h3>
           <p>{{STEP4_DESC}}</p>
         </div>
-        <div class="step-item">
-          <div class="step-circle">5</div>
-          <h3>{{STEP5_TITLE}}</h3>
-          <p>{{STEP5_DESC}}</p>
-        </div>
       </div>
     </div>
   </section>
@@ -815,9 +795,9 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       
       <p class="sec-sub">{{SVC_SUB}}</p>
       <div class="service-overview">
-        <div class="service-lane"><span class="service-no">01</span><h3>組織與人才</h3><p>讓制度、人才與主管能力，跟上企業發展節奏。</p><div class="service-items">{{SVC1_TITLE}} ・ {{SVC3_TITLE}}</div></div>
-        <div class="service-lane"><span class="service-no">02</span><h3>營運與財務</h3><p>把流程、數字與治理基礎，整理成可持續運作的方法。</p><div class="service-items">{{SVC2_TITLE}} ・ {{SVC4_TITLE}} ・ {{SVC5_TITLE}}</div></div>
-        <div class="service-lane"><span class="service-no">03</span><h3>成長與市場</h3><p>讓業務、品牌與行銷策略，轉化為可執行的成長行動。</p><div class="service-items">{{SVC6_TITLE}} ・ {{SVC7_TITLE}}</div></div>
+        <div class="service-lane"><span class="service-no">01</span><h3>{{SVC_GROUP1_TITLE}}</h3><p>{{SVC_GROUP1_DESC}}</p><div class="service-items">{{SVC1_TITLE}} ・ {{SVC3_TITLE}}</div></div>
+        <div class="service-lane"><span class="service-no">02</span><h3>{{SVC_GROUP2_TITLE}}</h3><p>{{SVC_GROUP2_DESC}}</p><div class="service-items">{{SVC2_TITLE}} ・ {{SVC4_TITLE}} ・ {{SVC5_TITLE}}</div></div>
+        <div class="service-lane"><span class="service-no">03</span><h3>{{SVC_GROUP3_TITLE}}</h3><p>{{SVC_GROUP3_DESC}}</p><div class="service-items">{{SVC6_TITLE}} ・ {{SVC7_TITLE}}</div></div>
       </div>
       <details class="service-details">
         <summary>查看完整服務項目</summary>
@@ -1063,7 +1043,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <p>感謝你使用 BPO 承啟事務所（以下稱「本公司」）的官方網站與相關服務。本公司非常重視你的個人資料保護，依據「個人資料保護法」（下稱個資法）及相關規定，向你說明本公司蒐集、處理及利用個人資料之政策，請於提供個人資料前詳閱以下內容。</p>
 
     <h2>一、適用範圍</h2>
-    <p>本政策適用於你透過本公司官方網站（www.bpo.com.tw）填寫表單（例如「預約一杯咖啡時光」）、來信、加入 LINE@ 或其他管道，主動提供個人資料予本公司之情形。</p>
+    <p>本政策適用於你透過本公司官方網站（www.bpo.com.tw）填寫表單（例如「預約一杯咖啡時光」）、來信、加入 LINE 官方帳號或其他管道，主動提供個人資料予本公司之情形。</p>
 
     <h2>二、蒐集之目的</h2>
     <ul>
@@ -1091,7 +1071,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <p>你所提供之個人資料均為自願性質。若你選擇不提供姓名、Email 等必要資料，本公司將無法為你安排預約諮詢或回覆你的詢問。</p>
 
     <h2>七、行銷聯繫之退出機制</h2>
-    <p>若本公司以你的個人資料進行行銷聯繫（如電子郵件、LINE 訊息），你可隨時依個資法第 20 條規定，透過來信 info@bpo.com.tw 或直接於 LINE@ 中告知，表示拒絕接受後續行銷聯繫，本公司將立即停止。</p>
+    <p>若本公司以你的個人資料進行行銷聯繫（如電子郵件、LINE 訊息），你可隨時依個資法第 20 條規定，透過來信 info@bpo.com.tw 或直接於 LINE 官方帳號中告知，表示拒絕接受後續行銷聯繫，本公司將立即停止。</p>
 
     <h2>八、資料安全</h2>
     <p>本公司採取合理之技術與管理措施，保護你的個人資料不受未經授權之存取、使用或洩漏。相關資料儲存於本公司之 Google Workspace 帳號下，並依實際需要限制存取權限。</p>
@@ -1178,11 +1158,11 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <div class="bk-success" id="bookingSuccess">
       <div class="bk-check">✓</div>
       <h3>已收到你的預約申請</h3>
-      <p>我們會在 1-2 個工作天內確認時段，審核通過後會寄出確認信與日曆邀請——收到通知才代表預約完成。<br>先加 LINE@，有任何問題可以先聊聊。</p>
+      <p>我們會在 1-2 個工作天內確認時段，審核通過後會寄出確認信與日曆邀請——收到通知才代表預約完成。<br>先加入 LINE 官方帳號，有任何問題可以先聊聊。</p>
       <div class="bk-line-box">
-        <img id="bkLineQr" src="" alt="BPO LINE@ QR Code" loading="lazy">
+        <img id="bkLineQr" src="" alt="BPO LINE 官方帳號 QR Code" loading="lazy">
         <p>掃描加入，或點下方按鈕直接開啟 LINE</p>
-        <a href="{{LINE_URL}}" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">加入 BPO LINE@</a>
+        <a href="{{LINE_URL}}" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">加入 BPO LINE 官方帳號</a>
       </div>
       <button class="btn btn-ghost" style="width:100%;justify-content:center" onclick="closeBookingModal()">關閉視窗</button>
     </div>
@@ -1375,7 +1355,7 @@ const AI_SYS = [
 
 const AI_TRUST = [
   {icon:'🔒', text:'內部系統只認公司網域帳號或驗證碼登入，不開放底層試算表權限給使用者。'},
-  {icon:'🗝️', text:'核決信、面試反饋連結都帶專屬一次性 token，連結被偽造或重複使用會被擋下來。'},
+  {icon:'🗝️', text:'核決信與面試反饋連結具備防偽造、防重複使用的保護機制。'},
   {icon:'🗄️', text:'正式內部系統以企業自有帳號與雲端空間為主，不對外開放底層資料。'},
   {icon:'🧪', text:'對外展示的互動原型只使用模擬情境與示意資料，不串接正式 ERP、付款或客戶營運資料。'},
   {icon:'🤖', text:'AI 潤稿、摘要這類功能是一次性請求，處理完就結束，不會被拿去訓練公開模型。'}
@@ -1588,7 +1568,7 @@ async function submitBooking(e){
     return;
   }
   if(!BOOKING_ENDPOINT || BOOKING_ENDPOINT.indexOf('http') !== 0){
-    errBox.textContent = '預約系統設定中，請改用加 LINE@ 或來信 info@bpo.com.tw 與我們聯繫，謝謝你的耐心。';
+    errBox.textContent = '預約系統設定中，請改用 LINE 官方帳號或來信 info@bpo.com.tw 與我們聯繫，謝謝你的耐心。';
     errBox.classList.add('show');
     return;
   }
@@ -1612,7 +1592,7 @@ async function submitBooking(e){
     document.getElementById('bookingSuccess').classList.add('show');
     form.reset();
   }catch(err){
-    errBox.textContent = '送出時發生問題，麻煩改加 LINE@ 或來信 info@bpo.com.tw，我們會盡快回覆你。';
+    errBox.textContent = '送出時發生問題，麻煩改用 LINE 官方帳號或來信 info@bpo.com.tw，我們會盡快回覆你。';
     errBox.classList.add('show');
   }finally{
     btn.disabled = false;
