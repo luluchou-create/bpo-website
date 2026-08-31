@@ -281,6 +281,8 @@ nav{
 .role-hr .case-card::before{background:var(--blue)}
 .role-fin .case-card::before{background:var(--accent)}
 .role-ops .case-card::before{background:var(--teal)}
+.role-biz .case-card::before{background:#3f7d20}
+.role-mkt .case-card::before{background:#c2416c}
 .role-train .case-card::before{background:#8b5cf6}
 .role-proj .case-card::before{background:#64748b}
 .case-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
@@ -295,6 +297,8 @@ nav{
 .tg-role-hr{background:rgba(74,127,192,.12);color:var(--blue)}
 .tg-role-fin{background:rgba(232,131,58,.12);color:var(--accent)}
 .tg-role-ops{background:rgba(46,158,143,.12);color:var(--teal)}
+.tg-role-biz{background:rgba(63,125,32,.12);color:#3f7d20}
+.tg-role-mkt{background:rgba(194,65,108,.12);color:#a8325b}
 .tg-role-train{background:rgba(139,92,246,.12);color:#7c3aed}
 .tg-role-proj{background:rgba(100,116,139,.12);color:#475569}
 .case-company{font-size:18px;font-weight:800;color:var(--brand);margin-bottom:3px}
@@ -562,8 +566,9 @@ footer{
   .nav-cta{display:none}
   .sec,.hero,.cases-hero,.about-hero,.contact-hero,.speaking,.contact-wrap{padding-left:16px;padding-right:16px}
   .cases-filters{padding:14px 16px;flex-direction:column;align-items:stretch;gap:14px}
-  .filter-group{width:100%}
-  .filter-label{display:block;width:100%;margin-bottom:2px}
+  .filter-group{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+  .filter-label{display:block;width:100%;margin-bottom:2px;grid-column:1/-1}
+  .filter-btn{width:100%;min-height:36px;padding:7px 4px;text-align:center}
   .filter-sep{display:none}
   .cases-grid{padding:20px 16px;grid-template-columns:1fr}
   .team-grid,.contact-wrap{padding:20px 16px}
@@ -611,6 +616,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
 .ai-sys-card{cursor:default}
 .ai-sys-card::before{background:var(--ai-accent,var(--accent))}
 .ai-sys-tag{display:inline-block;font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:.3px;margin-bottom:4px}
+.ai-demo-link{display:inline-flex;align-items:center;margin-top:14px;color:var(--accent);font-size:12.5px;font-weight:700;text-decoration:none}
+.ai-demo-link:hover{text-decoration:underline}
 
 .ai-footer-sec .inner{padding-top:4px}
 .ai-footer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
@@ -691,7 +698,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
             </div>
           </div>
           <div class="hero-btns">
-            <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約諮詢</button>
+            <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約一杯咖啡時光</button>
             <button class="btn btn-outline" onclick="showPage('cases')">查看合作案例</button>
           </div>
         </div>
@@ -854,8 +861,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <p>{{CTA_SUB}}</p>
       </div>
       <div class="cta-btns">
-        <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約諮詢</button>
-        <a href="{{LINE_URL}}" target="_blank" class="btn btn-outline">透過 LINE 聯繫</a>
+        <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約一杯咖啡時光</button>
+        <a href="{{LINE_URL}}" target="_blank" class="btn btn-outline">加 LINE 詢問</a>
       </div>
     </div>
     <div class="cta-footer">
@@ -879,6 +886,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   <div class="cases-hero">
     <div style="max-width:1100px;margin:0 auto">
       <h1>{{CASES_H1}}</h1>
+      <p>{{CASES_SUB}}</p>
     </div>
   </div>
 
@@ -890,6 +898,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
       <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
       <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
       <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
+      <button class="filter-btn" data-filter="role-biz" onclick="filterCases(this,'role-biz')">業務</button>
+      <button class="filter-btn" data-filter="role-mkt" onclick="filterCases(this,'role-mkt')">行銷</button>
       <button class="filter-btn" data-filter="role-train" onclick="filterCases(this,'role-train')">培訓</button>
       <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
     </div>
@@ -915,10 +925,10 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
   <section class="ai-transition">
     <div class="inner">
       <span class="eyebrow">幕後 · AI 如何加入</span>
-      <p class="ai-transition-p">在合作過程中，我們同步梳理流程、資料與判斷規則，
-        將適合的重複性工作交由系統與 AI 協作，讓團隊聚焦於關鍵決策。</p>
+      <p class="ai-transition-p">這些合作案例的背後，我們也在陪企業釐清問題、做決策的過程中，
+        把重複性的工作交給 AI 處理，讓團隊把力氣留給真正重要的判斷。</p>
       <button class="btn btn-primary ai-more-btn" id="aiMoreBtn" onclick="toggleAiMore()">
-        查看 AI 如何應用於實際工作 ↓
+        好奇我們具體用 AI 做了什麼？點開看看 ↓
       </button>
     </div>
   </section>
@@ -930,8 +940,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <section class="sec pain">
       <div class="inner">
         <p class="sec-label">WHAT AI CAN DO</p>
-        <h2 class="sec-title">從工作需求辨識 AI 的應用機會</h2>
-        <p class="sec-sub">先釐清工作流程與判斷需求，再選擇適合由系統與 AI 協作的環節。</p>
+        <h2 class="sec-title">把麻煩交出來，剩下的交給對話</h2>
+        <p class="sec-sub">很多人知道 AI 很厲害，卻不確定能拿來做什麼——以下是我們實際用出來的答案</p>
         <div class="pain-grid ai-cap-grid" id="aiCapGrid"></div>
       </div>
     </section>
@@ -940,8 +950,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <section class="sec how">
       <div class="inner">
         <p class="sec-label">實際做出來的系統</p>
-        <h2 class="sec-title">將共通方法應用於不同營運場景</h2>
-        <p class="sec-sub">每套系統皆源自實際工作需求，目前共 9 套，其中 7 套已正式上線。</p>
+        <h2 class="sec-title">同樣的方法，用在不同的問題上</h2>
+        <p class="sec-sub">以下每一項，都對應一段真實的決策與陪跑過程，從正式上線系統到流程規格與互動原型</p>
         <div class="ai-sys-grid" id="aiSysGrid"></div>
       </div>
     </section>
@@ -952,12 +962,12 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <div class="ai-footer-grid">
           <div class="ai-footer-col">
             <p class="sec-label">資料安全</p>
-            <h3 class="ai-footer-h3">AI 系統如何兼顧資料安全？</h3>
+            <h3 class="ai-footer-h3">用 AI 快速做系統，資料會不會外流？</h3>
             <div class="ai-trust-list" id="aiTrustList"></div>
           </div>
           <div class="ai-footer-col">
             <p class="sec-label">背後的工具箱</p>
-            <h3 class="ai-footer-h3">依工作需求選用合適工具</h3>
+            <h3 class="ai-footer-h3">沒有另外買系統，用的是這些</h3>
             <div class="ai-tools-row" id="aiToolsRow"></div>
           </div>
         </div>
@@ -974,8 +984,8 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
         <p>{{CTA_SUB}}</p>
       </div>
       <div class="cta-btns">
-        <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約諮詢</button>
-        <a href="{{LINE_URL}}" target="_blank" class="btn btn-outline">透過 LINE 聯繫</a>
+        <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約一杯咖啡時光</button>
+        <a href="{{LINE_URL}}" target="_blank" class="btn btn-outline">加 LINE 詢問</a>
       </div>
     </div>
     <div class="cta-footer">
@@ -1007,7 +1017,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <p>感謝你使用 BPO 承啟事務所（以下稱「本公司」）的官方網站與相關服務。本公司非常重視你的個人資料保護，依據「個人資料保護法」（下稱個資法）及相關規定，向你說明本公司蒐集、處理及利用個人資料之政策，請於提供個人資料前詳閱以下內容。</p>
 
     <h2>一、適用範圍</h2>
-    <p>本政策適用於你透過本公司官方網站（www.bpo.com.tw）填寫表單（例如「預約諮詢」）、來信、加入 LINE 官方帳號或其他管道，主動提供個人資料予本公司之情形。</p>
+    <p>本政策適用於你透過本公司官方網站（www.bpo.com.tw）填寫表單（例如「預約一杯咖啡時光」）、來信、加入 LINE@ 或其他管道，主動提供個人資料予本公司之情形。</p>
 
     <h2>二、蒐集之目的</h2>
     <ul>
@@ -1035,7 +1045,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <p>你所提供之個人資料均為自願性質。若你選擇不提供姓名、Email 等必要資料，本公司將無法為你安排預約諮詢或回覆你的詢問。</p>
 
     <h2>七、行銷聯繫之退出機制</h2>
-    <p>若本公司以你的個人資料進行行銷聯繫（如電子郵件、LINE 訊息），你可隨時依個資法第 20 條規定，透過來信 info@bpo.com.tw 或直接於 LINE 官方帳號中告知，表示拒絕接受後續行銷聯繫，本公司將立即停止。</p>
+    <p>若本公司以你的個人資料進行行銷聯繫（如電子郵件、LINE 訊息），你可隨時依個資法第 20 條規定，透過來信 info@bpo.com.tw 或直接於 LINE@ 中告知，表示拒絕接受後續行銷聯繫，本公司將立即停止。</p>
 
     <h2>八、資料安全</h2>
     <p>本公司採取合理之技術與管理措施，保護你的個人資料不受未經授權之存取、使用或洩漏。相關資料儲存於本公司之 Google Workspace 帳號下，並依實際需要限制存取權限。</p>
@@ -1060,7 +1070,7 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <div id="bookingForm">
       <div class="booking-head">
         <button class="booking-close" onclick="closeBookingModal()" aria-label="關閉">✕</button>
-        <h3 id="bookingTitle">預約諮詢</h3>
+        <h3 id="bookingTitle">☕ 預約一杯咖啡時光</h3>
         <p>留下你的資訊與這個月方便的 3 個時段，我們會盡快確認，並透過 Email 與日曆邀請通知你。</p>
       </div>
       <div class="booking-body">
@@ -1122,11 +1132,11 @@ footer{padding:24px 16px;flex-direction:column;align-items:flex-start}
     <div class="bk-success" id="bookingSuccess">
       <div class="bk-check">✓</div>
       <h3>已收到你的預約申請</h3>
-      <p>我們將於 1–2 個工作天內確認時段，並於預約成立後寄送確認信與日曆邀請。<br>若有其他問題，也可透過 LINE 官方帳號聯繫。</p>
+      <p>我們會在 1-2 個工作天內確認時段，審核通過後會寄出確認信與日曆邀請——收到通知才代表預約完成。<br>先加 LINE@，有任何問題可以先聊聊。</p>
       <div class="bk-line-box">
-        <img id="bkLineQr" src="" alt="BPO LINE 官方帳號 QR Code" loading="lazy">
+        <img id="bkLineQr" src="" alt="BPO LINE@ QR Code" loading="lazy">
         <p>掃描加入，或點下方按鈕直接開啟 LINE</p>
-        <a href="{{LINE_URL}}" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">加入 BPO LINE 官方帳號</a>
+        <a href="{{LINE_URL}}" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">加入 BPO LINE@</a>
       </div>
       <button class="btn btn-ghost" style="width:100%;justify-content:center" onclick="closeBookingModal()">關閉視窗</button>
     </div>
@@ -1262,7 +1272,7 @@ function toggleAiMore(forceOpen){
   const btn  = document.getElementById('aiMoreBtn');
   const opening = forceOpen === true ? true : !wrap.classList.contains('open');
   wrap.classList.toggle('open', opening);
-  btn.textContent = opening ? '收起內容 ↑' : '查看 AI 如何應用於實際工作 ↓';
+  btn.textContent = opening ? '收起 ↑' : '好奇我們具體用 AI 做了什麼？點開看看 ↓';
   if(opening){
     setTimeout(()=> wrap.scrollIntoView({behavior:'smooth', block:'start'}), 50);
   }
@@ -1270,52 +1280,64 @@ function toggleAiMore(forceOpen){
 
 /* ─── Block 2 資料：靈感 / 系統 / 資安 / 工具箱（都不指名客戶，內容維持真實、不誇大） ─── */
 const AI_CAPS = [
-  {icon:'👂', title:'將需求轉為工作規格', desc:'把使用者描述整理為流程步驟、資料欄位與判斷條件。'},
-  {icon:'🔗', title:'串接既有工作工具', desc:'整合 Sheets、Gmail、日曆與 GitHub，延續團隊熟悉的工作環境。'},
-  {icon:'📄', title:'自動產出文件與報表', desc:'依既定資料與格式，自動產出文件、報表與摘要內容。'},
-  {icon:'🔔', title:'建立排程與主動提醒', desc:'依時間或狀態觸發通知、資料擷取與規則判斷。'},
-  {icon:'🗄️', title:'保留可維護的資料底盤', desc:'以團隊可存取與更新的資料架構，支持後續維護與調整。'},
-  {icon:'🔁', title:'持續驗證與優化', desc:'依實際使用回饋逐步調整，讓系統貼近工作流程。'}
+  {icon:'👂', title:'聽懂一句抱怨', desc:'不用寫規格書，一句「這樣太麻煩了」就能被拆解成資料結構與流程步驟。'},
+  {icon:'🔗', title:'打通原本就在用的工具', desc:'Sheets、Gmail、日曆、GitHub 彼此連動，不必為了自動化而換一套系統。'},
+  {icon:'📄', title:'自動生成文件與報表', desc:'PDF、報表、摘要文字一次到位，不用重複排版與計算。'},
+  {icon:'🔔', title:'排程與提醒自己來', desc:'時間到了自動寄信、自動抓資料、自動判斷，不必人工盯著。'},
+  {icon:'🗄️', title:'免工程維護', desc:'資料庫就是 Sheets，誰都能打開看、能改，不用等工程排期。'},
+  {icon:'🔁', title:'邊做邊修', desc:'用起來不順手，講一次哪裡卡，馬上就能改一版再試。'}
 ];
 
 const AI_SYS = [
   { tag:'行銷協作', accent:'var(--accent)', name:'官網建置與 CMS',
-    why:'將網站結構、文案與 SEO 整合於同一套維護流程，支持團隊自主更新內容。',
+    why:'整個網站的結構、文案、SEO，都是在對話裡一步步做出來的，不需要工程師才能改內容。',
     items:['GAS 串接 GitHub，一鍵推送就能更新上線','內建 AI 潤稿選單，選取文字就能改寫成案例文案'] },
   { tag:'營運協作', accent:'var(--blue)', name:'工作紀錄系統',
-    why:'整合多客戶與多專案的工作紀錄，提升月底彙整與回顧效率。',
+    why:'同時支援多個客戶與專案，工時分散記錄，月底彙整報表非常花時間。',
     items:['貼上一段流水帳，AI 自動分類彙整成主題摘要','一筆紀錄可同時掛在多個專案，報表不漏算'] },
   { tag:'人資協作', accent:'var(--teal)', name:'招募管理系統',
-    why:'串接人力增補、面試安排與錄用核決，讓招募進度清楚可追蹤。',
-    items:['主管可於 Email 直接完成「同意／駁回」','面試與報到自動建立行事曆及線上會議連結'] },
+    why:'人力增補申請、面試安排、錄用核決，常卡在「找不到人簽名」。',
+    items:['主管 Email 內直接點「同意／駁回」，免登入','面試與報到自動建立行事曆、自動生成線上會議連結'] },
   { tag:'人資協作', accent:'var(--teal)', name:'錄用作業生成包',
-    why:'整合錄用所需文件與核薪資訊，建立一致的作業格式。',
+    why:'每次錄用主管，要手動做好幾份格式不一致的文件。',
     items:['單一頁面輸入，一次產出 5 種文件','核薪金額自動比對市場薪資，算出落點提示'] },
   { tag:'財務協作', accent:'var(--brand)', name:'客戶服務後台',
-    why:'整合客戶合約、發票與多人分潤資訊，提升結算與管理準確度。',
-    items:['依合約類型自動拆分與計算分潤','自動產出應收帳款天數與客戶留存率'] },
+    why:'客戶合約、發票、多人分潤，原本靠 Excel 人工計算，容易出錯。',
+    items:['分潤依合約類型自動拆分計算，取代人工試算表','應收帳款天數、客戶留存率自動生成，不用憑感覺判斷'] },
   { tag:'人資協作', accent:'var(--teal)', name:'出勤系統',
-    why:'整合出勤、時薪結算與假勤試算，支持團隊規模成長後的管理需求。',
-    items:['自動串接政府行事曆資料','連續工作天數主動提醒，支持法令遵循'] },
+    why:'團隊成長後出勤靠人工彙整，時薪結算與特休試算容易出錯。',
+    items:['政府行事曆自動抓取，免人工下載上傳','連續工作天數自動警示，避免違反一例一休'] },
   { tag:'營運協作', accent:'var(--blue)', name:'進銷存系統',
     why:'多通路商品與庫存資料分散，需要一套系統整合起來。',
-    items:['低庫存主動提醒並連結補貨流程','自動記錄並呈現盤點差異'] },
+    items:['低庫存自動警示，直接跳轉補貨流程','盤點差異自動記錄，不用人工比對'] },
   { tag:'財務協作', accent:'var(--brand)', name:'品牌記帳系統',
     why:'需要一套標準化記帳系統，也為未來電子申報預先做準備。',
     items:['科目代碼自動帶出名稱，減少輸入錯誤','借貸即時平衡驗證，報表一鍵重新彙總'] },
   { tag:'人資協作', accent:'var(--teal)', name:'流程查詢 Gem 助理',
-    why:'將制度與操作規則整理為可查詢的知識庫，支持主管即時取得資訊。',
-    items:['主管可用日常語言查詢操作規則','知識庫隨制度與系統迭代同步更新'] }
+    why:'新制度上線後，主管常反覆問 HR 同樣的操作規則。',
+    items:['主管用日常語言直接問，不用等 HR 回覆','知識庫跟著系統迭代同步更新'] },
+  { tag:'財務協作', accent:'var(--brand)', name:'費用申請 AI 判讀原型',
+    why:'把\u6191證上傳、費用說明、會計科目建議與財務覆核串成一條可驗證的流程。',
+    items:['AI 依\u6191證與摘要分別判讀科目，顯示綠區或需人工判斷的灰區','自動生成暫存傳票預覽，財務人員保留調整與最終過帳權'],
+    link:'https://xinchaofangwu-expense-poc.ffcb6b51-5cbf-40e2-ae3c-a9665763db10.chatgpt.site/' },
+  { tag:'策略協作', accent:'var(--purple)', name:'AI First 企劃提案工作流',
+    why:'把企編提案從收件、BRIEF、證據、洞察、方案到交付，拆成可覆核與可追溯的決策流程。',
+    items:['五階段、13 節點：AI 處理整理、搜尋、比較與同步修改，人類保留選擇、承諾與放行','加入缺口追蹤、根因式退回與唯一版本，降低重工與誤用假設風險'] },
+  { tag:'財務協作', accent:'var(--blue)', name:'訂單到經營結果互動學習頁',
+    why:'財務課程不再只看簡報，而是沿著一筆訂單理解工作決定如何走進會計科目與經營成果。',
+    items:['以 16 個業務站點串聯現貨、促銷、付款、出貨、撥款與退貨','每站依序展開真實場景、先做判斷、科目連動與經營結果，同時說明部門責任'],
+    link:'https://kangding-order-flow.ffcb6b51-5cbf-40e2-ae3c-a9665763db10.chatgpt.site/' }
 ];
 
 const AI_TRUST = [
-  {icon:'🔒', text:'內部系統透過公司網域帳號或驗證碼限制存取，並依角色配置資料權限。'},
-  {icon:'🗝️', text:'核決與回饋連結採專屬識別機制，降低未授權或重複使用風險。'},
-  {icon:'🗄️', text:'系統建置於企業管理的 Google Workspace 環境，資料由企業帳號持有與管理。'},
-  {icon:'🤖', text:'AI 功能依所選服務與帳號設定處理，並以必要範圍為原則控制傳送資料。'}
+  {icon:'🔒', text:'內部系統只認公司網域帳號或驗證碼登入，不開放底層試算表權限給使用者。'},
+  {icon:'🗝️', text:'核決信、面試反饋連結都帶專屬一次性 token，連結被偽造或重複使用會被擋下來。'},
+  {icon:'🗄️', text:'正式內部系統以企業自有帳號與雲端空間為主，不對外開放底層資料。'},
+  {icon:'🧪', text:'對外展示的互動原型只使用模擬情境與示意資料，不串接正式 ERP、付款或客戶營運資料。'},
+  {icon:'🤖', text:'AI 潤稿、摘要這類功能是一次性請求，處理完就結束，不會被拿去訓練公開模型。'}
 ];
 
-const AI_TOOLS = ['Google Apps Script','Google Sheets','Claude API','Gemini API','Gmail API','Google Calendar API','GitHub API','政府開放資料平台','Apps Script 時間觸發器'];
+const AI_TOOLS = ['Google Apps Script','Google Sheets','Claude API','Gemini API','ChatGPT Site','Gmail API','Google Calendar API','GitHub API','政府開放資料平台','Apps Script 時間觸發器'];
 
 const aiCapGrid = document.getElementById('aiCapGrid');
 if(aiCapGrid){
@@ -1340,6 +1362,7 @@ if(aiSysGrid){
       <div class="case-divider"></div>
       <div class="case-sl">亮點</div>
       <ul class="case-items">${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+      ${s.link ? `<a class="ai-demo-link" href="${s.link}" target="_blank" rel="noopener noreferrer">開啟互動原型 ↗</a>` : ''}
     `;
     aiSysGrid.appendChild(el);
   });
@@ -1444,7 +1467,7 @@ function initBookingSlotGuards(){
     el.addEventListener('change', function(){
       if(this.value && !isBookableDate(this.value)){
         if(errBox){
-          errBox.textContent = '此日期為假日或非上班日，請改選平日（週一至週五）的時段。';
+          errBox.textContent = '這天是假日或非上班日，麻煩改選平日（週一至週五）的時段。';
           errBox.classList.add('show');
         }
         this.value = '';
@@ -1457,7 +1480,7 @@ function initBookingSlotGuards(){
     el.addEventListener('change', function(){
       if(this.value && !isBookableTime(this.value)){
         if(errBox){
-          errBox.textContent = '預約時間為 10:00–18:00，請改選此區間內的時間。';
+          errBox.textContent = '預約時間僅開放 10:00–18:00，麻煩改選這個區間內的時間。';
           errBox.classList.add('show');
         }
         this.value = '';
@@ -1506,7 +1529,7 @@ async function submitBooking(e){
     return;
   }
   if(!slotsBookable){
-    errBox.textContent = '預約時段為平日（週一至週五）10:00–18:00，且不含國定假日，請重新選擇。';
+    errBox.textContent = '時段僅開放平日（週一至週五）10:00–18:00，且不含國定假日，麻煩重新選擇。';
     errBox.classList.add('show');
     return;
   }
@@ -1521,7 +1544,7 @@ async function submitBooking(e){
     return;
   }
   if(!BOOKING_ENDPOINT || BOOKING_ENDPOINT.indexOf('http') !== 0){
-    errBox.textContent = '預約系統設定中，請改由 LINE 官方帳號或來信 info@bpo.com.tw 與我們聯繫。';
+    errBox.textContent = '預約系統設定中，請改用加 LINE@ 或來信 info@bpo.com.tw 與我們聯繫，謝謝你的耐心。';
     errBox.classList.add('show');
     return;
   }
@@ -1545,7 +1568,7 @@ async function submitBooking(e){
     document.getElementById('bookingSuccess').classList.add('show');
     form.reset();
   }catch(err){
-    errBox.textContent = '資料暫時無法送出，請改由 LINE 官方帳號或來信 info@bpo.com.tw 與我們聯繫。';
+    errBox.textContent = '送出時發生問題，麻煩改加 LINE@ 或來信 info@bpo.com.tw，我們會盡快回覆你。';
     errBox.classList.add('show');
   }finally{
     btn.disabled = false;
