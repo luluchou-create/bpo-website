@@ -882,6 +882,25 @@ a.signal:hover{border-color:var(--accent)}
 /* 手機（觸控）不顯示 hover 才出現的「留下的能力」橫條，避免蓋住標籤 */
 @media(hover:none){.case-leave-badge{display:none}}
 
+
+/* ═══ 2026.10.02 手機修正：小螢幕導覽列不被截斷、主標不落單字 ═══ */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+nav{max-width:100vw}
+.nav-logo{min-width:0;flex-shrink:1}
+.nav-links{flex-shrink:0}
+@media(max-width:640px){
+  nav{padding:0 12px}
+  .nav-logo{font-size:13px;gap:6px;letter-spacing:0}
+  .nav-logo .bpo-badge{font-size:11px;padding:2px 6px}
+  .nav-links a{padding:0 7px;font-size:12.5px;letter-spacing:.02em}
+  .nav-links a.nav-cta{padding:0 10px;margin-left:4px;font-size:12.5px;letter-spacing:.02em}
+  .hero h1{font-size:clamp(22px,6.4vw,30px);letter-spacing:.02em}
+  .hero-sub{font-size:15px;line-height:1.9}
+}
+@media(max-width:400px){
+  .nav-links a.nav-ai{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -894,7 +913,7 @@ a.signal:hover{border-color:var(--accent)}
   <div class="nav-links">
     <a onclick="showPage('home')" data-page="home" class="active nav-hide-sm">首頁</a>
     <a onclick="showPage('cases')" data-page="cases">合作案例</a>
-    <a onclick="showPage('cases');setTimeout(function(){toggleAiMore(true)},350)">AI 成果</a>
+    <a class="nav-ai" onclick="showPage('cases');setTimeout(function(){toggleAiMore(true)},350)">AI 成果</a>
     <a class="nav-cta" onclick="openBookingModal()">預約聊聊</a>
   </div>
 </nav>
