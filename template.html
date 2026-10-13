@@ -18,6 +18,21 @@
 <meta property="og:url" content="https://www.bpo.com.tw/"/>
 <meta property="og:title" content="{{PAGE_TITLE}}"/>
 <meta property="og:description" content="{{META_DESC}}"/>
+<link rel="canonical" href="https://www.bpo.com.tw/"/>
+<!-- 2026.10.13 SEO：公司基本資訊（給 Google 與 AI 搜尋辨識） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "承啟事務所",
+  "alternateName": ["BPO 承啟事務所", "Build & Pave Office"],
+  "url": "https://www.bpo.com.tw/",
+  "email": "info@bpo.com.tw",
+  "description": "{{META_DESC}}",
+  "areaServed": "TW",
+  "sameAs": ["{{IG_URL}}", "{{LINE_URL}}", "https://vocus.cc/user/@BPOSharing"]
+}
+</script>
 <meta name="theme-color" content="#263045"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -948,6 +963,8 @@ nav{max-width:100vw}
   .cta-banner h2{font-size:clamp(19px,5.2vw,24px)}
 }
 
+/* 2026.10.13 觀點文章：窄螢幕導覽列空間不足時，先收起「AI 成果」（合作案例頁內仍可切換） */
+@media(max-width:400px){.nav-links:has(.nav-insights) a.nav-ai{display:none}}
 </style>
 </head>
 <body>
@@ -960,6 +977,7 @@ nav{max-width:100vw}
   <div class="nav-links">
     <a onclick="showPage('home')" data-page="home" class="active nav-hide-sm">首頁</a>
     <a onclick="showPage('cases')" data-page="cases">合作案例</a>
+    {{NAV_INSIGHTS}}
     <a class="nav-ai" onclick="showPage('cases');setTimeout(function(){toggleAiMore(true)},350)">AI 成果</a>
     <a class="nav-cta" onclick="openBookingModal()">預約聊聊</a>
   </div>
