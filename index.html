@@ -2156,6 +2156,8 @@ const BOOKING_ENDPOINT = "https://script.google.com/macros/s/AKfycbyACTJ2kfVXGsM
 function openBookingModal(){
   const overlay = document.getElementById('bookingOverlay');
   if(!overlay) return;
+  // 2026.10.13 GA4：記錄「打開預約表單」（不含任何個資）
+  try{ if(typeof gtag === 'function') gtag('event', 'booking_open', { page_location: location.href }); }catch(_){}
   document.getElementById('bookingForm').style.display = 'block';
   document.getElementById('bookingSuccess').classList.remove('show');
   const err = document.getElementById('bkError');
@@ -2326,6 +2328,8 @@ async function submitBooking(e){
 
     document.getElementById('bookingForm').style.display = 'none';
     document.getElementById('bookingSuccess').classList.add('show');
+    // 2026.10.13 GA4：記錄「預約送出成功」，在 GA4 標為關鍵事件（不含任何個資）
+    try{ if(typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'booking' }); }catch(_){}
     form.reset();
   }catch(err){
     errBox.textContent = '送出時發生問題，麻煩改用 LINE 官方帳號或來信 info@bpo.com.tw，我們會盡快回覆你。';
