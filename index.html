@@ -1945,8 +1945,16 @@ function pageFromHash(){
   return document.getElementById('page-' + name) ? name : 'home';
 }
 
+// 網址帶 #ai 時（例如從文章頁導覽列的「AI 成果」連過來），開合作案例並展開 AI 成果
+function openAiFromHash(){
+  if(window.location.hash !== '#ai') return false;
+  showPage('cases', false);
+  setTimeout(function(){ toggleAiMore(true); }, 350);
+  return true;
+}
+
 document.addEventListener('DOMContentLoaded', function(){
-  showPage(pageFromHash(), false);
+  if(!openAiFromHash()) showPage(pageFromHash(), false);
   // 網址帶 #booking 時（例如從 LINE 導過來的連結），自動跳出預約表單
   if(window.location.hash === '#booking'){
     setTimeout(function(){ openBookingModal(); }, 300);
@@ -1961,7 +1969,7 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 window.addEventListener('popstate', function(){
-  showPage(pageFromHash(), false);
+  if(!openAiFromHash()) showPage(pageFromHash(), false);
 });
 
 // 通知 Google Sites iframe 高度
