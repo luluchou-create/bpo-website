@@ -117,6 +117,17 @@ nav{position:sticky;top:0;z-index:100;background:var(--brand);height:64px;displa
 .art-table table{border-collapse:collapse;width:100%;font-size:15.5px;line-height:1.7}
 .art-table th,.art-table td{border-bottom:1px solid var(--border);padding:12px 14px;text-align:left;vertical-align:top}
 .art-table th{background:var(--bg);color:var(--brand);font-weight:700;white-space:nowrap}
+.art-share{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;margin:44px 0 0;padding-top:22px;border-top:1px solid var(--border)}
+.art-share-t{font-size:14.5px;font-weight:700;color:var(--brand);letter-spacing:.06em}
+.art-share-btns{display:flex;flex-wrap:wrap;gap:10px}
+.art-share-btns a,.art-share-btns button{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 16px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--brand);font:500 14px var(--font);text-decoration:none;cursor:pointer;transition:border-color .15s,color .15s}
+.art-share-btns svg{width:17px;height:17px;fill:currentColor;flex-shrink:0}
+.art-share-btns .sh-copy svg{fill:none}
+.art-share-btns a:hover,.art-share-btns button:hover{border-color:var(--brand)}
+.art-share-btns .sh-line:hover{color:#06C755;border-color:#06C755}
+.art-share-btns .sh-fb:hover{color:#1877F2;border-color:#1877F2}
+.art-share-btns .sh-li:hover{color:#0A66C2;border-color:#0A66C2}
+.art-share-btns .sh-copy.ok{color:var(--teal);border-color:var(--teal)}
 .art-cta{background:radial-gradient(120% 140% at 0% 0%,#33405c 0%,var(--brand) 55%,var(--brand2) 100%);color:#fff;border-radius:14px;padding:36px 36px 38px;margin:48px 0 8px}
 .art-cta h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,2.4vw,26px);line-height:1.5;margin-bottom:10px}
 .art-cta p{color:rgba(255,255,255,.78);font-size:15.5px;margin-bottom:22px}
@@ -173,6 +184,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--brand);height:64px;displa
 }
 @media(max-width:400px){
   .nav-logo{font-size:13px}
+  .nav-links a.nav-ai{display:none}
   .nav-links a{padding:0 7px;font-size:12.5px}
   .nav-links a.nav-cta{padding:0 10px;margin-left:4px}
 }
@@ -238,6 +250,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--brand);height:64px;displa
     <a href="/" class="nav-hide-sm">首頁</a>
     <a href="/#cases">合作案例</a>
     <a href="/insights/" class="active">觀點分享</a>
+    <a href="/#ai" class="nav-ai">AI 成果</a>
     <a class="nav-cta" href="/#booking">預約聊聊</a>
   </div>
 </nav>
@@ -291,6 +304,27 @@ nav{position:sticky;top:0;z-index:100;background:var(--brand);height:64px;displa
 <p>延後付款前，要先評估會不會有違法的風險，或產生更大的亂流。付款順序上，員工薪水最優先，金融機構欠款次之，供應商貨款再來協商。加快收款，先從金額較大的客戶溝通；直接提早收款做不到時，可以請業務跟客戶談現金折扣。安排資金，則回到收付款合約，看能不能爭取對公司更有利的條件，條件寫進合約後，就不用每次都靠口頭溝通。</p>
 </main>
 <div class="art-wrap">
+  <section class="art-share" aria-label="分享這篇文章">
+    <span class="art-share-t">分享這篇文章</span>
+    <div class="art-share-btns">
+      <a class="sh-line" href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fwww.bpo.com.tw%2Finsights%2Fcash-timing%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 .9l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-5.9C21.4 14.2 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINE</a>
+      <a class="sh-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.bpo.com.tw%2Finsights%2Fcash-timing%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg>Facebook</a>
+      <a class="sh-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.bpo.com.tw%2Finsights%2Fcash-timing%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.9 8.8H3.6V20h3.3V8.8zM5.3 3.5a1.9 1.9 0 100 3.8 1.9 1.9 0 000-3.8zM20.4 13.6c0-3-1.6-5-4.3-5-1.5 0-2.5.8-2.9 1.6V8.8H10V20h3.3v-5.6c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3v-6.4z"/></svg>LinkedIn</a>
+      <button type="button" class="sh-copy" data-url="https://www.bpo.com.tw/insights/cash-timing/"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.1 0l3-3a5 5 0 00-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 00-7.1 0l-3 3a5 5 0 007.1 7.1l1.7-1.7"/></svg><span>複製連結</span></button>
+    </div>
+  </section>
+  <script>
+  (function(){
+    var b=document.querySelector('.art-share .sh-copy'); if(!b) return;
+    var url=b.getAttribute('data-url'), label=b.querySelector('span');
+    function done(ok){ label.textContent = ok ? '已複製' : '複製失敗，請手動複製網址'; b.classList.toggle('ok', ok); setTimeout(function(){ label.textContent='複製連結'; b.classList.remove('ok'); }, 2200); }
+    function fallback(){ try{ var t=document.createElement('textarea'); t.value=url; t.setAttribute('readonly',''); t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t); t.select(); var ok=document.execCommand('copy'); document.body.removeChild(t); done(ok); }catch(e){ done(false); } }
+    b.addEventListener('click', function(){
+      if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(url).then(function(){ done(true); }, fallback); } else { fallback(); }
+    });
+    document.querySelectorAll('.art-share a').forEach(function(a){ a.addEventListener('click', function(){ try{ gtag('event','share',{method:a.className.replace('sh-',''),item_id:url}); }catch(e){} }); });
+  })();
+  </script>
   <aside class="art-cta">
     <h2>看看其他企業是怎麼開始的</h2>
     <p>承啟的合作案例，從一開始卡住的地方，到梳理後先做的那一步。</p>
