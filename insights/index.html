@@ -105,6 +105,17 @@ nav{position:sticky;top:0;z-index:100;background:var(--brand);height:64px;displa
 .art-table table{border-collapse:collapse;width:100%;font-size:15.5px;line-height:1.7}
 .art-table th,.art-table td{border-bottom:1px solid var(--border);padding:12px 14px;text-align:left;vertical-align:top}
 .art-table th{background:var(--bg);color:var(--brand);font-weight:700;white-space:nowrap}
+.art-share{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;margin:44px 0 0;padding-top:22px;border-top:1px solid var(--border)}
+.art-share-t{font-size:14.5px;font-weight:700;color:var(--brand);letter-spacing:.06em}
+.art-share-btns{display:flex;flex-wrap:wrap;gap:10px}
+.art-share-btns a,.art-share-btns button{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 16px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--brand);font:500 14px var(--font);text-decoration:none;cursor:pointer;transition:border-color .15s,color .15s}
+.art-share-btns svg{width:17px;height:17px;fill:currentColor;flex-shrink:0}
+.art-share-btns .sh-copy svg{fill:none}
+.art-share-btns a:hover,.art-share-btns button:hover{border-color:var(--brand)}
+.art-share-btns .sh-line:hover{color:#06C755;border-color:#06C755}
+.art-share-btns .sh-fb:hover{color:#1877F2;border-color:#1877F2}
+.art-share-btns .sh-li:hover{color:#0A66C2;border-color:#0A66C2}
+.art-share-btns .sh-copy.ok{color:var(--teal);border-color:var(--teal)}
 .art-cta{background:radial-gradient(120% 140% at 0% 0%,#33405c 0%,var(--brand) 55%,var(--brand2) 100%);color:#fff;border-radius:14px;padding:36px 36px 38px;margin:48px 0 8px}
 .art-cta h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,2.4vw,26px);line-height:1.5;margin-bottom:10px}
 .art-cta p{color:rgba(255,255,255,.78);font-size:15.5px;margin-bottom:22px}
@@ -161,6 +172,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--brand);height:64px;displa
 }
 @media(max-width:400px){
   .nav-logo{font-size:13px}
+  .nav-links a.nav-ai{display:none}
   .nav-links a{padding:0 7px;font-size:12.5px}
   .nav-links a.nav-cta{padding:0 10px;margin-left:4px}
 }
@@ -226,6 +238,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--brand);height:64px;displa
     <a href="/" class="nav-hide-sm">首頁</a>
     <a href="/#cases">合作案例</a>
     <a href="/insights/" class="active">觀點分享</a>
+    <a href="/#ai" class="nav-ai">AI 成果</a>
     <a class="nav-cta" href="/#booking">預約聊聊</a>
   </div>
 </nav>
