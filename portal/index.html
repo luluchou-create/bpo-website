@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>承啟客戶服務專區</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<style>
+:root {
+  --brand: #263045; --brand-dark: #1A2235; --brand-mid: #33405C; --brand-tint: #E9ECF2; --bg: #F5F6F8;
+  --card: #FFFFFF; --line: #E0E4EC; --ink: #2A3142; --sub: #5A6478; --mute: #98A2B3;
+  --num: 'Montserrat', 'Noto Sans TC', sans-serif;
+  --ok: #2E7D32; --ok-tint: #E7F4E8; --warn: #B26B00; --warn-tint: #FFF4E0; --bad: #B3261E; --bad-tint: #FDECEA;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); }
+body { font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; color: var(--ink);
+  font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; padding-bottom: 32px; }
+button { font-family: inherit; }
+.app { max-width: 560px; margin: 0 auto; }
+
+/* ── 頁首 ── */
+.app-header { background: radial-gradient(120% 90% at 18% 0%, var(--brand-mid) 0%, var(--brand) 48%, var(--brand-dark) 100%); color: #fff; padding: 20px 16px 56px; }
+.app-header__row { display: flex; align-items: center; gap: 12px; }
+.app-header__logo { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,.16); display: flex; align-items: center;
+  justify-content: center; font-weight: 700; font-size: 13px; letter-spacing: .5px; flex-shrink: 0; }
+.app-header__title { font-size: 17px; font-weight: 700; line-height: 1.3; }
+.app-header__sub { font-size: 13px; opacity: .85; }
+.app-header__company { margin-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.app-header__name { font-size: 20px; font-weight: 700; line-height: 1.35; }
+.company-switch { background: rgba(255,255,255,.16); color: #fff; border: 1px solid rgba(255,255,255,.35); border-radius: 8px;
+  padding: 6px 10px; font-size: 13px; font-family: inherit; max-width: 50%; }
+.company-switch option { color: var(--ink); }
+.role-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff; color: var(--sub); border-radius: 999px;
+  padding: 3px 12px; font-size: 12px; font-weight: 500; white-space: nowrap; }
+.role-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
+
+.content { padding: 0 16px; margin-top: -40px; }
+
+/* ── 分頁 ── */
+.tabs { display: flex; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 4px; gap: 4px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.035); margin-bottom: 14px; position: sticky; top: 8px; z-index: 5; }
+.tabs__btn { flex: 1; border: none; background: none; padding: 10px 4px; border-radius: 10px; font-size: 14px; color: var(--sub); cursor: pointer; }
+.tabs__btn.is-active { background: var(--brand); color: #fff; font-weight: 700; }
+
+/* ── 卡片 ── */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 5px 18px rgba(0,0,0,.035);
+  padding: 18px 16px; margin-bottom: 14px; }
+.card__head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+.card__title { font-size: 16px; font-weight: 700; }
+.card__note { font-size: 13px; color: var(--sub); }
+.card__link { font-size: 13px; color: var(--brand); background: none; border: none; cursor: pointer; padding: 0; }
+
+/* ── 時數總覽 ── */
+.hours-hero__label { font-size: 13px; color: var(--sub); }
+.hours-hero__num { font-family: var(--num); font-size: 44px; font-weight: 700; line-height: 1.1; letter-spacing: -.5px; font-variant-numeric: tabular-nums; }
+.hours-hero__num small { font-size: 18px; font-weight: 500; margin-left: 4px; color: var(--sub); }
+.hours-hero__num.is-low { color: var(--warn); }
+.hours-hero__num.is-out { color: var(--bad); }
+.meter { height: 10px; background: #EEF1F5; border-radius: 999px; overflow: hidden; margin: 14px 0 8px; }
+.meter__bar { height: 100%; background: var(--brand); border-radius: 999px; }
+.meter__bar.is-low { background: #E59A1C; } .meter__bar.is-out { background: var(--bad); }
+.meter__legend { display: flex; justify-content: space-between; font-size: 13px; color: var(--sub); }
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+.stat { background: var(--bg); border-radius: 12px; padding: 10px 8px; text-align: center; }
+.stat__num { font-family: var(--num); font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat__label { font-size: 12px; color: var(--sub); }
+
+.banner { display: flex; gap: 12px; align-items: flex-start; border-radius: 14px; padding: 14px; margin-bottom: 14px; font-size: 14px; }
+.banner--warn { background: var(--warn-tint); color: #7A4A00; border: 1px solid #F5D68A; }
+.banner--info { background: var(--brand-tint); color: var(--brand-dark); border: 1px solid #CBD2DD; }
+.banner--ok { background: var(--ok-tint); color: #1E5A22; border: 1px solid #BFE3C2; }
+.banner__icon { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px; color: #fff; background: var(--brand); }
+.banner--warn .banner__icon { background: #E59A1C; }
+.banner--ok .banner__icon, .banner__icon.is-ok { background: var(--ok); }
+.banner__body b { display: block; margin-bottom: 2px; }
+.banner__action { margin-top: 10px; }
+
+/* ── 依人員彙總 ── */
+.staff-row { display: grid; grid-template-columns: 72px 1fr 64px; align-items: center; gap: 10px; padding: 8px 0; }
+.staff-row + .staff-row { border-top: 1px solid #F0F2F5; }
+.staff-row__name { font-weight: 500; }
+.staff-row__bar { height: 8px; background: #EEF1F5; border-radius: 999px; overflow: hidden; }
+.staff-row__bar i { display: block; height: 100%; background: var(--brand); border-radius: 999px; }
+.staff-row__hrs { font-family: var(--num); text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* ── 使用紀錄 ── */
+.filter { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px; font-family: inherit;
+  background: var(--card); color: var(--ink); margin-bottom: 14px; }
+.log { padding: 14px 0; }
+.log + .log { border-top: 1px solid #F0F2F5; }
+.log__meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+.log__date { font-size: 13px; color: var(--sub); font-variant-numeric: tabular-nums; }
+.log__staff { display: inline-block; margin-left: 8px; font-size: 12px; color: var(--brand); background: var(--brand-tint); border-radius: 999px; padding: 1px 10px; }
+.log__hrs { font-family: var(--num); font-weight: 700; font-size: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.log__content { font-size: 14px; white-space: pre-wrap; word-break: break-word; }
+.log-total { display: flex; justify-content: space-between; padding-top: 14px; border-top: 2px solid var(--ink); margin-top: 4px; font-weight: 700; }
+
+/* ── 儲值紀錄 ── */
+.item { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 0; }
+.item + .item { border-top: 1px solid #F0F2F5; }
+.item__main { font-weight: 500; }
+.item__sub { font-size: 13px; color: var(--sub); }
+.item__num { font-family: var(--num); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.badge { display: inline-block; padding: 2px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; white-space: nowrap; }
+.badge--pending { background: var(--warn-tint); color: var(--warn); }
+.badge--eval { background: var(--brand-tint); color: var(--brand); }
+.badge--ok { background: var(--ok-tint); color: var(--ok); }
+.badge--bad { background: var(--bad-tint); color: var(--bad); }
+.badge--gray { background: #F1F2F4; color: var(--sub); }
+
+/* ── 申請儲值 ── */
+.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.choice { border: 1px solid var(--line); border-radius: 14px; padding: 14px 12px; background: var(--card); text-align: left; cursor: pointer; }
+.choice__num { font-family: var(--num); font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.choice__num small { font-size: 14px; font-weight: 500; color: var(--sub); margin-left: 2px; }
+.choice__desc { font-size: 12px; color: var(--sub); }
+.choice.is-selected { border: 2px solid var(--brand); padding: 13px 11px; background: var(--brand-tint); }
+.field { margin-top: 14px; }
+.field__label { display: block; font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.field__input { width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font-size: 16px; font-family: inherit; color: var(--ink); background: #fff; }
+.field__input:focus { outline: none; border-color: var(--brand); }
+.field__hint { font-size: 12px; color: var(--mute); margin-top: 4px; }
+.rules { list-style: none; font-size: 13px; color: var(--sub); }
+.rules li { padding-left: 16px; position: relative; margin-top: 6px; }
+.rules li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--mute); }
+
+/* ── 按鈕 ── */
+.btn { display: block; width: 100%; border-radius: 12px; padding: 14px; font-size: 16px; font-weight: 700; cursor: pointer; border: 1px solid transparent; text-align: center; }
+.btn--primary { background: var(--brand); color: #fff; box-shadow: 0 6px 16px rgba(38,48,69,.22); }
+.btn--secondary { background: #fff; color: var(--brand); border-color: #CBD2DD; }
+.btn--danger { background: #fff; color: var(--bad); border-color: #F3C4C0; }
+.btn--small { display: inline-block; width: auto; padding: 8px 16px; font-size: 14px; border-radius: 10px; }
+.btn:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.btn + .btn { margin-top: 10px; }
+
+/* ── 綁定 ── */
+.steps { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-size: 13px; color: var(--sub); }
+.steps__dot { width: 24px; height: 24px; border-radius: 50%; background: #EEF1F5; color: var(--sub); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; }
+.steps__dot.is-current { background: var(--brand); color: #fff; }
+.steps__dot.is-done { background: var(--brand-tint); color: var(--brand); }
+.steps__line { flex: 1; height: 2px; background: #EEF1F5; }
+.consent { background: var(--bg); border-radius: 12px; padding: 14px; font-size: 14px; max-height: 260px; overflow-y: auto; }
+.consent h4 { font-size: 14px; margin: 10px 0 4px; } .consent h4:first-child { margin-top: 0; }
+.check { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; font-size: 14px; }
+.check input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--brand); flex-shrink: 0; }
+.code-input { letter-spacing: 6px; text-transform: uppercase; text-align: center; font-size: 22px; font-weight: 700; }
+a { color: var(--brand); }
+
+/* ── 其他 ── */
+.center { text-align: center; padding: 48px 16px; color: var(--sub); }
+.spinner { width: 32px; height: 32px; border: 3px solid var(--brand-tint); border-top-color: var(--brand); border-radius: 50%; margin: 0 auto 14px; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.empty { text-align: center; color: var(--mute); padding: 20px 0; font-size: 14px; }
+.foot { text-align: center; margin-top: 8px; font-size: 13px; }
+.foot button { background: none; border: none; color: var(--sub); text-decoration: underline; cursor: pointer; font-size: 13px; }
+.sheet-mask { position: fixed; inset: 0; background: rgba(15,23,42,.45); display: none; align-items: flex-end; justify-content: center; z-index: 50; }
+.sheet-mask.is-open { display: flex; }
+.sheet { background: #fff; border-radius: 20px 20px 0 0; padding: 22px 18px calc(22px + env(safe-area-inset-bottom)); width: 100%; max-width: 560px; }
+.sheet__title { font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+.kv { display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 15px; margin-bottom: 16px; }
+.kv dt { color: var(--sub); } .kv dd { font-weight: 500; }
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: #1F2A37; color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 14px; z-index: 60; display: none; max-width: 90vw; }
+.demo-flag { background: #FFF4E0; color: #7A4A00; text-align: center; font-size: 12px; padding: 4px; }
+
+/* ── 列印（下載 PDF）── */
+.print-only { display: none; }
+@media print {
+  body { background: #fff; padding: 0; }
+  .app-header, .tabs, .no-print, .foot, .demo-flag { display: none !important; }
+  .content { margin: 0; padding: 0; }
+  .card { box-shadow: none; border: none; padding: 0; }
+  .print-only { display: block; }
+  .print-head { border-bottom: 2px solid var(--brand); padding-bottom: 8px; margin-bottom: 14px; }
+  .print-head h1 { font-size: 18px; } .print-head p { font-size: 12px; color: var(--sub); }
+  .print-stats { display: flex; gap: 24px; margin-bottom: 14px; }
+  .print-stats b { font-size: 18px; display: block; }
+  .print-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .print-table th { background: #F4F7FB; text-align: left; padding: 6px; border-bottom: 1px solid var(--line); }
+  .print-table td { padding: 6px; border-bottom: 1px solid #EEF1F5; vertical-align: top; white-space: pre-wrap; }
+  .print-table td.num { text-align: right; white-space: nowrap; }
+  .screen-only { display: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="center"><div class="spinner"></div>載入中...</div>
+</div>
+<div class="sheet-mask" id="sheet"><div class="sheet" id="sheet-body"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// 承啟客戶服務專區（LINE MINI App）
+// 只用 ID Token 向後端證明身分；客戶資料一律由後端依綁定表決定，前端不傳任何身分欄位。
+// ══════════════════════════════════════════════════════════════════
+var CONFIG = {
+  LIFF_ID: '',   // MINI App「Web app settings」設定網址後取得，例：2012229743-xxxxxxxx
+  API_URL: 'https://script.google.com/macros/s/AKfycbwFRR-r23UwVhlysYOkZMzEpVAykheTeaiPkgXyK4a0l3re_wDUn3_9HOuP0axkdCSu/exec',
+  PRIVACY_URL: 'https://www.bpo.com.tw/line/privacy/',
+  CONTACT_EMAIL: 'info@bpo.com.tw'
+};
+var DEMO = /[?&]demo=1/.test(location.search) || !CONFIG.LIFF_ID;
+
+var ERR = {
+  AUTH_REQUIRED: '請從 LINE 開啟本頁面', AUTH_INVALID: '登入已失效，請關閉後從 LINE 選單重新開啟',
+  FORBIDDEN: '您沒有這家公司的查看權限', OWNER_ONLY: '只有主責窗口可以申請儲值',
+  BIND_CODE_FORMAT: '綁定碼格式不正確（8 碼英文與數字）', BIND_CODE_INVALID: '綁定碼不正確或已使用過',
+  BIND_CODE_EXPIRED: '綁定碼已過期，請聯絡承啟重新寄送', BIND_LOCKED: '錯誤次數過多，請 1 小時後再試',
+  ALREADY_BOUND: '您已綁定過這家公司', CONSENT_REQUIRED: '請先閱讀並同意服務條款與隱私權政策',
+  HOURS_INVALID: '請輸入正確的時數（0.5 小時為單位）', TOPUP_PENDING_EXISTS: '已有一筆申請正在審核中',
+  CANNOT_CANCEL: '此申請已進入審核，無法撤回', NOT_FOUND: '找不到這筆資料', SERVER_ERROR: '系統忙碌中，請稍後再試'
+};
+
+var S = { idToken: '', me: null, client: '', summary: null, topups: null, tab: 'home', staffFilter: '', pick: null, bindStep: 1 };
+
+// ── 共用 ─────────────────────────────────────────
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]; }); }
+function $(id) { return document.getElementById(id); }
+function fmtH(n) { n = Math.round((+n || 0) * 10) / 10; return (n % 1 === 0 ? n.toFixed(0) : n.toFixed(1)); }
+function toast(msg) { var t = $('toast'); t.textContent = msg; t.style.display = 'block'; clearTimeout(t._h); t._h = setTimeout(function () { t.style.display = 'none'; }, 2600); }
+function openSheet(html) { $('sheet-body').innerHTML = html; $('sheet').classList.add('is-open'); }
+function closeSheet() { $('sheet').classList.remove('is-open'); }
+$('sheet').addEventListener('click', function (e) { if (e.target.id === 'sheet') closeSheet(); });
+function param(k) { var m = location.search.match(new RegExp('[?&]' + k + '=([^&]*)')); return m ? decodeURIComponent(m[1]) : ''; }
+
+function api(action, data) {
+  if (DEMO) return demoApi(action, data || {});
+  var body = Object.assign({ action: action, idToken: S.idToken }, data || {});
+  return fetch(CONFIG.API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) })
+    .then(function (r) { return r.json(); })
+    .then(function (j) { if (!j.ok) throw new Error(j.error || 'SERVER_ERROR'); return j.data; });
+}
+function errText(e) { var c = (e && e.message) || String(e); return ERR[c] || c; }
+
+// ── 啟動 ─────────────────────────────────────────
+function boot() {
+  if (DEMO) { start(); return; }
+  liff.init({ liffId: CONFIG.LIFF_ID }).then(function () {
+    if (!liff.isLoggedIn()) { liff.login({ redirectUri: location.href }); return; }
+    S.idToken = liff.getIDToken();
+    start();
+  }).catch(function (e) { fatal('無法連線到 LINE，請稍後再試。（' + esc(e.message) + '）'); });
+}
+
+function start() {
+  api('me').then(function (me) {
+    S.me = me;
+    var page = param('page');
+    if (!me.bindings.length || page === 'bind') { renderBind(); return; }
+    S.client = me.bindings[0].clientName;
+    S.tab = { logs: 'logs', topups: 'topups', topup: 'topup' }[page] || 'home';
+    if (page === 'print') S.tab = 'logs';
+    loadClient(page === 'print');
+  }).catch(function (e) { fatal(errText(e)); });
+}
+
+function fatal(msg) {
+  $('app').innerHTML = '<div class="center"><p style="margin-bottom:16px">' + esc(msg) + '</p>' +
+    '<p style="font-size:13px">如需協助請聯絡 <a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' + CONFIG.CONTACT_EMAIL + '</a></p></div>';
+}
+
+function role() { var b = S.me.bindings.filter(function (x) { return x.clientName === S.client; })[0]; return b ? b.role : ''; }
+function isOwner() { return role() === '主責'; }
+
+function loadClient(printAfter) {
+  renderShell('<div class="center"><div class="spinner"></div>讀取資料中...</div>');
+  Promise.all([api('summary', { clientName: S.client }), api('topupList', { clientName: S.client })]).then(function (r) {
+    S.summary = r[0]; S.topups = r[1]; render();
+    if (printAfter) setTimeout(function () { window.print(); }, 600);
+  }).catch(function (e) { fatal(errText(e)); });
+}
+
+// ── 版面 ─────────────────────────────────────────
+function renderShell(inner) {
+  var h = S.summary;
+  var name = h ? h.displayName : S.client;
+  var switcher = S.me.bindings.length > 1 ? '<select class="company-switch" onchange="switchClient(this.value)">' +
+    S.me.bindings.map(function (b) { return '<option' + (b.clientName === S.client ? ' selected' : '') + '>' + esc(b.clientName) + '</option>'; }).join('') + '</select>' : '';
+  var tabs = [['home', '總覽'], ['logs', '使用紀錄'], ['topups', '儲值紀錄']];
+  if (isOwner()) tabs.push(['topup', '申請儲值']);
+  $('app').innerHTML = (DEMO ? '<div class="demo-flag">示範模式：以下為範例資料</div>' : '') +
+    '<header class="app-header"><div class="app-header__row"><div class="app-header__logo">BPO</div>' +
+    '<div><div class="app-header__title">承啟客戶服務專區</div><div class="app-header__sub">BPO承啟事務所</div></div></div>' +
+    '<div class="app-header__company"><div><div class="app-header__name">' + esc(name) + '</div>' +
+    '<span class="role-badge">' + esc(role()) + '窗口</span></div>' + switcher + '</div></header>' +
+    '<main class="content">' +
+    '<nav class="tabs">' + tabs.map(function (t) { return '<button class="tabs__btn' + (S.tab === t[0] ? ' is-active' : '') + '" onclick="go(\'' + t[0] + '\')">' + t[1] + '</button>'; }).join('') + '</nav>' +
+    '<div id="view">' + inner + '</div>' +
+    '<div class="foot no-print"><button onclick="openAccount()">帳號與隱私</button></div></main>';
+}
+
+function go(tab) { S.tab = tab; render(); window.scrollTo(0, 0); }
+function switchClient(c) { S.client = c; S.tab = 'home'; loadClient(); }
+
+function render() {
+  var v = { home: viewHome, logs: viewLogs, topups: viewTopups, topup: viewTopup }[S.tab] || viewHome;
+  renderShell(v());
+}
+
+function levelOf(h) { return h.remainingHours <= 0 ? 'out' : (h.remainingHours <= S.me.lowThreshold ? 'low' : ''); }
+
+// ── 總覽 ─────────────────────────────────────────
+function viewHome() {
+  var h = S.summary, lv = levelOf(h);
+  var pct = h.totalHours ? Math.min(100, Math.max(0, h.usedHours / h.totalHours * 100)) : 0;
+  var pending = (S.topups || []).filter(function (t) { return t.status === '待審核' || t.status === '評估中'; })[0];
+  var html = '';
+  if (pending) html += '<div class="banner banner--info"><div class="banner__icon">i</div><div class="banner__body"><b>儲值申請' + esc(pending.status) + '</b>' +
+    '申請 ' + fmtH(pending.hours) + ' 小時（' + esc(pending.applyNo) + '），承啟確認後會以 LINE 與 Email 通知您。</div></div>';
+  else if (lv) html += '<div class="banner banner--warn"><div class="banner__icon">!</div><div class="banner__body"><b>' + (lv === 'out' ? '服務時數已用完' : '服務時數即將用完') + '</b>' +
+    '目前剩餘 ' + fmtH(h.remainingHours) + ' 小時。' + (isOwner() ? '<div class="banner__action"><button class="btn btn--primary btn--small" onclick="go(\'topup\')">申請儲值</button></div>' : '如需儲值請洽貴公司主責窗口。') + '</div></div>';
+
+  html += '<section class="card"><div class="hours-hero__label">剩餘時數</div>' +
+    '<div class="hours-hero__num ' + (lv ? 'is-' + lv : '') + '">' + fmtH(h.remainingHours) + '<small>小時</small></div>' +
+    '<div class="meter"><div class="meter__bar ' + (lv ? 'is-' + lv : '') + '" style="width:' + pct.toFixed(1) + '%"></div></div>' +
+    '<div class="meter__legend"><span>已使用 ' + Math.round(pct) + '%</span><span>共 ' + fmtH(h.totalHours) + ' 小時</span></div>' +
+    '<div class="stat-row"><div class="stat"><div class="stat__num">' + fmtH(h.totalHours) + '</div><div class="stat__label">儲值時數</div></div>' +
+    '<div class="stat"><div class="stat__num">' + fmtH(h.usedHours) + '</div><div class="stat__label">已使用</div></div>' +
+    '<div class="stat"><div class="stat__num">' + fmtH(h.remainingHours) + '</div><div class="stat__label">剩餘</div></div></div></section>';
+
+  html += '<section class="card"><div class="card__head"><span class="card__title">依服務人員</span><span class="card__note">累計使用時數</span></div>' + staffBars(h) + '</section>';
+
+  var recent = (h.logs || []).slice(0, 3);
+  html += '<section class="card"><div class="card__head"><span class="card__title">最近服務</span><button class="card__link" onclick="go(\'logs\')">查看全部</button></div>' +
+    (recent.length ? recent.map(logItem).join('') : '<div class="empty">尚無服務紀錄</div>') + '</section>';
+  return html;
+}
+
+function staffBars(h) {
+  if (!h.byStaff.length) return '<div class="empty">尚無服務紀錄</div>';
+  var max = Math.max.apply(null, h.byStaff.map(function (s) { return s.hours; })) || 1;
+  return h.byStaff.map(function (s) {
+    return '<div class="staff-row"><span class="staff-row__name">' + esc(s.staff) + '</span><span class="staff-row__bar"><i style="width:' + (s.hours / max * 100).toFixed(1) + '%"></i></span>' +
+      '<span class="staff-row__hrs">' + fmtH(s.hours) + ' hr</span></div>';
+  }).join('');
+}
+
+function logItem(l) {
+  return '<div class="log"><div class="log__meta"><span><span class="log__date">' + esc(l.date) + '</span><span class="log__staff">' + esc(l.staff) + '</span></span>' +
+    '<span class="log__hrs">' + fmtH(l.hours) + ' hr</span></div><div class="log__content">' + esc(l.content) + '</div></div>';
+}
+
+// ── 使用紀錄（對應「服務工時列表」）──────────────
+function viewLogs() {
+  var h = S.summary, f = S.staffFilter;
+  var logs = (h.logs || []).filter(function (l) { return !f || l.staff === f; });
+  var sum = logs.reduce(function (s, l) { return s + l.hours; }, 0);
+  var now = new Date(), stamp = now.getFullYear() + '/' + ('0' + (now.getMonth() + 1)).slice(-2) + '/' + ('0' + now.getDate()).slice(-2) + ' ' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+  var html = '';
+  html += '<div class="print-only print-head"><h1>' + esc(h.displayName) + '｜服務工時列表</h1><p>下載時間：' + stamp + '　共 ' + logs.length + ' 筆紀錄　BPO承啟事務所</p></div>' +
+    '<div class="print-only print-stats"><div>儲值時數<b>' + fmtH(h.totalHours) + ' hr</b></div><div>已使用時數<b>' + fmtH(h.usedHours) + ' hr</b></div><div>剩餘時數<b>' + fmtH(h.remainingHours) + ' hr</b></div></div>';
+
+  html += '<section class="card screen-only"><div class="stat-row" style="margin-top:0"><div class="stat"><div class="stat__num">' + fmtH(h.totalHours) + '</div><div class="stat__label">儲值時數</div></div>' +
+    '<div class="stat"><div class="stat__num">' + fmtH(h.usedHours) + '</div><div class="stat__label">已使用</div></div>' +
+    '<div class="stat"><div class="stat__num">' + fmtH(h.remainingHours) + '</div><div class="stat__label">剩餘</div></div></div></section>';
+
+  html += '<section class="card screen-only"><div class="card__head"><span class="card__title">依服務人員</span></div>' + staffBars(h) + '</section>';
+
+  html += '<select class="filter no-print" onchange="S.staffFilter=this.value;render()"><option value="">全部服務人員</option>' +
+    h.byStaff.map(function (s) { return '<option' + (s.staff === f ? ' selected' : '') + '>' + esc(s.staff) + '</option>'; }).join('') + '</select>';
+
+  html += '<section class="card screen-only"><div class="card__head"><span class="card__title">服務明細</span><span class="card__note">共 ' + logs.length + ' 筆</span></div>' +
+    (logs.length ? logs.map(logItem).join('') + '<div class="log-total"><span>合計</span><span>' + fmtH(sum) + ' hr</span></div>' : '<div class="empty">尚無服務紀錄</div>') + '</section>';
+
+  html += '<table class="print-table print-only"><thead><tr><th style="width:80px">服務日期</th><th style="width:60px">服務人員</th><th>服務內容</th><th style="width:56px">時數</th></tr></thead><tbody>' +
+    logs.map(function (l) { return '<tr><td>' + esc(l.date) + '</td><td>' + esc(l.staff) + '</td><td>' + esc(l.content) + '</td><td class="num">' + fmtH(l.hours) + ' hr</td></tr>'; }).join('') +
+    '<tr><td colspan="3" style="text-align:right;font-weight:700">合計</td><td class="num" style="font-weight:700">' + fmtH(sum) + ' hr</td></tr></tbody></table>';
+
+  html += '<button class="btn btn--secondary no-print" onclick="downloadPdf()">下載 PDF</button>';
+  return html;
+}
+
+function downloadPdf() {
+  // LINE 內建瀏覽器不支援列印：改用手機瀏覽器開啟後自動帶出列印／另存 PDF
+  if (!DEMO && window.liff && liff.isInClient()) {
+    liff.openWindow({ url: location.origin + location.pathname + '?page=print', external: true });
+  } else { window.print(); }
+}
+
+// ── 儲值紀錄 ─────────────────────────────────────
+function viewTopups() {
+  var h = S.summary, apps = S.topups || [];
+  var badge = function (st) { return '<span class="badge badge--' + ({ '待審核':'pending','評估中':'eval','已核准':'ok','已駁回':'bad','客戶取消':'gray' }[st] || 'gray') + '">' + esc(st) + '</span>'; };
+  var html = '<section class="card"><div class="card__head"><span class="card__title">儲值軌跡</span><span class="card__note">共 ' + fmtH(h.totalHours) + ' 小時</span></div>' +
+    (h.topups.length ? h.topups.map(function (t, i) {
+      return '<div class="item"><div><div class="item__main">' + (i === h.topups.length - 1 ? '首次儲值' : '儲值') + '</div><div class="item__sub">' + esc(t.date) + '</div></div><div class="item__num">＋' + fmtH(t.hours) + ' hr</div></div>';
+    }).join('') : '<div class="empty">尚無儲值紀錄</div>') + '</section>';
+
+  html += '<section class="card"><div class="card__head"><span class="card__title">線上申請紀錄</span></div>' +
+    (apps.length ? apps.map(function (a) {
+      var extra = a.status === '已核准' && a.approvedHours && a.approvedHours !== a.hours ? '　核定 ' + fmtH(a.approvedHours) + ' 小時' : '';
+      return '<div class="item"><div><div class="item__main">申請 ' + fmtH(a.hours) + ' 小時' + extra + '</div><div class="item__sub">' + esc(a.date) + '　' + esc(a.applyNo) + '</div>' +
+        (a.rejectReason ? '<div class="item__sub" style="color:var(--bad)">原因：' + esc(a.rejectReason) + '</div>' : '') +
+        (a.status === '待審核' && isOwner() ? '<button class="card__link" style="margin-top:4px" onclick="cancelTopup(\'' + esc(a.applyNo) + '\')">撤回申請</button>' : '') +
+        '</div>' + badge(a.status) + '</div>';
+    }).join('') : '<div class="empty">尚無線上申請</div>') + '</section>';
+  return html;
+}
+
+function cancelTopup(no) {
+  openSheet('<div class="sheet__title">撤回儲值申請？</div><p style="margin-bottom:18px;color:var(--sub)">申請編號 ' + esc(no) + '，撤回後如需儲值請重新申請。</p>' +
+    '<button class="btn btn--danger" onclick="doCancel(\'' + esc(no) + '\')">確定撤回</button><button class="btn btn--secondary" onclick="closeSheet()">返回</button>');
+}
+function doCancel(no) {
+  api('topupCancel', { clientName: S.client, applyNo: no }).then(function () { closeSheet(); toast('已撤回申請'); loadClient(); })
+    .catch(function (e) { closeSheet(); toast(errText(e)); });
+}
+
+// ── 申請儲值 ─────────────────────────────────────
+function viewTopup() {
+  if (!isOwner()) return '<section class="card"><div class="empty">只有主責窗口可以申請儲值</div></section>';
+  var pending = (S.topups || []).filter(function (t) { return t.status === '待審核' || t.status === '評估中'; })[0];
+  if (pending) return '<div class="banner banner--info"><div class="banner__icon">i</div><div class="banner__body"><b>已有一筆申請' + esc(pending.status) + '</b>' +
+    '申請 ' + fmtH(pending.hours) + ' 小時（' + esc(pending.applyNo) + '）。承啟處理完成後，即可再提出新的申請。</div></div>' +
+    '<button class="btn btn--secondary" onclick="go(\'topups\')">查看申請紀錄</button>';
+
+  var presets = S.me.topupPresets || [12, 24, 36];
+  var html = '<section class="card"><div class="card__head"><span class="card__title">選擇儲值時數</span><span class="card__note">每 12 小時為一單位</span></div><div class="choice-grid">' +
+    presets.map(function (p, i) {
+      return '<button class="choice' + (S.pick === p ? ' is-selected' : '') + '" onclick="pick(' + p + ')"><div class="choice__num">' + p + '<small>小時</small></div><div class="choice__desc">' + (i + 1) + ' 個單位</div></button>';
+    }).join('') +
+    '<button class="choice' + (S.pick === 'custom' ? ' is-selected' : '') + '" onclick="pick(\'custom\')"><div class="choice__num" style="font-size:18px;line-height:36px">自行輸入</div><div class="choice__desc">0.5 小時為單位</div></button></div>';
+  if (S.pick === 'custom') html += '<div class="field"><label class="field__label" for="tp-custom">儲值時數</label><input class="field__input" id="tp-custom" type="number" inputmode="decimal" step="0.5" min="0.5" max="' + S.me.topupMax + '" placeholder="例如 18"></div>';
+  html += '<div class="field"><label class="field__label" for="tp-note">備註（選填）</label><textarea class="field__input" id="tp-note" rows="3" maxlength="300" placeholder="例如：希望下週起開始使用"></textarea></div></section>';
+
+  html += '<section class="card"><div class="card__head"><span class="card__title">申請說明</span></div><ul class="rules">' +
+    '<li>送出後由承啟評估服務量能並與您確認，<b>核准後才會完成儲值</b>。</li>' +
+    '<li>核准後將開立發票，並以 LINE 與 Email 通知您。</li>' +
+    '<li>審核前可在「儲值紀錄」撤回申請。</li></ul></section>';
+  html += '<button class="btn btn--primary" onclick="confirmTopup()"' + (S.pick ? '' : ' disabled') + '>確認申請</button>';
+  return html;
+}
+
+function pick(v) { var note = $('tp-note') ? $('tp-note').value : ''; S.pick = v; render(); if (note) $('tp-note').value = note; if (v === 'custom') $('tp-custom').focus(); }
+
+function confirmTopup() {
+  var hours = S.pick === 'custom' ? parseFloat($('tp-custom').value) : S.pick;
+  if (!(hours > 0) || Math.round(hours * 2) !== hours * 2 || hours > S.me.topupMax) { toast(ERR.HOURS_INVALID); return; }
+  var note = $('tp-note').value.trim();
+  S._pending = { hours: hours, note: note };
+  openSheet('<div class="sheet__title">確認儲值申請</div><dl class="kv"><dt>公司</dt><dd>' + esc(S.client) + '</dd><dt>申請時數</dt><dd>' + fmtH(hours) + ' 小時</dd>' +
+    (note ? '<dt>備註</dt><dd>' + esc(note) + '</dd>' : '') + '</dl>' +
+    '<p style="font-size:13px;color:var(--sub);margin-bottom:16px">送出後由承啟評估，核准後才會完成儲值並開立發票。</p>' +
+    '<button class="btn btn--primary" id="tp-send" onclick="sendTopup()">送出申請</button><button class="btn btn--secondary" onclick="closeSheet()">返回修改</button>');
+}
+function sendTopup() {
+  $('tp-send').disabled = true;
+  api('topupSubmit', { clientName: S.client, hours: S._pending.hours, note: S._pending.note }).then(function (r) {
+    openSheet('<div style="text-align:center;padding:8px 0 4px"><div class="banner__icon is-ok" style="width:52px;height:52px;margin:0 auto 12px;font-size:24px">&#10003;</div>' +
+      '<div class="sheet__title">已送出申請</div><p style="color:var(--sub);margin-bottom:18px">申請編號 ' + esc(r.applyNo) + '<br>承啟評估後會與您聯繫。</p></div>' +
+      '<button class="btn btn--primary" onclick="closeSheet();S.pick=null;S.tab=\'topups\';loadClient()">查看申請紀錄</button>');
+  }).catch(function (e) { closeSheet(); toast(errText(e)); });
+}
+
+// ── 綁定（同意條款 → 輸入綁定碼）────────────────
+function renderBind() {
+  var dots = '<div class="steps"><span class="steps__dot ' + (S.bindStep > 1 ? 'is-done' : 'is-current') + '">' + (S.bindStep > 1 ? '&#10003;' : '1') + '</span>閱讀條款' +
+    '<span class="steps__line"></span><span class="steps__dot ' + (S.bindStep === 2 ? 'is-current' : '') + '">2</span>輸入綁定碼</div>';
+  var body;
+  if (S.bindStep === 1) {
+    body = '<section class="card">' + dots + '<div class="card__head"><span class="card__title">服務條款與個資告知</span><span class="card__note">版本 ' + esc(S.me.consentVersion) + '</span></div>' +
+      '<div class="consent"><h4>服務內容</h4><p>本專區提供已簽約客戶查詢服務時數、使用紀錄與儲值紀錄，並由主責窗口線上申請儲值。儲值申請經承啟核准後才生效。</p>' +
+      '<h4>正式通知</h4><p>儲值核准、發票開立等正式通知以 Email 或書面為準，LINE 訊息為輔助通知。</p>' +
+      '<h4>蒐集的資料</h4><p>LINE 使用者識別碼與顯示名稱、您所屬公司與窗口角色、同意時間，以及查詢與申請的操作紀錄。</p>' +
+      '<h4>窗口異動</h4><p>窗口離職或異動時，請貴公司通知承啟停用綁定。</p>' +
+      '<h4>您的權利</h4><p>您可隨時於本專區解除綁定，或來信 ' + CONFIG.CONTACT_EMAIL + ' 行使個人資料保護法第 3 條之權利。</p></div>' +
+      '<p style="font-size:13px;margin-top:10px">完整內容請見 <a href="' + CONFIG.PRIVACY_URL + '" target="_blank">隱私權政策</a></p>' +
+      '<label class="check"><input type="checkbox" id="agree" onchange="$(\'bind-next\').disabled=!this.checked"><span>我已閱讀並同意服務條款與隱私權政策</span></label></section>' +
+      '<button class="btn btn--primary" id="bind-next" disabled onclick="S.bindStep=2;renderBind()">下一步</button>';
+  } else {
+    body = '<section class="card">' + dots + '<div class="card__head"><span class="card__title">輸入綁定碼</span></div>' +
+      '<p style="font-size:14px;color:var(--sub)">請輸入承啟以 Email 寄給您的 8 碼綁定碼。</p>' +
+      '<div class="field"><input class="field__input code-input" id="bind-code" maxlength="12" autocomplete="one-time-code" placeholder="XXXXXXXX"></div>' +
+      '<p class="field__hint">綁定碼限本人使用一次，有效期限 72 小時。</p></section>' +
+      '<button class="btn btn--primary" id="bind-go" onclick="doBind()">完成綁定</button><button class="btn btn--secondary" onclick="S.bindStep=1;renderBind()">上一步</button>';
+  }
+  $('app').innerHTML = (DEMO ? '<div class="demo-flag">示範模式：以下為範例資料</div>' : '') +
+    '<header class="app-header"><div class="app-header__row"><div class="app-header__logo">BPO</div><div><div class="app-header__title">承啟客戶服務專區</div><div class="app-header__sub">客戶綁定</div></div></div></header>' +
+    '<main class="content">' + body + '</main>';
+}
+function doBind() {
+  var code = $('bind-code').value.trim().toUpperCase();
+  $('bind-go').disabled = true;
+  api('bind', { code: code, consentVersion: S.me.consentVersion }).then(function (r) {
+    $('app').innerHTML = '<header class="app-header"><div class="app-header__row"><div class="app-header__logo">BPO</div><div><div class="app-header__title">承啟客戶服務專區</div></div></div></header>' +
+      '<main class="content"><section class="card" style="text-align:center"><div class="banner__icon is-ok" style="width:52px;height:52px;margin:6px auto 12px;font-size:24px">&#10003;</div>' +
+      '<div class="card__title" style="margin-bottom:6px">綁定完成</div><p style="color:var(--sub);margin-bottom:18px">' + esc(r.clientName) + '　' + esc(r.role) + '窗口<br>LINE 下方選單已切換為客戶版。</p>' +
+      '<button class="btn btn--primary" onclick="location.href=location.pathname">進入客戶服務專區</button></section></main>';
+  }).catch(function (e) { $('bind-go').disabled = false; toast(errText(e)); });
+}
+
+// ── 帳號與隱私 ───────────────────────────────────
+function openAccount() {
+  openSheet('<div class="sheet__title">帳號與隱私</div><dl class="kv"><dt>公司</dt><dd>' + esc(S.client) + '</dd><dt>角色</dt><dd>' + esc(role()) + '窗口</dd><dt>條款版本</dt><dd>' + esc(S.me.consentVersion) + '</dd></dl>' +
+    '<p style="font-size:13px;margin-bottom:16px"><a href="' + CONFIG.PRIVACY_URL + '" target="_blank">隱私權政策</a>　·　<a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' + CONFIG.CONTACT_EMAIL + '</a></p>' +
+    '<button class="btn btn--danger" onclick="confirmUnbind()">解除這家公司的綁定</button><button class="btn btn--secondary" onclick="closeSheet()">關閉</button>');
+}
+function confirmUnbind() {
+  openSheet('<div class="sheet__title">確定解除綁定？</div><p style="margin-bottom:18px;color:var(--sub)">解除後將無法在 LINE 查看 ' + esc(S.client) + ' 的資料，如需恢復請聯絡承啟重新寄送綁定碼。</p>' +
+    '<button class="btn btn--danger" onclick="doUnbind()">確定解除</button><button class="btn btn--secondary" onclick="closeSheet()">返回</button>');
+}
+function doUnbind() {
+  api('unbind', { clientName: S.client }).then(function () { closeSheet(); toast('已解除綁定'); setTimeout(function () { location.href = location.pathname; }, 800); })
+    .catch(function (e) { closeSheet(); toast(errText(e)); });
+}
+
+// ── 示範資料（未設定 LIFF_ID 或網址帶 ?demo=1 時使用）──
+function demoApi(action, d) {
+  var DB = window._demo || (window._demo = {
+    me: { bindings: [{ clientName: '書織日常有限公司', contactName: 'Vivian', role: '主責' }], consentVersion: 'v1.0', topupPresets: [12, 24, 36], topupMax: 200, lowThreshold: 3.5 },
+    summary: { clientName: '書織日常有限公司', displayName: '毛線森林', totalHours: 60, usedHours: 57.5, remainingHours: 2.5, role: '主責',
+      byStaff: [{ staff: '毓瑾', hours: 49.5 }, { staff: 'Lulu', hours: 8 }],
+      topups: [{ contractNo: '2026-08-003', date: '2026/08/20', hours: 24 }, { contractNo: '2026-05-001', date: '2026/05/10', hours: 36 }],
+      logs: [
+        { date: '2026/10/14', staff: '毓瑾', content: '1.費用統計入帳-檢查及核對費用發票/收據統編及分類\n2.收入統計入帳\n3.提供 11509 日記帳、試算表、損益表', hours: 6 },
+        { date: '2026/09/22', staff: 'Lulu', content: '人事制度諮詢：勞健保投保級距調整說明', hours: 2 },
+        { date: '2026/09/15', staff: '毓瑾', content: '11507-11508 營業稅申報', hours: 1.5 },
+        { date: '2026/08/13', staff: '毓瑾', content: '1.費用統計入帳-檢查及核對費用發票/收據統編及分類\n2.收入統計入帳\n3.提供 11507 日記帳、試算表、明細分類帳、損益表', hours: 4 },
+        { date: '2026/07/19', staff: '毓瑾', content: '1.費用統計入帳\n2.收入統計入帳\n3.提供 11506 日記帳、試算表、明細分類帳、損益表', hours: 7 },
+        { date: '2026/06/14', staff: '毓瑾', content: '1.記帳與核對；發現憑證有誤，即刻反饋\n2.出具報表（日記帳、試算表、損益表）供管理層檢視', hours: 16 }
+      ] },
+    topups: []
+  });
+  var ok = function (v) { return new Promise(function (r) { setTimeout(function () { r(JSON.parse(JSON.stringify(v))); }, 250); }); };
+  if (param('demo_bind') === '1' && action === 'me' && !window._demoBound) return ok(Object.assign({}, DB.me, { bindings: [] }));
+  switch (action) {
+    case 'me': return ok(DB.me);
+    case 'summary': return ok(DB.summary);
+    case 'topupList': return ok(DB.topups);
+    case 'bind': window._demoBound = true; return ok({ clientName: '書織日常有限公司', role: '主責' });
+    case 'topupSubmit': var no = 'TOP-20261027-001'; DB.topups.unshift({ applyNo: no, date: '2026/10/27 12:00', hours: d.hours, note: d.note, status: '待審核', approvedHours: null, rejectReason: '' }); return ok({ applyNo: no });
+    case 'topupCancel': DB.topups.forEach(function (t) { if (t.applyNo === d.applyNo) t.status = '客戶取消'; }); return ok(true);
+    case 'unbind': return ok(true);
+  }
+  return Promise.reject(new Error('NOT_FOUND'));
+}
+
+boot();
+</script>
+</body>
+</html>
