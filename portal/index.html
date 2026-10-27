@@ -209,10 +209,10 @@ var DEMO = /[?&]demo=1/.test(location.search) || !CONFIG.LIFF_ID;
 
 var ERR = {
   AUTH_REQUIRED: '請從 LINE 開啟本頁面', AUTH_INVALID: '登入已失效，請關閉後從 LINE 選單重新開啟',
-  FORBIDDEN: '您沒有這家公司的查看權限', OWNER_ONLY: '只有主責窗口可以申請儲值',
+  FORBIDDEN: '你沒有這家公司的查看權限', OWNER_ONLY: '只有主責窗口可以申請儲值',
   BIND_CODE_FORMAT: '綁定碼格式不正確（8 碼英文與數字）', BIND_CODE_INVALID: '綁定碼不正確或已使用過',
   BIND_CODE_EXPIRED: '綁定碼已過期，請聯絡承啟重新寄送', BIND_LOCKED: '錯誤次數過多，請 1 小時後再試',
-  ALREADY_BOUND: '您已綁定過這家公司', CONSENT_REQUIRED: '請先閱讀並同意服務條款與隱私權政策',
+  ALREADY_BOUND: '你已經綁定過這家公司', CONSENT_REQUIRED: '請先閱讀並同意服務條款與隱私權政策',
   HOURS_INVALID: '請輸入正確的時數（0.5 小時為單位）', TOPUP_PENDING_EXISTS: '已有一筆申請正在審核中',
   CANNOT_CANCEL: '此申請已進入審核，無法撤回', NOT_FOUND: '找不到這筆資料', SERVER_ERROR: '系統忙碌中，請稍後再試'
 };
@@ -256,6 +256,7 @@ function start() {
     S.client = me.bindings[0].clientName;
     S.tab = { logs: 'logs', topups: 'topups', topup: 'topup' }[page] || 'home';
     if (page === 'print') S.tab = 'logs';
+    S.openAccount = page === 'account';
     loadClient(page === 'print');
   }).catch(function (e) { fatal(errText(e)); });
 }
@@ -272,6 +273,7 @@ function loadClient(printAfter) {
   renderShell('<div class="center"><div class="spinner"></div>讀取資料中...</div>');
   Promise.all([api('summary', { clientName: S.client }), api('topupList', { clientName: S.client })]).then(function (r) {
     S.summary = r[0]; S.topups = r[1]; render();
+    if (S.openAccount) { S.openAccount = false; openAccount(); }
     if (printAfter) setTimeout(function () { window.print(); }, 600);
   }).catch(function (e) { fatal(errText(e)); });
 }
@@ -312,9 +314,9 @@ function viewHome() {
   var pending = (S.topups || []).filter(function (t) { return t.status === '待審核' || t.status === '評估中'; })[0];
   var html = '';
   if (pending) html += '<div class="banner banner--info"><div class="banner__icon">i</div><div class="banner__body"><b>儲值申請' + esc(pending.status) + '</b>' +
-    '申請 ' + fmtH(pending.hours) + ' 小時（' + esc(pending.applyNo) + '），承啟確認後會以 LINE 與 Email 通知您。</div></div>';
+    '申請 ' + fmtH(pending.hours) + ' 小時（' + esc(pending.applyNo) + '），承啟確認後會以 LINE 與 Email 通知你。</div></div>';
   else if (lv) html += '<div class="banner banner--warn"><div class="banner__icon">!</div><div class="banner__body"><b>' + (lv === 'out' ? '服務時數已用完' : '服務時數即將用完') + '</b>' +
-    '目前剩餘 ' + fmtH(h.remainingHours) + ' 小時。' + (isOwner() ? '<div class="banner__action"><button class="btn btn--primary btn--small" onclick="go(\'topup\')">申請儲值</button></div>' : '如需儲值請洽貴公司主責窗口。') + '</div></div>';
+    '目前剩餘 ' + fmtH(h.remainingHours) + ' 小時。' + (isOwner() ? '<div class="banner__action"><button class="btn btn--primary btn--small" onclick="go(\'topup\')">申請儲值</button></div>' : '如需儲值，請由公司的主責窗口申請。') + '</div></div>';
 
   html += '<section class="card"><div class="hours-hero__label">剩餘時數</div>' +
     '<div class="hours-hero__num ' + (lv ? 'is-' + lv : '') + '">' + fmtH(h.remainingHours) + '<small>小時</small></div>' +
@@ -430,8 +432,8 @@ function viewTopup() {
   html += '<div class="field"><label class="field__label" for="tp-note">備註（選填）</label><textarea class="field__input" id="tp-note" rows="3" maxlength="300" placeholder="例如：希望下週起開始使用"></textarea></div></section>';
 
   html += '<section class="card"><div class="card__head"><span class="card__title">申請說明</span></div><ul class="rules">' +
-    '<li>送出後由承啟評估服務量能並與您確認，<b>核准後才會完成儲值</b>。</li>' +
-    '<li>核准後將開立發票，並以 LINE 與 Email 通知您。</li>' +
+    '<li>送出後由承啟評估服務量能並跟你確認，<b>核准後才會完成儲值</b>。</li>' +
+    '<li>核准後會開立發票，並以 LINE 與 Email 通知你。</li>' +
     '<li>審核前可在「儲值紀錄」撤回申請。</li></ul></section>';
   html += '<button class="btn btn--primary" onclick="confirmTopup()"' + (S.pick ? '' : ' disabled') + '>確認申請</button>';
   return html;
@@ -453,7 +455,7 @@ function sendTopup() {
   $('tp-send').disabled = true;
   api('topupSubmit', { clientName: S.client, hours: S._pending.hours, note: S._pending.note }).then(function (r) {
     openSheet('<div style="text-align:center;padding:8px 0 4px"><div class="banner__icon is-ok" style="width:52px;height:52px;margin:0 auto 12px;font-size:24px">&#10003;</div>' +
-      '<div class="sheet__title">已送出申請</div><p style="color:var(--sub);margin-bottom:18px">申請編號 ' + esc(r.applyNo) + '<br>承啟評估後會與您聯繫。</p></div>' +
+      '<div class="sheet__title">已送出申請</div><p style="color:var(--sub);margin-bottom:18px">申請編號 ' + esc(r.applyNo) + '<br>承啟評估後會跟你聯繫。</p></div>' +
       '<button class="btn btn--primary" onclick="closeSheet();S.pick=null;S.tab=\'topups\';loadClient()">查看申請紀錄</button>');
   }).catch(function (e) { closeSheet(); toast(errText(e)); });
 }
@@ -467,15 +469,15 @@ function renderBind() {
     body = '<section class="card">' + dots + '<div class="card__head"><span class="card__title">服務條款與個資告知</span><span class="card__note">版本 ' + esc(S.me.consentVersion) + '</span></div>' +
       '<div class="consent"><h4>服務內容</h4><p>本專區提供已簽約客戶查詢服務時數、使用紀錄與儲值紀錄，並由主責窗口線上申請儲值。儲值申請經承啟核准後才生效。</p>' +
       '<h4>正式通知</h4><p>儲值核准、發票開立等正式通知以 Email 或書面為準，LINE 訊息為輔助通知。</p>' +
-      '<h4>蒐集的資料</h4><p>LINE 使用者識別碼與顯示名稱、您所屬公司與窗口角色、同意時間，以及查詢與申請的操作紀錄。</p>' +
-      '<h4>窗口異動</h4><p>窗口離職或異動時，請貴公司通知承啟停用綁定。</p>' +
-      '<h4>您的權利</h4><p>您可隨時於本專區解除綁定，或來信 ' + CONFIG.CONTACT_EMAIL + ' 行使個人資料保護法第 3 條之權利。</p></div>' +
+      '<h4>蒐集的資料</h4><p>LINE 使用者識別碼與顯示名稱、你所屬的公司與窗口角色、同意時間，以及查詢與申請的操作紀錄。</p>' +
+      '<h4>窗口異動</h4><p>窗口離職或異動時，請公司通知承啟停用綁定。</p>' +
+      '<h4>你的權利</h4><p>你可以隨時在本專區解除綁定，或來信 ' + CONFIG.CONTACT_EMAIL + ' 行使個人資料保護法第 3 條之權利。</p></div>' +
       '<p style="font-size:13px;margin-top:10px">完整內容請見 <a href="' + CONFIG.PRIVACY_URL + '" target="_blank">隱私權政策</a></p>' +
       '<label class="check"><input type="checkbox" id="agree" onchange="$(\'bind-next\').disabled=!this.checked"><span>我已閱讀並同意服務條款與隱私權政策</span></label></section>' +
       '<button class="btn btn--primary" id="bind-next" disabled onclick="S.bindStep=2;renderBind()">下一步</button>';
   } else {
     body = '<section class="card">' + dots + '<div class="card__head"><span class="card__title">輸入綁定碼</span></div>' +
-      '<p style="font-size:14px;color:var(--sub)">請輸入承啟以 Email 寄給您的 8 碼綁定碼。</p>' +
+      '<p style="font-size:14px;color:var(--sub)">請輸入承啟以 Email 寄給你的 8 碼綁定碼。</p>' +
       '<div class="field"><input class="field__input code-input" id="bind-code" maxlength="12" autocomplete="one-time-code" placeholder="XXXXXXXX"></div>' +
       '<p class="field__hint">綁定碼限本人使用一次，有效期限 72 小時。</p></section>' +
       '<button class="btn btn--primary" id="bind-go" onclick="doBind()">完成綁定</button><button class="btn btn--secondary" onclick="S.bindStep=1;renderBind()">上一步</button>';
