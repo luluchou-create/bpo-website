@@ -209,7 +209,7 @@ var DEMO = /[?&]demo=1/.test(location.search) || !CONFIG.LIFF_ID;
 
 var ERR = {
   AUTH_REQUIRED: '請從 LINE 開啟本頁面', AUTH_INVALID: '登入已失效，請關閉後從 LINE 選單重新開啟',
-  FORBIDDEN: '你沒有這家公司的查看權限', OWNER_ONLY: '只有主責窗口可以申請儲值',
+  FORBIDDEN: '你沒有這家公司的查看權限', OWNER_ONLY: '只有主責可以申請儲值',
   BIND_CODE_FORMAT: '綁定碼格式不正確（8 碼英文與數字）', BIND_CODE_INVALID: '綁定碼不正確或已使用過',
   BIND_CODE_EXPIRED: '綁定碼已過期，請聯絡承啟重新寄送', BIND_LOCKED: '錯誤次數過多，請 1 小時後再試',
   ALREADY_BOUND: '你已經綁定過這家公司', CONSENT_REQUIRED: '請先閱讀並同意服務條款與隱私權政策',
@@ -290,7 +290,7 @@ function renderShell(inner) {
     '<header class="app-header"><div class="app-header__row"><div class="app-header__logo">BPO</div>' +
     '<div><div class="app-header__title">承啟客戶服務專區</div><div class="app-header__sub">BPO承啟事務所</div></div></div>' +
     '<div class="app-header__company"><div><div class="app-header__name">' + esc(name) + '</div>' +
-    '<span class="role-badge">' + esc(role()) + '窗口</span></div>' + switcher + '</div></header>' +
+    '<span class="role-badge">' + esc(role()) + '</span></div>' + switcher + '</div></header>' +
     '<main class="content">' +
     '<nav class="tabs">' + tabs.map(function (t) { return '<button class="tabs__btn' + (S.tab === t[0] ? ' is-active' : '') + '" onclick="go(\'' + t[0] + '\')">' + t[1] + '</button>'; }).join('') + '</nav>' +
     '<div id="view">' + inner + '</div>' +
@@ -316,7 +316,7 @@ function viewHome() {
   if (pending) html += '<div class="banner banner--info"><div class="banner__icon">i</div><div class="banner__body"><b>儲值申請' + esc(pending.status) + '</b>' +
     '申請 ' + fmtH(pending.hours) + ' 小時（' + esc(pending.applyNo) + '），承啟確認後會以 LINE 與 Email 通知你。</div></div>';
   else if (lv) html += '<div class="banner banner--warn"><div class="banner__icon">!</div><div class="banner__body"><b>' + (lv === 'out' ? '服務時數已用完' : '服務時數即將用完') + '</b>' +
-    '目前剩餘 ' + fmtH(h.remainingHours) + ' 小時。' + (isOwner() ? '<div class="banner__action"><button class="btn btn--primary btn--small" onclick="go(\'topup\')">申請儲值</button></div>' : '如需儲值，請由公司的主責窗口申請。') + '</div></div>';
+    '目前剩餘 ' + fmtH(h.remainingHours) + ' 小時。' + (isOwner() ? '<div class="banner__action"><button class="btn btn--primary btn--small" onclick="go(\'topup\')">申請儲值</button></div>' : '如需儲值，請由公司的主責申請。') + '</div></div>';
 
   html += '<section class="card"><div class="hours-hero__label">剩餘時數</div>' +
     '<div class="hours-hero__num ' + (lv ? 'is-' + lv : '') + '">' + fmtH(h.remainingHours) + '<small>小時</small></div>' +
@@ -416,7 +416,7 @@ function doCancel(no) {
 
 // ── 申請儲值 ─────────────────────────────────────
 function viewTopup() {
-  if (!isOwner()) return '<section class="card"><div class="empty">只有主責窗口可以申請儲值</div></section>';
+  if (!isOwner()) return '<section class="card"><div class="empty">只有主責可以申請儲值</div></section>';
   var pending = (S.topups || []).filter(function (t) { return t.status === '待審核' || t.status === '評估中'; })[0];
   if (pending) return '<div class="banner banner--info"><div class="banner__icon">i</div><div class="banner__body"><b>已有一筆申請' + esc(pending.status) + '</b>' +
     '申請 ' + fmtH(pending.hours) + ' 小時（' + esc(pending.applyNo) + '）。承啟處理完成後，即可再提出新的申請。</div></div>' +
@@ -467,7 +467,7 @@ function renderBind() {
   var body;
   if (S.bindStep === 1) {
     body = '<section class="card">' + dots + '<div class="card__head"><span class="card__title">服務條款與個資告知</span><span class="card__note">版本 ' + esc(S.me.consentVersion) + '</span></div>' +
-      '<div class="consent"><h4>服務內容</h4><p>本專區提供已簽約客戶查詢服務時數、使用紀錄與儲值紀錄，並由主責窗口線上申請儲值。儲值申請經承啟核准後才生效。</p>' +
+      '<div class="consent"><h4>服務內容</h4><p>本專區提供已簽約客戶查詢服務時數、使用紀錄與儲值紀錄，並由主責線上申請儲值。儲值申請經承啟核准後才生效。</p>' +
       '<h4>正式通知</h4><p>儲值核准、發票開立等正式通知以 Email 或書面為準，LINE 訊息為輔助通知。</p>' +
       '<h4>蒐集的資料</h4><p>LINE 使用者識別碼與顯示名稱、你所屬的公司與窗口角色、同意時間，以及查詢與申請的操作紀錄。</p>' +
       '<h4>窗口異動</h4><p>窗口離職或異動時，請公司通知承啟停用綁定。</p>' +
@@ -492,14 +492,14 @@ function doBind() {
   api('bind', { code: code, consentVersion: S.me.consentVersion }).then(function (r) {
     $('app').innerHTML = '<header class="app-header"><div class="app-header__row"><div class="app-header__logo">BPO</div><div><div class="app-header__title">承啟客戶服務專區</div></div></div></header>' +
       '<main class="content"><section class="card" style="text-align:center"><div class="banner__icon is-ok" style="width:52px;height:52px;margin:6px auto 12px;font-size:24px">&#10003;</div>' +
-      '<div class="card__title" style="margin-bottom:6px">綁定完成</div><p style="color:var(--sub);margin-bottom:18px">' + esc(r.clientName) + '　' + esc(r.role) + '窗口<br>LINE 下方選單已切換為客戶版。</p>' +
+      '<div class="card__title" style="margin-bottom:6px">綁定完成</div><p style="color:var(--sub);margin-bottom:18px">' + esc(r.clientName) + '　' + esc(r.role) + '<br>LINE 下方選單已切換為客戶版。</p>' +
       '<button class="btn btn--primary" onclick="location.href=location.pathname">進入客戶服務專區</button></section></main>';
   }).catch(function (e) { $('bind-go').disabled = false; toast(errText(e)); });
 }
 
 // ── 帳號與隱私 ───────────────────────────────────
 function openAccount() {
-  openSheet('<div class="sheet__title">帳號與隱私</div><dl class="kv"><dt>公司</dt><dd>' + esc(S.client) + '</dd><dt>角色</dt><dd>' + esc(role()) + '窗口</dd><dt>條款版本</dt><dd>' + esc(S.me.consentVersion) + '</dd></dl>' +
+  openSheet('<div class="sheet__title">帳號與隱私</div><dl class="kv"><dt>公司</dt><dd>' + esc(S.client) + '</dd><dt>角色</dt><dd>' + esc(role()) + '</dd><dt>條款版本</dt><dd>' + esc(S.me.consentVersion) + '</dd></dl>' +
     '<p style="font-size:13px;margin-bottom:16px"><a href="' + CONFIG.PRIVACY_URL + '" target="_blank">隱私權政策</a>　·　<a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' + CONFIG.CONTACT_EMAIL + '</a></p>' +
     '<button class="btn btn--danger" onclick="confirmUnbind()">解除這家公司的綁定</button><button class="btn btn--secondary" onclick="closeSheet()">關閉</button>');
 }
