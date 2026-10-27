@@ -202,7 +202,7 @@ a { color: var(--brand); }
 var CONFIG = {
   LIFF_ID: '2012229745-FzEoBeXv',   // MINI App 正式版（Published）LIFF ID
   API_URL: 'https://script.google.com/macros/s/AKfycbwFRR-r23UwVhlysYOkZMzEpVAykheTeaiPkgXyK4a0l3re_wDUn3_9HOuP0axkdCSu/exec',
-  PRIVACY_URL: 'https://www.bpo.com.tw/line/privacy/',
+  PRIVACY_URL: 'https://www.bpo.com.tw/privacy/',
   CONTACT_EMAIL: 'info@bpo.com.tw'
 };
 var DEMO = /[?&]demo=1/.test(location.search) || !CONFIG.LIFF_ID;
@@ -515,7 +515,7 @@ function doUnbind() {
 // ── 示範資料（未設定 LIFF_ID 或網址帶 ?demo=1 時使用）──
 function demoApi(action, d) {
   var DB = window._demo || (window._demo = {
-    me: { bindings: [{ clientName: '書織日常有限公司', contactName: 'Vivian', role: '主責' }], consentVersion: 'v1.0', topupPresets: [12, 24, 36], topupMax: 200, lowThreshold: 3.5 },
+    me: { bindings: [{ clientName: '書織日常有限公司', contactName: 'Vivian', role: '主責' }], consentVersion: 'v2.0', topupPresets: [12, 24, 36], topupMax: 200, lowThreshold: 3.5 },
     summary: { clientName: '書織日常有限公司', displayName: '毛線森林', totalHours: 60, usedHours: 57.5, remainingHours: 2.5, role: '主責',
       byStaff: [{ staff: '毓瑾', hours: 49.5 }, { staff: 'Lulu', hours: 8 }],
       topups: [{ contractNo: '2026-08-003', date: '2026/08/20', hours: 24 }, { contractNo: '2026-05-001', date: '2026/05/10', hours: 36 }],
