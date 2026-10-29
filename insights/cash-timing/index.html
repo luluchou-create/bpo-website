@@ -304,6 +304,26 @@ nav{position:sticky;top:0;z-index:100;background:var(--brand);height:64px;displa
 <h3>發現資金缺口，要先延後付款、加快收款還是安排資金？</h3>
 <p>延後付款前，要先評估會不會有違法的風險，或產生更大的亂流。付款順序上，員工薪水最優先，金融機構欠款次之，供應商貨款再來協商。加快收款，先從金額較大的客戶溝通；直接提早收款做不到時，可以請業務跟客戶談現金折扣。安排資金，則回到收付款合約，看能不能爭取對公司更有利的條件，條件寫進合約後，就不用每次都靠口頭溝通。</p>
 </main>
+<script>
+(function(){
+  var m=document.querySelector('main.art-body'); if(!m||!('IntersectionObserver' in window)) return;
+  var t0=Date.now(), sent={};
+  function fire(n){ if(sent[n]) return; sent[n]=1; try{ gtag('event',n,{engagement_seconds:Math.round((Date.now()-t0)/1000)}); }catch(e){} }
+  function mk(c){ var d=document.createElement('div'); d.className=c; d.setAttribute('aria-hidden','true'); d.style.cssText='height:1px;margin:0;padding:0'; return d; }
+  var kids=m.children, mid=kids[Math.floor(kids.length/2)], half=mk('art-half'), end=mk('art-end');
+  if(mid) m.insertBefore(half, mid); else m.appendChild(half);
+  m.appendChild(end);
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){
+    if(!e.isIntersecting) return;
+    if(e.target===half){ fire('read_half'); return; }
+    var w=20000-(Date.now()-t0);
+    if(w<=0) fire('read_complete');
+    else setTimeout(function(){ if(end.getBoundingClientRect().top<innerHeight) fire('read_complete'); }, w);
+  }); });
+  io.observe(half); io.observe(end);
+})();
+</script>
+
 <div class="art-wrap">
   <section class="art-share" aria-label="分享這篇文章">
     <div class="sh-wrap">
