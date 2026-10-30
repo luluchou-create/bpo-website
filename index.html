@@ -448,6 +448,10 @@ nav{
 .ai-sys-card .case-company{font-size:17.5px;color:var(--brand)}
 .ai-sys-card .case-title{font-size:14px;font-weight:400;color:var(--muted)}
 .ai-demo-link{display:inline-flex;margin-top:14px;color:var(--accent2);font-size:13px;font-weight:700;text-decoration:none}
+.ai-case-link{display:inline-flex;margin-top:14px;margin-left:0;color:var(--accent2);font-size:13px;font-weight:700;cursor:pointer;text-decoration:none}
+.ai-demo-link + .ai-case-link{margin-left:16px}
+.ai-case-link:hover,.ai-demo-link:hover{text-decoration:underline}
+.case-card.case-hl{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
 .ai-footer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
 .ai-footer-h3{font-size:17px;font-weight:700;color:var(--brand);margin:0 0 16px;line-height:1.5}
 .ai-trust-list{display:flex;flex-direction:column}
@@ -1011,8 +1015,8 @@ nav{max-width:100vw}
     </div>
     <div class="hero-proof">
       <div class="hp-item"><b>14</b><span>個服務過的產業</span></div>
-      <div class="hp-item"><b>98%</b><span>的客戶合作後選擇續約</span></div>
-      <div class="hp-item"><b>14</b><span>套從合作現場長出來的 AI 工具</span></div>
+      <div class="hp-item"><b>98%</b><span>的客戶合作後繼續續約</span></div>
+      <div class="hp-item"><b>15</b><span>套依現場需求打造的實用 AI 工具</span></div>
     </div>
     <div class="ind-band" aria-label="合作過的產業">
       <span class="ind-label">合作過的產業</span>
@@ -1331,7 +1335,33 @@ nav{max-width:100vw}
   <!-- CASES GRID -->
   <div class="cases-grid" id="casesGrid">
 
-    <div class="case-card role-hr role-train has-ai" data-cats="role-hr role-train stage-g has-ai">
+    <div class="case-card role-train has-ai" data-cats="role-train stage-g has-ai" data-title="管理思維轉型 × 主管養成">
+      <div class="case-leave-badge"><span>導入低度管理架構，建立員工高度自主運行的組織模型</span></div>
+      <div class="case-tags">
+        <span class="ctag tg-stage-g">成長期</span>
+        <span class="ctag tg-role-train">培訓</span>
+      </div>
+      <div class="case-company">非營利組織</div>
+      <div class="case-title">管理思維轉型 × 主管養成</div>
+      <div class="case-divider"></div>
+      <div class="case-sl">企業情境</div>
+      <ul class="case-items">
+        <li>組織從草創期轉型，管理方式需系統性升級</li>
+        <li>主管缺乏管理框架，帶人靠直覺而非方法</li>
+      </ul>
+      <div class="case-sl">承啟協助與留下的能力</div>
+      <ul class="case-items">
+        <li>導入低度管理架構，建立員工高度自主運行的組織模型</li>
+        <li>建置組織知識庫，設計結構化新人入職學習路徑</li>
+        <li>培育成員系統性工作思維，提升跨框架解決問題的能力</li>
+      </ul>
+      <div class="case-sl">AI 怎麼幫上忙 <a class="ai-cue-link" onclick="toggleAiMore(true)">看做法 ↓</a></div>
+      <ul class="case-items">
+        <li>工讀生排班與時數結算系統：打卡、排班到月結確認一條線完成，自動產出結算檔與 104 匯入表</li>
+      </ul>
+    </div>
+
+    <div class="case-card role-hr role-train has-ai" data-cats="role-hr role-train stage-g has-ai" data-title="人資制度從零建立 × 出勤系統數位化">
       <div class="case-leave-badge"><span>建立內部管理規範與績效考核制度，為組織運作奠定基礎</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1354,11 +1384,11 @@ nav{max-width:100vw}
       </ul>
       <div class="case-sl">AI 怎麼幫上忙 <a class="ai-cue-link" onclick="toggleAiMore(true)">看做法 ↓</a></div>
       <ul class="case-items">
-        <li>出勤管理系統：打卡・請假・特休計算一站處理，告別人工追蹤</li>
+        <li>出勤系統：打卡・請假・特休計算一站處理，告別人工追蹤</li>
       </ul>
     </div>
 
-    <div class="case-card role-biz role-proj has-ai" data-cats="role-biz role-proj stage-m has-ai">
+    <div class="case-card role-biz role-proj has-ai" data-cats="role-biz role-proj stage-m has-ai" data-title="業務制度優化 × AI 提案流程">
       <div class="case-leave-badge"><span>盤點業務制度與獎勵機制，建立可執行的管理規則</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
@@ -1380,12 +1410,12 @@ nav{max-width:100vw}
       </ul>
       <div class="case-sl">AI 怎麼幫上忙 <a class="ai-cue-link" onclick="toggleAiMore(true)">看做法 ↓</a></div>
       <ul class="case-items">
-        <li>AI 輔助提案流程：建立資料輸入、判斷、產出、審核與例外處理的人機分工</li>
+        <li>AI First 企劃提案工作流：建立資料輸入、判斷、產出、審核與例外處理的人機分工</li>
         <li>AI 流程導入規格：完成協作原型與需求規格，作為工具導入及流程驗證基礎</li>
       </ul>
     </div>
 
-    <div class="case-card role-hr role-fin has-ai" data-cats="role-hr role-fin stage-s has-ai">
+    <div class="case-card role-hr role-fin has-ai" data-cats="role-hr role-fin stage-s has-ai" data-title="財務管理升級 × 組織與AI協作">
       <div class="case-leave-badge"><span>建立管理報表與損益敏感度分析，支援成長路徑與用人評估</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-s">穩健期</span>
@@ -1411,11 +1441,11 @@ nav{max-width:100vw}
       <ul class="case-items">
         <li>招募管理系統：整合人力需求、人選邀約與面試安排，統一掌握招募進度</li>
         <li>錄用作業生成包：拆解薪資結構並對應核薪資料，確保核決格式完整一致</li>
-        <li>Gem AI 小幫手：即時查詢人資制度規範與人資夥伴 SOP，降低日常查找成本</li>
+        <li>流程查詢 Gem 助理：即時查詢人資制度規範與人資夥伴 SOP，降低日常查找成本</li>
       </ul>
     </div>
 
-    <div class="case-card role-proj has-ai" data-cats="role-proj stage-g has-ai">
+    <div class="case-card role-proj has-ai" data-cats="role-proj stage-g has-ai" data-title="財務健診 × 進銷存數位化與損益可視化">
       <div class="case-leave-badge"><span>以財務健診為起點，梳理財務流程與制度</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1442,7 +1472,7 @@ nav{max-width:100vw}
       </ul>
     </div>
 
-    <div class="case-card role-hr role-ops role-biz role-proj has-ai" data-cats="role-hr role-ops role-biz role-proj stage-g has-ai">
+    <div class="case-card role-hr role-ops role-biz role-proj has-ai" data-cats="role-hr role-ops role-biz role-proj stage-g has-ai" data-title="業務制度重整 × 財務流程AI化">
       <div class="case-leave-badge"><span>完成業務組織、績效管理與制度重整方案，明確角色權責</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1469,11 +1499,11 @@ nav{max-width:100vw}
       </ul>
       <div class="case-sl">AI 怎麼幫上忙 <a class="ai-cue-link" onclick="toggleAiMore(true)">看做法 ↓</a></div>
       <ul class="case-items">
-        <li>費用申請 AI 流程：拆解人工判斷、AI 輔助、系統控制與例外處理邏輯</li>
+        <li>費用申請 AI 判讀原型：拆解人工判斷、AI 輔助、系統控制與例外處理邏輯</li>
       </ul>
     </div>
 
-    <div class="case-card role-hr role-train" data-cats="role-hr role-train stage-s">
+    <div class="case-card role-hr role-train" data-cats="role-hr role-train stage-s" data-title="第二成長曲線規劃 × 人才養成">
       <div class="case-leave-badge"><span>規劃主管共識工作坊，系統化挖掘關鍵人才潛能</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-s">穩健期</span>
@@ -1496,7 +1526,7 @@ nav{max-width:100vw}
       </ul>
     </div>
 
-    <div class="case-card role-proj" data-cats="role-proj stage-m">
+    <div class="case-card role-proj" data-cats="role-proj stage-m" data-title="組織重整 × 團隊再定位">
       <div class="case-leave-badge"><span>全面組織架構盤點與重組，各職位職責重新定義</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
@@ -1518,29 +1548,7 @@ nav{max-width:100vw}
       </ul>
     </div>
 
-    <div class="case-card role-train" data-cats="role-train stage-g">
-      <div class="case-leave-badge"><span>導入低度管理架構，建立員工高度自主運行的組織模型</span></div>
-      <div class="case-tags">
-        <span class="ctag tg-stage-g">成長期</span>
-        <span class="ctag tg-role-train">培訓</span>
-      </div>
-      <div class="case-company">非營利組織</div>
-      <div class="case-title">管理思維轉型 × 主管養成</div>
-      <div class="case-divider"></div>
-      <div class="case-sl">企業情境</div>
-      <ul class="case-items">
-        <li>組織從草創期轉型，管理方式需系統性升級</li>
-        <li>主管缺乏管理框架，帶人靠直覺而非方法</li>
-      </ul>
-      <div class="case-sl">承啟協助與留下的能力</div>
-      <ul class="case-items">
-        <li>導入低度管理架構，建立員工高度自主運行的組織模型</li>
-        <li>建置組織知識庫，設計結構化新人入職學習路徑</li>
-        <li>培育成員系統性工作思維，提升跨框架解決問題的能力</li>
-      </ul>
-    </div>
-
-    <div class="case-card role-proj" data-cats="role-proj stage-m">
+    <div class="case-card role-proj" data-cats="role-proj stage-m" data-title="IPO 籌備 × 制度建置與人才培育">
       <div class="case-leave-badge"><span>建立內控文件教育訓練體系，完成 IPO 前置自行診斷</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
@@ -1561,7 +1569,7 @@ nav{max-width:100vw}
       </ul>
     </div>
 
-    <div class="case-card role-fin role-ops role-proj" data-cats="role-fin role-ops role-proj stage-g">
+    <div class="case-card role-fin role-ops role-proj" data-cats="role-fin role-ops role-proj stage-g" data-title="募資規劃 × 財務營運制度化">
       <div class="case-leave-badge"><span>建立 BP、估值邏輯與投資人溝通材料，完整呈現成長模式</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1585,7 +1593,7 @@ nav{max-width:100vw}
       </ul>
     </div>
 
-    <div class="case-card role-fin role-ops role-mkt" data-cats="role-fin role-ops role-mkt stage-m">
+    <div class="case-card role-fin role-ops role-mkt" data-cats="role-fin role-ops role-mkt stage-m" data-title="總部治理 × 跨據點營運整合">
       <div class="case-leave-badge"><span>建立募資策略、BP 與投資人溝通架構，整合品牌願景與資本需求</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
@@ -1610,7 +1618,7 @@ nav{max-width:100vw}
       </ul>
     </div>
 
-    <div class="case-card role-fin" data-cats="role-fin stage-s">
+    <div class="case-card role-fin" data-cats="role-fin stage-s" data-title="轉型募資 × 投資價值重構">
       <div class="case-leave-badge"><span>重新梳理商業模式轉型、中期成長策略與資源需求</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-s">穩健期</span>
@@ -1632,7 +1640,7 @@ nav{max-width:100vw}
       </ul>
     </div>
 
-    <div class="case-card role-fin" data-cats="role-fin stage-g">
+    <div class="case-card role-fin" data-cats="role-fin stage-g" data-title="募資架構 × 財務治理建置">
       <div class="case-leave-badge"><span>建構 BP、財務預測與估值邏輯，整合技術價值與收入模式</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1654,7 +1662,7 @@ nav{max-width:100vw}
       </ul>
     </div>
 
-    <div class="case-card role-fin role-ops" data-cats="role-fin role-ops stage-g">
+    <div class="case-card role-fin role-ops" data-cats="role-fin role-ops stage-g" data-title="股權募資規劃 × 組織成長承接">
       <div class="case-leave-badge"><span>盤點股權與公司架構，建立募資方向、財務規劃與溝通架構</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -2064,49 +2072,166 @@ const AI_CAPS = [
   {title:'邊用邊修', desc:'用起來不順手，說一次哪裡卡，很快就能改一版再試。'}
 ];
 
+// 2026-10-30：AI 成果改由 CMS 試算表「AI成果」分頁管理，推送時填入
 const AI_SYS = [
-  { tag:'行銷協作', accent:'var(--accent)', name:'官網建置與 CMS',
-    why:'整個網站的結構、文案、SEO，都是在對話裡一步步做出來的，不需要工程師才能改內容。',
-    items:['GAS 串接 GitHub，一鍵推送就能更新上線','內建 AI 潤稿選單，選取文字就能改寫成案例文案'] },
-  { tag:'行銷協作', accent:'var(--accent)', name:'官網文章協作系統',
-    why:'經營者有很多現場經驗，卻很難挪出時間坐下來寫成文章。',
-    items:['AI 以編輯訪談的方式提問，整理成初稿，並提供多種圖解讓作者挑選','作者在網頁上直接修改，上線後版本鎖定，同時產出 LINE 與 IG 推播文字'] },
-  { tag:'營運協作', accent:'var(--blue)', name:'工作紀錄系統',
-    why:'同時支援多個客戶與專案，工時分散記錄，月底彙整報表非常花時間。',
-    items:['貼上一段流水帳，AI 自動分類彙整成主題摘要','一筆紀錄可同時掛在多個專案，報表不漏算'] },
-  { tag:'人資協作', accent:'var(--teal)', name:'招募管理系統',
-    why:'人力增補申請、面試安排、錄用核決，常卡在「找不到人簽名」。',
-    items:['主管 Email 內直接點「同意／駁回」，免登入','面試與報到自動建立行事曆、自動生成線上會議連結'] },
-  { tag:'人資協作', accent:'var(--teal)', name:'錄用作業生成包',
-    why:'每次錄用主管，要手動做好幾份格式不一致的文件。',
-    items:['單一頁面輸入，一次產出 5 種文件','核薪金額自動比對市場薪資，算出落點提示'] },
-  { tag:'人資協作', accent:'var(--teal)', name:'資遣作業工具',
-    why:'通知書、資遣費試算和案件紀錄分散在不同檔案，事後很難查是誰、在什麼時候處理。',
-    items:['同一個頁面產出資遣預告通知書，並依年資試算資遣費','每筆案件自動記下申請人與操作帳號，一套範本可以複製給不同公司使用'] },
-  { tag:'財務協作', accent:'var(--brand)', name:'客戶服務後台',
-    why:'客戶合約、發票、多人分潤，原本靠 Excel 人工計算，容易出錯。',
-    items:['分潤依合約類型自動拆分計算，取代人工試算表','應收帳款天數、客戶留存率自動生成，不用憑感覺判斷'] },
-  { tag:'人資協作', accent:'var(--teal)', name:'出勤系統',
-    why:'團隊成長後出勤靠人工彙整，時薪結算與特休試算容易出錯。',
-    items:['政府行事曆自動抓取，免人工下載上傳','連續工作天數自動警示，避免違反一例一休'] },
-  { tag:'營運協作', accent:'var(--blue)', name:'進銷存系統',
-    why:'多通路商品與庫存資料分散，需要一套系統整合起來。',
-    items:['低庫存自動警示，直接跳轉補貨流程','盤點差異自動記錄，不用人工比對'] },
-  { tag:'財務協作', accent:'var(--brand)', name:'品牌記帳系統',
-    why:'需要一套標準化記帳系統，也為未來電子申報預先做準備。',
-    items:['科目代碼自動帶出名稱，減少輸入錯誤','借貸即時平衡驗證，報表一鍵重新彙總'] },
-  { tag:'人資協作', accent:'var(--teal)', name:'流程查詢 Gem 助理',
-    why:'新制度上線後，主管常反覆問 HR 同樣的操作規則。',
-    items:['主管用日常語言直接問，不用等 HR 回覆','知識庫跟著系統迭代同步更新'] },
-  { tag:'財務協作', accent:'var(--brand)', name:'費用申請 AI 判讀原型',
-    why:'把憑證上傳、費用說明、會計科目建議與財務覆核串成一條可驗證的流程。',
-    items:['AI 依憑證與摘要分別判讀科目，顯示綠區或需人工判斷的灰區','自動生成暫存傳票預覽，財務人員保留調整與最終過帳權'] },
-  { tag:'策略協作', accent:'var(--purple)', name:'AI First 企劃提案工作流',
-    why:'把企編提案從收件、BRIEF、證據、洞察、方案到交付，拆成可覆核與可追溯的決策流程。',
-    items:['五階段、13 節點：AI 處理整理、搜尋、比較與同步修改，人類保留選擇、承諾與放行','加入缺口追蹤、根因式退回與唯一版本，降低重工與誤用假設風險'] },
-  { tag:'財務協作', accent:'var(--blue)', name:'訂單到經營結果互動學習頁',
-    why:'財務課程不再只看簡報，而是沿著一筆訂單理解工作決定如何走進會計科目與經營成果。',
-    items:['以 16 個業務站點串聯現貨、促銷、付款、出貨、撥款與退貨','每站依序展開真實場景、先做判斷、科目連動與經營結果，同時說明部門責任'] }
+ {
+  "tag": "行銷協作",
+  "accent": "var(--accent)",
+  "name": "官網建置與 CMS",
+  "why": "整個網站的結構、文案、SEO，都是在對話裡一步步做出來的，不需要工程師才能改內容。",
+  "items": [
+   "GAS 串接 GitHub，一鍵推送就能更新上線",
+   "內建 AI 潤稿選單，選取文字就能改寫成案例文案"
+  ]
+ },
+ {
+  "tag": "行銷協作",
+  "accent": "var(--accent)",
+  "name": "官網文章協作系統",
+  "why": "經營者有很多現場經驗，卻很難挪出時間坐下來寫成文章。",
+  "items": [
+   "AI 以編輯訪談的方式提問，整理成初稿，並提供多種圖解讓作者挑選",
+   "作者在網頁上直接修改，上線後版本鎖定，同時產出 LINE 與 IG 推播文字"
+  ]
+ },
+ {
+  "tag": "營運協作",
+  "accent": "var(--blue)",
+  "name": "工作紀錄系統",
+  "why": "同時支援多個客戶與專案，工時分散記錄，月底彙整報表非常花時間。",
+  "items": [
+   "貼上一段流水帳，AI 自動分類彙整成主題摘要",
+   "一筆紀錄可同時掛在多個專案，報表不漏算"
+  ]
+ },
+ {
+  "tag": "人資協作",
+  "accent": "var(--teal)",
+  "name": "招募管理系統",
+  "why": "人力增補申請、面試安排、錄用核決，常卡在「找不到人簽名」。",
+  "items": [
+   "主管 Email 內直接點「同意／駁回」，免登入",
+   "面試與報到自動建立行事曆、自動生成線上會議連結"
+  ],
+  "caseTitle": "財務管理升級 × 組織與AI協作"
+ },
+ {
+  "tag": "人資協作",
+  "accent": "var(--teal)",
+  "name": "錄用作業生成包",
+  "why": "每次錄用主管，要手動做好幾份格式不一致的文件。",
+  "items": [
+   "單一頁面輸入，一次產出 5 種文件",
+   "核薪金額自動比對市場薪資，算出落點提示"
+  ],
+  "caseTitle": "財務管理升級 × 組織與AI協作"
+ },
+ {
+  "tag": "人資協作",
+  "accent": "var(--teal)",
+  "name": "資遣作業工具",
+  "why": "通知書、資遣費試算和案件紀錄分散在不同檔案，事後很難查是誰、在什麼時候處理。",
+  "items": [
+   "同一個頁面產出資遣預告通知書，並依年資試算資遣費",
+   "每筆案件自動記下申請人與操作帳號，一套範本可以複製給不同公司使用"
+  ]
+ },
+ {
+  "tag": "財務協作",
+  "accent": "var(--brand)",
+  "name": "客戶服務後台",
+  "why": "客戶合約、發票、多人分潤，原本靠 Excel 人工計算，容易出錯。",
+  "items": [
+   "分潤依合約類型自動拆分計算，取代人工試算表",
+   "應收帳款天數、客戶留存率自動生成，不用憑感覺判斷"
+  ]
+ },
+ {
+  "tag": "人資協作",
+  "accent": "var(--teal)",
+  "name": "出勤系統",
+  "why": "團隊成長後出勤靠人工彙整，時薪結算與特休試算容易出錯。",
+  "items": [
+   "政府行事曆自動抓取，免人工下載上傳",
+   "連續工作天數自動警示，避免違反一例一休"
+  ],
+  "caseTitle": "人資制度從零建立 × 出勤系統數位化"
+ },
+ {
+  "tag": "人資協作",
+  "accent": "var(--teal)",
+  "name": "工讀生排班與時數結算系統",
+  "why": "工讀生排班、打卡和每月時數結算靠人工核對，承辦人與人資來回確認很花時間。",
+  "items": [
+   "工讀生自己打卡、請假、預排下個月的班，異常時數自動標示",
+   "承辦人確認後一鍵通知人資，自動產出當月結算檔與 104 匯入表"
+  ],
+  "caseTitle": "管理思維轉型 × 主管養成"
+ },
+ {
+  "tag": "營運協作",
+  "accent": "var(--blue)",
+  "name": "進銷存系統",
+  "why": "多通路商品與庫存資料分散，需要一套系統整合起來。",
+  "items": [
+   "低庫存自動警示，直接跳轉補貨流程",
+   "盤點差異自動記錄，不用人工比對"
+  ],
+  "caseTitle": "財務健診 × 進銷存數位化與損益可視化"
+ },
+ {
+  "tag": "財務協作",
+  "accent": "var(--brand)",
+  "name": "品牌記帳系統",
+  "why": "需要一套標準化記帳系統，也為未來電子申報預先做準備。",
+  "items": [
+   "科目代碼自動帶出名稱，減少輸入錯誤",
+   "借貸即時平衡驗證，報表一鍵重新彙總"
+  ]
+ },
+ {
+  "tag": "人資協作",
+  "accent": "var(--teal)",
+  "name": "流程查詢 Gem 助理",
+  "why": "新制度上線後，主管常反覆問 HR 同樣的操作規則。",
+  "items": [
+   "主管用日常語言直接問，不用等 HR 回覆",
+   "知識庫跟著系統迭代同步更新"
+  ],
+  "caseTitle": "財務管理升級 × 組織與AI協作"
+ },
+ {
+  "tag": "財務協作",
+  "accent": "var(--brand)",
+  "name": "費用申請 AI 判讀原型",
+  "why": "把憑證上傳、費用說明、會計科目建議與財務覆核串成一條可驗證的流程。",
+  "items": [
+   "AI 依憑證與摘要分別判讀科目，顯示綠區或需人工判斷的灰區",
+   "自動生成暫存傳票預覽，財務人員保留調整與最終過帳權"
+  ],
+  "caseTitle": "業務制度重整 × 財務流程AI化"
+ },
+ {
+  "tag": "策略協作",
+  "accent": "var(--purple)",
+  "name": "AI First 企劃提案工作流",
+  "why": "把企編提案從收件、BRIEF、證據、洞察、方案到交付，拆成可覆核與可追溯的決策流程。",
+  "items": [
+   "五階段、13 節點：AI 處理整理、搜尋、比較與同步修改，人類保留選擇、承諾與放行",
+   "加入缺口追蹤、根因式退回與唯一版本，降低重工與誤用假設風險"
+  ],
+  "caseTitle": "業務制度優化 × AI 提案流程"
+ },
+ {
+  "tag": "財務協作",
+  "accent": "var(--brand)",
+  "name": "訂單到經營結果互動學習頁",
+  "why": "財務課程不再只看簡報，而是沿著一筆訂單理解工作決定如何走進會計科目與經營成果。",
+  "items": [
+   "以 16 個業務站點串聯現貨、促銷、付款、出貨、撥款與退貨",
+   "每站依序展開真實場景、先做判斷、科目連動與經營結果，同時說明部門責任"
+  ]
+ }
 ];
 
 const AI_TRUST = [
@@ -2114,7 +2239,8 @@ const AI_TRUST = [
   '核決信與面試反饋連結具備防偽造、防重複使用的保護機制。',
   '正式內部系統以企業自有帳號與雲端空間為主，不對外開放底層資料。',
   '對外展示的互動原型只使用模擬情境與示意資料，不串接正式 ERP、付款或客戶營運資料。',
-  'AI 潤稿、摘要這類功能是一次性請求，處理完就結束，不會被拿去訓練公開模型。'
+  'AI 潤稿、摘要這類功能是一次性請求，處理完就結束，不會被拿去訓練公開模型。',
+  '人事等敏感作業，每一筆都留有申請人與操作紀錄。'
 ];
 
 const AI_TOOLS = ['Google Apps Script','Google Sheets','Claude API','Gemini API','ChatGPT Site','Gmail API','Google Calendar API','GitHub API','政府開放資料平台','Apps Script 時間觸發器'];
@@ -2131,6 +2257,14 @@ function buildAiSysCard(s){
     '<div class="case-sl">做到了什麼</div>' +
     '<ul class="case-items">' + s.items.map(function(i){ return '<li>' + i + '</li>'; }).join('') + '</ul>' +
     (s.link ? '<a class="ai-demo-link" href="' + s.link + '" target="_blank" rel="noopener noreferrer">開啟互動原型 ↗</a>' : '');
+  // 有對應案例、且案例卡片在頁面上時，才出現「看這個合作案例」
+  if(s.caseTitle && findCaseCard(s.caseTitle)){
+    var a = document.createElement('a');
+    a.className = 'ai-case-link';
+    a.textContent = '看這個合作案例 →';
+    a.addEventListener('click', function(){ goToCase(s.caseTitle); });
+    el.appendChild(a);
+  }
   return el;
 }
 
@@ -2363,6 +2497,25 @@ document.addEventListener('DOMContentLoaded', function(){
     bkLineQr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent("https://line.me/R/ti/p/@562malii");
   }
 });
+
+/* ─── AI 成果 → 對應的合作案例：清掉篩選、捲到那張卡片並短暫標示 ─── */
+function findCaseCard(title){
+  var cards = document.querySelectorAll('#casesGrid .case-card');
+  for(var i = 0; i < cards.length; i++){ if(cards[i].dataset.title === title) return cards[i]; }
+  return null;
+}
+function goToCase(title){
+  showPage('cases');
+  setTimeout(function(){
+    CASE_FILTER = { role: [], stage: [], ai: false };
+    applyCaseFilter();
+    var card = findCaseCard(title);
+    if(!card) return;
+    card.scrollIntoView({behavior: REDUCED_MOTION ? 'auto' : 'smooth', block:'center'});
+    card.classList.remove('case-hl'); void card.offsetWidth; card.classList.add('case-hl');
+    setTimeout(function(){ card.classList.remove('case-hl'); }, 3200);
+  }, 350);
+}
 
 /* ─── 導到服務案例頁並套用對應角色篩選 ─── */
 function goToCaseFilter(role){
