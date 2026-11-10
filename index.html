@@ -971,6 +971,63 @@ nav{max-width:100vw}
 
 /* 2026.10.13 觀點文章：窄螢幕導覽列空間不足時，先收起「AI 成果」（合作案例頁內仍可切換） */
 @media(max-width:400px){.nav-links:has(.nav-insights) a.nav-ai{display:none}}
+
+/* ─── 積木：處境標籤、五個面向、立體積木（2026.11.10）─── */
+.sig-block{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;font-weight:700;color:var(--accent2)}
+.sig-block small{font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.04em}
+.rf-block{display:inline-block;margin:0 0 8px;font-size:12.5px;font-weight:700;color:#fff;background:var(--accent2);border-radius:999px;padding:3px 12px}
+.blocks{background:var(--bg)}
+.bk-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:stretch}
+.bk-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--brand2);border-radius:var(--r12);padding:16px 22px;color:#c9cfdb;font-size:14px}
+.bk-top-h{display:flex;align-items:center;gap:12px}
+.bk-top-h strong{font-size:18px;color:#fff}
+.bk-top-chip{font-size:12.5px;color:#fff;background:var(--accent2);border-radius:var(--r6);padding:3px 10px}
+.bk-rows{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.bk-row{font:inherit;text-align:left;width:100%;min-height:104px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r12);padding:14px 22px;display:flex;flex-direction:column;justify-content:center;gap:8px;cursor:pointer;transition:background-color .35s,border-color .35s}
+.bk-row:hover{border-color:#e8b48e}
+.bk-row.on{background:#FDF4EE;border-color:var(--accent2)}
+.bk-row-h{display:flex;align-items:center;gap:14px}
+.bk-tag{flex:none;min-width:56px;text-align:center;font-size:15px;font-weight:700;border-radius:var(--r8);padding:3px 10px;background:var(--bg2);color:var(--brand);transition:background-color .35s,color .35s}
+.bk-row.on .bk-tag{background:var(--accent2);color:#fff}
+.bk-q{font-size:17px;font-weight:700;color:var(--brand);line-height:1.5}
+.bk-chips{display:flex;gap:8px;flex-wrap:wrap}
+.bk-chips span{font-size:13px;color:var(--brand);background:var(--white);border:1px solid var(--border);border-radius:var(--r6);padding:2px 10px;line-height:1.7}
+.bk-svc{font-size:12.5px;color:var(--muted)}
+.bk-stage{background:var(--brand2);border-radius:var(--r12);padding:28px 28px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;overflow:hidden;min-height:560px}
+.bk-stage-k{font-size:13px;color:#F2A46B;letter-spacing:.14em;font-weight:500}
+.bk-stage-t{font-size:20px;font-weight:700;color:#fff;margin-top:4px}
+.bk-scene-wrap{display:flex;justify-content:center;height:400px}
+.bk-scene-wrap .bk-scene{margin-top:-80px}
+.bk-scene{position:relative;width:520px;height:480px;flex:none;transform:scale(1.08);transform-origin:center top}
+.bk-plane{position:absolute;left:110px;top:150px;width:300px;height:300px;transform:rotateX(58deg) rotateZ(-45deg);transform-style:preserve-3d}
+.bk-t{position:absolute;width:132px;height:132px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;background:#3A4766;box-shadow:-1px 1px 0 #222C44,-2px 2px 0 #222C44,-3px 3px 0 #222C44,-4px 4px 0 #222C44,-5px 5px 0 #222C44,-6px 6px 0 #222C44,-7px 7px 0 #222C44,-8px 8px 0 #222C44,-9px 9px 0 #222C44,-10px 10px 0 #222C44,-11px 11px 0 #222C44,-12px 12px 0 #222C44,-13px 13px 0 #222C44,-14px 14px 0 #222C44,-24px 28px 24px rgba(5,10,20,.45);transition:background-color .5s,box-shadow .5s}
+.bk-t b{font-size:17px;font-weight:700;line-height:1.3}
+.bk-t b.bk-big{font-size:24px}
+.bk-t small{font-size:11px;opacity:.85;margin-top:2px}
+.bk-t.bk-base{background:#4A5878;box-shadow:-1px 1px 0 #2A3550,-2px 2px 0 #2A3550,-3px 3px 0 #2A3550,-4px 4px 0 #2A3550,-5px 5px 0 #2A3550,-6px 6px 0 #2A3550,-7px 7px 0 #2A3550,-8px 8px 0 #2A3550,-9px 9px 0 #2A3550,-10px 10px 0 #2A3550,-11px 11px 0 #2A3550,-12px 12px 0 #2A3550,-13px 13px 0 #2A3550,-14px 14px 0 #2A3550,-24px 28px 24px rgba(5,10,20,.45)}
+.bk-t.on{background:#D06A24;box-shadow:-1px 1px 0 #8F4414,-2px 2px 0 #8F4414,-3px 3px 0 #8F4414,-4px 4px 0 #8F4414,-5px 5px 0 #8F4414,-6px 6px 0 #8F4414,-7px 7px 0 #8F4414,-8px 8px 0 #8F4414,-9px 9px 0 #8F4414,-10px 10px 0 #8F4414,-11px 11px 0 #8F4414,-12px 12px 0 #8F4414,-13px 13px 0 #8F4414,-14px 14px 0 #8F4414,-24px 28px 24px rgba(5,10,20,.45)}
+.bk-top-t{left:0;top:0;width:168px;height:168px}
+.bk-top-t.on{box-shadow:-1px 1px 0 #8F4414,-2px 2px 0 #8F4414,-3px 3px 0 #8F4414,-4px 4px 0 #8F4414,-5px 5px 0 #8F4414,-6px 6px 0 #8F4414,-7px 7px 0 #8F4414,-8px 8px 0 #8F4414,-9px 9px 0 #8F4414,-10px 10px 0 #8F4414,-11px 11px 0 #8F4414,-12px 12px 0 #8F4414,-13px 13px 0 #8F4414,-14px 14px 0 #8F4414,-15px 15px 0 #8F4414,-16px 16px 0 #8F4414,-26px 30px 24px rgba(5,10,20,.45)}
+.bk-top-t b{font-size:19px}
+.bk-l0{transform:translateZ(0);animation:bkDrop0 9s cubic-bezier(.3,.7,.3,1) infinite both}
+.bk-l1{transform:translateZ(46px);animation:bkDrop1 9s cubic-bezier(.3,.7,.3,1) infinite both}
+.bk-l2w{position:absolute;left:66px;top:66px;width:168px;height:168px;transform-style:preserve-3d;transform:translateZ(112px);animation:bkDrop2 9s cubic-bezier(.3,.7,.3,1) 1.5s infinite both}
+.bk-float{position:absolute;inset:0;animation:bkFloat 2.4s ease-in-out infinite alternate}
+.bk-d2{animation-delay:.2s}.bk-d3{animation-delay:.55s}.bk-d4{animation-delay:.7s}.bk-d5{animation-delay:.85s}.bk-d6{animation-delay:1s}
+@keyframes bkDrop0{0%{transform:translateZ(200px);opacity:0}6%{opacity:1}10%{transform:translateZ(-6px)}13%{transform:translateZ(3px)}15%,86%{transform:translateZ(0);opacity:1}94%,100%{transform:translateZ(0);opacity:0}}
+@keyframes bkDrop1{0%{transform:translateZ(230px);opacity:0}6%{opacity:1}10%{transform:translateZ(40px)}13%{transform:translateZ(49px)}15%,84%{transform:translateZ(46px);opacity:1}92%,100%{transform:translateZ(46px);opacity:0}}
+@keyframes bkDrop2{0%{transform:translateZ(250px);opacity:0}6%{opacity:1}11%{transform:translateZ(104px)}14%{transform:translateZ(116px)}16%,80%{transform:translateZ(112px);opacity:1}88%,100%{transform:translateZ(112px);opacity:0}}
+@keyframes bkFloat{from{transform:translateZ(0)}to{transform:translateZ(12px)}}
+.bk-now{display:flex;align-items:center;gap:12px;align-self:flex-start;background:#263250;border:1px solid #34415F;border-radius:999px;padding:6px 18px 6px 6px;margin:0;font-size:14px;color:#e3e7ee}
+.bk-now b{background:var(--accent2);color:#fff;font-size:13px;border-radius:999px;padding:2px 12px}
+.bk-note{margin-top:16px;font-size:13px;color:var(--muted)}
+.fit-grid.fit-two{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:stretch}
+.fit-grid.fit-two>div{border:1px solid var(--paper-line);border-radius:var(--r8);padding:28px;background:rgba(255,255,255,.55)}
+.fit-two .fit-block+.fit-block{margin-top:0}
+@media(max-width:960px){.bk-grid,.fit-grid.fit-two{grid-template-columns:1fr}.bk-stage{min-height:0}}
+@media(max-width:600px){.bk-scene-wrap{height:330px}.bk-scene-wrap .bk-scene{margin-top:0;transform:scale(.72)}.bk-row{padding:14px 16px}.bk-q{font-size:16px}}
+@media(max-width:400px){.bk-scene-wrap{height:290px}.bk-scene-wrap .bk-scene{transform:scale(.62)}}
+@media(prefers-reduced-motion:reduce){.bk-l0,.bk-l1,.bk-l2w,.bk-float{animation:none}}
 </style>
 </head>
 <body>
@@ -1040,117 +1097,92 @@ nav{max-width:100vw}
         <a class="signal" href="#cases" onclick="goToCaseFilter('role-fin');return false;">
           <p class="sig-q">每個月都有報表，看完還是不知道問題出在哪。</p>
           <p class="sig-why">報表記錄的是結果，還沒有連到各部門該看的指標，所以看不出卡在哪。</p>
+          <span class="sig-block"><small>對應積木</small>資料底子・成果對帳</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
         <a class="signal" href="#cases" onclick="goToCaseFilter(['role-hr','role-train']);return false;">
           <p class="sig-q">目標講了很多次，各部門的理解還是不一樣。</p>
           <p class="sig-why">目標停在口頭說明，還沒拆成每個部門追得到的數字。</p>
+          <span class="sig-block"><small>對應積木</small>成果對帳・經營戰情室</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
         <a class="signal" href="#cases" onclick="goToCaseFilter('role-ops');return false;">
           <p class="sig-q">同一件事三個人三種做法，新人只能靠問。</p>
           <p class="sig-why">做法留在每個人身上，還沒整理成大家共用的流程。</p>
+          <span class="sig-block"><small>對應積木</small>工作地圖</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
         <a class="signal" href="#cases" onclick="goToCaseFilter('has-ai');return false;">
           <p class="sig-q">想導入系統或 AI，卻不知道該從哪個流程開始。</p>
           <p class="sig-why">工作還沒一步步拆開，看不出哪一步適合交給系統。</p>
+          <span class="sig-block"><small>對應積木</small>工作地圖・時間去向</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 3. 承啟做的兩件事 -->
-  <section class="sec offers" id="offers">
+  <!-- 3. 我們做什麼：五個面向堆出戰情室 -->
+  <section class="sec offers blocks" id="offers">
     <div class="inner">
       <div class="sec-head" data-reveal>
         <p class="sec-label">我們做什麼</p>
-        <h2 class="sec-title">從募資、財務到組織與營運，一路陪企業往前</h2>
-        <p class="sec-sub">承啟的服務橫跨經營的各個面向。在這些合作裡，有兩件事幾乎每家企業都需要，我們把它整理成可以重複使用的方法與工具。</p>
+        <h2 class="sec-title">五個面向，堆出一間戰情室</h2>
+        <p class="sec-sub">從手邊已有的資料開始，每補一塊，就多看懂公司一點。</p>
       </div>
-
-      <div class="offer-more" data-reveal>
-        <h4>服務範圍</h4>
-        <div class="offer-more-list">
-          <span>組織 × 人資</span><span>培訓 × 教練</span><span>營運 × 流程</span><span>財務 × 募資</span><span>會計 × 合規</span><span>業務 × 成長</span><span>品牌 × 行銷</span>
-        </div>
-      </div>
-      <div class="offer">
-        <div class="offer-text" data-reveal>
-          <p class="offer-tag"><i>1</i>目標與數字<span class="offer-tool">策略戰情室</span></p>
-          <h3>讓公司的目標，變成每個部門追得到的數字</h3>
-          <p>從經營者今年最在意的一兩件事開始，往下拆成各部門該看的指標，再整理出每個月固定要看的營運數字。開會不再各說各話，看數字就知道哪裡卡住。</p>
-          <p class="offer-out-label">怎麼進行</p>
-          <ol class="offer-steps"><li><b>策略框架</b>整理策略目標、營收目標與組織規模</li><li><b>KPI 設定</b>依產業帶入建議指標，再對應到負責的部門與角色</li><li><b>總儀表板</b>用紅黃綠燈看達成狀況，產出盤點摘要</li><li><b>營運數據</b>匯入各部門既有的 Excel，盤點能算出哪些指標</li></ol>
-          <button type="button" class="btn btn-ghost offer-demo-btn" onclick="openBookingModal()">預約實際操作示範 <span class="arr">→</span></button>
-        </div>
-        <div class="demo kpi-demo" data-demo>
-          <div class="demo-head">
-            <span class="demo-title">總儀表板<small>示意畫面</small></span>
-            <span class="kpi-months" aria-hidden="true"><b data-m="0">7 月</b><b data-m="1">8 月</b><b data-m="2" class="on">9 月</b></span>
-            <button type="button" class="demo-replay" aria-label="重新播放看板動畫">重播</button>
+      <div class="bk-grid">
+        <div class="bk-list" data-reveal>
+          <div class="bk-top"><span class="bk-top-h"><b class="bk-top-chip">頂層</b><strong>經營戰情室</strong></span><span>各塊答案匯成一張圖，每月看，看了就能做決定。</span></div>
+          <div class="bk-rows" role="group" aria-label="戰情室的五個面向">
+          <button type="button" class="bk-row" data-area="money" data-label="錢" data-q="錢夠不夠、花得對不對？" aria-pressed="false">
+            <span class="bk-row-h"><span class="bk-tag">錢</span><span class="bk-q">錢夠不夠、花得對不對？</span></span>
+            <span class="bk-chips"><span>財務體質</span><span>現金流向</span><span>人事總量</span></span>
+            <span class="bk-svc">對應服務：財務 × 募資・會計 × 合規</span>
+          </button>
+          <button type="button" class="bk-row" data-area="people" data-label="人" data-q="人放對位置、權責清楚嗎？" aria-pressed="false">
+            <span class="bk-row-h"><span class="bk-tag">人</span><span class="bk-q">人放對位置、權責清楚嗎？</span></span>
+            <span class="bk-chips"><span>權責分工</span><span>時間去向</span><span>人才適配</span></span>
+            <span class="bk-svc">對應服務：組織 × 人資・培訓 × 教練</span>
+          </button>
+          <button type="button" class="bk-row" data-area="work" data-label="事" data-q="每天穩定、有成果嗎？" aria-pressed="false">
+            <span class="bk-row-h"><span class="bk-tag">事</span><span class="bk-q">每天穩定、有成果嗎？</span></span>
+            <span class="bk-chips"><span>工作地圖</span><span>營運節奏</span><span>成果對帳</span></span>
+            <span class="bk-svc">對應服務：營運 × 流程</span>
+          </button>
+          <button type="button" class="bk-row" data-area="market" data-label="市場" data-q="營收從哪來、往哪長？" aria-pressed="false">
+            <span class="bk-row-h"><span class="bk-tag">市場</span><span class="bk-q">營收從哪來、往哪長？</span></span>
+            <span class="bk-chips"><span>客戶輪廓</span><span>成長動能</span></span>
+            <span class="bk-svc">對應服務：業務 × 成長・品牌 × 行銷</span>
+          </button>
+          <button type="button" class="bk-row" data-area="base" data-label="底座" data-q="數字對得起來、基本功到位嗎？" aria-pressed="false">
+            <span class="bk-row-h"><span class="bk-tag">底座</span><span class="bk-q">數字對得起來、基本功到位嗎？</span></span>
+            <span class="bk-chips"><span>資料底子</span><span>合規底線</span></span>
+            <span class="bk-svc">對應服務：會計 × 合規</span>
+          </button>
           </div>
-          <div class="demo-body">
-            <div class="kpi-goal"><span>今年目標</span><strong>營收成長 20%</strong></div>
-            <svg class="kpi-links" viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M150 0 V12 H50 V30"/><path d="M150 0 V30"/><path d="M150 12 H250 V30"/>
-            </svg>
-            <div class="kpi-cols">
-              <div class="kpi-col">
-                <h4>業務</h4>
-                <div class="kpi-row lt-y"><div class="kpi-name">新客戶數<span class="pill lt-y">黃燈</span></div><div class="kpi-bar"><i style="--v:0.83"></i></div><div class="kpi-val"><b>10</b> / 12 家</div></div>
-                <div class="kpi-row lt-g"><div class="kpi-name">回購率<span class="pill lt-g">綠燈</span></div><div class="kpi-bar"><i style="--v:1"></i></div><div class="kpi-val"><b>38%</b> / 35%</div></div>
-              </div>
-              <div class="kpi-col">
-                <h4>營運</h4>
-                <div class="kpi-row lt-g"><div class="kpi-name">準時出貨率<span class="pill lt-g">綠燈</span></div><div class="kpi-bar"><i style="--v:1"></i></div><div class="kpi-val"><b>99%</b> / 98%</div></div>
-                <div class="kpi-row lt-r"><div class="kpi-name">客訴結案天數<span class="pill lt-r">紅燈</span></div><div class="kpi-bar"><i style="--v:0.67"></i></div><div class="kpi-val"><b>3</b> / 2 天內</div></div>
-              </div>
-              <div class="kpi-col">
-                <h4>管理部</h4>
-                <div class="kpi-row lt-g"><div class="kpi-name">關鍵職缺補齊<span class="pill lt-g">綠燈</span></div><div class="kpi-bar"><i style="--v:1"></i></div><div class="kpi-val"><b>30</b> / 45 天內</div></div>
-                <div class="kpi-row lt-y"><div class="kpi-name">月結完成<span class="pill lt-y">黃燈</span></div><div class="kpi-bar"><i style="--v:0.83"></i></div><div class="kpi-val"><b>6</b> / 5 個工作天</div></div>
+        </div>
+        <div class="bk-stage">
+          <div>
+            <p class="bk-stage-k">由下往上，一塊一塊堆</p>
+            <p class="bk-stage-t">五個面向，拼出經營全貌</p>
+          </div>
+          <div class="bk-scene-wrap">
+            <div class="bk-scene" role="img" aria-label="立體積木堆疊：底座是資料底子與合規底線，中層是錢、人、事、市場四個面向，最上層是經營戰情室">
+              <div class="bk-plane" aria-hidden="true">
+                <div class="bk-t bk-base bk-l0" data-bk="base" style="left:0;top:0;width:300px;height:144px"><b>資料底子</b></div>
+                <div class="bk-t bk-base bk-l0 bk-d2" data-bk="base" style="left:0;top:156px;width:300px;height:144px"><b>合規底線</b></div>
+                <div class="bk-t bk-l1 bk-d3" data-bk="money" style="left:10px;top:10px"><b class="bk-big">錢</b><small>3 塊積木</small></div>
+                <div class="bk-t bk-l1 bk-d4" data-bk="people" style="left:158px;top:10px"><b class="bk-big">人</b><small>3 塊積木</small></div>
+                <div class="bk-t bk-l1 bk-d5" data-bk="market" style="left:10px;top:158px"><b class="bk-big">市場</b><small>2 塊積木</small></div>
+                <div class="bk-t bk-l1 bk-d6" data-bk="work" style="left:158px;top:158px"><b class="bk-big">事</b><small>3 塊積木</small></div>
+                <div class="bk-l2w"><div class="bk-float"><div class="bk-t bk-top-t on" data-bk="top"><b>經營戰情室</b><small>一張圖看懂公司</small></div></div></div>
               </div>
             </div>
-            <div class="kpi-summary"><small>盤點摘要</small><p id="kpiSummary">三項達標、兩項接近目標；客訴結案天數仍是紅燈，下個月追蹤流程調整後的變化。</p></div>
-            <div class="kpi-legend"><span><i class="lt-g"></i>達成 100% 以上</span><span><i class="lt-y"></i>80–99%</span><span><i class="lt-r"></i>低於 80%</span></div>
           </div>
+          <p class="bk-now" aria-live="polite"><b id="bkNowLabel">戰情室</b><span id="bkNowQ">五個面向，堆出一張看懂公司的圖</span></p>
         </div>
       </div>
-
-      <div class="offer">
-        <div class="offer-text" data-reveal>
-          <p class="offer-tag"><i>2</i>流程與分工<span class="offer-tool">工作流拆解工作台</span></p>
-          <h3>把流程拆開，分清楚系統做什麼、人做什麼</h3>
-          <p>把每天在跑的工作一步一步攤開，標出哪些可以自動化、哪些一定要有人判斷，再整理成可以複製的流程模組。新人上手更快，系統和 AI 也接得上。</p>
-          <p class="offer-out-label">怎麼進行</p>
-          <ol class="offer-steps"><li><b>引導訪談</b>用七個問題請同仁照實際順序說，現場或錄音都可以</li><li><b>拆出節點</b>AI 整理成流程步驟，逐一確認</li><li><b>標記分工</b>每一步標出人工、系統或 AI，評估影響與導入難度</li><li><b>流程報告</b>可作為 SOP、工作說明書或內控底稿</li></ol>
-          <button type="button" class="btn btn-ghost offer-demo-btn" onclick="openBookingModal()">預約實際操作示範 <span class="arr">→</span></button>
-        </div>
-        <div class="demo flow-demo" data-demo>
-          <div class="demo-head">
-            <span class="demo-title">工作流拆解：從接單到收款<small>示意畫面</small></span>
-            <button type="button" class="demo-replay" aria-label="重新播放流程拆解動畫">重播</button>
-          </div>
-          <div class="demo-body">
-            <ol class="flow">
-              <li class="flow-step"><span class="fs-no">1</span><span class="fs-name">接收訂單</span><span class="fs-tag auto">系統自動</span><span class="fs-note">線上表單收單，自動寫進訂單表</span></li>
-              <li class="flow-step"><span class="fs-no">2</span><span class="fs-name">確認庫存</span><span class="fs-tag auto">系統自動</span><span class="fs-note">自動比對庫存，不足時通知採購</span></li>
-              <li class="flow-step"><span class="fs-no">3</span><span class="fs-name">特殊折扣核准</span><span class="fs-tag human">人工判斷</span><span class="fs-note">看客戶關係與毛利，由主管決定</span></li>
-              <li class="flow-step"><span class="fs-no">4</span><span class="fs-name">安排出貨</span><span class="fs-tag mix">人機協作</span><span class="fs-note">系統排好出貨單，倉管確認後放行</span></li>
-              <li class="flow-step"><span class="fs-no">5</span><span class="fs-name">開立發票</span><span class="fs-tag auto">系統自動</span><span class="fs-note">出貨完成自動開立並寄給客戶</span></li>
-              <li class="flow-step"><span class="fs-no">6</span><span class="fs-name">月底對帳</span><span class="fs-tag mix">人機協作</span><span class="fs-note">系統先比對，有差異的才交給會計處理</span></li>
-            </ol>
-            <div class="flow-sum">
-              <span><i class="lg-dot" style="background:var(--teal)"></i>系統自動 <b>3</b></span>
-              <span><i class="lg-dot" style="background:var(--blue)"></i>人機協作 <b>2</b></span>
-              <span><i class="lg-dot" style="background:var(--accent)"></i>人工判斷 <b>1</b></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <p class="bk-note">積木會依企業現場持續長出來；每一塊都能單獨開始，也能接在一起看。</p>
     </div>
   </section>
 
@@ -1159,32 +1191,32 @@ nav{max-width:100vw}
     <div class="inner">
       <div class="sec-head" data-reveal>
         <p class="sec-label">我們的做法</p>
-        <h2 class="sec-title">先梳理盤點，再找出解方</h2>
-        <p class="sec-sub">從了解企業現場開始，一起盤點目標、流程與人的現況；在梳理的過程中，最該先處理的事和解方會慢慢清楚。</p>
+        <h2 class="sec-title">每家公司的第一塊積木都不一樣</h2>
+        <p class="sec-sub">先梳理盤點，再找出最該先補的那一塊。</p>
       </div>
       <ol class="rf-list">
         <li class="rf-row">
           <div class="rf-said"><small>一開始想的</small><p>「要開始建立制度了。」</p></div>
           <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><p>先讓團隊明白為什麼要組織化，有了共識，再一起訂工作公約、績效和出勤系統。</p></div>
+          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：權責分工</span><p>先讓團隊明白為什麼要組織化，有了共識，再一起訂工作公約、績效和出勤系統。</p></div>
         </li>
         <li class="rf-row">
           <div class="rf-said"><small>一開始想的</small><p>「財務不夠即時，主管也需要再加強。」</p></div>
           <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><p>先把經營者的策略整理清楚，再往下建立主管會議、組織分工和人資流程。</p></div>
+          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：成果對帳</span><p>先把經營者的策略整理清楚，再往下建立主管會議、組織分工和人資流程。</p></div>
         </li>
         <li class="rf-row">
           <div class="rf-said"><small>一開始想的</small><p>「先把募資完成。」</p></div>
           <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><p>募資之後，接著整理主管分工、企劃編輯流程和請款流程，讓公司接得住新的資金。</p></div>
+          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：權責分工・工作地圖</span><p>募資之後，接著整理主管分工、企劃編輯流程和請款流程，讓公司接得住新的資金。</p></div>
         </li>
         <li class="rf-row">
           <div class="rf-said"><small>一開始想的</small><p>「每天都有處理不完的大小事。」</p></div>
           <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><p>先把財務底子打好：整理帳務、做出基本報表，看得到數字，再談其他制度。</p></div>
+          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：財務體質</span><p>先把財務底子打好：整理帳務、做出基本報表，看得到數字，再談其他制度。</p></div>
         </li>
       </ol>
-      <p class="rf-close" data-reveal>找對起點，後面的改變才接得上。</p>
+      <p class="rf-close" data-reveal>找對起點，後面的積木才接得上。</p>
     </div>
   </section>
 
@@ -1193,7 +1225,7 @@ nav{max-width:100vw}
     <div class="inner">
       <div class="sec-head" data-reveal>
         <p class="sec-label">合作方式</p>
-        <h2 class="sec-title">合作怎麼進行</h2>
+        <h2 class="sec-title">從一杯咖啡，到團隊穩定運作</h2>
         <p class="sec-sub">不先套用標準答案，而是從企業現場開始。</p>
       </div>
       <div class="steps-wrap">
@@ -1205,58 +1237,38 @@ nav{max-width:100vw}
         </div>
         <div class="step-item">
           <div class="step-num">02</div>
-          <h3>看懂現場、排出順序</h3>
-          <p>和經營者、主管對談，跟著現場跑一輪，找出最該先動的那一塊。</p>
+          <h3>找出第一塊積木</h3>
+          <p>和經營者、主管對談，跟著現場跑一輪，排出先後順序。</p>
         </div>
         <div class="step-item">
           <div class="step-num">03</div>
-          <h3>和團隊一起做出來</h3>
-          <p>指標、報表、流程、表單和工具，跟負責的人一起建，邊用邊修。</p>
+          <h3>和團隊一起堆起來</h3>
+          <p>指標、報表、流程與工具，跟負責的人一起建，邊用邊修。</p>
         </div>
         <div class="step-item">
           <div class="step-num">04</div>
-          <h3>交給團隊自己跑</h3>
-          <p>陪到團隊自己會用、會檢討，方法就留在公司裡。</p>
+          <h3>交由團隊運作</h3>
+          <p>團隊會用、會檢討，戰情室輔助決策、看清全貌。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. 適不適合 + 30 秒自我檢查 -->
+  <!-- 6. 合作之前：承啟最能幫上忙的時候 -->
   <section class="sec fit" id="fit">
     <div class="inner">
       <div class="sec-head" data-reveal>
-        <p class="sec-label">先確認一下</p>
-        <h2 class="sec-title">適不適合找承啟？</h2>
+        <p class="sec-label">合作之前</p>
+        <h2 class="sec-title">什麼時候，承啟最能幫上忙？</h2>
       </div>
-      <div class="fit-grid">
-        <div>
-          <div class="fit-block">
-            <h3>比較適合</h3>
-            <ul class="fit-list fit-yes"><li>很多決定還集中在經營者身上，希望團隊能分擔更多</li><li>準備擴編、展店或募資，想先把內部打好底</li><li>想導入系統或 AI，但不確定從哪裡開始</li><li>願意讓主管一起參與，不只是交給我們</li></ul>
-          </div>
-          <div class="fit-block">
-            <h3>可能不太適合</h3>
-            <ul class="fit-list fit-no"><li>只需要一份診斷報告，暫時不打算動手調整</li><li>希望一次導入大型 ERP，把所有系統全部換掉</li></ul>
-          </div>
+      <div class="fit-grid fit-two">
+        <div class="fit-block">
+          <h3>我們最能幫上忙的時候</h3>
+          <ul class="fit-list fit-yes"><li>很多決定還集中在經營者身上，希望團隊能分擔更多</li><li>準備擴編、展店或募資，想先把內部打好底</li><li>想導入系統或 AI，但不確定從哪裡開始</li><li>願意讓主管一起參與，不只是交給我們</li></ul>
         </div>
-        <div class="check" id="selfCheck" data-r-low="基礎已經不錯。下一步可以把目標接到數字上，讓成長看得見。" data-r-mid="正是開始組織化的好時機。建議先挑一個最在意的目標，或一條最常卡住的流程下手。" data-r-high="很多事還集中在經營者身上。可以先把最重要的目標拆成數字、把最常卡住的流程攤開，讓團隊一起分擔。">
-          <h3>花 30 秒，看看公司走到哪一步</h3>
-          <p class="check-sub">勾選符合公司現況的描述。</p>
-          <ul class="check-list">
-            <li><label><input type="checkbox" id="chk1"><span>大部分的決定，還集中在經營者身上</span></label></li>
-            <li><label><input type="checkbox" id="chk2"><span>各部門的目標，主要靠口頭交代</span></label></li>
-            <li><label><input type="checkbox" id="chk3"><span>每月有報表，但很少拿來做決定</span></label></li>
-            <li><label><input type="checkbox" id="chk4"><span>新人上手，主要靠老鳥帶、靠問</span></label></li>
-            <li><label><input type="checkbox" id="chk5"><span>同一件事，不同人做法不一樣</span></label></li>
-            <li><label><input type="checkbox" id="chk6"><span>買了系統或想用 AI，但用不太起來</span></label></li>
-          </ul>
-          <div class="check-meter" aria-hidden="true">
-            <div class="check-meter-bar"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <span class="check-count" id="checkCount">0 / 6</span>
-          </div>
-          <p class="check-result" id="checkResult" aria-live="polite">勾選後，這裡會提供一個建議的起點。</p>
-          <button type="button" class="btn btn-primary" onclick="openBookingModal()">帶著結果，約我們聊聊 <span class="arr">→</span></button>
+        <div class="fit-block">
+          <h3>可能有更合適的選擇</h3>
+          <ul class="fit-list fit-no"><li>只需要一份診斷報告，暫時不打算動手調整</li><li>希望一次導入大型 ERP，把所有系統全部換掉</li></ul>
         </div>
       </div>
     </div>
@@ -1269,7 +1281,7 @@ nav{max-width:100vw}
   <div class="cta-banner">
     <div class="cta-inner">
       <div>
-        <h2>不確定我們能幫什麼？歡迎先交流</h2>
+        <h2>不確定從哪裡開始？歡迎先交流</h2>
         <p>加 LINE 互動，或約咖啡深聊兩小時，找到最適合的合作起點</p>
       </div>
       <div class="cta-btns">
@@ -1753,7 +1765,7 @@ nav{max-width:100vw}
   <div class="cta-banner">
     <div class="cta-inner">
       <div>
-        <h2>不確定我們能幫什麼？歡迎先交流</h2>
+        <h2>不確定從哪裡開始？歡迎先交流</h2>
         <p>加 LINE 互動，或約咖啡深聊兩小時，找到最適合的合作起點</p>
       </div>
       <div class="cta-btns">
@@ -2727,6 +2739,28 @@ function inViewport(el){
       });
     }, {threshold:0.35}).observe(svg);
   }
+})();
+
+/* 五個面向：輪播亮燈、點選停留（看得到才播放） */
+(function(){
+  var sec = document.getElementById('offers');
+  if(!sec || !sec.querySelector('.bk-row')) return;
+  var rows = Array.prototype.slice.call(sec.querySelectorAll('.bk-row'));
+  var tiles = sec.querySelectorAll('[data-bk]');
+  var lab = document.getElementById('bkNowLabel'), q = document.getElementById('bkNowQ');
+  var order = ['all','money','people','work','market','base'], idx = 0, auto = true, visible = false;
+  function set(k){
+    var cur = null;
+    rows.forEach(function(r){ var on = r.getAttribute('data-area') === k; r.classList.toggle('on', on); r.setAttribute('aria-pressed', on ? 'true' : 'false'); if(on) cur = r; });
+    tiles.forEach(function(t){ var a = t.getAttribute('data-bk'); t.classList.toggle('on', a === 'top' || a === k); });
+    lab.textContent = cur ? cur.getAttribute('data-label') : '戰情室';
+    q.textContent = cur ? cur.getAttribute('data-q') : '五個面向，堆出一張看懂公司的圖';
+  }
+  rows.forEach(function(r){ r.addEventListener('click', function(){ auto = false; set(r.getAttribute('data-area')); }); });
+  set('all');
+  if(REDUCED_MOTION) return;
+  setInterval(function(){ if(!auto || !visible) return; idx = (idx + 1) % order.length; set(order[idx]); }, 2800);
+  if(window.IntersectionObserver){ new IntersectionObserver(function(es){ es.forEach(function(e){ visible = e.isIntersecting; }); }, {threshold:0.3}).observe(sec); } else { visible = true; }
 })();
 
 /* 30 秒自我檢查 */
