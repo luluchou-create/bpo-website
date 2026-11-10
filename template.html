@@ -1040,8 +1040,8 @@ nav{max-width:100vw}
   <div class="nav-links">
     <a onclick="showPage('home')" data-page="home" class="active nav-hide-sm">首頁</a>
     <a onclick="showPage('cases')" data-page="cases">合作案例</a>
-    {{NAV_INSIGHTS}}
     <a class="nav-ai" onclick="showPage('cases');setTimeout(function(){toggleAiMore(true)},350)">AI 成果</a>
+    {{NAV_INSIGHTS}}
     <a class="nav-cta" onclick="openBookingModal()">預約聊聊</a>
   </div>
 </nav>
@@ -1097,7 +1097,7 @@ nav{max-width:100vw}
         <a class="signal" href="#cases" onclick="goToCaseFilter('role-fin');return false;">
           <p class="sig-q">{{SIGNAL1}}</p>
           <p class="sig-why">{{SIGNAL1_WHY}}</p>
-          <span class="sig-block"><small>對應積木</small>資料底子・成果對帳</span>
+          <span class="sig-block"><small>對應積木</small>數據整合・成果對帳</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
         <a class="signal" href="#cases" onclick="goToCaseFilter(['role-hr','role-train']);return false;">
@@ -1132,7 +1132,7 @@ nav{max-width:100vw}
       </div>
       <div class="bk-grid">
         <div class="bk-list" data-reveal>
-          <div class="bk-top"><span class="bk-top-h"><b class="bk-top-chip">頂層</b><strong>經營戰情室</strong></span><span>各塊答案匯成一張圖，每月看，看了就能做決定。</span></div>
+          <div class="bk-top"><span class="bk-top-h"><b class="bk-top-chip">頂層</b><strong>經營戰情室</strong></span><span>拼出營運決策輪廓</span></div>
           <div class="bk-rows" role="group" aria-label="戰情室的五個面向">
           <button type="button" class="bk-row" data-area="money" data-label="錢" data-q="錢夠不夠、花得對不對？" aria-pressed="false">
             <span class="bk-row-h"><span class="bk-tag">錢</span><span class="bk-q">錢夠不夠、花得對不對？</span></span>
@@ -1156,7 +1156,7 @@ nav{max-width:100vw}
           </button>
           <button type="button" class="bk-row" data-area="base" data-label="底座" data-q="數字對得起來、基本功到位嗎？" aria-pressed="false">
             <span class="bk-row-h"><span class="bk-tag">底座</span><span class="bk-q">數字對得起來、基本功到位嗎？</span></span>
-            <span class="bk-chips"><span>資料底子</span><span>合規底線</span></span>
+            <span class="bk-chips"><span>數據整合</span><span>合規底線</span></span>
             <span class="bk-svc">對應服務：會計 × 合規</span>
           </button>
           </div>
@@ -1164,12 +1164,12 @@ nav{max-width:100vw}
         <div class="bk-stage">
           <div>
             <p class="bk-stage-k">由下往上，一塊一塊堆</p>
-            <p class="bk-stage-t">五個面向，拼出經營全貌</p>
+            <p class="bk-stage-t">從多面向拼出經營全貌</p>
           </div>
           <div class="bk-scene-wrap">
-            <div class="bk-scene" role="img" aria-label="立體積木堆疊：底座是資料底子與合規底線，中層是錢、人、事、市場四個面向，最上層是經營戰情室">
+            <div class="bk-scene" role="img" aria-label="立體積木堆疊：底座是數據整合與合規底線，中層是錢、人、事、市場四個面向，最上層是經營戰情室">
               <div class="bk-plane" aria-hidden="true">
-                <div class="bk-t bk-base bk-l0" data-bk="base" style="left:0;top:0;width:300px;height:144px"><b>資料底子</b></div>
+                <div class="bk-t bk-base bk-l0" data-bk="base" style="left:0;top:0;width:300px;height:144px"><b>數據整合</b></div>
                 <div class="bk-t bk-base bk-l0 bk-d2" data-bk="base" style="left:0;top:156px;width:300px;height:144px"><b>合規底線</b></div>
                 <div class="bk-t bk-l1 bk-d3" data-bk="money" style="left:10px;top:10px"><b class="bk-big">錢</b><small>3 塊積木</small></div>
                 <div class="bk-t bk-l1 bk-d4" data-bk="people" style="left:158px;top:10px"><b class="bk-big">人</b><small>3 塊積木</small></div>
@@ -1263,7 +1263,7 @@ nav{max-width:100vw}
       </div>
       <div class="fit-grid fit-two">
         <div class="fit-block">
-          <h3>我們最能幫上忙的時候</h3>
+          <h3>最能幫上忙的時候</h3>
           <ul class="fit-list fit-yes">{{FIT_YES}}</ul>
         </div>
         <div class="fit-block">
