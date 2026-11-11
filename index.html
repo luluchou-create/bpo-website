@@ -1028,6 +1028,35 @@ nav{max-width:100vw}
 @media(max-width:600px){.bk-scene-wrap{height:330px}.bk-scene-wrap .bk-scene{margin-top:0;transform:scale(.72)}.bk-row{padding:14px 16px}.bk-q{font-size:16px}}
 @media(max-width:400px){.bk-scene-wrap{height:290px}.bk-scene-wrap .bk-scene{transform:scale(.62)}}
 @media(prefers-reduced-motion:reduce){.bk-l0,.bk-l1,.bk-l2w,.bk-float{animation:none}}
+/* 經營三件事（2026.11.11 改版）：三層積木 */
+.bk-lead{font-size:16px;color:var(--muted);line-height:1.8;margin:0 0 6px}
+.bk-desc{font-size:14px;line-height:1.8;color:var(--muted)}
+.bk-row{min-height:150px}
+.bk-tag{min-width:72px}
+.sig-area{align-self:flex-start;font-size:12px;font-weight:700;color:var(--brand);background:var(--bg2);border-radius:6px;padding:2px 10px;letter-spacing:.06em}
+.bk-plane.bk3{top:190px}
+.bk3 .bk-t{box-shadow:-1px 1px 0 #2A3550,-2px 2px 0 #2A3550,-3px 3px 0 #2A3550,-4px 4px 0 #2A3550,-5px 5px 0 #2A3550,-6px 6px 0 #2A3550,-7px 7px 0 #2A3550,-8px 8px 0 #2A3550,-9px 9px 0 #2A3550,-10px 10px 0 #2A3550,-11px 11px 0 #2A3550,-12px 12px 0 #2A3550,-22px 26px 24px rgba(5,10,20,.45)}
+.bk3 .bk-t.bk-dir{background:#4A5878}
+.bk3 .bk-t.bk-ppl{background:#3F4C6C;box-shadow:-1px 1px 0 #252F48,-2px 2px 0 #252F48,-3px 3px 0 #252F48,-4px 4px 0 #252F48,-5px 5px 0 #252F48,-6px 6px 0 #252F48,-7px 7px 0 #252F48,-8px 8px 0 #252F48,-9px 9px 0 #252F48,-10px 10px 0 #252F48,-11px 11px 0 #252F48,-12px 12px 0 #252F48,-22px 26px 24px rgba(5,10,20,.45)}
+.bk3 .bk-t.bk-mon{background:#36425F;box-shadow:-1px 1px 0 #20293F,-2px 2px 0 #20293F,-3px 3px 0 #20293F,-4px 4px 0 #20293F,-5px 5px 0 #20293F,-6px 6px 0 #20293F,-7px 7px 0 #20293F,-8px 8px 0 #20293F,-9px 9px 0 #20293F,-10px 10px 0 #20293F,-11px 11px 0 #20293F,-12px 12px 0 #20293F,-22px 26px 24px rgba(5,10,20,.45)}
+.bk3 .bk-t.bk-ppl b{font-size:15px}
+.bk3 .bk-t.bk-dir b,.bk3 .bk-t.bk-mon b{font-size:16px}
+.bk3 .bk-t.on{background:#D06A24;box-shadow:-1px 1px 0 #8F4414,-2px 2px 0 #8F4414,-3px 3px 0 #8F4414,-4px 4px 0 #8F4414,-5px 5px 0 #8F4414,-6px 6px 0 #8F4414,-7px 7px 0 #8F4414,-8px 8px 0 #8F4414,-9px 9px 0 #8F4414,-10px 10px 0 #8F4414,-11px 11px 0 #8F4414,-12px 12px 0 #8F4414,-22px 26px 24px rgba(5,10,20,.45)}
+.bk3 .bk-top-t.on{box-shadow:-1px 1px 0 #8F4414,-2px 2px 0 #8F4414,-3px 3px 0 #8F4414,-4px 4px 0 #8F4414,-5px 5px 0 #8F4414,-6px 6px 0 #8F4414,-7px 7px 0 #8F4414,-8px 8px 0 #8F4414,-9px 9px 0 #8F4414,-10px 10px 0 #8F4414,-11px 11px 0 #8F4414,-12px 12px 0 #8F4414,-13px 13px 0 #8F4414,-14px 14px 0 #8F4414,-15px 15px 0 #8F4414,-16px 16px 0 #8F4414,-26px 30px 24px rgba(5,10,20,.45)}
+.bk-m1{transform:translateZ(42px);animation:bkDropM1 9s cubic-bezier(.3,.7,.3,1) infinite both}
+.bk-m2{transform:translateZ(84px);animation:bkDropM2 9s cubic-bezier(.3,.7,.3,1) infinite both}
+.bk-m3w{position:absolute;left:66px;top:66px;width:168px;height:168px;transform-style:preserve-3d;transform:translateZ(140px);animation:bkDropM3 9s cubic-bezier(.3,.7,.3,1) 1.6s infinite both}
+.bk3 .bk-d2{animation-delay:.12s}.bk3 .bk-d3{animation-delay:.24s}.bk3 .bk-d4{animation-delay:.5s}.bk3 .bk-d5{animation-delay:.62s}.bk3 .bk-d6{animation-delay:.74s}.bk-d7{animation-delay:1s}.bk-d8{animation-delay:1.12s}
+@keyframes bkDropM1{0%{transform:translateZ(230px);opacity:0}6%{opacity:1}10%{transform:translateZ(36px)}13%{transform:translateZ(45px)}15%,85%{transform:translateZ(42px);opacity:1}93%,100%{transform:translateZ(42px);opacity:0}}
+@keyframes bkDropM2{0%{transform:translateZ(250px);opacity:0}6%{opacity:1}10%{transform:translateZ(78px)}13%{transform:translateZ(87px)}15%,84%{transform:translateZ(84px);opacity:1}92%,100%{transform:translateZ(84px);opacity:0}}
+@keyframes bkDropM3{0%{transform:translateZ(280px);opacity:0}6%{opacity:1}11%{transform:translateZ(132px)}14%{transform:translateZ(144px)}16%,80%{transform:translateZ(140px);opacity:1}88%,100%{transform:translateZ(140px);opacity:0}}
+.bk-scene-wrap{height:440px}
+.bk-scene-wrap .bk-scene{margin-top:-90px}
+.bk-now b{white-space:nowrap;flex:none}
+@media(max-width:600px){.bk-scene-wrap{height:330px}.bk-scene-wrap .bk-scene{margin-top:-50px}}
+@media(max-width:400px){.bk-scene-wrap{height:310px}}
+@media(prefers-reduced-motion:reduce){.bk-m1,.bk-m2,.bk-m3w{animation:none}}
+
 </style>
 </head>
 <body>
@@ -1056,7 +1085,7 @@ nav{max-width:100vw}
     <div class="hero-inner hero-grid">
       <div class="hero-copy">
         <p class="hero-kicker">階段性專業經理人・目標與流程建置</p>
-        <h1><span class="hl"><span>把經營者的判斷，</span></span><span class="hl"><span><em>變成團隊接得住的方法</em></span></span></h1>
+        <h1><span class="hl"><span>將經營者的判斷，</span></span><span class="hl"><span><em>變成團隊接得住的方法</em></span></span></h1>
         <p class="hero-sub">承啟以兼任專業經理人的方式協助企業，在策略推行的過程中建立組織、營運流程與架構，讓管理變成可以追蹤的指標，快速銜接經營者想推動的目標，並與團隊一起完成。</p>
         <div class="hero-btns">
           <button type="button" class="btn btn-primary" onclick="openBookingModal()">預約一杯咖啡時光 <span class="arr">→</span></button>
@@ -1089,100 +1118,97 @@ nav{max-width:100vw}
       <div class="sig-side">
         <div class="sec-head" data-reveal>
           <p class="sec-label">常聽到的處境</p>
-          <h2 class="sec-title">這些狀況，許多經營者都遇過</h2>
+          <h2 class="sec-title">企業成長到某個階段，常會遇到的課題</h2>
         </div>
         <p class="signal-close" data-reveal>公司長大了，原本靠經營者經驗運作的方式，需要整理成團隊都看得懂、用得上的方法。</p>
       </div>
       <div class="signal-grid">
-        <a class="signal" href="#cases" onclick="goToCaseFilter('role-fin');return false;">
-          <p class="sig-q">每個月都有報表，看完還是不知道問題出在哪。</p>
-          <p class="sig-why">報表記錄的是結果，還沒有連到各部門該看的指標，所以看不出卡在哪。</p>
-          <span class="sig-block"><small>對應積木</small>數據整合・成果對帳</span>
-          <span class="sig-more">查看相關案例 →</span>
-        </a>
         <a class="signal" href="#cases" onclick="goToCaseFilter(['role-hr','role-train']);return false;">
-          <p class="sig-q">目標講了很多次，各部門的理解還是不一樣。</p>
-          <p class="sig-why">目標停在口頭說明，還沒拆成每個部門追得到的數字。</p>
-          <span class="sig-block"><small>對應積木</small>成果對帳・經營戰情室</span>
+          <span class="sig-area">定錨方向</span>
+          <p class="sig-q">方向說了很多次，各部門的理解仍有落差。</p>
+          <p class="sig-why">方向還停在口頭，尚未拆成各部門都追得到的目標。</p>
+          <span class="sig-block"><small>對應積木</small>策略藍圖・目標管理</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
         <a class="signal" href="#cases" onclick="goToCaseFilter('role-ops');return false;">
-          <p class="sig-q">同一件事三個人三種做法，新人只能靠問。</p>
-          <p class="sig-why">做法留在每個人身上，還沒整理成大家共用的流程。</p>
-          <span class="sig-block"><small>對應積木</small>工作地圖</span>
+          <span class="sig-area">定錨方向</span>
+          <p class="sig-q">同一件事有多種做法，經驗難以傳承。</p>
+          <p class="sig-why">做法還留在個人身上，尚未整理成共用的流程。</p>
+          <span class="sig-block"><small>對應積木</small>工作流程</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('has-ai');return false;">
-          <p class="sig-q">想導入系統或 AI，卻不知道該從哪個流程開始。</p>
-          <p class="sig-why">工作還沒一步步拆開，看不出哪一步適合交給系統。</p>
-          <span class="sig-block"><small>對應積木</small>工作地圖・時間去向</span>
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-hr');return false;">
+          <span class="sig-area">知人善任</span>
+          <p class="sig-q">團隊持續擴大，分工安排卻總差一點到位。</p>
+          <p class="sig-why">個人特質與工作安排尚未對齊，各項管理也缺少一致的制度依據。</p>
+          <span class="sig-block"><small>對應積木</small>人才適配・工作配置</span>
+          <span class="sig-more">查看相關案例 →</span>
+        </a>
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-hr');return false;">
+          <span class="sig-area">激勵留才</span>
+          <p class="sig-q">團隊越來越大，薪酬預算該怎麼安排，卻難有依據。</p>
+          <p class="sig-why">人事預算尚未和組織規劃、工作安排放在一起考量。</p>
+          <span class="sig-block"><small>對應積木</small>人事預算・整體獎酬</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 3. 我們做什麼：五個面向堆出戰情室 -->
+  <!-- 3. 經營三件事：定錨方向、知人善任、激勵留才，匯成經營戰情室 -->
   <section class="sec offers blocks" id="offers">
     <div class="inner">
       <div class="sec-head" data-reveal>
-        <p class="sec-label">我們做什麼</p>
-        <h2 class="sec-title">五個面向，堆出一間戰情室</h2>
-        <p class="sec-sub">從手邊已有的資料開始，每補一塊，就多看懂公司一點。</p>
+        <p class="sec-label">經營三件事</p>
+        <p class="bk-lead">常聽到一句話：老闆需要找錢、找人才、找方向。</p>
+        <h2 class="sec-title">方向清晰、人盡其才、獎酬合宜，經營全局一目了然</h2>
+        <p class="sec-sub">三件事環環相扣：方向決定組織，組織決定人才，人才決定獎酬。看清全局，每個決定都有依據。</p>
       </div>
       <div class="bk-grid">
         <div class="bk-list" data-reveal>
-          <div class="bk-top"><span class="bk-top-h"><b class="bk-top-chip">頂層</b><strong>經營戰情室</strong></span><span>拼出營運決策輪廓</span></div>
-          <div class="bk-rows" role="group" aria-label="戰情室的五個面向">
-          <button type="button" class="bk-row" data-area="money" data-label="錢" data-q="錢夠不夠、花得對不對？" aria-pressed="false">
-            <span class="bk-row-h"><span class="bk-tag">錢</span><span class="bk-q">錢夠不夠、花得對不對？</span></span>
-            <span class="bk-chips"><span>財務體質</span><span>現金流向</span><span>人事總量</span></span>
-            <span class="bk-svc">對應服務：財務 × 募資・會計 × 合規</span>
+          <div class="bk-top"><span class="bk-top-h"><b class="bk-top-chip">頂層</b><strong>經營戰情室</strong></span><span>經營全貌集中在同一個畫面，每一次決策都有依據。</span></div>
+          <div class="bk-rows" role="group" aria-label="經營三件事">
+          <button type="button" class="bk-row" data-area="direction" data-label="定錨方向" data-q="方向如何成為整個組織的共同語言？" aria-pressed="false">
+            <span class="bk-row-h"><span class="bk-tag">定錨方向</span><span class="bk-q">方向如何成為整個組織的共同語言？</span></span>
+            <span class="bk-desc">從策略梳理出組織圖、長期方向與策略架構，再拆成工作與目標，讓方向一路對得上成果。</span>
+            <span class="bk-chips"><span>策略藍圖</span><span>工作流程</span><span>目標管理</span></span>
           </button>
-          <button type="button" class="bk-row" data-area="people" data-label="人" data-q="人放對位置、權責清楚嗎？" aria-pressed="false">
-            <span class="bk-row-h"><span class="bk-tag">人</span><span class="bk-q">人放對位置、權責清楚嗎？</span></span>
-            <span class="bk-chips"><span>權責分工</span><span>時間去向</span><span>人才適配</span></span>
-            <span class="bk-svc">對應服務：組織 × 人資・培訓 × 教練</span>
+          <button type="button" class="bk-row" data-area="people" data-label="知人善任" data-q="組織成長時，如何讓每個人都發揮所長？" aria-pressed="false">
+            <span class="bk-row-h"><span class="bk-tag">知人善任</span><span class="bk-q">組織成長時，如何讓每個人都發揮所長？</span></span>
+            <span class="bk-desc">依特質讓每個人發揮所長，在合適的時間做好工作分配與安排，各項管理也都有明確的制度可依循。</span>
+            <span class="bk-chips"><span>人才適配</span><span>工作配置</span><span>制度規範</span></span>
           </button>
-          <button type="button" class="bk-row" data-area="work" data-label="事" data-q="每天穩定、有成果嗎？" aria-pressed="false">
-            <span class="bk-row-h"><span class="bk-tag">事</span><span class="bk-q">每天穩定、有成果嗎？</span></span>
-            <span class="bk-chips"><span>工作地圖</span><span>營運節奏</span><span>成果對帳</span></span>
-            <span class="bk-svc">對應服務：營運 × 流程</span>
-          </button>
-          <button type="button" class="bk-row" data-area="market" data-label="市場" data-q="營收從哪來、往哪長？" aria-pressed="false">
-            <span class="bk-row-h"><span class="bk-tag">市場</span><span class="bk-q">營收從哪來、往哪長？</span></span>
-            <span class="bk-chips"><span>客戶輪廓</span><span>成長動能</span></span>
-            <span class="bk-svc">對應服務：業務 × 成長・品牌 × 行銷</span>
-          </button>
-          <button type="button" class="bk-row" data-area="base" data-label="底座" data-q="數字對得起來、基本功到位嗎？" aria-pressed="false">
-            <span class="bk-row-h"><span class="bk-tag">底座</span><span class="bk-q">數字對得起來、基本功到位嗎？</span></span>
-            <span class="bk-chips"><span>數據整合</span><span>合規底線</span></span>
-            <span class="bk-svc">對應服務：會計 × 合規</span>
+          <button type="button" class="bk-row" data-area="money" data-label="激勵留才" data-q="獎酬如何與職責、貢獻相稱？" aria-pressed="false">
+            <span class="bk-row-h"><span class="bk-tag">激勵留才</span><span class="bk-q">獎酬如何與職責、貢獻相稱？</span></span>
+            <span class="bk-desc">薪酬是企業對團隊最重要的承諾之一。預先規劃人事預算，讓獎酬與職務相稱，也減少人才流動帶來的隱性耗損。</span>
+            <span class="bk-chips"><span>人事預算</span><span>整體獎酬</span></span>
           </button>
           </div>
         </div>
         <div class="bk-stage">
           <div>
-            <p class="bk-stage-k">由下往上，一塊一塊堆</p>
-            <p class="bk-stage-t">從多面向拼出經營全貌</p>
+            <p class="bk-stage-k">由下往上，一層一層建構經營戰情室</p>
+            <p class="bk-stage-t">從方向到人才，再到獎酬</p>
           </div>
           <div class="bk-scene-wrap">
-            <div class="bk-scene" role="img" aria-label="立體積木堆疊：底座是數據整合與合規底線，中層是錢、人、事、市場四個面向，最上層是經營戰情室">
-              <div class="bk-plane" aria-hidden="true">
-                <div class="bk-t bk-base bk-l0" data-bk="base" style="left:0;top:0;width:300px;height:144px"><b>數據整合</b></div>
-                <div class="bk-t bk-base bk-l0 bk-d2" data-bk="base" style="left:0;top:156px;width:300px;height:144px"><b>合規底線</b></div>
-                <div class="bk-t bk-l1 bk-d3" data-bk="money" style="left:10px;top:10px"><b class="bk-big">錢</b><small>3 塊積木</small></div>
-                <div class="bk-t bk-l1 bk-d4" data-bk="people" style="left:158px;top:10px"><b class="bk-big">人</b><small>3 塊積木</small></div>
-                <div class="bk-t bk-l1 bk-d5" data-bk="market" style="left:10px;top:158px"><b class="bk-big">市場</b><small>2 塊積木</small></div>
-                <div class="bk-t bk-l1 bk-d6" data-bk="work" style="left:158px;top:158px"><b class="bk-big">事</b><small>3 塊積木</small></div>
-                <div class="bk-l2w"><div class="bk-float"><div class="bk-t bk-top-t on" data-bk="top"><b>經營戰情室</b><small>一張圖看懂公司</small></div></div></div>
+            <div class="bk-scene" role="img" aria-label="立體積木堆疊：最下層是定錨方向（策略藍圖、工作流程、目標管理），中層是知人善任（人才適配、工作配置、制度規範），上層是激勵留才（人事預算、整體獎酬），最上方是經營戰情室">
+              <div class="bk-plane bk3" aria-hidden="true">
+                <div class="bk-t bk-dir bk-l0" data-bk="direction" style="left:0;top:0;width:300px;height:92px"><b>策略藍圖</b></div>
+                <div class="bk-t bk-dir bk-l0 bk-d2" data-bk="direction" style="left:0;top:104px;width:300px;height:92px"><b>工作流程</b></div>
+                <div class="bk-t bk-dir bk-l0 bk-d3" data-bk="direction" style="left:0;top:208px;width:300px;height:92px"><b>目標管理</b></div>
+                <div class="bk-t bk-ppl bk-m1 bk-d4" data-bk="people" style="left:16px;top:16px;width:80px;height:268px"><b>人才適配</b></div>
+                <div class="bk-t bk-ppl bk-m1 bk-d5" data-bk="people" style="left:110px;top:16px;width:80px;height:268px"><b>工作配置</b></div>
+                <div class="bk-t bk-ppl bk-m1 bk-d6" data-bk="people" style="left:204px;top:16px;width:80px;height:268px"><b>制度規範</b></div>
+                <div class="bk-t bk-mon bk-m2 bk-d7" data-bk="money" style="left:36px;top:36px;width:228px;height:108px"><b>人事預算</b></div>
+                <div class="bk-t bk-mon bk-m2 bk-d8" data-bk="money" style="left:36px;top:156px;width:228px;height:108px"><b>整體獎酬</b></div>
+                <div class="bk-m3w"><div class="bk-float"><div class="bk-t bk-top-t on" data-bk="top"><b>經營戰情室</b><small>一張圖看清經營全局</small></div></div></div>
               </div>
             </div>
           </div>
-          <p class="bk-now" aria-live="polite"><b id="bkNowLabel">戰情室</b><span id="bkNowQ">五個面向，堆出一張看懂公司的圖</span></p>
+          <p class="bk-now" aria-live="polite"><b id="bkNowLabel">經營戰情室</b><span id="bkNowQ">一張圖看清經營全局</span></p>
         </div>
       </div>
-      <p class="bk-note">積木會依企業現場持續長出來；每一塊都能單獨開始，也能接在一起看。</p>
+      <p class="bk-note">每一塊積木都能單獨開始，也能串成全局。</p>
     </div>
   </section>
 
@@ -1190,30 +1216,25 @@ nav{max-width:100vw}
   <section class="sec reframe" id="reframe">
     <div class="inner">
       <div class="sec-head" data-reveal>
-        <p class="sec-label">我們的做法</p>
+        <p class="sec-label">合作起點</p>
         <h2 class="sec-title">每家公司的第一塊積木都不一樣</h2>
         <p class="sec-sub">先梳理盤點，再找出最該先補的那一塊。</p>
       </div>
       <ol class="rf-list">
         <li class="rf-row">
-          <div class="rf-said"><small>一開始想的</small><p>「要開始建立制度了。」</p></div>
+          <div class="rf-said"><small>當時的課題</small><p>準備開始建立制度。</p></div>
           <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：權責分工</span><p>先讓團隊明白為什麼要組織化，有了共識，再一起訂工作公約、績效和出勤系統。</p></div>
+          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：策略藍圖・目標管理</span><p>先凝聚組織化的共識，再一起訂定工作公約、績效與出勤制度。</p></div>
         </li>
         <li class="rf-row">
-          <div class="rf-said"><small>一開始想的</small><p>「財務不夠即時，主管也需要再加強。」</p></div>
+          <div class="rf-said"><small>當時的課題</small><p>方向已經清楚，接下來要讓組織一起接手。</p></div>
           <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：成果對帳</span><p>先把經營者的策略整理清楚，再往下建立主管會議、組織分工和人資流程。</p></div>
+          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：策略藍圖</span><p>先把策略整理成文字與架構，再建立主管會議、組織分工與人資流程。</p></div>
         </li>
         <li class="rf-row">
-          <div class="rf-said"><small>一開始想的</small><p>「先把募資完成。」</p></div>
+          <div class="rf-said"><small>當時的課題</small><p>募資即將完成。</p></div>
           <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：權責分工・工作地圖</span><p>募資之後，接著整理主管分工、企劃編輯流程和請款流程，讓公司接得住新的資金。</p></div>
-        </li>
-        <li class="rf-row">
-          <div class="rf-said"><small>一開始想的</small><p>「每天都有處理不完的大小事。」</p></div>
-          <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：財務體質</span><p>先把財務底子打好：整理帳務、做出基本報表，看得到數字，再談其他制度。</p></div>
+          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：策略藍圖・工作流程</span><p>募資之後整理主管分工與請款流程，讓組織接得住新的資金。</p></div>
         </li>
       </ol>
       <p class="rf-close" data-reveal>找對起點，後面的積木才接得上。</p>
@@ -1238,17 +1259,17 @@ nav{max-width:100vw}
         <div class="step-item">
           <div class="step-num">02</div>
           <h3>找出第一塊積木</h3>
-          <p>和經營者、主管對談，跟著現場跑一輪，排出先後順序。</p>
+          <p>和經營者與團隊對談，了解日常運作的實際樣貌，再排出積木的優先順序。</p>
         </div>
         <div class="step-item">
           <div class="step-num">03</div>
-          <h3>和團隊一起堆起來</h3>
-          <p>指標、報表、流程與工具，跟負責的人一起建，邊用邊修。</p>
+          <h3>與團隊共同建置</h3>
+          <p>目標、指標、流程與制度，與團隊一起建置，在實際運作中持續調整。</p>
         </div>
         <div class="step-item">
           <div class="step-num">04</div>
-          <h3>交由團隊運作</h3>
-          <p>團隊會用、會檢討，戰情室輔助決策、看清全貌。</p>
+          <h3>交由團隊自主運作</h3>
+          <p>團隊能自行運用與檢討，經營戰情室協助經營者看清全局、做出決策。</p>
         </div>
       </div>
     </div>
@@ -1264,11 +1285,11 @@ nav{max-width:100vw}
       <div class="fit-grid fit-two">
         <div class="fit-block">
           <h3>最能幫上忙的時候</h3>
-          <ul class="fit-list fit-yes"><li>很多決定還集中在經營者身上，希望團隊能分擔更多</li><li>準備擴編、展店或募資，想先把內部打好底</li><li>想導入系統或 AI，但不確定從哪裡開始</li><li>願意讓主管一起參與，不只是交給我們</li></ul>
+          <ul class="fit-list fit-yes"><li>很多決定還集中在經營者身上，希望團隊能分擔更多</li><li>準備擴編或募資，想先把內部打好底</li><li>想讓組織管理更系統化，但不確定從哪裡開始</li></ul>
         </div>
         <div class="fit-block">
           <h3>可能有更合適的選擇</h3>
-          <ul class="fit-list fit-no"><li>只需要一份診斷報告，暫時不打算動手調整</li><li>希望一次導入大型 ERP，把所有系統全部換掉</li></ul>
+          <ul class="fit-list fit-no"><li>只需要一份診斷報告，暫時不打算動手調整</li><li>期待短期內一次全面到位</li></ul>
         </div>
       </div>
     </div>
@@ -2741,20 +2762,20 @@ function inViewport(el){
   }
 })();
 
-/* 五個面向：輪播亮燈、點選停留（看得到才播放） */
+/* 經營三件事：輪播亮燈、點選停留（看得到才播放） */
 (function(){
   var sec = document.getElementById('offers');
   if(!sec || !sec.querySelector('.bk-row')) return;
   var rows = Array.prototype.slice.call(sec.querySelectorAll('.bk-row'));
   var tiles = sec.querySelectorAll('[data-bk]');
   var lab = document.getElementById('bkNowLabel'), q = document.getElementById('bkNowQ');
-  var order = ['all','money','people','work','market','base'], idx = 0, auto = true, visible = false;
+  var order = ['all','direction','people','money'], idx = 0, auto = true, visible = false;
   function set(k){
     var cur = null;
     rows.forEach(function(r){ var on = r.getAttribute('data-area') === k; r.classList.toggle('on', on); r.setAttribute('aria-pressed', on ? 'true' : 'false'); if(on) cur = r; });
-    tiles.forEach(function(t){ var a = t.getAttribute('data-bk'); t.classList.toggle('on', a === 'top' || a === k); });
-    lab.textContent = cur ? cur.getAttribute('data-label') : '戰情室';
-    q.textContent = cur ? cur.getAttribute('data-q') : '五個面向，堆出一張看懂公司的圖';
+    tiles.forEach(function(t){ var a = t.getAttribute('data-bk'); t.classList.toggle('on', a === 'top' || a === k || k === 'all'); });
+    lab.textContent = cur ? cur.getAttribute('data-label') : '經營戰情室';
+    q.textContent = cur ? cur.getAttribute('data-q') : '一張圖看清經營全局';
   }
   rows.forEach(function(r){ r.addEventListener('click', function(){ auto = false; set(r.getAttribute('data-area')); }); });
   set('all');
