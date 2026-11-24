@@ -460,6 +460,9 @@ nav{
 .ai-trust-item{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--muted);line-height:1.75;padding:10px 0;border-top:1px solid var(--border)}
 .ai-trust-item .ti{flex-shrink:0;width:16px;height:16px;margin-top:4px;color:var(--teal)}
 .ai-tools-row{display:flex;flex-wrap:wrap;gap:8px}
+.ai-footer-sub{font-size:14px;color:var(--muted);line-height:1.75;margin:-4px 0 20px}
+.ai-tools-group+.ai-tools-group{margin-top:16px}
+.ai-tools-glabel{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.08em;margin:0 0 8px}
 .svc-tag{font-size:12.5px;padding:4px 12px;border-radius:999px;border:1px solid var(--border);color:#555;background:var(--white)}
 
 /* ─── 隱私權政策 ───────────────────────────────────────── */
@@ -1774,8 +1777,9 @@ nav{max-width:100vw}
           </div>
           <div>
             <p class="sec-label">背後的工具</p>
-            <h3 class="ai-footer-h3">沒有另外買系統，用的是這些</h3>
-            <div class="ai-tools-row" id="aiToolsRow"></div>
+            <h3 class="ai-footer-h3">精選少數工具，資料留在企業自己的雲端</h3>
+            <p class="ai-footer-sub">以企業既有的 Google 雲端環境為核心，搭配少數 AI 服務。減少資料拋轉至外部平台，也避免外掛過多增加維運複雜度；架構單純、維護容易。</p>
+            <div class="ai-tools-wrap" id="aiToolsRow"></div>
           </div>
         </div>
       </div>
@@ -2290,7 +2294,11 @@ const AI_TRUST = [
   '人事等敏感作業，每一筆都留有申請人與操作紀錄。'
 ];
 
-const AI_TOOLS = ['Google Apps Script','Google Sheets','Claude API','Gemini API','ChatGPT Site','Gmail API','Google Calendar API','GitHub API','政府開放資料平台','Apps Script 時間觸發器'];
+const AI_TOOLS = [
+  {label:'雲端基礎', items:['Google Workspace','Google Sheets','Google Apps Script','Gmail','Google 日曆']},
+  {label:'AI 輔助', items:['Claude','Gemini','ChatGPT']},
+  {label:'公開資料', items:['政府開放資料平台']}
+];
 
 function buildAiSysCard(s){
   var el = document.createElement('div');
@@ -2338,11 +2346,23 @@ function buildAiSysCard(s){
   }
   var tools = document.getElementById('aiToolsRow');
   if(tools){
-    AI_TOOLS.forEach(function(t){
-      var el = document.createElement('span');
-      el.className = 'svc-tag';
-      el.textContent = t;
-      tools.appendChild(el);
+    AI_TOOLS.forEach(function(g){
+      var grp = document.createElement('div');
+      grp.className = 'ai-tools-group';
+      var lb = document.createElement('p');
+      lb.className = 'ai-tools-glabel';
+      lb.textContent = g.label;
+      grp.appendChild(lb);
+      var row = document.createElement('div');
+      row.className = 'ai-tools-row';
+      g.items.forEach(function(t){
+        var el = document.createElement('span');
+        el.className = 'svc-tag';
+        el.textContent = t;
+        row.appendChild(el);
+      });
+      grp.appendChild(row);
+      tools.appendChild(grp);
     });
   }
 })();
