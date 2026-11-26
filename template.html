@@ -1060,6 +1060,41 @@ nav{max-width:100vw}
 @media(max-width:400px){.bk-scene-wrap{height:310px}}
 @media(prefers-reduced-motion:reduce){.bk-m1,.bk-m2,.bk-m3w{animation:none}}
 
+
+/* 2026-11-26 架構對齊：四步、財務底板、積木標籤、AI 成果分組 */
+/* 全站中文斷行：只在標點與完整詞組處換行，不把詞或數字片語拆開 */
+body{line-break:strict;word-break:keep-all;overflow-wrap:anywhere}
+h1,h2,h3,.sec-title,.case-title,.case-company,.bk-q,.sig-q{text-wrap:balance}
+p,li,.bk-desc,.sig-why{text-wrap:pretty}
+/* 首頁 Hero 維持原樣，不套用上述斷行規則 */
+.hero,.hero *{word-break:normal;overflow-wrap:normal;text-wrap:wrap}
+.bk-path{display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;padding:16px 22px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r12)}
+.bk-path-h{font-size:14px;font-weight:700;color:var(--brand)}
+.bk-path ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;counter-reset:bkp}
+.bk-path li{counter-increment:bkp;font-size:14px;font-weight:700;color:var(--brand);background:var(--bg);border-radius:var(--r6);padding:4px 12px;word-break:keep-all;white-space:nowrap}
+.bk-path li::before{content:counter(bkp,decimal-leading-zero) " ";color:var(--accent2)}
+.bk-path li+li::after{content:none}
+.bk-path li:last-child{background:var(--accent2);color:#fff}
+.bk-path li:last-child::before{color:#fff}
+.bk-path p{margin:0;font-size:13px;color:var(--muted);line-height:1.7}
+.bk-base{margin-top:24px;display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;padding:16px 22px;background:var(--white);border:1.5px solid var(--border);border-left:0;border-radius:0 var(--r12) var(--r12) 0;box-shadow:inset 6px 0 0 var(--teal)}
+.bk-base-h{display:flex;align-items:center;gap:10px}
+.bk-base-h .bk-tag{background:var(--teal);color:#fff}
+.bk-base-h b{font-size:16px;color:var(--brand)}
+.bk-base p{flex:1 1 360px;margin:0;font-size:14px;color:var(--muted);line-height:1.8}
+.bk-base-more{font:inherit;font-size:13px;font-weight:700;color:var(--accent2);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap}
+.bk-chips .bk-chip-grp{display:inline-flex;gap:8px;border:0;padding:0;background:none;line-height:normal}
+.bk-chips .bk-chip-out{border-style:dashed;color:var(--teal)}
+.bk-chips .bk-chip-lab{border-color:transparent;background:none;color:var(--muted);padding-left:4px;padding-right:0}
+.bk-path{margin-top:16px}
+.bk-baseplate{position:absolute;left:-26px;top:-26px;width:352px;height:352px;border-radius:14px;background:var(--teal);transform:translateZ(-16px);box-shadow:-1px 1px 0 #1d6f64,-2px 2px 0 #1d6f64,-3px 3px 0 #1d6f64,-4px 4px 0 #1d6f64,-5px 5px 0 #1d6f64,-6px 6px 0 #1d6f64,-16px 20px 24px rgba(5,10,20,.45)}
+.bk-baseplate b{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-size:13px;color:#fff;letter-spacing:.12em}
+.tg-blk{background:var(--bg2);color:var(--brand)}
+.tg-blk-base{background:rgba(46,158,143,.12);color:#1d6f64}
+.ai-grp-h{grid-column:1/-1;display:flex;align-items:baseline;gap:12px;margin:14px 0 -4px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.ai-grp-h:first-child{margin-top:0}
+.ai-grp-h b{font-size:16px;color:var(--brand)}
+.ai-grp-h span{font-size:13px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -1126,28 +1161,28 @@ nav{max-width:100vw}
         <p class="signal-close" data-reveal>{{SIGNAL_CLOSE}}</p>
       </div>
       <div class="signal-grid">
-        <a class="signal" href="#cases" onclick="goToCaseFilter(['role-hr','role-train']);return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('area-dir');return false;">
           <span class="sig-area">定錨方向</span>
           <p class="sig-q">{{SIGNAL1}}</p>
           <p class="sig-why">{{SIGNAL1_WHY}}</p>
           <span class="sig-block"><small>對應積木</small>策略藍圖・目標管理</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('role-ops');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('area-dir');return false;">
           <span class="sig-area">定錨方向</span>
           <p class="sig-q">{{SIGNAL2}}</p>
           <p class="sig-why">{{SIGNAL2_WHY}}</p>
           <span class="sig-block"><small>對應積木</small>工作流程</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('role-hr');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('area-ppl');return false;">
           <span class="sig-area">知人善任</span>
           <p class="sig-q">{{SIGNAL3}}</p>
           <p class="sig-why">{{SIGNAL3_WHY}}</p>
-          <span class="sig-block"><small>對應積木</small>人才適配・工作配置</span>
+          <span class="sig-block"><small>對應積木</small>人才適配・工作配置・制度規範</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('role-hr');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('area-mon');return false;">
           <span class="sig-area">激勵留才</span>
           <p class="sig-q">{{SIGNAL4}}</p>
           <p class="sig-why">{{SIGNAL4_WHY}}</p>
@@ -1173,8 +1208,8 @@ nav{max-width:100vw}
           <div class="bk-rows" role="group" aria-label="經營三件事">
           <button type="button" class="bk-row" data-area="direction" data-label="定錨方向" data-q="方向如何成為整個組織的共同語言？" aria-pressed="false">
             <span class="bk-row-h"><span class="bk-tag">定錨方向</span><span class="bk-q">方向如何成為整個組織的共同語言？</span></span>
-            <span class="bk-desc">從策略梳理出組織圖、長期方向與策略架構，再拆成工作與目標，讓方向一路對得上成果。</span>
-            <span class="bk-chips"><span>策略藍圖</span><span>工作流程</span><span>目標管理</span></span>
+            <span class="bk-desc">從策略梳理出組織圖、長期方向與策略架構，再拆成工作與目標，讓方向一路對得上成果；對外，也讓市場看懂這個方向。</span>
+            <span class="bk-chips"><span>策略藍圖</span><span>工作流程</span><span>目標管理</span><span class="bk-chip-grp"><span class="bk-chip-lab">對外</span><span class="bk-chip-out">業務拓展</span><span class="bk-chip-out">品牌市場</span></span></span>
           </button>
           <button type="button" class="bk-row" data-area="people" data-label="知人善任" data-q="組織成長時，如何讓每個人都發揮所長？" aria-pressed="false">
             <span class="bk-row-h"><span class="bk-tag">知人善任</span><span class="bk-q">組織成長時，如何讓每個人都發揮所長？</span></span>
@@ -1194,8 +1229,9 @@ nav{max-width:100vw}
             <p class="bk-stage-t">從方向到人才，再到獎酬</p>
           </div>
           <div class="bk-scene-wrap">
-            <div class="bk-scene" role="img" aria-label="立體積木堆疊：最下層是定錨方向（策略藍圖、工作流程、目標管理），中層是知人善任（人才適配、工作配置、制度規範），上層是激勵留才（人事預算、整體獎酬），最上方是經營戰情室">
+            <div class="bk-scene" role="img" aria-label="立體積木堆疊：最底下是財務資金底板，往上是定錨方向（策略藍圖、工作流程、目標管理），中層是知人善任（人才適配、工作配置、制度規範），上層是激勵留才（人事預算、整體獎酬），最上方是經營戰情室">
               <div class="bk-plane bk3" aria-hidden="true">
+                <div class="bk-baseplate"><b>財務資金・底板</b></div>
                 <div class="bk-t bk-dir bk-l0" data-bk="direction" style="left:0;top:0;width:300px;height:92px"><b>策略藍圖</b></div>
                 <div class="bk-t bk-dir bk-l0 bk-d2" data-bk="direction" style="left:0;top:104px;width:300px;height:92px"><b>工作流程</b></div>
                 <div class="bk-t bk-dir bk-l0 bk-d3" data-bk="direction" style="left:0;top:208px;width:300px;height:92px"><b>目標管理</b></div>
@@ -1211,7 +1247,17 @@ nav{max-width:100vw}
           <p class="bk-now" aria-live="polite"><b id="bkNowLabel">經營戰情室</b><span id="bkNowQ">一張圖看清經營全局</span></p>
         </div>
       </div>
-      <p class="bk-note">每一塊積木都能單獨開始，也能串成全局。</p>
+      <div class="bk-base" data-reveal>
+        <div class="bk-base-h"><span class="bk-tag">底板</span><b>財務資金</b></div>
+        <p>積木要疊得穩，先要有一塊底板。資金節奏、年度預算與募資規劃，讓每一塊積木都有足夠的底氣。</p>
+        <button type="button" class="bk-base-more" onclick="goToCaseFilter('area-base')">查看相關案例 →</button>
+      </div>
+      <div class="bk-path" data-reveal>
+        <span class="bk-path-h">每一塊積木都分四步走</span>
+        <ol><li>看清現況</li><li>訂第一條規則</li><li>串成制度</li><li>連到全局</li></ol>
+        <p>做到現階段夠用就好，之後再一層一層往上接。</p>
+      </div>
+      <p class="bk-note">AI 走進日常工作，團隊也橫跨不同世代。經營三件事沒有變，每一塊積木的做法跟著時代更新。</p>
     </div>
   </section>
 
@@ -1227,7 +1273,7 @@ nav{max-width:100vw}
         <li class="rf-row">
           <div class="rf-said"><small>當時的課題</small><p>{{REFRAME1_SAID}}</p></div>
           <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：策略藍圖・目標管理</span><p>{{REFRAME1_DID}}</p></div>
+          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：策略藍圖・制度規範</span><p>{{REFRAME1_DID}}</p></div>
         </li>
         <li class="rf-row">
           <div class="rf-said"><small>當時的課題</small><p>{{REFRAME2_SAID}}</p></div>
@@ -1237,7 +1283,7 @@ nav{max-width:100vw}
         <li class="rf-row">
           <div class="rf-said"><small>當時的課題</small><p>{{REFRAME3_SAID}}</p></div>
           <div class="rf-arrow" aria-hidden="true"><i></i></div>
-          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：策略藍圖・工作流程</span><p>{{REFRAME3_DID}}</p></div>
+          <div class="rf-did"><small>梳理後先做的</small><span class="rf-block">先補的積木：工作配置・工作流程</span><p>{{REFRAME3_DID}}</p></div>
         </li>
       </ol>
       <p class="rf-close" data-reveal>{{REFRAME_CLOSE}}</p>
@@ -1340,23 +1386,14 @@ nav{max-width:100vw}
 
   <!-- FILTERS -->
   <div class="cases-filters">
-    <div class="filter-group">
-      <span class="filter-label">角色</span>
+    <div class="filter-group fg-area">
+      <span class="filter-label">經營面向</span>
       <button class="filter-btn active" data-filter="all" onclick="filterCases(this,'all')">全部</button>
-      <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
-      <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
-      <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
-      <button class="filter-btn" data-filter="role-biz" onclick="filterCases(this,'role-biz')">業務</button>
-      <button class="filter-btn" data-filter="role-mkt" onclick="filterCases(this,'role-mkt')">行銷</button>
-      <button class="filter-btn" data-filter="role-train" onclick="filterCases(this,'role-train')">培訓</button>
-      <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
-    </div>
-    <div class="filter-sep"></div>
-    <div class="filter-group">
-      <span class="filter-label">企業階段</span>
-      <button class="filter-btn" data-filter="stage-g" onclick="filterCases(this,'stage-g')">成長期</button>
-      <button class="filter-btn" data-filter="stage-s" onclick="filterCases(this,'stage-s')">穩健期</button>
-      <button class="filter-btn" data-filter="stage-m" onclick="filterCases(this,'stage-m')">成熟期</button>
+      <button class="filter-btn" data-filter="area-dir" onclick="filterCases(this,'area-dir')">定錨方向</button>
+      <button class="filter-btn" data-filter="area-ppl" onclick="filterCases(this,'area-ppl')">知人善任</button>
+      <button class="filter-btn" data-filter="area-mon" onclick="filterCases(this,'area-mon')">激勵留才</button>
+      <button class="filter-btn" data-filter="area-top" onclick="filterCases(this,'area-top')">經營戰情室</button>
+      <button class="filter-btn" data-filter="area-base" onclick="filterCases(this,'area-base')">財務底板</button>
     </div>
     <div class="filter-sep"></div>
     <div class="filter-group">
@@ -1697,6 +1734,28 @@ window.addEventListener('load', function(){
 if(window.ResizeObserver){ new ResizeObserver(reportHeight).observe(document.body); }
 
 /* ─── CASE FILTER：角色、企業階段可複選（同一組內「或」，不同組之間「且」） ─── */
+
+/* 2026-11-26：積木 → 經營面向（與首頁「經營三件事」同一張圖） */
+var BLOCK_AREA = {
+  '策略藍圖':'area-dir','工作流程':'area-dir','目標管理':'area-dir',
+  '人才適配':'area-ppl','工作配置':'area-ppl','制度規範':'area-ppl',
+  '人事預算':'area-mon','整體獎酬':'area-mon',
+  '經營戰情室':'area-top',
+  '業務拓展':'area-dir','品牌市場':'area-dir',
+  '財務資金':'area-base'
+};
+var AREA_NAME = { 'area-dir':'定錨方向','area-ppl':'知人善任','area-mon':'激勵留才','area-top':'經營戰情室','area-base':'財務底板' };
+function splitBlocks(s){ return String(s || '').split(/[、,，\s]+/).filter(Boolean); }
+function tagCaseAreas(){
+  document.querySelectorAll('.case-card[data-blocks]').forEach(function(card){
+    var cats = (card.dataset.cats || '').split(' ').filter(Boolean);
+    splitBlocks(card.dataset.blocks).forEach(function(b){
+      var a = BLOCK_AREA[b]; if(a && cats.indexOf(a) === -1) cats.push(a);
+    });
+    card.dataset.cats = cats.join(' ');
+  });
+}
+document.addEventListener('DOMContentLoaded', tagCaseAreas);
 var CASE_FILTER = { role: [], stage: [], ai: false };
 function filterCases(btn, cat){
   if(cat === 'all'){
@@ -1704,7 +1763,7 @@ function filterCases(btn, cat){
   } else if(cat === 'has-ai'){
     CASE_FILTER.ai = !CASE_FILTER.ai;
   } else {
-    var key = cat.indexOf('stage-') === 0 ? 'stage' : 'role';
+    var key = cat.indexOf('area-') === 0 ? 'stage' : 'role';
     var list = CASE_FILTER[key], i = list.indexOf(cat);
     if(i === -1) list.push(cat); else list.splice(i, 1);
   }
@@ -1785,7 +1844,7 @@ function buildAiSysCard(s){
   el.className = 'case-card ai-sys-card';
   el.style.setProperty('--ai-accent', s.accent);
   el.innerHTML =
-    '<div class="ai-sys-tag">' + s.tag + '</div>' +
+    '<div class="ai-sys-tag">' + (s.block ? splitBlocks(s.block).join('・') : s.tag) + '</div>' +
     '<div class="case-company">' + s.name + '</div>' +
     '<div class="case-title">' + s.why + '</div>' +
     '<div class="case-divider"></div>' +
@@ -1814,7 +1873,23 @@ function buildAiSysCard(s){
     });
   }
   var sysGrid = document.getElementById('aiSysGrid');
-  if(sysGrid){ AI_SYS.forEach(function(s){ sysGrid.appendChild(buildAiSysCard(s)); }); }
+  if(sysGrid){
+    // 依經營面向分組；還沒填「對應積木」的放在最後
+    var order = ['area-dir','area-ppl','area-mon','area-top','area-base',''];
+    var groups = {}; order.forEach(function(k){ groups[k] = []; });
+    AI_SYS.forEach(function(s){ var a = BLOCK_AREA[splitBlocks(s.block)[0]] || ''; groups[a].push(s); });
+    var grouped = AI_SYS.some(function(s){ return s.block; });
+    order.forEach(function(k){
+      if(!groups[k].length) return;
+      if(grouped){
+        var h = document.createElement('div');
+        h.className = 'ai-grp-h';
+        h.innerHTML = '<b>' + (AREA_NAME[k] || '其他') + '</b><span>' + groups[k].length + ' 項</span>';
+        sysGrid.appendChild(h);
+      }
+      groups[k].forEach(function(s){ sysGrid.appendChild(buildAiSysCard(s)); });
+    });
+  }
   var trust = document.getElementById('aiTrustList');
   if(trust){
     AI_TRUST.forEach(function(t){
@@ -2072,7 +2147,7 @@ function goToCaseFilter(role){
     // 可傳單一分類或陣列（例如 ['role-hr','role-train'] 會同時勾選兩個角色）
     [].concat(role).forEach(function(r){
       if(r === 'has-ai') CASE_FILTER.ai = true;
-      else if(r.indexOf('stage-') === 0) CASE_FILTER.stage.push(r);
+      else if(r.indexOf('area-') === 0) CASE_FILTER.stage.push(r);
       else CASE_FILTER.role.push(r);
     });
     applyCaseFilter();
