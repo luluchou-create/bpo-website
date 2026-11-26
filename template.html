@@ -1161,28 +1161,28 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
         <p class="signal-close" data-reveal>{{SIGNAL_CLOSE}}</p>
       </div>
       <div class="signal-grid">
-        <a class="signal" href="#cases" onclick="goToCaseFilter('area-dir');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-proj');return false;">
           <span class="sig-area">定錨方向</span>
           <p class="sig-q">{{SIGNAL1}}</p>
           <p class="sig-why">{{SIGNAL1_WHY}}</p>
           <span class="sig-block"><small>對應積木</small>策略藍圖・目標管理</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('area-dir');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-ops');return false;">
           <span class="sig-area">定錨方向</span>
           <p class="sig-q">{{SIGNAL2}}</p>
           <p class="sig-why">{{SIGNAL2_WHY}}</p>
           <span class="sig-block"><small>對應積木</small>工作流程</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('area-ppl');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-hr');return false;">
           <span class="sig-area">知人善任</span>
           <p class="sig-q">{{SIGNAL3}}</p>
           <p class="sig-why">{{SIGNAL3_WHY}}</p>
           <span class="sig-block"><small>對應積木</small>人才適配・工作配置・制度規範</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('area-mon');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-hr');return false;">
           <span class="sig-area">激勵留才</span>
           <p class="sig-q">{{SIGNAL4}}</p>
           <p class="sig-why">{{SIGNAL4_WHY}}</p>
@@ -1250,7 +1250,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       <div class="bk-base" data-reveal>
         <div class="bk-base-h"><span class="bk-tag">底板</span><b>財務資金</b></div>
         <p>積木要疊得穩，先要有一塊底板。資金節奏、年度預算與募資規劃，讓每一塊積木都有足夠的底氣。</p>
-        <button type="button" class="bk-base-more" onclick="goToCaseFilter('area-base')">查看相關案例 →</button>
+        <button type="button" class="bk-base-more" onclick="goToCaseFilter('role-fin')">查看相關案例 →</button>
       </div>
       <div class="bk-path" data-reveal>
         <span class="bk-path-h">每一塊積木都分四步走</span>
@@ -1386,14 +1386,23 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
 
   <!-- FILTERS -->
   <div class="cases-filters">
-    <div class="filter-group fg-area">
-      <span class="filter-label">經營面向</span>
+    <div class="filter-group">
+      <span class="filter-label">角色</span>
       <button class="filter-btn active" data-filter="all" onclick="filterCases(this,'all')">全部</button>
-      <button class="filter-btn" data-filter="area-dir" onclick="filterCases(this,'area-dir')">定錨方向</button>
-      <button class="filter-btn" data-filter="area-ppl" onclick="filterCases(this,'area-ppl')">知人善任</button>
-      <button class="filter-btn" data-filter="area-mon" onclick="filterCases(this,'area-mon')">激勵留才</button>
-      <button class="filter-btn" data-filter="area-top" onclick="filterCases(this,'area-top')">經營戰情室</button>
-      <button class="filter-btn" data-filter="area-base" onclick="filterCases(this,'area-base')">財務底板</button>
+      <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
+      <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
+      <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
+      <button class="filter-btn" data-filter="role-biz" onclick="filterCases(this,'role-biz')">業務</button>
+      <button class="filter-btn" data-filter="role-mkt" onclick="filterCases(this,'role-mkt')">行銷</button>
+      <button class="filter-btn" data-filter="role-train" onclick="filterCases(this,'role-train')">培訓</button>
+      <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
+    </div>
+    <div class="filter-sep"></div>
+    <div class="filter-group">
+      <span class="filter-label">企業階段</span>
+      <button class="filter-btn" data-filter="stage-g" onclick="filterCases(this,'stage-g')">成長期</button>
+      <button class="filter-btn" data-filter="stage-s" onclick="filterCases(this,'stage-s')">穩健期</button>
+      <button class="filter-btn" data-filter="stage-m" onclick="filterCases(this,'stage-m')">成熟期</button>
     </div>
     <div class="filter-sep"></div>
     <div class="filter-group">
@@ -1763,7 +1772,7 @@ function filterCases(btn, cat){
   } else if(cat === 'has-ai'){
     CASE_FILTER.ai = !CASE_FILTER.ai;
   } else {
-    var key = cat.indexOf('area-') === 0 ? 'stage' : 'role';
+    var key = cat.indexOf('stage-') === 0 ? 'stage' : 'role';
     var list = CASE_FILTER[key], i = list.indexOf(cat);
     if(i === -1) list.push(cat); else list.splice(i, 1);
   }
@@ -2147,7 +2156,7 @@ function goToCaseFilter(role){
     // 可傳單一分類或陣列（例如 ['role-hr','role-train'] 會同時勾選兩個角色）
     [].concat(role).forEach(function(r){
       if(r === 'has-ai') CASE_FILTER.ai = true;
-      else if(r.indexOf('area-') === 0) CASE_FILTER.stage.push(r);
+      else if(r.indexOf('stage-') === 0) CASE_FILTER.stage.push(r);
       else CASE_FILTER.role.push(r);
     });
     applyCaseFilter();
