@@ -1161,28 +1161,28 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
         <p class="signal-close" data-reveal>公司長大了，原本靠經營者經驗運作的方式，需要整理成團隊都看得懂、用得上的方法。</p>
       </div>
       <div class="signal-grid">
-        <a class="signal" href="#cases" onclick="goToCaseFilter('area-dir');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-proj');return false;">
           <span class="sig-area">定錨方向</span>
           <p class="sig-q">方向說了很多次，各部門的理解仍有落差。</p>
           <p class="sig-why">方向還停在口頭，尚未拆成各部門都追得到的目標。</p>
           <span class="sig-block"><small>對應積木</small>策略藍圖・目標管理</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('area-dir');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-ops');return false;">
           <span class="sig-area">定錨方向</span>
           <p class="sig-q">同一件事有多種做法，經驗難以傳承。</p>
           <p class="sig-why">做法還留在個人身上，尚未整理成共用的流程。</p>
           <span class="sig-block"><small>對應積木</small>工作流程</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('area-ppl');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-hr');return false;">
           <span class="sig-area">知人善任</span>
           <p class="sig-q">團隊持續擴大，分工安排卻總差一點到位。</p>
           <p class="sig-why">個人特質與工作安排尚未對齊，各項管理也缺少一致的制度依據。</p>
           <span class="sig-block"><small>對應積木</small>人才適配・工作配置・制度規範</span>
           <span class="sig-more">查看相關案例 →</span>
         </a>
-        <a class="signal" href="#cases" onclick="goToCaseFilter('area-mon');return false;">
+        <a class="signal" href="#cases" onclick="goToCaseFilter('role-hr');return false;">
           <span class="sig-area">激勵留才</span>
           <p class="sig-q">團隊越來越大，薪酬預算該怎麼安排，卻難有依據。</p>
           <p class="sig-why">人事預算尚未和組織規劃、工作安排放在一起考量。</p>
@@ -1250,7 +1250,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       <div class="bk-base" data-reveal>
         <div class="bk-base-h"><span class="bk-tag">底板</span><b>財務資金</b></div>
         <p>積木要疊得穩，先要有一塊底板。資金節奏、年度預算與募資規劃，讓每一塊積木都有足夠的底氣。</p>
-        <button type="button" class="bk-base-more" onclick="goToCaseFilter('area-base')">查看相關案例 →</button>
+        <button type="button" class="bk-base-more" onclick="goToCaseFilter('role-fin')">查看相關案例 →</button>
       </div>
       <div class="bk-path" data-reveal>
         <span class="bk-path-h">每一塊積木都分四步走</span>
@@ -1380,20 +1380,29 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
   <div class="cases-hero">
     <div class="cases-hero-inner">
       <h1>每間公司的起點都不一樣</h1>
-      <p>依經營面向篩選，看看情境相近的企業，是從哪一塊積木開始建置。</p>
+      <p>依角色或企業階段篩選，看看情境相近的企業，是從哪一塊積木開始建置。</p>
     </div>
   </div>
 
   <!-- FILTERS -->
   <div class="cases-filters">
-    <div class="filter-group fg-area">
-      <span class="filter-label">經營面向</span>
+    <div class="filter-group">
+      <span class="filter-label">角色</span>
       <button class="filter-btn active" data-filter="all" onclick="filterCases(this,'all')">全部</button>
-      <button class="filter-btn" data-filter="area-dir" onclick="filterCases(this,'area-dir')">定錨方向</button>
-      <button class="filter-btn" data-filter="area-ppl" onclick="filterCases(this,'area-ppl')">知人善任</button>
-      <button class="filter-btn" data-filter="area-mon" onclick="filterCases(this,'area-mon')">激勵留才</button>
-      <button class="filter-btn" data-filter="area-top" onclick="filterCases(this,'area-top')">經營戰情室</button>
-      <button class="filter-btn" data-filter="area-base" onclick="filterCases(this,'area-base')">財務底板</button>
+      <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
+      <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
+      <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
+      <button class="filter-btn" data-filter="role-biz" onclick="filterCases(this,'role-biz')">業務</button>
+      <button class="filter-btn" data-filter="role-mkt" onclick="filterCases(this,'role-mkt')">行銷</button>
+      <button class="filter-btn" data-filter="role-train" onclick="filterCases(this,'role-train')">培訓</button>
+      <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
+    </div>
+    <div class="filter-sep"></div>
+    <div class="filter-group">
+      <span class="filter-label">企業階段</span>
+      <button class="filter-btn" data-filter="stage-g" onclick="filterCases(this,'stage-g')">成長期</button>
+      <button class="filter-btn" data-filter="stage-s" onclick="filterCases(this,'stage-s')">穩健期</button>
+      <button class="filter-btn" data-filter="stage-m" onclick="filterCases(this,'stage-m')">成熟期</button>
     </div>
     <div class="filter-sep"></div>
     <div class="filter-group">
@@ -1409,7 +1418,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
   <!-- CASES GRID -->
   <div class="cases-grid" id="casesGrid">
 
-    <div class="case-card role-hr role-train has-ai" data-cats="role-hr role-train stage-g has-ai" data-title="管理思維轉型 × 主管養成">
+    <div class="case-card role-hr role-train has-ai" data-cats="role-hr role-train stage-g has-ai" data-blocks="人才適配、工作配置、制度規範" data-title="管理思維轉型 × 主管養成">
       <div class="case-leave-badge"><span>導入低度管理架構，建立員工高度自主運行的組織模型</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1438,7 +1447,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-hr role-train has-ai" data-cats="role-hr role-train stage-g has-ai" data-title="人資制度從零建立 × 出勤系統數位化">
+    <div class="case-card role-hr role-train has-ai" data-cats="role-hr role-train stage-g has-ai" data-blocks="制度規範、目標管理" data-title="人資制度從零建立 × 出勤系統數位化">
       <div class="case-leave-badge"><span>建立內部管理規範與績效考核制度，為組織運作奠定基礎</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1465,7 +1474,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-biz role-proj has-ai" data-cats="role-biz role-proj stage-m has-ai" data-title="業務制度優化 × AI 提案流程">
+    <div class="case-card role-biz role-proj has-ai" data-cats="role-biz role-proj stage-m has-ai" data-blocks="整體獎酬、工作流程、業務拓展" data-title="業務制度優化 × AI 提案流程">
       <div class="case-leave-badge"><span>盤點業務制度與獎勵機制，建立可執行的管理規則</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
@@ -1492,7 +1501,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-hr role-fin has-ai" data-cats="role-hr role-fin stage-s has-ai" data-title="財務管理升級 × 組織與AI協作">
+    <div class="case-card role-hr role-fin has-ai" data-cats="role-hr role-fin stage-s has-ai" data-blocks="經營戰情室、人事預算、人才適配、工作流程、財務資金" data-title="財務管理升級 × 組織與AI協作">
       <div class="case-leave-badge"><span>建立管理報表與損益敏感度分析，支援成長路徑與用人評估</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-s">穩健期</span>
@@ -1522,7 +1531,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-fin role-ops role-proj has-ai" data-cats="role-fin role-ops role-proj stage-g has-ai" data-title="財務健診 × 進銷存數位化與損益可視化">
+    <div class="case-card role-fin role-ops role-proj has-ai" data-cats="role-fin role-ops role-proj stage-g has-ai" data-blocks="經營戰情室、工作流程、財務資金" data-title="財務健診 × 進銷存數位化與損益可視化">
       <div class="case-leave-badge"><span>以財務健診為起點，梳理財務流程與制度</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1552,7 +1561,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-hr role-ops role-biz role-proj has-ai" data-cats="role-hr role-ops role-biz role-proj stage-g has-ai" data-title="業務制度重整 × 財務流程AI化">
+    <div class="case-card role-hr role-ops role-biz role-proj has-ai" data-cats="role-hr role-ops role-biz role-proj stage-g has-ai" data-blocks="整體獎酬、工作配置、工作流程、制度規範、業務拓展、財務資金" data-title="業務制度重整 × 財務流程AI化">
       <div class="case-leave-badge"><span>完成業務組織、績效管理與制度重整方案，明確角色權責</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1583,7 +1592,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-hr role-train" data-cats="role-hr role-train stage-s" data-title="第二成長曲線規劃 × 人才養成">
+    <div class="case-card role-hr role-train" data-cats="role-hr role-train stage-s" data-blocks="策略藍圖、人才適配、業務拓展" data-title="第二成長曲線規劃 × 人才養成">
       <div class="case-leave-badge"><span>規劃主管共識工作坊，系統化挖掘關鍵人才潛能</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-s">穩健期</span>
@@ -1606,7 +1615,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-hr role-ops role-train role-proj" data-cats="role-hr role-ops role-train role-proj stage-m" data-title="組織重整 × 團隊再定位">
+    <div class="case-card role-hr role-ops role-train role-proj" data-cats="role-hr role-ops role-train role-proj stage-m" data-blocks="工作配置、工作流程、人才適配" data-title="組織重整 × 團隊再定位">
       <div class="case-leave-badge"><span>全面組織架構盤點與重組，各職位職責重新定義</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
@@ -1631,7 +1640,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-hr role-train role-proj" data-cats="role-hr role-train role-proj stage-m" data-title="IPO 籌備 × 制度建置與人才培育">
+    <div class="case-card role-hr role-train role-proj" data-cats="role-hr role-train role-proj stage-m" data-blocks="制度規範、人才適配、財務資金" data-title="IPO 籌備 × 制度建置與人才培育">
       <div class="case-leave-badge"><span>建立內控文件教育訓練體系，完成 IPO 前置自行診斷</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
@@ -1654,7 +1663,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-fin role-ops role-proj" data-cats="role-fin role-ops role-proj stage-g" data-title="募資規劃 × 財務營運制度化">
+    <div class="case-card role-fin role-ops role-proj" data-cats="role-fin role-ops role-proj stage-g" data-blocks="財務資金、工作流程、經營戰情室" data-title="募資規劃 × 財務營運制度化">
       <div class="case-leave-badge"><span>建立 BP、估值邏輯與投資人溝通材料，完整呈現成長模式</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1678,7 +1687,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-fin role-ops role-mkt" data-cats="role-fin role-ops role-mkt stage-m" data-title="總部治理 × 跨據點營運整合">
+    <div class="case-card role-fin role-ops role-mkt" data-cats="role-fin role-ops role-mkt stage-m" data-blocks="策略藍圖、目標管理、工作配置、財務資金、品牌市場" data-title="總部治理 × 跨據點營運整合">
       <div class="case-leave-badge"><span>建立募資策略、BP 與投資人溝通架構，整合品牌願景與資本需求</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-m">成熟期</span>
@@ -1703,7 +1712,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-fin" data-cats="role-fin stage-s" data-title="轉型募資 × 投資價值重構">
+    <div class="case-card role-fin" data-cats="role-fin stage-s" data-blocks="財務資金、策略藍圖" data-title="轉型募資 × 投資價值重構">
       <div class="case-leave-badge"><span>重新梳理商業模式轉型、中期成長策略與資源需求</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-s">穩健期</span>
@@ -1725,7 +1734,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-fin" data-cats="role-fin stage-g" data-title="募資架構 × 財務治理建置">
+    <div class="case-card role-fin" data-cats="role-fin stage-g" data-blocks="財務資金、制度規範" data-title="募資架構 × 財務治理建置">
       <div class="case-leave-badge"><span>建構 BP、財務預測與估值邏輯，整合技術價值與收入模式</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -1747,7 +1756,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       </ul>
     </div>
 
-    <div class="case-card role-fin role-ops" data-cats="role-fin role-ops stage-g" data-title="股權募資規劃 × 組織成長承接">
+    <div class="case-card role-fin role-ops" data-cats="role-fin role-ops stage-g" data-blocks="財務資金、策略藍圖、工作配置" data-title="股權募資規劃 × 組織成長承接">
       <div class="case-leave-badge"><span>盤點股權與公司架構，建立募資方向、財務規劃與溝通架構</span></div>
       <div class="case-tags">
         <span class="ctag tg-stage-g">成長期</span>
@@ -2122,7 +2131,7 @@ function filterCases(btn, cat){
   } else if(cat === 'has-ai'){
     CASE_FILTER.ai = !CASE_FILTER.ai;
   } else {
-    var key = cat.indexOf('area-') === 0 ? 'stage' : 'role';
+    var key = cat.indexOf('stage-') === 0 ? 'stage' : 'role';
     var list = CASE_FILTER[key], i = list.indexOf(cat);
     if(i === -1) list.push(cat); else list.splice(i, 1);
   }
@@ -2191,7 +2200,8 @@ const AI_SYS = [
    "主管 Email 內直接點「同意／駁回」，免登入",
    "面試與報到自動建立行事曆、自動生成線上會議連結"
   ],
-  "caseTitle": "財務管理升級 × 組織與AI協作"
+  "caseTitle": "財務管理升級 × 組織與AI協作",
+  "block": "人才適配"
  },
  {
   "tag": "人資",
@@ -2202,7 +2212,8 @@ const AI_SYS = [
    "單一頁面輸入，一次產出 5 種文件",
    "核薪金額自動比對市場薪資，算出落點提示"
   ],
-  "caseTitle": "財務管理升級 × 組織與AI協作"
+  "caseTitle": "財務管理升級 × 組織與AI協作",
+  "block": "人才適配、整體獎酬"
  },
  {
   "tag": "人資",
@@ -2213,7 +2224,8 @@ const AI_SYS = [
    "政府行事曆自動抓取，免人工下載上傳",
    "連續工作天數自動警示，避免違反一例一休"
   ],
-  "caseTitle": "人資制度從零建立 × 出勤系統數位化"
+  "caseTitle": "人資制度從零建立 × 出勤系統數位化",
+  "block": "制度規範、工作流程"
  },
  {
   "tag": "人資",
@@ -2224,7 +2236,8 @@ const AI_SYS = [
    "工讀生自己打卡、請假、預排下個月的班，異常時數自動標示",
    "承辦人確認後一鍵通知人資，自動產出當月結算檔與 104 匯入表"
   ],
-  "caseTitle": "管理思維轉型 × 主管養成"
+  "caseTitle": "管理思維轉型 × 主管養成",
+  "block": "工作配置"
  },
  {
   "tag": "人資",
@@ -2235,7 +2248,8 @@ const AI_SYS = [
    "主管用日常語言直接問，不用等 HR 回覆",
    "知識庫跟著系統迭代同步更新"
   ],
-  "caseTitle": "財務管理升級 × 組織與AI協作"
+  "caseTitle": "財務管理升級 × 組織與AI協作",
+  "block": "制度規範"
  },
  {
   "tag": "人資",
@@ -2245,7 +2259,8 @@ const AI_SYS = [
   "items": [
    "同一個頁面產出資遣預告通知書，並依年資試算資遣費",
    "每筆案件自動記下申請人與操作帳號，一套範本可以複製給不同公司使用"
-  ]
+  ],
+  "block": "制度規範"
  },
  {
   "tag": "財務",
@@ -2255,7 +2270,8 @@ const AI_SYS = [
   "items": [
    "分潤依合約類型自動拆分計算，取代人工試算表",
    "應收帳款天數、客戶留存率自動生成，不用憑感覺判斷"
-  ]
+  ],
+  "block": "財務資金、經營戰情室"
  },
  {
   "tag": "財務",
@@ -2266,7 +2282,8 @@ const AI_SYS = [
    "科目代碼自動帶出名稱，減少輸入錯誤",
    "借貸即時平衡驗證，報表一鍵重新彙總"
   ],
-  "caseTitle": "財務健診 × 進銷存數位化與損益可視化"
+  "caseTitle": "財務健診 × 進銷存數位化與損益可視化",
+  "block": "財務資金"
  },
  {
   "tag": "財務",
@@ -2277,7 +2294,8 @@ const AI_SYS = [
    "AI 依憑證與摘要分別判讀科目，顯示綠區或需人工判斷的灰區",
    "自動生成暫存傳票預覽，財務人員保留調整與最終過帳權"
   ],
-  "caseTitle": "業務制度重整 × 財務流程AI化"
+  "caseTitle": "業務制度重整 × 財務流程AI化",
+  "block": "工作流程、財務資金"
  },
  {
   "tag": "財務",
@@ -2288,7 +2306,8 @@ const AI_SYS = [
    "以 16 個業務站點串聯現貨、促銷、付款、出貨、撥款與退貨",
    "每站依序展開真實場景、先做判斷、科目連動與經營結果，同時說明部門責任"
   ],
-  "caseTitle": "財務管理升級 × 組織與AI協作"
+  "caseTitle": "財務管理升級 × 組織與AI協作",
+  "block": "經營戰情室、工作流程"
  },
  {
   "tag": "營運",
@@ -2298,7 +2317,8 @@ const AI_SYS = [
   "items": [
    "貼上一段流水帳，AI 自動分類彙整成主題摘要",
    "一筆紀錄可同時掛在多個專案，報表不漏算"
-  ]
+  ],
+  "block": "工作配置、經營戰情室"
  },
  {
   "tag": "營運",
@@ -2309,7 +2329,8 @@ const AI_SYS = [
    "低庫存自動警示，直接跳轉補貨流程",
    "盤點差異自動記錄，不用人工比對"
   ],
-  "caseTitle": "財務健診 × 進銷存數位化與損益可視化"
+  "caseTitle": "財務健診 × 進銷存數位化與損益可視化",
+  "block": "工作流程"
  },
  {
   "tag": "行銷",
@@ -2319,7 +2340,8 @@ const AI_SYS = [
   "items": [
    "GAS 串接 GitHub，一鍵推送就能更新上線",
    "內建 AI 潤稿選單，選取文字就能改寫成案例文案"
-  ]
+  ],
+  "block": "品牌市場"
  },
  {
   "tag": "行銷",
@@ -2329,7 +2351,8 @@ const AI_SYS = [
   "items": [
    "AI 以編輯訪談的方式提問，整理成初稿，並提供多種圖解讓作者挑選",
    "作者在網頁上直接修改，上線後版本鎖定，同時產出 LINE 與 IG 推播文字"
-  ]
+  ],
+  "block": "品牌市場"
  },
  {
   "tag": "策略",
@@ -2340,7 +2363,8 @@ const AI_SYS = [
    "五階段、13 節點：AI 處理整理、搜尋、比較與同步修改，人類保留選擇、承諾與放行",
    "加入缺口追蹤、根因式退回與唯一版本，降低重工與誤用假設風險"
   ],
-  "caseTitle": "業務制度優化 × AI 提案流程"
+  "caseTitle": "業務制度優化 × AI 提案流程",
+  "block": "工作流程"
  }
 ];
 
@@ -2667,7 +2691,7 @@ function goToCaseFilter(role){
     // 可傳單一分類或陣列（例如 ['role-hr','role-train'] 會同時勾選兩個角色）
     [].concat(role).forEach(function(r){
       if(r === 'has-ai') CASE_FILTER.ai = true;
-      else if(r.indexOf('area-') === 0) CASE_FILTER.stage.push(r);
+      else if(r.indexOf('stage-') === 0) CASE_FILTER.stage.push(r);
       else CASE_FILTER.role.push(r);
     });
     applyCaseFilter();
