@@ -1089,6 +1089,18 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
 .bk-path{margin-top:16px}
 .bk-baseplate{position:absolute;left:-26px;top:-26px;width:352px;height:352px;border-radius:14px;background:var(--teal);transform:translateZ(-16px);box-shadow:-1px 1px 0 #1d6f64,-2px 2px 0 #1d6f64,-3px 3px 0 #1d6f64,-4px 4px 0 #1d6f64,-5px 5px 0 #1d6f64,-6px 6px 0 #1d6f64,-16px 20px 24px rgba(5,10,20,.45)}
 .bk-baseplate b{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-size:13px;color:#fff;letter-spacing:.12em}
+/* 2026-11-26 篩選列：「全部」獨立在最前面；角色、企業階段各成一個淺底分組，標題在分組內，一看就知道旁邊可以點 */
+.cases-filters .filter-group.fg-tray{background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:4px 6px 4px 16px;gap:6px}
+.cases-filters .fg-tray .filter-label{color:var(--brand);font-size:13px;margin-right:6px}
+.cases-filters .fg-tray .filter-label::after{content:"｜";color:#c3c9d4;margin-left:6px;font-weight:400}
+@media(max-width:640px){
+  .cases-filters .filter-group.fg-all{display:block;padding-left:0;margin-bottom:12px}
+  .cases-filters .fg-all .filter-btn{width:auto;padding:6px 22px}
+  .cases-filters .filter-group.fg-tray{border-radius:14px;padding:38px 10px 10px;margin-top:0}
+  .cases-filters .filter-group.fg-tray+.filter-sep+.filter-group.fg-tray{margin-top:10px}
+  .cases-filters .fg-tray .filter-label{left:12px;top:8px;line-height:1.6}
+  .cases-filters .fg-tray .filter-label::after{content:""}
+}
 .tg-blk{background:var(--bg2);color:var(--brand)}
 .tg-blk-base{background:rgba(46,158,143,.12);color:#1d6f64}
 .ai-grp-h{grid-column:1/-1;display:flex;align-items:baseline;gap:12px;margin:14px 0 -4px;padding-bottom:8px;border-bottom:1px solid var(--border)}
@@ -1386,9 +1398,12 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
 
   <!-- FILTERS -->
   <div class="cases-filters">
-    <div class="filter-group">
-      <span class="filter-label">角色</span>
+    <div class="filter-group fg-all">
       <button class="filter-btn active" data-filter="all" onclick="filterCases(this,'all')">全部</button>
+    </div>
+    <div class="filter-sep"></div>
+    <div class="filter-group fg-tray">
+      <span class="filter-label">角色</span>
       <button class="filter-btn" data-filter="role-hr" onclick="filterCases(this,'role-hr')">人資</button>
       <button class="filter-btn" data-filter="role-fin" onclick="filterCases(this,'role-fin')">財務</button>
       <button class="filter-btn" data-filter="role-ops" onclick="filterCases(this,'role-ops')">營運</button>
@@ -1398,7 +1413,7 @@ p,li,.bk-desc,.sig-why{text-wrap:pretty}
       <button class="filter-btn" data-filter="role-proj" onclick="filterCases(this,'role-proj')">專案</button>
     </div>
     <div class="filter-sep"></div>
-    <div class="filter-group">
+    <div class="filter-group fg-tray">
       <span class="filter-label">企業階段</span>
       <button class="filter-btn" data-filter="stage-g" onclick="filterCases(this,'stage-g')">成長期</button>
       <button class="filter-btn" data-filter="stage-s" onclick="filterCases(this,'stage-s')">穩健期</button>
